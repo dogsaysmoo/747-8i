@@ -1,0 +1,69 @@
+<PropertyList>
+
+ <path>FDcross.ac</path>
+
+<animation>
+   <type>select</type>
+   <object-name>Mesh1 FDBarH1 skp209B</object-name>
+   <object-name>Mesh2 FDBarV1 skp209B</object-name>
+   <condition>
+       <equals>
+         <property>/instrumentation/flightdirector/fd-on</property>
+         <value>1</value>
+       </equals>
+   </condition>
+ </animation>
+
+ <animation>
+   <type>translate</type>
+   <object-name>Mesh1 FDBarH1 skp209B</object-name>
+   <object-name>Mesh2 FDBarV1 skp209B</object-name>
+   <property>/instrumentation/nav/gs-needle-deflection</property>
+<interpolation>
+     <entry>
+       <ind> -10.0</ind>
+       <dep>-0.0308</dep>
+     </entry>
+     <entry>
+       <ind> 0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind> 10.0</ind>
+       <dep>0.0308</dep>
+     </entry>
+</interpolation>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+   <type>translate</type>
+   <object-name>Mesh1 FDBarH1 skp209B</object-name>
+   <object-name>Mesh2 FDBarV1 skp209B</object-name>
+   <property>/instrumentation/nav/heading-needle-deflection</property>
+<interpolation>
+     <entry>
+       <ind> -10.0</ind>
+       <dep>-0.0253</dep>
+     </entry>
+     <entry>
+       <ind> 0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind> 10.0</ind>
+       <dep>0.0253</dep>
+     </entry>
+</interpolation> 
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+ </PropertyList>

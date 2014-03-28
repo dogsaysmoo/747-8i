@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<PropertyList>
+
+<!-- Fuel Trucks -->
+<model>
+	<name>FuelTruck</name>
+	<path>Aircraft/747-8i/Models/Service/Fueltender/Fuel_Truck_Short_VolvoFM-texaco.xml</path>
+	<offsets>
+		<x-m>  9.000</x-m>
+		<y-m> 16.000</y-m>
+		<z-m> -5.425</z-m>
+		<heading-deg>204</heading-deg>
+	</offsets>
+	<condition>
+		<property>controls/groundservice/fueling/truck</property>
+	</condition>
+</model>
+
+<model>
+	<name>FuelTruck</name>
+	<path>Aircraft/747-8i/Models/Service/Fueltender/Fuel_Truck_Short_VolvoFM-texaco.xml</path>
+	<offsets>
+		<x-m> 12.000</x-m>
+		<y-m> 12.000</y-m>
+		<z-m> -5.425</z-m>
+		<heading-deg>190</heading-deg>
+	</offsets>
+	<condition>
+	    <and>
+		<property>controls/groundservice/fueling/truck</property>
+		<greater-than>
+		    <property>controls/groundservice/fueling/remain-lbs</property>
+		    <value>80000</value>
+		</greater-than>
+	    </and>
+	</condition>
+</model>
+
+<model>
+	<name>FuelTruck</name>
+	<path>Aircraft/747-8i/Models/Service/Fueltender/Fuel_Truck_Short_VolvoFM-texaco.xml</path>
+	<offsets>
+		<x-m>  9.000</x-m>
+		<y-m>-16.000</y-m>
+		<z-m> -5.425</z-m>
+		<heading-deg>177</heading-deg>
+	</offsets>
+	<condition>
+		<property>controls/groundservice/fueling/truck</property>
+	</condition>
+</model>
+
+<model>
+	<name>FuelTruck</name>
+	<path>Aircraft/747-8i/Models/Service/Fueltender/Fuel_Truck_Short_VolvoFM-texaco.xml</path>
+	<offsets>
+		<x-m> 13.000</x-m>
+		<y-m>-10.500</y-m>
+		<z-m> -5.425</z-m>
+		<heading-deg>204</heading-deg>
+	</offsets>
+	<condition>
+	    <and>
+		<property>controls/groundservice/fueling/truck</property>
+		<greater-than>
+		    <property>controls/groundservice/fueling/remain-lbs</property>
+		    <value>120000</value>
+		</greater-than>
+	    </and>
+	</condition>
+</model>
+
+<model>
+	<name>FuelTruck</name>
+	<path>Aircraft/747-8i/Models/Service/Fueltender/Fuel_Truck_Short_VolvoFM-texaco.xml</path>
+	<offsets>
+		<x-m> 59.000</x-m>
+		<y-m>-16.000</y-m>
+		<z-m> -5.225</z-m>
+		<heading-deg>7</heading-deg>
+	</offsets>
+	<condition>
+	    <and>
+		<property>controls/groundservice/fueling/truck</property>
+		<greater-than>
+		    <property>controls/groundservice/fueling/remain-lbs</property>
+		    <value>160000</value>
+		</greater-than>
+	    </and>
+	</condition>
+</model>
+
+<model>
+	<name>FuelTruck</name>
+	<path>Aircraft/747-8i/Models/Service/Fueltender/Fuel_Truck_Short_VolvoFM-texaco.xml</path>
+	<offsets>
+		<x-m> 59.000</x-m>
+		<y-m> 16.000</y-m>
+		<z-m> -5.225</z-m>
+		<heading-deg>-17</heading-deg>
+	</offsets>
+	<condition>
+	    <and>
+		<property>controls/groundservice/fueling/truck</property>
+		<greater-than>
+		    <property>controls/groundservice/fueling/remain-lbs</property>
+		    <value>200000</value>
+		</greater-than>
+	    </and>
+	</condition>
+</model>
+
+</PropertyList>
+

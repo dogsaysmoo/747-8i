@@ -1,0 +1,2077 @@
+<PropertyList>
+
+<path>pedestal.ac</path>
+
+<animation>
+        <type>material</type>
+        <object-name>Mesh286</object-name>
+        <object-name>Mesh1.001_1</object-name>
+        <object-name>forward_panel_0</object-name>
+        <object-name>Mesh286.013_1</object-name>
+        <object-name>EVAC_1_1</object-name>
+        <emission>
+                <red>0.5</red>
+                <green>0.4</green>
+                <blue>0.2</blue>
+                <factor-prop>controls/lighting/panel-norm</factor-prop>
+        </emission>
+</animation>
+
+<!--effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/747-8i/Models/Effects/lightmap_pedestal.png</image>
+		</texture>
+		<factor><use>/controls/lighting/panel-norm</use></factor>
+	</parameters>
+	<object-name>EVAC_1_1</object-name>
+	<object-name>radio_swap_freq</object-name>
+</effect>
+
+<effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/747-8i/Models/Effects/lightmap_overhead_switches.png</image>
+		</texture>
+		<factor><use>/controls/lighting/panel-norm</use></factor>
+	</parameters>
+	<object-name>autobrake_knob</object-name>
+	<object-name>seatbelt_knob</object-name>
+</effect>
+
+<effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/747-8i/Models/Effects/lightmap_throttle.png</image>
+		</texture>
+		<factor><use>/controls/lighting/panel-norm</use></factor>
+	</parameters>
+	<object-name>Mesh1.001_1</object-name>
+</effect-->
+
+<!-- CDU -->
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/cdu/boeing.xml</path>
+	<offsets>
+		<x-m> 0.858</x-m>
+		<y-m>-0.186</y-m>
+		<z-m> 0.489</z-m>
+		<pitch-deg>-75</pitch-deg>
+	</offsets>
+	<overlay>
+		<texture>/Aircraft/Instruments-3d/cdu/boeing_brown.png</texture>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/cdu/boeing.xml</path>
+	<offsets>
+		<x-m> 0.858</x-m>
+		<y-m> 0.186</y-m>
+		<z-m> 0.489</z-m>
+		<pitch-deg>-75</pitch-deg>
+	</offsets>
+	<overlay>
+		<texture>boeing_brown.png</texture>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/cdu/boeing.xml</path>
+	<offsets>
+		<x-m> 1.438</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.415</z-m>
+		<pitch-deg>-90</pitch-deg>
+	</offsets>
+	<overlay>
+		<texture>boeing_brown.png</texture>
+	</overlay>
+</model>
+
+<!-- AUTOBRAKE -->
+
+<!--animation>
+	<type>pick</type>
+	<object-name>autobrake_knob</object-name>
+	<action>
+		<button>0</button>
+		<binding>
+			<command>property-adjust</command>
+			<property>/autopilot/autobrake/step</property>
+			<step>1</step>
+			<min>-2</min>
+			<max>5</max>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<binding>
+			<command>property-adjust</command>
+			<property>/autopilot/autobrake/step</property>
+			<step>-1</step>
+			<min>-2</min>
+			<max>5</max>
+		</binding>
+	</action>
+	<action>
+		<button>3</button>
+		<binding>
+			<command>property-adjust</command>
+			<property>/autopilot/autobrake/step</property>
+			<step>1</step>
+			<min>-2</min>
+			<max>5</max>
+		</binding>
+	</action>
+	<action>
+		<button>4</button>
+		<binding>
+			<command>property-adjust</command>
+			<property>/autopilot/autobrake/step</property>
+			<step>-1</step>
+			<min>-2</min>
+			<max>5</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>autobrake_knob</object-name>
+	<property>/autopilot/autobrake/step</property>
+	<interpolation>
+		<entry>
+			<ind>-2</ind>
+			<dep>30</dep>
+		</entry>
+		<entry>
+			<ind>-1</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0</ind>
+			<dep>-30</dep>
+		</entry>
+		<entry>
+			<ind>1</ind>
+			<dep>-60.0</dep>
+		</entry>
+		<entry>
+			<ind>2</ind>
+			<dep>-90.0</dep>
+		</entry>
+		<entry>
+			<ind>3</ind>
+			<dep>-120.0</dep>
+		</entry>
+		<entry>
+			<ind>4</ind>
+			<dep>-150.0</dep>
+		</entry>
+		<entry>
+			<ind>5</ind>
+			<dep>-180.0</dep>
+		</entry>
+	</interpolation>
+	<center>
+		<x-m>1.564</x-m>
+		<y-m>0.119</y-m>
+		<z-m>0.413</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation-->
+
+<!-- RUDDER TRIM -->
+
+<animation>
+	<type>pick</type>
+	<object-name>rudder_trim_ctrl</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/flight/rudder-trim</property>
+			<step>0.05</step>
+			<min>-0.5</min>
+			<max>0.5</max>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/flight/rudder-trim</property>
+			<step>-0.05</step>
+			<min>-0.5</min>
+			<max>0.5</max>
+		</binding>
+	</action>
+	<action>
+		<button>3</button>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/flight/rudder-trim</property>
+			<step>0.05</step>
+			<min>-0.5</min>
+			<max>0.5</max>
+		</binding>
+	</action>
+	<action>
+		<button>4</button>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/flight/rudder-trim</property>
+			<step>-0.05</step>
+			<min>-0.5</min>
+			<max>0.5</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>rudder_trim_ctrl</object-name>
+	<property>/controls/flight/rudder-trim</property>
+	<interpolation>
+		<entry>
+			<ind>-0.5</ind>
+			<dep>90</dep>
+		</entry>
+		<entry>
+			<ind>0</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0.5</ind>
+			<dep>-90</dep>
+		</entry>
+		<entry>
+			<ind>2</ind>
+			<dep>-90.0</dep>
+		</entry>
+	</interpolation>
+	<center>
+	<x-m>1.641</x-m>
+	<y-m>0.027</y-m>
+	<z-m>0.413</z-m>
+	</center>
+	<axis>
+	<x>0</x>
+	<y>0</y>
+	<z>1</z>
+	</axis>
+</animation>
+
+<!-- SEATBELT SIGN -->
+
+<animation>
+	<type>pick</type>
+	<object-name>seatbelt_knob</object-name>
+	<action>
+		<button>0</button>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/switches/seatbelt-sign</property>
+			<step>1</step>
+			<min>0</min>
+			<max>1</max>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/switches/seatbelt-sign</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>1</max>
+		</binding>
+	</action>
+	<action>
+		<button>3</button>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/switches/seatbelt-sign</property>
+			<step>1</step>
+			<min>0</min>
+			<max>1</max>
+		</binding>
+	</action>
+	<action>
+		<button>4</button>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/switches/seatbelt-sign</property>
+			<step>-1</step>
+			<min></min>
+			<max>1</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>seatbelt_knob</object-name>
+	<property>/controls/switches/seatbelt-sign</property>
+	<factor>-90</factor>
+	<center>
+		<x-m> 1.702</x-m>
+		<y-m>-0.106</y-m>
+		<z-m> 0.413</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<!-- THROTTLE LEVERS -->
+<!-- ENGINE 1 -->
+
+<animation>
+	<type>pick</type>
+	<object-name>throttle_eng.1</object-name>
+	<visible>true</visible>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.mouseHandler.set( "/controls/engines/engine[0]/throttle", 0.01 );</script>
+		</binding>
+		<mod-up>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing747.mouseHandler.set()</script>
+			</binding>
+		</mod-up>
+	</action>
+</animation>
+	
+<animation>
+	<type>rotate</type>
+	<object-name>throttle_eng.1</object-name>
+	<object-name>reverser_eng.1</object-name>
+	<property>/controls/engines/engine[0]/throttle</property>
+	<factor>55</factor>
+	<center>
+		<x-m>1.133</x-m>
+		<y-m>0</y-m>
+		<z-m>0.362</z-m>
+	</center>
+	<axis>
+		<x> 0.0</x>
+		<y>-1.0</y>
+		<z> 0.0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>reverser_eng.1</object-name>
+	<property>/controls/engines/engine[0]/reverser</property>
+	<factor>40</factor>
+	<center>
+		<x-m>1.164</x-m>
+		<y-m>0</y-m>
+		<z-m>0.558</z-m>
+	</center>
+	<axis>
+		<x>0.0</x>
+		<y>1.0</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<!-- ENGINE 2 -->
+
+<animation>
+	<type>pick</type>
+	<object-name>throttle_eng.2</object-name>
+	<visible>true</visible>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.mouseHandler.set( "/controls/engines/engine[1]/throttle", 0.01 );</script>
+		</binding>
+		<mod-up>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing747.mouseHandler.set()</script>
+			</binding>
+		</mod-up>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>throttle_eng.2</object-name>
+	<object-name>reverser_eng.2</object-name>
+	<property>/controls/engines/engine[1]/throttle</property>
+	<factor>55</factor>
+	<center>
+		<x-m>1.133</x-m>
+		<y-m>0</y-m>
+		<z-m>0.362</z-m>
+	</center>
+	<axis>
+		<x> 0.0</x>
+		<y>-1.0</y>
+		<z> 0.0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>reverser_eng.2</object-name>
+	<property>/controls/engines/engine[1]/reverser</property>
+	<factor>40</factor>
+	<center>
+		<x-m>1.164</x-m>
+		<y-m>0</y-m>
+		<z-m>0.558</z-m>
+	</center>
+	<axis>
+		<x>0.0</x>
+		<y>1.0</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<!-- ENGINE 3 -->
+
+<animation>
+	<type>pick</type>
+	<object-name>throttle_eng.3</object-name>
+	<visible>true</visible>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.mouseHandler.set( "/controls/engines/engine[2]/throttle", 0.01 );</script>
+		</binding>
+		<mod-up>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing747.mouseHandler.set()</script>
+			</binding>
+		</mod-up>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>throttle_eng.3</object-name>
+	<object-name>reverser_eng.3</object-name>
+	<property>/controls/engines/engine[2]/throttle</property>
+	<factor>55</factor>
+	<center>
+		<x-m>1.133</x-m>
+		<y-m>0</y-m>
+		<z-m>0.362</z-m>
+	</center>
+	<axis>
+		<x> 0.0</x>
+		<y>-1.0</y>
+		<z> 0.0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>  
+	<object-name>reverser_eng.3</object-name>
+	<property>/controls/engines/engine[2]/reverser</property>
+	<factor>40</factor>
+	<center>
+		<x-m>1.164</x-m>
+		<y-m>0</y-m>
+		<z-m>0.558</z-m>
+	</center>
+	<axis>
+		<x>0.0</x>
+		<y>1.0</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<!-- ENGINE 4 -->
+
+<animation>
+	<type>pick</type>
+	<object-name>throttle_eng.4</object-name>
+	<visible>true</visible>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.mouseHandler.set( "/controls/engines/engine[3]/throttle", 0.01 );</script>
+		</binding>
+		<mod-up>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing747.mouseHandler.set()</script>
+			</binding>
+		</mod-up>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>throttle_eng.4</object-name>
+	<object-name>reverser_eng.4</object-name>
+	<property>/controls/engines/engine[3]/throttle</property>
+	<factor>55</factor>
+	<center>
+		<x-m>1.133</x-m>
+		<y-m>0</y-m>
+		<z-m>0.362</z-m>
+	</center>
+	<axis>
+		<x> 0.0</x>
+		<y>-1.0</y>
+		<z> 0.0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>reverser_eng.4</object-name>
+	<property>/controls/engines/engine[3]/reverser</property>
+	<factor>40</factor>
+	<center>
+		<x-m>1.164</x-m>
+		<y-m>0</y-m>
+		<z-m>0.558</z-m>
+	</center>
+	<axis>
+		<x>0.0</x>
+		<y>1.0</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<!-- FLAPS LEVER -->
+
+<animation>
+	<type>rotate</type>
+	<object-name>flap_handle</object-name>
+	<property>/controls/flight/flaps</property>
+	<interpolation>
+		<entry>
+			<ind>0</ind>
+			<dep>0.00</dep>
+		</entry>
+		<entry>
+			<ind>0.001</ind>
+			<dep>10.83</dep>
+		</entry>
+		<entry>
+			<ind>0.167</ind>
+			<dep>21.67</dep>
+		</entry>
+		<entry>
+			<ind>0.333</ind>
+			<dep>32.50</dep>
+		</entry>
+		<entry>
+			<ind>0.667</ind>
+			<dep>43.33</dep>
+		</entry>
+		<entry>
+			<ind>0.833</ind>
+			<dep>54.17</dep>
+		</entry>
+		<entry>
+			<ind>1</ind>
+			<dep>65.00</dep>
+		</entry>
+	</interpolation>
+	<center>
+		<x-m>1.143</x-m>
+		<y-m>0</y-m>
+		<z-m>0.362</z-m>
+	</center>
+	<axis>
+		<x>0.0</x>
+		<y>1.0</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<!-- SPEEDBRAKE LEVER -->
+
+<animation>
+	<type>pick</type>
+	<object-name>speedbrake</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<condition>
+				<less-than>
+					<property>/autopilot/autospoilers/step</property>
+					<value>3</value>
+				</less-than>
+			</condition>
+			<command>property-adjust</command>
+			<property>/autopilot/autospoilers/step</property>
+			<step>1</step>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/autopilot/autospoilers/step</property>
+					<value>3</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/autopilot/autospoilers/step</property>
+			<value>0</value>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>speedbrake</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/autopilot/autospoilers/step</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>speedbrake</object-name>
+	<property>/autopilot/autospoilers/step</property>
+	<interpolation>
+		<entry>
+			<ind>0</ind>
+			<dep>-3</dep>
+		</entry>
+		<entry>
+			<ind>1</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>2</ind>
+			<dep>32</dep>
+		</entry>
+		<entry>
+			<ind>3</ind>
+			<dep>60</dep>
+		</entry>
+	</interpolation>
+	<factor>60</factor>
+	<center>
+		<x-m>1.143</x-m>
+		<y-m>0</y-m>
+		<z-m>0.362</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<!-- FUEL CONTROL -->
+
+<animation>
+	<type>pick</type>
+	<object-name>fuel_ctrl.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine/cutoff</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>fuel_ctrl.1</object-name>
+	<property>/controls/engines/engine/cutoff</property>
+	<factor>80</factor>
+	<center>
+		<x-m>1.239</x-m>
+		<y-m>0</y-m>
+		<z-m>0.465</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fuel_ctrl.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[1]/cutoff</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>fuel_ctrl.2</object-name>
+	<property>/controls/engines/engine[1]/cutoff</property>
+	<factor>80</factor>
+	<center>
+		<x-m>1.239</x-m>
+		<y-m>0</y-m>
+		<z-m>0.465</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fuel_ctrl.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[2]/cutoff</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>fuel_ctrl.3</object-name>
+	<property>/controls/engines/engine[2]/cutoff</property>
+	<factor>80</factor>
+	<center>
+		<x-m>1.239</x-m>
+		<y-m>0</y-m>
+		<z-m>0.465</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fuel_ctrl.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[3]/cutoff</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>fuel_ctrl.4</object-name>
+	<property>/controls/engines/engine[3]/cutoff</property>
+	<factor>80</factor>
+	<center>
+		<x-m>1.239</x-m>
+		<y-m>0</y-m>
+		<z-m>0.465</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+ </animation>
+
+<!-- RADIOS COMM 1 -->
+<!-- Buttons -->
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.0</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(0,0);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.1</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(0,1);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.2</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(0,2);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.3</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(0,3);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.4</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(0,4);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.5</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(0,5);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.6</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(0,6);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.7</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(0,7);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.8</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(0,8);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.9</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(0,9);</script>
+	</binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.clr</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_clr(0);</script>
+	</binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.rcl</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_rcl(0);</script>
+	</binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>comm1.swap</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_swap(0);</script>
+	</binding>
+	<binding>
+	    <command>property-swap</command>
+	    <property>instrumentation/comm/frequencies/selected-mhz</property>
+	    <property>instrumentation/comm/frequencies/standby-mhz</property>
+	</binding>
+    </action>
+  </animation>
+
+<!-- ACTIVE FREQ -->
+  <animation>
+    <type>select</type>
+    <object-name>comm1.act1</object-name>
+    <object-name>comm1.act2</object-name>
+    <object-name>comm1.act3</object-name>
+    <object-name>comm1.act4</object-name>
+    <object-name>comm1.act5</object-name>
+    <object-name>comm1.act6</object-name>
+    <object-name>comm1.decpt</object-name>
+    <condition>
+	<not>
+	    <property>systems/electrical/battery-off</property>
+	</not>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>comm1.act1</object-name>
+	<property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>0.001</factor>
+    <step>100.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm1.act2</object-name>
+	<property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>0.01</factor>
+    <step>10.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm1.act3</object-name>
+	<property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>0.1</factor>
+    <step>1.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm1.act4</object-name>
+	<property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>1.0</factor>
+    <step>0.1</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm1.act5</object-name>
+	<property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>10.0</factor>
+    <step>0.01</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm1.act6</object-name>
+    <property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>100.0</factor>
+    <step>0.001</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+<!-- STANDBY FREQ -->
+
+  <animation>
+    <type>select</type>
+    <object-name>comm1.hyp1</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm/frequencies/stby-clr</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm1.stb1</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm/frequencies/stby-clr</property></not>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>textranslate</type>
+    <object-name>comm1.stb1</object-name>
+	<property>/instrumentation/comm/frequencies/stby-display</property>
+    <factor>0.001</factor>
+    <step>100</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>comm1.hyp2</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm/frequencies/stby-clr[1]</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm1.stb2</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm/frequencies/stby-clr[1]</property></not>
+	</and>
+    </condition>
+  </animation>
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm1.stb2</object-name>
+	<property>/instrumentation/comm/frequencies/stby-display</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>comm1.hyp3</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm/frequencies/stby-clr[2]</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm1.stb3</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm/frequencies/stby-clr[2]</property></not>
+	</and>
+    </condition>
+  </animation>
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm1.stb3</object-name>
+	<property>/instrumentation/comm/frequencies/stby-display</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>comm1.hyp4</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm/frequencies/stby-clr[3]</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm1.stb4</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm/frequencies/stby-clr[3]</property></not>
+	</and>
+    </condition>
+  </animation>
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm1.stb4</object-name>
+	<property>/instrumentation/comm/frequencies/stby-display</property>
+    <factor>1</factor>
+    <step>0.1</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>comm1.hyp5</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm/frequencies/stby-clr[4]</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm1.stb5</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm/frequencies/stby-clr[4]</property></not>
+	</and>
+    </condition>
+  </animation>
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm1.stb5</object-name>
+	<property>/instrumentation/comm/frequencies/stby-display</property>
+    <factor>10</factor>
+    <step>0.01</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>comm1.hyp6</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm/frequencies/stby-clr[5]</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm1.stb6</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm/frequencies/stby-clr[5]</property></not>
+	</and>
+    </condition>
+  </animation>
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm1.stb6</object-name>
+	<property>/instrumentation/comm/frequencies/stby-display</property>
+    <factor>100</factor>
+    <step>0.001</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+<!-- RADIOS COMM 2 -->
+<!-- Buttons -->
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.0</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(1,0);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.1</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(1,1);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.2</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(1,2);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.3</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(1,3);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.4</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(1,4);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.5</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(1,5);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.6</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(1,6);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.7</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(1,7);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.8</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(1,8);</script>
+	</binding>
+    </action>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.9</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_btn(1,9);</script>
+	</binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.clr</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_clr(1);</script>
+	</binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.rcl</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_rcl(1);</script>
+	</binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>comm2.swap</object-name>
+    <action>
+	<button>0</button>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.comm_swap(1);</script>
+	</binding>
+	<binding>
+	    <command>property-swap</command>
+	    <property>instrumentation/comm[1]/frequencies/selected-mhz</property>
+	    <property>instrumentation/comm[1]/frequencies/standby-mhz</property>
+	</binding>
+    </action>
+  </animation>
+
+<!-- ACTIVE FREQ -->
+  <animation>
+    <type>select</type>
+    <object-name>comm2.act1</object-name>
+    <object-name>comm2.act2</object-name>
+    <object-name>comm2.act3</object-name>
+    <object-name>comm2.act4</object-name>
+    <object-name>comm2.act5</object-name>
+    <object-name>comm2.act6</object-name>
+    <object-name>comm2.decpt</object-name>
+    <condition>
+	<not>
+	    <property>systems/electrical/battery-off</property>
+	</not>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>comm2.act1</object-name>
+	<property>/instrumentation/comm[1]/frequencies/selected-mhz</property>
+    <factor>0.001</factor>
+    <step>100.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm2.act2</object-name>
+	<property>/instrumentation/comm[1]/frequencies/selected-mhz</property>
+    <factor>0.01</factor>
+    <step>10.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm2.act3</object-name>
+	<property>/instrumentation/comm[1]/frequencies/selected-mhz</property>
+    <factor>0.1</factor>
+    <step>1.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm2.act4</object-name>
+	<property>/instrumentation/comm[1]/frequencies/selected-mhz</property>
+    <factor>1.0</factor>
+    <step>0.1</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm2.act5</object-name>
+	<property>/instrumentation/comm[1]/frequencies/selected-mhz</property>
+    <factor>10.0</factor>
+    <step>0.01</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm2.act6</object-name>
+    <property>/instrumentation/comm[1]/frequencies/selected-mhz</property>
+    <factor>100.0</factor>
+    <step>0.001</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+<!-- STANDBY FREQ -->
+
+  <animation>
+    <type>select</type>
+    <object-name>comm2.hyp1</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm[1]/frequencies/stby-clr</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm2.stb1</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm[1]/frequencies/stby-clr</property></not>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>textranslate</type>
+    <object-name>comm2.stb1</object-name>
+	<property>/instrumentation/comm[1]/frequencies/stby-display</property>
+    <factor>0.001</factor>
+    <step>100</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>comm2.hyp2</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm[1]/frequencies/stby-clr[1]</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm2.stb2</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm[1]/frequencies/stby-clr[1]</property></not>
+	</and>
+    </condition>
+  </animation>
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm2.stb2</object-name>
+	<property>/instrumentation/comm[1]/frequencies/stby-display</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>comm2.hyp3</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm[1]/frequencies/stby-clr[2]</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm2.stb3</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm[1]/frequencies/stby-clr[2]</property></not>
+	</and>
+    </condition>
+  </animation>
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm2.stb3</object-name>
+	<property>/instrumentation/comm[1]/frequencies/stby-display</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>comm2.hyp4</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm[1]/frequencies/stby-clr[3]</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm2.stb4</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm[1]/frequencies/stby-clr[3]</property></not>
+	</and>
+    </condition>
+  </animation>
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm2.stb4</object-name>
+	<property>/instrumentation/comm[1]/frequencies/stby-display</property>
+    <factor>1</factor>
+    <step>0.1</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>comm2.hyp5</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm[1]/frequencies/stby-clr[4]</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm2.stb5</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm[1]/frequencies/stby-clr[4]</property></not>
+	</and>
+    </condition>
+  </animation>
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm2.stb5</object-name>
+	<property>/instrumentation/comm[1]/frequencies/stby-display</property>
+    <factor>10</factor>
+    <step>0.01</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>comm2.hyp6</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <property>instrumentation/comm[1]/frequencies/stby-clr[5]</property>
+	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm2.stb6</object-name>
+    <condition>
+	<and>
+	    <not><property>systems/electrical/battery-off</property></not>
+	    <not><property>instrumentation/comm[1]/frequencies/stby-clr[5]</property></not>
+	</and>
+    </condition>
+  </animation>
+   <animation>
+    <type>textranslate</type>
+    <object-name>comm2.stb6</object-name>
+	<property>/instrumentation/comm[1]/frequencies/stby-display</property>
+    <factor>100</factor>
+    <step>0.001</step>
+    <bias>0.0001</bias>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  
+<!-- COMM3 Data uplink -->
+  <animation>
+    <type>select</type>
+    <object-name>comm3.8s</object-name>
+    <condition>
+    	<and>
+    	    <not><property>systems/electrical/battery-off</property></not>
+    	    <equals>
+    	    	<property>instrumentation/comm/data/post</property>
+    	    	<value>8</value>
+    	    </equals>
+    	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>comm3.DATAdisp</object-name>
+    <object-name>comm3.hyp1</object-name>
+    <condition>
+    	<and>
+    	    <not><property>systems/electrical/battery-off</property></not>
+    	    <equals>
+    	    	<property>instrumentation/comm/data/post</property>
+    	    	<value>0</value>
+    	    </equals>
+    	</and>
+    </condition>
+  </animation>
+  <animation>
+    <type>textranslate</type>
+    <object-name>comm3.8s</object-name>
+    <property>instrumentation/comm/data/post</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+
+<!-- TRANSPONDER -->
+<animation>
+	<type>select</type>
+	<object-name>xpndr.IDannun</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<property>instrumentation/transponder/inputs/ident-btn</property>
+	    </and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>xpndr.Dig1</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<not><property>instrumentation/transponder/inputs/clr</property></not>
+	    </and>
+	</condition>
+</animation>
+<animation>
+	<type>textranslate</type>
+	<object-name>xpndr.Dig1</object-name>
+	<property>instrumentation/transponder/inputs/display</property>
+	<factor>0.1</factor>
+	<step>1.0</step>
+	<axis>
+	    <x>0</x>
+	    <y>1</y>
+	    <z>0</z>
+	</axis>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>xpndr.clr1</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<property>instrumentation/transponder/inputs/clr</property>
+	    </and>
+	</condition>
+</animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>xpndr.Dig2</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<not><property>instrumentation/transponder/inputs/clr[1]</property></not>
+	    </and>
+	</condition>
+</animation>
+<animation>
+	<type>textranslate</type>
+	<object-name>xpndr.Dig2</object-name>
+	<property>instrumentation/transponder/inputs/display[1]</property>
+	<factor>0.1</factor>
+	<step>1.0</step>
+	<axis>
+	    <x>0</x>
+	    <y>1</y>
+	    <z>0</z>
+	</axis>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>xpndr.clr2</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<property>instrumentation/transponder/inputs/clr[1]</property>
+	    </and>
+	</condition>
+</animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>xpndr.Dig3</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<not><property>instrumentation/transponder/inputs/clr[2]</property></not>
+	    </and>
+	</condition>
+</animation>
+<animation>
+	<type>textranslate</type>
+	<object-name>xpndr.Dig3</object-name>
+	<property>instrumentation/transponder/inputs/display[2]</property>
+	<factor>0.1</factor>
+	<step>1.0</step>
+	<axis>
+	    <x>0</x>
+	    <y>1</y>
+	    <z>0</z>
+	</axis>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>xpndr.clr3</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<property>instrumentation/transponder/inputs/clr[2]</property>
+	    </and>
+	</condition>
+</animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>xpndr.Dig4</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<not><property>instrumentation/transponder/inputs/clr[3]</property></not>
+	    </and>
+	</condition>
+</animation>
+<animation>
+	<type>textranslate</type>
+	<object-name>xpndr.Dig4</object-name>
+	<property>instrumentation/transponder/inputs/display[3]</property>
+	<factor>0.1</factor>
+	<step>1.0</step>
+	<axis>
+	    <x>0</x>
+	    <y>1</y>
+	    <z>0</z>
+	</axis>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>xpndr.clr4</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<property>instrumentation/transponder/inputs/clr[3]</property>
+	    </and>
+	</condition>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>xpndr.knob</object-name>
+	<property>instrumentation/transponder/inputs/knob-pos</property>
+	<factor>30</factor>
+	<center>
+	    <x-m>1.5114</x-m>
+	    <y-m>0.1786</y-m>
+	    <z-m>0.419</z-m>
+	</center>
+	<axis>
+	    <x>0</x>
+	    <y>0</y>
+	    <z>-1</z>
+	</axis>
+</animation>
+<animation>
+	<type>pick</type>
+	<object-name>xpndr.knob</object-name>
+	<action>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_knob(1);</script>
+	    </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_knob(-1);</script>
+	    </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xpndr.IDENT</object-name>
+	<action>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_ident();</script>
+	    </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xpndr.BtnCLR</object-name>
+	<action>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_clr();</script>
+	    </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xpndr.Btn0</object-name>
+	<action>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_btns(0);</script>
+	    </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xpndr.Btn1</object-name>
+	<action>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_btns(1);</script>
+	    </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xpndr.Btn2</object-name>
+	<action>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_btns(2);</script>
+	    </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xpndr.Btn3</object-name>
+	<action>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_btns(3);</script>
+	    </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xpndr.Btn4</object-name>
+	<action>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_btns(4);</script>
+	    </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xpndr.Btn5</object-name>
+	<action>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_btns(5);</script>
+	    </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xpndr.Btn6</object-name>
+	<action>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_btns(6);</script>
+	    </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xpndr.Btn7</object-name>
+	<action>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.xpnd_btns(7);</script>
+	    </binding>
+	</action>
+</animation>
+
+</PropertyList>
+
+

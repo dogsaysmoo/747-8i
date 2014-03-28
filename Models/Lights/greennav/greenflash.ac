@@ -1,0 +1,24 @@
+AC3Db
+MATERIAL "wire" rgb 1 1 1  amb 1 1 1  emis 1 1 1  spec 0 0 0  shi 32  trans 0.089
+OBJECT world
+kids 1
+OBJECT poly
+name "greenflash"
+data 8
+Mesh.921
+texture "transparent.png"
+crease 30.000000
+numvert 4
+-0.737486 0.737486 0
+-0.737486 -0.737486 0
+0.737486 -0.737486 0
+0.737486 0.737486 0
+numsurf 1
+SURF 0x0
+mat 0
+refs 4
+3 0.0375 0.9625
+0 0.0375 0.5375
+1 0.4625 0.5375
+2 0.4625 0.9625
+kids 0

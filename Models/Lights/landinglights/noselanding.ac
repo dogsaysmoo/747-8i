@@ -1,0 +1,25 @@
+AC3Db
+MATERIAL "wire" rgb 1 1 1  amb 1 1 1  emis 1 1 1  spec 0 0 0  shi 32  trans 0.089
+OBJECT world
+kids 1
+OBJECT poly
+name "CTRLND.flare"
+loc 19.5792 2.83108 0.025176
+data 9
+Plane.178
+texture "transparent.png"
+crease 30.000000
+numvert 4
+-19.5793 -2.34108 -0.515176
+-19.579 -3.321 -0.515176
+-19.5793 -3.32108 0.464824
+-19.5793 -2.34109 0.464824
+numsurf 1
+SURF 0x0
+mat 0
+refs 4
+3 0.552 0.448
+0 0.552 0.052
+1 0.948 0.052
+2 0.948 0.448
+kids 0

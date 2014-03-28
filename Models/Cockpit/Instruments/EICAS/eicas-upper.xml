@@ -1,0 +1,451 @@
+<PropertyList>
+
+ <model>
+  <text>TEST TEST</text>
+ </model>
+
+ <model>
+	<path>Aircraft/747-8i/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.01</x-m>
+		<y-m> 0.03</y-m>
+		<z-m> 0.06</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/efis/eicas/msg/alert</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>center-center</alignment>
+			<max-width>0.10</max-width>
+		</params>
+	</overlay>
+	
+</model>
+
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+  <offsets>
+   <x-m> 0.01</x-m>
+   <y-m> 0.03</y-m>
+   <z-m> 0.06</z-m>
+  </offsets>
+  <overlay>
+   <params>
+	<text type="string">FUEL QTY LOW</text>
+    <character-size type="double">0.007</character-size>
+	<color>
+     <red   type="double">1.0</red>
+     <green type="double">0.8</green>
+     <blue  type="double">0.0</blue>
+    </color>
+   </params>
+  </overlay>
+  <condition>
+   <or>
+    <less-than>
+     <property>/fdm/jsbsim/propulsion/tank[1]/contents-lbs</property>
+	 <value>2000</value>
+    </less-than>
+	<less-than>
+     <property>/fdm/jsbsim/propulsion/tank[2]/contents-lbs</property>
+	 <value>2000</value>
+    </less-than>
+	<less-than>
+     <property>/fdm/jsbsim/propulsion/tank[3]/contents-lbs</property>
+	 <value>2000</value>
+    </less-than>
+	<less-than>
+     <property>/fdm/jsbsim/propulsion/tank[4]/contents-lbs</property>
+	 <value>2000</value>
+    </less-than>
+   </or>
+  </condition>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+  <offsets>
+   <x-m> 0.01</x-m>
+   <y-m> 0.03</y-m>
+   <z-m> 0.05</z-m>
+  </offsets>
+  <overlay>
+   <params>
+	<text type="string">>JETT NOZ ON</text>
+    <character-size type="double">0.007</character-size>
+	<color>
+     <red   type="double">1.0</red>
+     <green type="double">0.7</green>
+     <blue  type="double">0.0</blue>
+    </color>
+   </params>
+  </overlay>
+  <condition>
+   <property>/controls/fuel/dump-valve</property>
+  </condition>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+  <offsets>
+   <x-m> 0.05</x-m>
+   <y-m> 0.05</y-m>
+   <z-m> 0.05</z-m>
+  </offsets>
+  <overlay>
+   <params>
+	<text type="string">FIRE ENG 1</text>
+    <character-size type="double">0.007</character-size>
+	<color>
+     <red   type="double">0.7</red>
+     <green type="double">0.0</green>
+     <blue  type="double">0.0</blue>
+    </color>
+   </params>
+  </overlay>
+  <condition>
+   <property>/controls/engines/engine[0]/on-fire</property>
+  </condition>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+  <offsets>
+   <x-m> 0.05</x-m>
+   <y-m> 0.05</y-m>
+   <z-m> 0.05</z-m>
+  </offsets>
+  <overlay>
+   <params>
+	<text type="string">FIRE ENG 2</text>
+    <character-size type="double">0.007</character-size>
+	<color>
+     <red   type="double">0.7</red>
+     <green type="double">0.0</green>
+     <blue  type="double">0.0</blue>
+    </color>
+   </params>
+  </overlay>
+  <condition>
+   <property>/controls/engines/engine[1]/on-fire</property>
+  </condition>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+  <offsets>
+   <x-m> 0.05</x-m>
+   <y-m> 0.05</y-m>
+   <z-m> 0.05</z-m>
+  </offsets>
+  <overlay>
+   <params>
+	<text type="string">FIRE ENG 3</text>
+    <character-size type="double">0.007</character-size>
+	<color>
+     <red   type="double">0.7</red>
+     <green type="double">0.0</green>
+     <blue  type="double">0.0</blue>
+    </color>
+   </params>
+  </overlay>
+  <condition>
+   <property>/controls/engines/engine[3]/on-fire</property>
+  </condition>
+ </model>
+ 
+ <!-- TAT -->
+
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m>-0.040</y-m>
+   <z-m> 0.089</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <property type="string">/environment/temperature-degc</property>
+    <format type="string">%+03.0f</format>
+	<character-size type="double">0.012</character-size>
+    <color>
+     <red   type="double">1.0</red>
+     <green type="double">1.0</green>
+     <blue  type="double">1.0</blue>
+    </color>
+   </params>
+  </overlay>
+ </model>
+ 
+ <!-- REVERSERS -->
+
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m>-0.062</y-m>
+   <z-m> 0.078</z-m>
+  </offsets>
+  <overlay>
+   <params>
+	<text type="string">REV</text>
+    <character-size type="double">0.012</character-size>
+	<color>
+     <red   type="double">0.0</red>
+     <green type="double">0.7</green>
+     <blue  type="double">0.0</blue>
+    </color>
+   </params>
+  </overlay>
+  <condition>
+   <property>/controls/engines/engine[0]/reverser</property>
+  </condition>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m>-0.020</y-m>
+   <z-m> 0.078</z-m>
+  </offsets>
+  <overlay>
+   <params>
+	<text type="string">REV</text>
+    <character-size type="double">0.012</character-size>
+	<color>
+     <red   type="double">0.0</red>
+     <green type="double">0.7</green>
+     <blue  type="double">0.0</blue>
+    </color>
+   </params>
+  </overlay>
+  <condition>
+   <property>/controls/engines/engine[1]/reverser</property>
+  </condition>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m> 0.020</y-m>
+   <z-m> 0.078</z-m>
+  </offsets>
+  <overlay>
+   <params>
+	<text type="string">REV</text>
+    <character-size type="double">0.012</character-size>
+	<color>
+     <red   type="double">0.0</red>
+     <green type="double">0.7</green>
+     <blue  type="double">0.0</blue>
+    </color>
+   </params>
+  </overlay>
+  <condition>
+   <property>/controls/engines/engine[2]/reverser</property>
+  </condition>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m> 0.062</y-m>
+   <z-m> 0.078</z-m>
+  </offsets>
+  <overlay>
+   <params>
+	<text type="string">REV</text>
+    <character-size type="double">0.012</character-size>
+	<color>
+     <red   type="double">0.0</red>
+     <green type="double">0.7</green>
+     <blue  type="double">0.0</blue>
+    </color>
+   </params>
+  </overlay>
+  <condition>
+   <property>/controls/engines/engine[3]/reverser</property>
+  </condition>
+ </model>
+ 
+ <!-- N1 -->
+
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m>-0.062</y-m>
+   <z-m> 0.063</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <property type="string">/engines/engine[0]/n1</property>
+    <format type="string">%03.1f</format>
+	<character-size type="double">0.012</character-size>
+    <color>
+     <red   type="double">0.7</red>
+     <green type="double">0.7</green>
+     <blue  type="double">0.7</blue>
+    </color>
+   </params>
+  </overlay>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m>-0.020</y-m>
+   <z-m> 0.063</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <property type="string">/engines/engine[1]/n1</property>
+    <format type="string">%03.1f</format>
+	<character-size type="double">0.012</character-size>
+    <color>
+     <red   type="double">1.0</red>
+     <green type="double">1.0</green>
+     <blue  type="double">1.0</blue>
+    </color>
+   </params>
+  </overlay>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m> 0.020</y-m>
+   <z-m> 0.063</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <property type="string">/engines/engine[2]/n1</property>
+    <format type="string">%03.1f</format>
+	<character-size type="double">0.012</character-size>
+    <color>
+     <red   type="double">1.0</red>
+     <green type="double">1.0</green>
+     <blue  type="double">1.0</blue>
+    </color>
+   </params>
+  </overlay>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m> 0.062</y-m>
+   <z-m> 0.063</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <property type="string">/engines/engine[3]/n1</property>
+    <format type="string">%03.1f</format>
+	<character-size type="double">0.012</character-size>
+    <color>
+     <red   type="double">1.0</red>
+     <green type="double">1.0</green>
+     <blue  type="double">1.0</blue>
+    </color>
+   </params>
+  </overlay>
+ </model>
+ 
+  <!-- N1 -->
+
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m>-0.062</y-m>
+   <z-m>-0.042</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <property type="string">/engines/engine[0]/egt-degf</property>
+    <format type="string">%03.1f</format>
+	<character-size type="double">0.012</character-size>
+    <color>
+     <red   type="double">0.7</red>
+     <green type="double">0.7</green>
+     <blue  type="double">0.7</blue>
+    </color>
+   </params>
+  </overlay>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m>-0.020</y-m>
+   <z-m>-0.042</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <property type="string">/engines/engine[1]/egt-degf</property>
+    <format type="string">%03.1f</format>
+	<character-size type="double">0.012</character-size>
+    <color>
+     <red   type="double">1.0</red>
+     <green type="double">1.0</green>
+     <blue  type="double">1.0</blue>
+    </color>
+   </params>
+  </overlay>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m> 0.020</y-m>
+   <z-m>-0.042</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <property type="string">/engines/engine[2]/egt-degf</property>
+    <format type="string">%03.1f</format>
+	<character-size type="double">0.012</character-size>
+    <color>
+     <red   type="double">1.0</red>
+     <green type="double">1.0</green>
+     <blue  type="double">1.0</blue>
+    </color>
+   </params>
+  </overlay>
+ </model>
+ 
+ <model>
+  <path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m> 0.062</y-m>
+   <z-m>-0.042</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <property type="string">/engines/engine[3]/egt-degf</property>
+    <format type="string">%03.1f</format>
+	<character-size type="double">0.012</character-size>
+    <color>
+     <red   type="double">1.0</red>
+     <green type="double">1.0</green>
+     <blue  type="double">1.0</blue>
+    </color>
+   </params>
+  </overlay>
+ </model>
+
+</PropertyList>

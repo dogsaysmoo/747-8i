@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<PropertyList>
+  <name>enginecontrol</name>
+  <layout>vbox</layout>
+
+  <text>
+    <label>Engines Control</label>
+    <valign>top</valign>
+    <halign>center</halign>
+  </text>
+
+  <hrule/>
+  
+  <!-- Grupo geral -->
+  <group>
+    <layout>hbox</layout>
+    <halign>center</halign>
+    <valign>top</valign>  
+
+			<!-- Bloco motor 0 -->
+		  <group>
+		    <layout>vbox</layout>
+		    <halign>left</halign>
+		    <valign>top</valign>
+		    
+		    <text>
+		      <label>Engine Left 1</label>
+		    </text>
+		
+		    <checkbox>
+		      <halign>left</halign>
+		      <label>Starter</label>
+		      <property>/controls/engines/engine/starter</property>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/controls/engines/engine/starter</property>
+		      </binding>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/sim/sound/switch</property>
+		      </binding>
+		    </checkbox>
+		
+		    <checkbox>
+		      <halign>left</halign>
+		      <label>Cutoff</label>
+		      <property>/controls/engines/engine/cutoff</property>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/controls/engines/engine/cutoff</property>
+		      </binding>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/sim/sound/switch</property>
+		      </binding>
+		    </checkbox>
+		  </group>
+
+    
+			<!-- Bloco motor 1 -->
+		  <group>
+		    <layout>vbox</layout>
+		    <halign>left</halign>
+		    <valign>top</valign>
+  
+		    <text>
+		      <label>Engine Left 2</label>
+		    </text>
+
+		    <checkbox>
+		      <halign>left</halign>
+		      <label>Starter</label>
+		      <property>/controls/engines/engine[1]/starter</property>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/controls/engines/engine[1]/starter</property>
+		      </binding>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/sim/sound/switch</property>
+		      </binding>
+		    </checkbox>
+
+		    <checkbox>
+		      <halign>left</halign>
+		      <label>Cutoff</label>
+		      <property>/controls/engines/engine[1]/cutoff</property>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/controls/engines/engine[1]/cutoff</property>
+		      </binding>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/sim/sound/switch</property>
+		      </binding>
+		    </checkbox>
+
+		  </group>
+		 
+			<!-- Bloco motor 3 -->
+		  <group>
+		    <layout>vbox</layout>
+		    <halign>left</halign>
+		    <valign>top</valign>
+  
+		    <text>
+		      <label>Engine Right 3</label>
+		    </text>
+
+		    <checkbox>
+		      <halign>left</halign>
+		      <label>Starter</label>
+		      <property>/controls/engines/engine[2]/starter</property>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/controls/engines/engine[2]/starter</property>
+		      </binding>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/sim/sound/switch</property>
+		      </binding>
+		    </checkbox>
+
+		    <checkbox>
+		      <halign>left</halign>
+		      <label>Cutoff</label>
+		      <property>/controls/engines/engine[2]/cutoff</property>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/controls/engines/engine[2]/cutoff</property>
+		      </binding>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/sim/sound/switch</property>
+		      </binding>
+		    </checkbox>
+
+		  </group>
+		  
+			<!-- Bloco motor 4 -->
+		  <group>
+		    <layout>vbox</layout>
+		    <halign>left</halign>
+		    <valign>top</valign>
+  
+		    <text>
+		      <label>Engine Right 4</label>
+		    </text>
+
+		    <checkbox>
+		      <halign>left</halign>
+		      <label>Starter</label>
+		      <property>/controls/engines/engine[3]/starter</property>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/controls/engines/engine[3]/starter</property>
+		      </binding>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/sim/sound/switch</property>
+		      </binding>
+		    </checkbox>
+
+		    <checkbox>
+		      <halign>left</halign>
+		      <label>Cutoff</label>
+		      <property>/controls/engines/engine[3]/cutoff</property>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/controls/engines/engine[3]/cutoff</property>
+		      </binding>
+		      <binding>
+		        <command>property-toggle</command>
+		        <property>/sim/sound/switch</property>
+		      </binding>
+		    </checkbox>
+
+		  </group>		  
+		    
+  </group>
+  
+  <hrule/>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+
+    <button>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+</PropertyList>

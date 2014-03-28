@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <pitot>
+    <name>pitot</name>
+    <number>0</number>
+  </pitot>
+
+  <static>
+    <name>static</name>
+    <number>0</number>
+    <tau>1</tau>
+  </static>
+
+  <vacuum>
+    <name>vacuum</name>
+    <number>0</number>
+    <rpm>/engines/engine[0]/n2</rpm>
+    <scale>1000.0</scale>
+  </vacuum>
+
+  <vacuum>
+    <name>vacuum 2</name>
+    <number>1</number>
+    <rpm>/engines/engine[1]/n2</rpm>
+    <scale>1000.0</scale>
+  </vacuum>
+
+  <vacuum>
+    <name>vacuum 3</name>
+    <number>0</number>
+    <rpm>/engines/engine[2]/n2</rpm>
+    <scale>1000.0</scale>
+  </vacuum>
+
+  <vacuum>
+    <name>vacuum 4</name>
+    <number>1</number>
+    <rpm>/engines/engine[3]/n2</rpm>
+    <scale>1000.0</scale>
+  </vacuum>
+
+</PropertyList>

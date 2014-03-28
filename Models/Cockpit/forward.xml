@@ -1,0 +1,498 @@
+<PropertyList>
+
+<path>forward.ac</path>
+
+<animation>
+        <type>material</type>
+        <object-name>forward_panel</object-name>
+        <object-name>forward_panel_2</object-name>
+        <emission>
+                <red>0.5</red>
+                <green>0.4</green>
+                <blue>0.2</blue>
+                <factor-prop>controls/lighting/panel-norm</factor-prop>
+        </emission>
+</animation>
+
+<!--effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/747-8i/Models/Effects/lightmap_forward.png</image>
+		</texture>
+		<factor><use>/controls/lighting/panel-norm</use></factor>
+	</parameters>
+	<object-name>forward_panel</object-name>
+</effect-->
+
+<!-- PANELS -->
+
+<model>
+	<name>EICAS-upper</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/EICAS/eicas_eng.xml</path>
+	<offsets>
+		<x-m>0.689</x-m>
+		<y-m>0</y-m>
+		<z-m>0.641</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
+</model>
+  
+<model>
+	<name>EICAS-lower</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/EICAS/eicas-lower.xml</path>
+	<offsets>
+		<x-m>0.838</x-m>
+		<y-m>0</y-m>
+		<z-m>0.49</z-m>
+		<pitch-deg>-75</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
+</model>
+
+<!-- instruments -->
+
+<model>
+	<name>PFD1</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/PFD/PFD3d.xml</path>
+	<offsets>
+		<x-m> 0.6854</x-m>
+		<y-m>-0.537</y-m>
+		<z-m> 0.65</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
+</model>
+
+<model>
+	<name>PFD2</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/PFD/PFD3d.xml</path>
+	<offsets>
+		<x-m>0.6854</x-m>
+		<y-m>0.537</y-m>
+		<z-m>0.65</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
+</model>
+
+<model>
+	<name>ND1</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/MFD/ND.xml</path>
+	<offsets>
+		<x-m> 0.6854</x-m>
+		<y-m>-0.3207</y-m>
+		<z-m> 0.65</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
+</model>
+  
+<model>
+	<name>ND2</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/MFD/ND.xml</path>
+	<offsets>
+		<x-m>0.6854</x-m>
+		<y-m>0.3207</y-m>
+		<z-m>0.65</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
+	<offsets>
+		<x-m> 0.672</x-m>
+		<y-m>-0.692</y-m>
+		<z-m> 0.696</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+</model>
+
+<model>
+	<path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
+	<offsets>
+		<x-m>0.672</x-m>
+		<y-m>0.692</y-m>
+		<z-m>0.696</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+</model>
+ 
+<model>
+	<name>STBY-AI</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/stby-ai.xml</path>
+	<offsets>
+		<x-m> 0.665</x-m>
+		<y-m>-0.160</y-m>
+		<z-m> 0.73</z-m>
+		<pitch-deg>-21</pitch-deg>
+	</offsets>
+</model>
+ 
+<model>
+	<name>STBY-ASI</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/stby-asi.xml</path>
+	<offsets>
+		<x-m>0.692</x-m>
+		<y-m>-0.160</y-m>
+		<z-m>0.644</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+</model>
+ 
+<model>
+	<name>STBY-ALT</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/stby-alt.xml</path>
+	<offsets>
+		<x-m>0.727</x-m>
+		<y-m>-0.160</y-m>
+		<z-m>0.559</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+</model>
+
+<!-- GEAR HANDLE -->
+
+<animation>
+	<type>pick</type>
+	<object-name>gear_handle</object-name>
+	<action>
+            <button>1</button>
+            <binding>
+                <command>nasal</command>
+                <script>
+			controls.gearDown(-1);
+		</script>
+            </binding>
+            <mod-up>
+                <binding>
+                    <command>nasal</command>
+                    <script>controls.gearDown(0)</script>
+                </binding>
+            </mod-up>
+        </action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>gear_handle</object-name>
+	<action>
+            <button>0</button>
+            <binding>
+                <command>nasal</command>
+                <script>
+			controls.gearDown(1);
+		</script>
+            </binding>
+            <mod-up>
+                <binding>
+                    <command>nasal</command>
+                    <script>controls.gearDown(0)</script>
+                </binding>
+            </mod-up>
+        </action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>gear_handle</object-name>
+	<property>controls/gear/gear-down</property>
+	<factor>30</factor>
+	<center>
+		<x-m>0.632</x-m>
+		<y-m>0.130</y-m>
+		<z-m>0.619</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+<!-- AUTOBRAKE -->
+
+<animation>
+        <type>pick</type>
+        <object-name>Autobrk.knob</object-name>
+        <action>
+                <button>0</button>
+                <binding>
+                        <command>property-adjust</command>
+                        <property>/autopilot/autobrake/step</property>
+                        <step>1</step>
+                        <min>-2</min>
+                        <max>5</max>
+                </binding>
+        </action>
+        <action>
+                <button>1</button>
+                <binding>
+                        <command>property-adjust</command>
+                        <property>/autopilot/autobrake/step</property>
+                        <step>-1</step>
+                        <min>-2</min>
+                        <max>5</max>
+                </binding>
+        </action>
+        <action>
+                <button>3</button>
+                <binding>
+                        <command>property-adjust</command>
+                        <property>/autopilot/autobrake/step</property>
+                        <step>1</step>
+                        <min>-2</min>
+                        <max>5</max>
+                </binding>
+        </action>
+        <action>
+                <button>4</button>
+                <binding>
+                        <command>property-adjust</command>
+                        <property>/autopilot/autobrake/step</property>
+                        <step>-1</step>
+                        <min>-2</min>
+                        <max>5</max>
+                </binding>
+        </action>
+</animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>Autobrk.knob</object-name>
+        <property>/autopilot/autobrake/step</property>
+        <interpolation>
+                <entry>
+                        <ind>-2</ind>
+                        <dep>120</dep>
+                </entry>
+                <entry>
+                        <ind>-1</ind>
+                        <dep>90</dep>
+                </entry>
+                <entry>
+                        <ind>0</ind>
+                        <dep>60</dep>
+                </entry>
+                <entry>
+                        <ind>1</ind>
+                        <dep>30.0</dep>
+                </entry>
+                <entry>
+                        <ind>2</ind>
+                        <dep>0.0</dep>
+                </entry>
+                <entry>
+                        <ind>3</ind>
+                        <dep>-30.0</dep>
+                </entry>
+                <entry>
+                        <ind>4</ind>
+                        <dep>-60.0</dep>
+                </entry>
+                <entry>
+                        <ind>5</ind>
+                        <dep>-90.0</dep>
+                </entry>
+        </interpolation>
+        <center>
+                <x-m>0.734</x-m>
+                <y-m>0.150</y-m>
+                <z-m>0.5453</z-m>
+        </center>
+	<axis>
+		<x>1.85</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<!-- ALT GEAR CONTROL -->
+<animation>
+	<type>pick</type>
+	<object-name>AltGear.NB</object-name>
+	<object-name>AltGear.Wing</object-name>
+	<action>
+	    <repeatable>false</repeatable>
+	    <button>0</button>
+	    <binding>
+		<command>property-assign</command>
+		<property>controls/gear/alt-gear</property>
+		<value>true</value>
+	    </binding>
+	</action>
+</animation>
+<animation>
+	<type>translate</type>
+	<object-name>AltGear.NB</object-name>
+	<object-name>AltGear.NB_cvr</object-name>
+	<object-name>AltGear.Wing</object-name>
+	<object-name>AltGear.Wing_cvr</object-name>
+	<object-name>AltGear.NB_unlit</object-name>
+	<object-name>AltGear.Wing_unlit</object-name>
+	<object-name>AltGear.NB_lit</object-name>
+	<object-name>AltGear.Wing_lit</object-name>
+	<property>controls/gear/alt-gear</property>
+	<factor>-0.0045</factor>
+	<axis>
+                <x> 0.732</x>
+                <y> 0.0</y>
+                <z> 0.500</z>
+        </axis>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>AltGear.NB_unlit</object-name>
+	<object-name>AltGear.Wing_unlit</object-name>
+	<condition>
+	    <not>
+		<property>controls/gear/alt-gear</property>
+	    </not>
+	</condition>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>AltGear.NB_lit</object-name>
+	<object-name>AltGear.Wing_lit</object-name>
+	<condition>
+		<property>controls/gear/alt-gear</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>AltGear.NB_cvr</object-name>
+	<object-name>AltGear.Wing_cvr</object-name>
+	<action>
+	    <repeatable>false</repeatable>
+	    <button>0</button>
+	    <binding>
+		<command>property-toggle</command>
+		<property>controls/gear/alt-gear-cvr</property>
+	    </binding>
+	</action>
+</animation>
+<animation>
+	<type>rotate</type>
+	<object-name>AltGear.NB_cvr</object-name>
+	<property>controls/gear/alt-gear-cvr</property>
+	<factor>-100</factor>
+	<axis>
+                <x1-m> 0.699</x1-m>
+                <y1-m> 0.170</y1-m>
+                <z1-m> 0.629</z1-m>
+                <x2-m> 0.699</x2-m>
+                <y2-m> 0.210</y2-m>
+                <z2-m> 0.629</z2-m>
+        </axis>
+</animation>
+<animation>
+	<type>rotate</type>
+	<object-name>AltGear.Wing_cvr</object-name>
+	<property>controls/gear/alt-gear-cvr</property>
+	<factor>-100</factor>
+	<axis>
+                <x1-m> 0.710</x1-m>
+                <y1-m> 0.170</y1-m>
+                <z1-m> 0.603</z1-m>
+                <x2-m> 0.710</x2-m>
+                <y2-m> 0.210</y2-m>
+                <z2-m> 0.603</z2-m>
+        </axis>
+</animation>
+
+<!-- Alt Flaps -->
+<animation>
+	<type>pick</type>
+	<object-name>AltnFlps.Arm</object-name>
+	<action>
+	    <repeatable>false</repeatable>
+	    <button>0</button>
+	    <binding>
+		<command>property-toggle</command>
+		<property>controls/flight/alt-flaps-arm</property>
+	    </binding>
+	</action>
+</animation>
+<animation>
+	<type>translate</type>
+	<object-name>AltnFlps.Arm</object-name>
+	<object-name>AltFlaps_lit</object-name>
+	<object-name>AltFlaps_unlit</object-name>
+	<property>controls/flight/alt-flaps-arm</property>
+	<factor>-0.0045</factor>
+	<axis>
+                <x> 0.732</x>
+                <y> 0.0</y>
+                <z> 0.500</z>
+        </axis>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>AltFlaps_unlit</object-name>
+	<condition>
+	    <not>
+		<property>controls/flight/alt-flaps-arm</property>
+	    </not>
+	</condition>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>AltFlaps_lit</object-name>
+	<condition>
+		<property>controls/flight/alt-flaps-arm</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>AltFlaps.knob</object-name>
+	<action>
+	    <repeatable>false</repeatable>
+	    <button>0</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.altn_flapsDown(1);</script>
+	    </binding>
+	</action>
+	<action>
+	    <repeatable>false</repeatable>
+	    <button>1</button>
+	    <binding>
+		<command>nasal</command>
+		<script>Boeing747.altn_flapsDown(-1);</script>
+	    </binding>
+	</action>
+</animation>
+<animation>
+	<type>rotate</type>
+	<object-name>AltFlaps.knob</object-name>
+	<property>controls/flight/alt-flaps</property>
+	<factor>-45</factor>
+        <center>
+                <x-m>0.653</x-m>
+                <y-m>0.184</y-m>
+                <z-m>0.740</z-m>
+        </center>
+	<axis>
+		<x>1.85</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+</PropertyList>

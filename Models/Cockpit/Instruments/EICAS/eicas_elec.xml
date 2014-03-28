@@ -1,0 +1,341 @@
+<PropertyList>
+
+<!-- # # # # # # # # # # # # # # # # # # # # # -->
+<!-- # Boeing 747-400 EICAS by Gijs de Rooy  # -->
+<!-- # # # # # # # # # # # # # # # # # # # # # -->
+
+<path>eicas_elec.ac</path>
+
+<animation>
+	<type>select</type>
+	<object-name>bus1</object-name>
+	<condition>
+		<property>/systems/electrical/ac-bus[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bus2</object-name>
+	<condition>
+		<property>/systems/electrical/ac-bus[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bus3</object-name>
+	<condition>
+		<property>/systems/electrical/ac-bus[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bus4</object-name>
+	<condition>
+		<property>/systems/electrical/ac-bus[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bustie1</object-name>
+	<condition>
+		<property>/systems/electrical/bus-isolation[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bustie2</object-name>
+	<condition>
+		<property>/systems/electrical/bus-isolation[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bustie3</object-name>
+	<condition>
+		<property>/systems/electrical/bus-isolation[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bustie4</object-name>
+	<condition>
+		<property>/systems/electrical/bus-isolation[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>drive1</object-name>
+	<condition>
+		<property>/systems/electrical/generator-drive[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>drive2</object-name>
+	<condition>
+		<property>/systems/electrical/generator-drive[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>drive3</object-name>
+	<condition>
+		<property>/systems/electrical/generator-drive[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>drive4</object-name>
+	<condition>
+		<property>/systems/electrical/generator-drive[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gencont1</object-name>
+	<condition>
+		<property>/systems/electrical/generator-off[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gencont2</object-name>
+	<condition>
+		<property>/systems/electrical/generator-off[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gencont3</object-name>
+	<condition>
+		<property>/systems/electrical/generator-off[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gencont4</object-name>
+	<condition>
+		<property>/systems/electrical/generator-off[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ssb</object-name>
+	<condition>
+		<equals>
+			<property>systems/electrical/eicas/ssb</property>
+			<value>open</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.ssb</object-name>
+	<condition>
+		<property>systems/electrical/eicas/flowbar.ssb</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>utility1</object-name>
+	<condition>
+		<not>
+			<property>/systems/electrical/eicas/utility[0]</property>
+		</not>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>utility2</object-name>
+	<condition>
+		<not>
+			<property>/systems/electrical/eicas/utility[1]</property>
+		</not>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>utility3</object-name>
+	<condition>
+		<not>
+			<property>/systems/electrical/eicas/utility[2]</property>
+		</not>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>utility4</object-name>
+	<condition>
+		<not>
+			<property>/systems/electrical/eicas/utility[3]</property>
+		</not>
+	</condition>
+</animation>
+
+<!-- flow bars -->
+<animation>
+	<type>select</type>
+	<object-name>flowbar.apu1</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.apu[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.apu2</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.apu[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bt1</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.bt[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bt2</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.bt[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bt3</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.bt[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bt4</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.bt[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ext1</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.ext[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ext2</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.ext[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gc1</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.gc[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gc2</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.gc[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gc3</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.gc[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gc4</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.gc[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>sync1</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.sync1</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>sync2.1</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.sync2.1</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>sync2.2</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.sync2.2</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>sync3.1</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.sync3.1</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>sync3.2</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.sync3.2</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>sync4</object-name>
+	<condition>
+		<property>/systems/electrical/eicas/flowbar.sync4</property>
+	</condition>
+</animation>
+
+</PropertyList>

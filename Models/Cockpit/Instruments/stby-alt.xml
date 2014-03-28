@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>stby-alt.ac</path>
+
+<animation>
+ <type>material</type>
+ <emission>
+  <red>1</red>
+  <green>0.8</green>
+  <blue>0.5</blue>
+  <factor-prop>controls/lighting/instruments-norm</factor-prop>
+ </emission>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>Needle1</object-name>
+ <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+ <factor>0.36</factor>
+ <axis>
+  <x>-1</x>
+  <y>0</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>alt1</object-name>
+ <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+ <factor>0.01</factor>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>alt2</object-name>
+ <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+ <factor>0.001</factor>
+ <step>100</step>
+ <scroll>20</scroll>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>alt3</object-name>
+ <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+ <factor>0.0001</factor>
+ <step>1000</step>
+ <scroll>20</scroll>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>alt4</object-name>
+ <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+ <factor>0.00001</factor>
+ <step>10000</step>
+ <scroll>20</scroll>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>press1</object-name>
+ <property>/instrumentation/altimeter/setting-inhg</property>
+ <factor>10.0</factor>
+ <step>0.01</step>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>press2</object-name>
+ <property>/instrumentation/altimeter/setting-inhg</property>
+ <factor>1.0</factor>
+ <step>0.1</step>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>press3</object-name>
+ <property>/instrumentation/altimeter/setting-inhg</property>
+ <factor>0.1</factor>
+ <step>1</step>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>press4</object-name>
+ <property>/instrumentation/altimeter/setting-inhg</property>
+ <factor>0.01</factor>
+ <step>10</step>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+</PropertyList>

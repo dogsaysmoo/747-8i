@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+<sim>
+    <model>
+			<livery>
+				<name type="string">British Airways World Cargo</name>
+				<texture>Liveries/748F/bawc.png</texture>
+			</livery>
+			<nightlights>
+				<name type="string">British Airways World Cargo</name>
+				<texture>Liveries/748F/bawc_lights.png</texture>
+			</nightlights>
+			<turbofans>
+				<name type="string">British Airways World Cargo</name>
+				<texture>Liveries/748F/bawc_engines.png</texture>
+			</turbofans>
+			<wings>
+				<name type="string">British Airways World Cargo</name>
+				<texture>Liveries/748F/wings.png</texture>
+			</wings>
+			<nightwings>
+				<name type="string">British Airways World Cargo</name>
+				<texture>Liveries/748F/wings-lts.png</texture>
+			</nightwings>
+			<nightengines>
+				<name type="string">British Airways World Cargo</name>
+				<texture>Liveries/748F/bawc_eng-lts.png</texture>
+			</nightengines>
+    </model>
+</sim>
+</PropertyList>

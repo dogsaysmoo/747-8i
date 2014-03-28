@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+sweat by maggse
+    -->
+<PropertyList>
+
+ <path>null.ac</path>
+
+ <particlesystem>
+  <name>SmokelessFireHigh</name>
+  <texture>smoke.png</texture>
+  <emissive>true</emissive>
+  <lighting>false</lighting>
+
+  <offsets>
+   <x-m>0</x-m>
+   <y-m>0</y-m>
+   <z-m>0</z-m>
+   <roll-deg>90</roll-deg>
+  </offsets>
+
+  <attach>world</attach>
+
+  <placer>
+   <type>sector</type>
+   <radius-min-m>0.0</radius-min-m>
+   <radius-max-m>35.0</radius-max-m>
+  </placer>
+
+  <shooter>
+   <theta-min-deg>0.0</theta-min-deg>
+   <theta-max-deg>40.0</theta-max-deg>
+   <phi-min-deg>0.0</phi-min-deg>
+   <phi-max-deg>360.0</phi-max-deg>
+   <speed>
+    <value>50.0</value>
+    <spread>5.0</spread>
+   </speed>
+  </shooter>
+
+  <counter>
+   <pps>
+    <value>30.0</value>
+    <spread>10</spread>
+   </pps>
+  </counter>
+
+  <align>billboard</align>
+
+  <particle>
+   <startcolor>
+    <red><value>1.0</value></red>
+    <green><value>0.5</value></green>
+    <blue><value>0.0</value></blue>
+    <alpha><value>1.0</value></alpha>
+   </startcolor>
+   <endcolor>
+    <red><value>1.0</value></red>
+    <green><value>1.0</value></green>
+    <blue><value>1.0</value></blue>
+    <alpha><value>0.3</value></alpha>
+   </endcolor>
+
+   <startsize>
+    <value>6.0</value>
+    <spread>2</spread>
+   </startsize>
+   <endsize>
+    <value>2.0</value>
+    <spread>0.5</spread>
+   </endsize>
+
+   <lifetime>
+    <value>4</value>
+   </lifetime>
+   <mass-kg>0.1</mass-kg>
+   <radius-m>0.2</radius-m>
+  </particle>
+
+  <program>
+   <fluid>air</fluid>
+   <gravity>disabled</gravity>
+   <wind>disabled</wind>
+  </program>
+
+ </particlesystem>
+
+</PropertyList>
+

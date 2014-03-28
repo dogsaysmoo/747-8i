@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<name>EFIS Panel text</name>
+<background>Aircraft/747-8i/Models/Cockpit/transparent.png</background>
+<w>256</w>
+<h>256</h>
+
+<instruments>
+   <instrument include="msg.xml">
+        <name>messages</name>
+        <x>128.0</x>
+        <y>128.0</y>
+        <w>256</w>
+        <h>256</h>
+    </instrument>
+</instruments>
+
+</PropertyList>

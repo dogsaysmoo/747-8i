@@ -1,0 +1,96 @@
+Changes made by John W.
+
+-Set up cabin windows to be controlled by livery selection
+-Set menu item to restore cabin windows after livery shuts them off
+-More power for pushback, set pushback to start detached
+-Reactivate multiplay parms in 747-8i-set.xml
+-Replace autopilot with derivative from 777
+-Remap MCP buttons to new AP
+-Fix pilot view angle
+-Replace MFD with more complete (and nearly identical) from 777
+-Replace PFD with more complete (and nearly identical) from 777
+-Fix fuel displays and warnings
+-Updated autopilot to turn by aileron, not aileron-trim
+-Tightened up VOR/LOC capture in AP
+-Got overspeed/stall warnings working (sort of)
+-Got speed trend indicators working
+-Fixed landing lights so they turn on and off, are controlled by 
+	cockpit switches, have properly connected beams
+-Mapped 'l' key to toggle landing lights
+-Fixed beacons so they flash
+-Added hot spot to panel to toggle IAS/Mach (now removed in favor of real button)
+-Fixed (sort of) death plunge when engaging V/S mode in AP
+-Implemented GPWS
+-Turned off ADF Ident sound (instrumentation/kr-87/inputs/audio-btn = false)
+-Added gear transit sound
+-Added AP disengage alarm
+-Added Bank Limit slider in AP dialog
+-Put stop on APU knob
+-Fixed aileron motion animations
+-Removed ground service and malfunctions from 747-8i menu
+-Adjusted flap sounds
+-Added bell for seatbelt sign off
+-Added APU sounds
+-Fixed DME displays for 2.8 and later (use instrumentation/dme/in-range instead
+	of instrumentation/nav/dme-in-range)
+-Split up fuel tanks: Center, inner-wing, outer-wing, reserve-wing
+-Sealed off Stabilizer tank
+-Added crew and pax/cargo weight management
+-Linked fuel tanks and fuel pumps to Fuel and Payload (in equip menu) and to
+	autostart sequence.
+-Speedbrakes auto-deploy with thrust-reversers
+-Added sound for thrust-reversers
+-Implemented fuel jettison system
+-Implemented fuel cross feed valves
+-Debugged luminosidade on startup
+-Debugged landing light power on startup
+-Implemented Bleed Air system, tied starters to it
+-Separated power sources for hydraulic demand pumps (1 and 4 pneumatic, 2 
+	and 3 electric)
+-Restrict landing gear-up, flaps and speedbrakes when hydraulics are off
+-Add hydraulics to autostart sequence
+-Debugged electrical system
+-Added '(' key to toggle strobe lights
+-Mapped Nav light switch
+-Remapped MCP knobs
+-Added IAS/MACH selector button
+-Added inner fuselage model
+-Fixed / added light switches on OH panel
+-Added custom pushback
+-Fixed fluttery color on v stab
+-Fixed door locations for jetways
+-Added wing inspection lights and updated liveries
+-Updated AP readouts to LED digital displays
+-Fixed frame around left PFD
+-Revamped fuel system
+-Tuned FDM with correct weights
+-Fixed death plunge when engaging V/S mode in AP (for real this time - pitch has to
+	be < 15 deg when you engage the VS)
+-Added proper main landing gear doors
+-Built 747-8 Freighter model
+-Better looking landing lights
+-All tires rolling
+-Fix MFD Plan and Map modes to show FMS route
+-Add number annunciators for flap indicator
+-Rig FDM to solve for cargo/pax weights
+-Add function to consume fuel at idle
+-Add function to re-distribute fuel at startup
+-Add fuel transfer functions and dialog
+-Reactivate horizontal stabilizer tank
+-Add fuel trucks
+-Fix model error just behind cockpit
+-Fix autostart to not require fuel in center tank.
+-New transponder model
+-New COMM radio models
+-Adjust stall speed calcs
+-New FMC course calculator based on FG2.10 777
+-Implemented FLCH mode for AP
+-Implemented autobrake system
+-Revamped pneumatic, hydraulic and fuel systems
+-Implemented ALTN GEAR and ALTN FLAPS
+-Changed VS mode to grab current vertical speed and black out display when VS mode not engaged
+-Added functions to IRS knobs and corresponding EICAS messages.
+-Renamed Fuel Management dialog to Control Panel
+-Added ground air to Control Panel dialog
+-Added IRS alignment timing to Control Panel dialog
+

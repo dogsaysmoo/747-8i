@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+<sim>
+    <model>
+			<livery>
+				<name type="string">FGBr</name>
+				<texture>Liveries/748I/FGBr_fuselage.png</texture>
+			</livery>
+			<nightlights>
+				<name type="string">FGBr</name>
+				<texture>Liveries/748I/FGBr_fuselage_light.png</texture>
+			</nightlights>
+			<turbofans>
+				<name type="string">FGBr</name>
+				<texture>Liveries/748I/FGBr_turbofan.png</texture>
+			</turbofans>
+			<wings>
+				<name type="string">FGBr</name>
+				<texture>Liveries/748I/wings.png</texture>
+			</wings>
+			<nightwings>
+				<name type="string">FGBr</name>
+				<texture>Liveries/748I/wings-lts.png</texture>
+			</nightwings>
+			<nightengines>
+				<name type="string">FGBr</name>
+				<texture>Liveries/748I/FGBr_turbofan_lts.png</texture>
+			</nightengines>
+    </model>
+</sim>
+</PropertyList>

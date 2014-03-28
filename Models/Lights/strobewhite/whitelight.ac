@@ -1,0 +1,24 @@
+AC3Db
+MATERIAL "wire" rgb 1 1 1  amb 1 1 1  emis 1 1 1  spec 0 0 0  shi 32  trans 0.089
+OBJECT world
+kids 1
+OBJECT poly
+name "whitelight"
+data 8
+Mesh.915
+texture "transparent.png"
+crease 30.000000
+numvert 4
+-0.819428 0.819429 0
+-0.819429 -0.819428 0
+0.819429 -0.819429 0
+0.819429 0.819429 0
+numsurf 1
+SURF 0x0
+mat 0
+refs 4
+3 0.5205 0.4795
+0 0.5205 0.0205
+1 0.9795 0.0205
+2 0.9795 0.4795
+kids 0
