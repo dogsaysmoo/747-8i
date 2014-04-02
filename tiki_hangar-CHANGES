@@ -93,4 +93,4 @@ Changes made by John W.
 -Renamed Fuel Management dialog to Control Panel
 -Added ground air to Control Panel dialog
 -Added IRS alignment timing to Control Panel dialog
-
+-Added engine property "started" for fuel starvation shutdown

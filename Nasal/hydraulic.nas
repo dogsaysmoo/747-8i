@@ -166,8 +166,8 @@ var Hyd = {
     # update hydraulic equipment
 	# Brakes
     if (sys_status[0] == 0 and sys_status[1] == 0 and sys_status[3] == 0) {
-	setprop("systems/hydraulic/equipment/enable-brake",0.0);
-    } elsif (sys_status[3] == 1) {
+	setprop("systems/hydraulic/equipment/enable-brake",0.4);
+    } elsif (sys_status[0] == 0 and sys_status[1] == 0 and sys_status[3] == 1) {
 	setprop("systems/hydraulic/equipment/enable-brake",0.6);
     } else {
 	setprop("systems/hydraulic/equipment/enable-brake",1.0);
