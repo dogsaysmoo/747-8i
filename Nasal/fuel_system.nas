@@ -253,23 +253,35 @@ var fuelsys = {
 	var n1 = 0.0;
 	if (!(me.xfeed1.getBoolValue() and manifold_p == 1) and !(me.pump1fwd.getBoolValue() or me.pump1aft.getBoolValue())) {
 	    n1 = getprop("engines/engine[1]/n1-ind");
-	    if (n1 > 48 and n1 < 88 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180)
+	    if (n1 > 48 and n1 < 88 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180) {
 		me.sel[1].setBoolValue(1);
+	    } else {
+		setprop("engines/engine[1]/started",0);
+	    }
 	}
 	if (!(me.xfeed2.getBoolValue() and manifold_p == 1) and !(me.pump2fwd.getBoolValue() or me.pump2aft.getBoolValue())) {
 	    n1 = getprop("engines/engine[2]/n1-ind");
-	    if (n1 > 48 and n1 < 88 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180)
+	    if (n1 > 48 and n1 < 88 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180) {
 		me.sel[2].setBoolValue(1);
+	    } else {
+		setprop("engines/engine[2]/started",0);
+	    }
 	}
 	if (!(me.xfeed3.getBoolValue() and manifold_p == 1) and !(me.pump3fwd.getBoolValue() or me.pump3aft.getBoolValue())) {
 	    n1 = getprop("engines/engine/n1-ind");
-	    if (n1 > 48 and n1 < 88 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180)
+	    if (n1 > 48 and n1 < 88 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180) {
 		me.sel[3].setBoolValue(1);
+	    } else {
+		setprop("engines/engine/started",0);
+	    }
 	}
 	if (!(me.xfeed4.getBoolValue() and manifold_p == 1) and !(me.pump4fwd.getBoolValue() or me.pump4aft.getBoolValue())) {
 	    n1 = getprop("engines/engine[3]/n1-ind");
-	    if (n1 > 48 and n1 < 88 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180)
+	    if (n1 > 48 and n1 < 88 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180) {
 		me.sel[4].setBoolValue(1);
+	    } else {
+		setprop("engines/engine[3]/started",0);
+	    }
 	}
 	me.power_update();
 	settimer(func { me.update();},0.5);

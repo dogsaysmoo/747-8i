@@ -1,7 +1,7 @@
 ##############################################
 ##############################################
 # Simple APU control class
-# based on Syd´s Engine class
+# based on Sydï¿½s Engine class
 # ie: var EngAPU = APU.new(APU number);
 var APU = {
     new : func(eng_num){
@@ -182,109 +182,6 @@ var APU = {
 ##########################
 var EngAPU = APU.new(0);
 
-
-## Continious Ignition ##
-
-setlistener("/controls/engines/con-ignition", func(conig){
-    var conign= conig.getBoolValue();
-    if(conign){
-    setprop("controls/engines/engine[0]/ignition",1);
-    setprop("controls/engines/engine[1]/ignition",1);
-    setprop("controls/engines/engine[2]/ignition",1);
-    setprop("controls/engines/engine[3]/ignition",1);
-    }else{
-    setprop("controls/engines/engine[0]/ignition",0);
-    setprop("controls/engines/engine[1]/ignition",0);
-    setprop("controls/engines/engine[2]/ignition",0);
-    setprop("controls/engines/engine[3]/ignition",0);
-    }
-},0,0);
-
-setlistener("/controls/engines/auto-ignition", func(autoig){
-    var autoign= autoig.getBoolValue();
-    if(autoign){
-        if (getprop("controls/engines/engine[0]/starter") == 1){
-	    if (getprop("engines/engine[0]/n2") < 50){
-	    setprop("controls/engines/engine[0]/ignition",1);
-	    }
-	}
-	elsif (getprop("controls/engines/engine[1]/starter") == 1){
-	    if (getprop("engines/engine[1]/n2") < 50){
-	    setprop("controls/engines/engine[1]/ignition",1);
-	    }
-	}
-	elsif (getprop("controls/engines/engine[2]/starter") == 1){
-	    if (getprop("engines/engine[2]/n2") < 50){
-	    setprop("controls/engines/engine[2]/ignition",1);
-	    }
-	}
-	elsif (getprop("controls/engines/engine[3]/starter") == 1){
-	    if (getprop("engines/engine[3]/n2") < 50){
-	    setprop("controls/engines/engine[3]/ignition",1);
-	    }
-	}
-    }
-    else{
-    setprop("controls/engines/engine[0]/ignition",0);
-    setprop("controls/engines/engine[1]/ignition",0);
-    setprop("controls/engines/engine[2]/ignition",0);
-    setprop("controls/engines/engine[3]/ignition",0);
-    }
-},0,0);
-
-## FG Autostart/Shutdown ##
-
-var autostart = func {
-
-	setprop("consumables/fuel/tank/selected",1);
-	setprop("consumables/fuel/tank[1]/selected",1);
-	setprop("consumables/fuel/tank[2]/selected",1);
-	setprop("consumables/fuel/tank[3]/selected",1);
-	setprop("consumables/fuel/tank[4]/selected",1);
-	setprop("consumables/fuel/tank[5]/selected",1);
-	setprop("consumables/fuel/tank[6]/selected",1);
-	setprop("consumables/fuel/tank[7]/selected",1);
-	setprop("/controls/engines/engine[0]/starter",1);
-	setprop("/controls/engines/engine[1]/starter",1);
-	setprop("/controls/engines/engine[2]/starter",1);
-	setprop("/controls/engines/engine[3]/starter",1);
-	setprop("/controls/engines/engine[0]/cutoff",1);
-	setprop("/controls/engines/engine[1]/cutoff",1);
-	setprop("/controls/engines/engine[2]/cutoff",1);
-	setprop("/controls/engines/engine[3]/cutoff",1);
-	setprop("/controls/electric/battery",1);
-	setprop("/controls/lighting/beacon",1);
-	setprop("/controls/lighting/nav-lights",1);
-	setprop("/controls/lighting/strobe",1);
-	setprop("/controls/lighting/logo-lights",1);
-	setprop("/controls/fuel/tank[1]/x-feed",1);
-	setprop("/controls/fuel/tank[2]/x-feed",1);
-	setprop("/controls/fuel/tank[3]/x-feed",1);
-	setprop("/controls/fuel/tank[4]/x-feed",1);
-	setprop("/controls/fuel/tank/pump",1);
-	setprop("/controls/fuel/tank[1]/pump-aft",1);
-	setprop("/controls/fuel/tank[1]/pump-fwd",1);
-	setprop("/controls/fuel/tank[2]/pump-aft",1);
-	setprop("/controls/fuel/tank[2]/pump-fwd",1);
-	setprop("/controls/fuel/tank[3]/pump-aft",1);
-	setprop("/controls/fuel/tank[3]/pump-fwd",1);
-	setprop("/controls/fuel/tank[4]/pump-aft",1);
-	setprop("/controls/fuel/tank[4]/pump-fwd",1);
-	setprop("/controls/fuel/tank[1]/ovrd-aft",1);
-	setprop("/controls/fuel/tank[1]/ovrd-fwd",1);
-	setprop("/controls/fuel/tank[2]/ovrd-aft",1);
-	setprop("/controls/fuel/tank[2]/ovrd-fwd",1);
-	setprop("/controls/fuel/tank[7]/pump",1);
-	if (getprop("/engines/engine[0]/n2") > 25) {
-		setprop("/controls/engines/engine[0]/cutoff",0);
-		setprop("/controls/engines/engine[1]/cutoff",0);
-		setprop("/controls/engines/engine[2]/cutoff",0);
-		setprop("/controls/engines/engine[3]/cutoff",0);
-		setprop("/controls/engines/autostart",0);
-	}
-	if (getprop("/controls/engines/autostart")) settimer(autostart,0);
-}
-
 ## Mouse drag&drop handler ##
 
 var MouseHandler = {
@@ -328,10 +225,6 @@ strobe_switch = props.globals.getNode("controls/switches/strobe", 1);
 var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 1.2,], "/controls/lighting/beacon" );
 beacon_switch = props.globals.getNode("controls/lighting/beacon", 1);
 var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 3,], "/controls/lighting/strobe" );
-
-## Liveries ##
-
-#aircraft.livery.init("Aircraft/747-8i/Models/Liveries");
 
 ## Prevent gear from being retracted on ground ##
 
@@ -437,6 +330,8 @@ var Engine = {
         m.eng = props.globals.getNode("engines/engine["~eng_num~"]",1);
         m.running = m.eng.getNode("running",1);
         m.running.setBoolValue(0);
+	m.started = m.eng.initNode("started",0,"BOOL");
+	m.started.setBoolValue(0);
         m.n1 = m.eng.getNode("n1",1);
         m.n2 = m.eng.getNode("n2",1);
         m.n1ind = m.eng.getNode("n1-ind",1);
@@ -464,26 +359,31 @@ var Engine = {
     return m;
     },
 #### update ####
-    update : func{
-        if(me.fuel_out.getBoolValue())me.cutoff.setBoolValue(1);
-        if(!me.cutoff.getBoolValue()){
+    update : func {
+	if (me.cutoff.getBoolValue()) me.started.setBoolValue(0);
+	if (me.running.getBoolValue() and !me.started.getBoolValue())
+		me.running.setBoolValue(0);
+#        if(me.fuel_out.getBoolValue())me.cutoff.setBoolValue(1);
+#        if(!me.cutoff.getBoolValue()){
+        if (me.fuel_out.getBoolValue()) me.started.setBoolValue(0);
+        if (me.started.getBoolValue()) {
         	me.rpm.setValue(me.n1.getValue());
         	me.n1ind.setValue(me.n1.getValue());
         	me.n2ind.setValue(me.n2.getValue());
         	
         	me.throttle_lever.setValue(me.throttle.getValue());
-        }else{
+        } else {
             me.throttle_lever.setValue(0);
         	me.throttle.setValue(0.0);
         	
-            if(me.starter.getBoolValue()){
+            if (me.starter.getBoolValue()) {
                 me.spool_up();
-            }else{
+            } else {
                 var tmprpm = me.rpm.getValue();
                 var tmpn1ind = me.n1ind.getValue();
                 var tmpn2ind = me.n2ind.getValue();
 
-                if(tmprpm > 0.0){
+                if (tmprpm > 0.0) {
                     tmprpm -= getprop("sim/time/delta-realtime-sec") * 0.5;
                     me.rpm.setValue(tmprpm);
                     tmpn1ind -= getprop("sim/time/delta-realtime-sec") * 0.5;
@@ -495,20 +395,21 @@ var Engine = {
             }
         }
 
-#    var th_idle = 0.035;
-    var th_idle = 0;
+#	var th_idle = 0.035;
+	var th_idle = 0;
 
-    me.throttle_fdm.setValue((me.throttle.getValue() * (1 - th_idle)) + th_idle);
-    me.fuel_pph.setValue(me.fuel_gph.getValue()*me.fdensity);
-    var hpsi =me.rpm.getValue();
-    if(hpsi>60)hpsi = 60;
-    me.hpump.setValue(hpsi);
+	me.throttle_fdm.setValue((me.throttle.getValue() * (1 - th_idle)) + th_idle);
+	me.fuel_pph.setValue(me.fuel_gph.getValue() * me.fdensity);
+	var hpsi = me.rpm.getValue();
+	if (hpsi > 60) hpsi = 60;
+	me.hpump.setValue(hpsi);
     },
 
-    spool_up : func{
-        if(!me.cutoff.getBoolValue()){
-        return;
-        }else{
+    spool_up : func {
+        if (!me.cutoff.getBoolValue()) {
+#            return;
+	    settimer(func {me.starter.setBoolValue(0);},0.2);
+        } else {
             var tmpn1ind = me.n1ind.getValue();
             tmpn1ind += getprop("sim/time/delta-realtime-sec") * 0.5;
             me.n1ind.setValue(tmpn1ind);
@@ -523,6 +424,7 @@ var Engine = {
             if(tmprpm >= me.n1.getValue()) {
 		me.cutoff.setBoolValue(0);
 		me.running.setBoolValue(1);
+		me.started.setBoolValue(1);
 		settimer(func {me.starter.setBoolValue(0);},1);
 	    }
         }
@@ -547,7 +449,6 @@ var start_updates = func {
     if (getprop("position/gear-agl-ft")>30)
     {
         # airborne startup
-#        Startup();
         setprop("/controls/gear/brake-parking",0);
         controls.gearDown(-1);
     }
@@ -566,23 +467,6 @@ setlistener("/sim/current-view/internal", func(vw){
     SndOut.setDoubleValue(1.0);
     }
 },1,0);
-
-setlistener("/sim/model/start-idling", func(idle){
-    var run= idle.getBoolValue();
-    if(run){
-    Startup();
-    }else{
-    Shutdown();
-    }
-},0,0);
-
-#controls.gearDown = func(v) {
-#    if (v < 0) {
-#        if(!getprop("gear/gear[1]/wow"))setprop("/controls/gear/gear-down", 0);
-#    } elsif (v > 0) {
-#      setprop("/controls/gear/gear-down", 1);
-#    }
-#}
 
 controls.toggleLandingLights = func()
 {
@@ -604,13 +488,22 @@ var magic_autostart = func {
     setprop("consumables/fuel/tank[3]/selected",1);
     setprop("consumables/fuel/tank[4]/selected",1);
     settimer( func{
-    if (getprop("sim/model/start-idling")) {
-   	setprop("sim/model/start-idling",0);
-    }else{
-    	setprop("sim/model/start-idling",1);
-    }
+    	if (getprop("sim/model/start-idling")) {
+	    setprop("sim/model/start-idling",0);
+    	} else {
+	    setprop("sim/model/start-idling",1);
+    	}
     } , 0.5);
 }
+
+setlistener("/sim/model/start-idling", func(idle){
+    var run= idle.getBoolValue();
+    if(run){
+    Startup();
+    }else{
+    Shutdown();
+    }
+},0,0);
 
 var Startup = func{
 setprop("sim/model/armrest",1);
@@ -639,15 +532,15 @@ setprop("controls/pneumatic/engine-bleed[2]",1);
 setprop("controls/pneumatic/engine-bleed[3]",1);
 
 settimer(func {
-setprop("controls/pneumatic/pack-control",1);
-setprop("controls/pneumatic/pack-control[1]",1);
-setprop("controls/pneumatic/pack-control[2]",1);
-setprop("controls/pneumatic/equip-cooling",1);
+  setprop("controls/pneumatic/pack-control",1);
+  setprop("controls/pneumatic/pack-control[1]",1);
+  setprop("controls/pneumatic/pack-control[2]",1);
+  setprop("controls/pneumatic/equip-cooling",1);
 
-setprop("controls/hydraulic/demand-pump",1);
-setprop("controls/hydraulic/demand-pump[1]",1);
-setprop("controls/hydraulic/demand-pump[2]",1);
-setprop("controls/hydraulic/demand-pump[3]",1);
+  setprop("controls/hydraulic/demand-pump",1);
+  setprop("controls/hydraulic/demand-pump[1]",1);
+  setprop("controls/hydraulic/demand-pump[2]",1);
+  setprop("controls/hydraulic/demand-pump[3]",1);
 },0.7);
 
 setprop("controls/hydraulic/engine-pump",1);
@@ -655,7 +548,6 @@ setprop("controls/hydraulic/engine-pump[1]",1);
 setprop("controls/hydraulic/engine-pump[2]",1);
 setprop("controls/hydraulic/engine-pump[3]",1);
 
-#setprop("instrumentation/transponder/inputs/knob-mode",5);
 setprop("controls/inertial-reference/position",2);
 setprop("controls/inertial-reference/position[1]",2);
 setprop("controls/inertial-reference/position[2]",2);
@@ -684,7 +576,6 @@ setprop("controls/switches/strobe-lights",1);
 setprop("controls/switches/wing-lights",1);
 setprop("controls/switches/taxi-lights",1);
 setprop("controls/switches/logo-lights",1);
-
 setprop("controls/switches/landing-light",1);
 setprop("controls/switches/landing-lights",1);
 
@@ -693,12 +584,12 @@ setprop("controls/engines/engine[1]/cutoff",0);
 setprop("controls/engines/engine[2]/cutoff",0);
 setprop("controls/engines/engine[3]/cutoff",0);
 
-setprop("engines/engine/running",1);
-setprop("engines/engine[1]/running",1);
-setprop("engines/engine[2]/running",1);
-setprop("engines/engine[3]/running",1);
-
 Boeing747.startup_dist();
+setprop("engines/engine[0]/started",1);
+setprop("engines/engine[1]/started",1);
+setprop("engines/engine[2]/started",1);
+setprop("engines/engine[3]/started",1);
+
 setprop("controls/fuel/tank/pump",1);
 setprop("controls/fuel/tank[7]/pump",1);
 setprop("controls/fuel/tank[1]/pump-fwd",1);
@@ -713,25 +604,11 @@ setprop("controls/fuel/tank[1]/x-feed",1);
 setprop("controls/fuel/tank[2]/x-feed",1);
 setprop("controls/fuel/tank[3]/x-feed",1);
 setprop("controls/fuel/tank[4]/x-feed",1);
-#if (getprop("consumables/fuel/tank/level-lbs") < 855) {
-	setprop("controls/fuel/tank[1]/ovrd-fwd",1);
-	setprop("controls/fuel/tank[1]/ovrd-aft",1);
-	setprop("controls/fuel/tank[2]/ovrd-fwd",1);
-	setprop("controls/fuel/tank[2]/ovrd-aft",1);
-#}
-#Boeing747.tanks_toggle(0);
-#if (getprop("consumables/fuel/tank/level-lbs") < 800) {
-#	setprop("controls/fuel/tank/pump",0);
-#	setprop("controls/fuel/tank[1]/x-feed",0);
-#	setprop("controls/fuel/tank[2]/x-feed",0);
-#}
-
+setprop("controls/fuel/tank[1]/ovrd-fwd",1);
+setprop("controls/fuel/tank[1]/ovrd-aft",1);
+setprop("controls/fuel/tank[2]/ovrd-fwd",1);
+setprop("controls/fuel/tank[2]/ovrd-aft",1);
 setprop("controls/fuel/auto-manage",1);
-#setprop("controls/fuel/tank/auto-manage",1);
-#setprop("controls/fuel/tank[1]/auto-manage",1);
-#setprop("controls/fuel/tank[2]/auto-manage",1);
-#Boeing747.tanks_auto(1,3);
-#Boeing747.tanks_auto(2,4);
 
 setprop("controls/flight/elevator-trim",0);
 setprop("controls/flight/aileron-trim",0);
@@ -782,7 +659,6 @@ setprop("systems/electrical/battery-off",1);
 setprop("controls/electric/inverter-switch",0);
 
 setprop("instrumentation/transponder/inputs/knob-pos",0);
-#setprop("instrumentation/transponder/inputs/knob-mode",0);
 setprop("controls/inertial-reference/position",0);
 setprop("controls/inertial-reference/position[1]",0);
 setprop("controls/inertial-reference/position[2]",0);
@@ -819,15 +695,6 @@ setprop("controls/engines/engine[1]/cutoff",1);
 setprop("controls/engines/engine[2]/cutoff",1);
 setprop("controls/engines/engine[3]/cutoff",1);
 
-setprop("consumables/fuel/tank/selected",0);
-setprop("consumables/fuel/tank[1]/selected",0);
-setprop("consumables/fuel/tank[2]/selected",0);
-setprop("consumables/fuel/tank[3]/selected",0);
-setprop("consumables/fuel/tank[4]/selected",0);
-setprop("consumables/fuel/tank[5]/selected",0);
-setprop("consumables/fuel/tank[6]/selected",0);
-setprop("consumables/fuel/tank[7]/selected",0);
-
 setprop("controls/fuel/tank/pump",0);
 setprop("controls/fuel/tank[1]/ovrd-fwd",0);
 setprop("controls/fuel/tank[1]/ovrd-aft",0);
@@ -846,8 +713,15 @@ setprop("controls/fuel/tank[1]/x-feed",0);
 setprop("controls/fuel/tank[2]/x-feed",0);
 setprop("controls/fuel/tank[3]/x-feed",0);
 setprop("controls/fuel/tank[4]/x-feed",0);
-#Boeing747.tanks_toggle(0);
-#Boeing747.tanks_toggle(7);
+
+setprop("consumables/fuel/tank/selected",0);
+setprop("consumables/fuel/tank[1]/selected",0);
+setprop("consumables/fuel/tank[2]/selected",0);
+setprop("consumables/fuel/tank[3]/selected",0);
+setprop("consumables/fuel/tank[4]/selected",0);
+setprop("consumables/fuel/tank[5]/selected",0);
+setprop("consumables/fuel/tank[6]/selected",0);
+setprop("consumables/fuel/tank[7]/selected",0);
 
 setprop("sim/model/armrest",0);
 
