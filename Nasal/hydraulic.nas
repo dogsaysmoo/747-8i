@@ -229,16 +229,16 @@ setlistener("systems/hydraulic/equipment/enable-brake", func (rst) {
 },0,0);
 
 # Flight Control Surface (dis)Enable
-setlistener("systems/hydraulic/equipment/enable-sfc", func (sfc) {
-    var sfc_reset = func {
-	setprop("controls/flight/aileron",0);
-	setprop("controls/flight/elevator",0);
-	if (getprop("/sim/model/pushback/position-norm") != 1.0)
-	    setprop("controls/flight/rudder",0);
-	if (!sfc.getBoolValue()) settimer(sfc_reset,0);
-    }
-    if (!sfc.getBoolValue()) sfc_reset();
-},0,0);
+#setlistener("systems/hydraulic/equipment/enable-sfc", func (sfc) {
+#    var sfc_reset = func {
+#	setprop("controls/flight/aileron",0);
+#	setprop("controls/flight/elevator",0);
+#	if (getprop("/sim/model/pushback/position-norm") != 1.0)
+#	    setprop("controls/flight/rudder",0);
+#	if (!sfc.getBoolValue()) settimer(sfc_reset,0);
+#    }
+#    if (!sfc.getBoolValue()) sfc_reset();
+#},0,0);
 
 
 # init

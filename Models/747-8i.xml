@@ -2300,7 +2300,7 @@
             	</less-than>
 			</or>
         </condition>
-  <property>controls/flight/aileron</property>
+  <property>controls/flight/aileron-pos</property>
   <factor> 30</factor>
   <axis>
      <x1-m> 16.4032</x1-m>
@@ -2327,7 +2327,7 @@
             	</less-than>
 			</or>
         </condition>
-  <property>controls/flight/aileron</property>
+  <property>controls/flight/aileron-pos</property>
   <factor>30</factor>
   <axis>
      <x1-m> 16.4032</x1-m>
@@ -2747,7 +2747,7 @@
   <object-name>rudder</object-name>
   <object-name>rudder_1</object-name>
   <object-name>rudder_0</object-name>
-  <property>controls/flight/rudder</property>
+  <property>controls/flight/rudder-pos</property>
   <factor>35</factor>
   <offset-deg>0</offset-deg>   
 	  <axis>
@@ -2766,7 +2766,7 @@
  <animation>
   <type>rotate</type>
   <object-name>elevator_right</object-name>
-  <property>controls/flight/elevator</property>
+  <property>controls/flight/elevator-pos</property>
   <factor>10</factor>
   <offset-deg>0</offset-deg>   
 		  <axis>
@@ -2782,7 +2782,7 @@
  <animation>
   <type>rotate</type>
   <object-name>elevator_left</object-name>
-  <property>controls/flight/elevator</property>
+  <property>controls/flight/elevator-pos</property>
   <factor>-10</factor>
   <offset-deg>0</offset-deg>
 		  <axis>

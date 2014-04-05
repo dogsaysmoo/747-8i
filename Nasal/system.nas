@@ -226,7 +226,7 @@ var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 1.2,], "/con
 beacon_switch = props.globals.getNode("controls/lighting/beacon", 1);
 var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 3,], "/controls/lighting/strobe" );
 
-## Prevent gear from being retracted on ground ##
+## Landing Gear ##
 
 controls.gearDown = func(v) {
     if (v < 0 and getprop("systems/hydraulic/equipment/enable-flap")) {
@@ -247,7 +247,7 @@ setlistener("controls/gear/alt-gear", func (alt) {
 	}
 },0,0);
 
-## Thrust reversers
+## Thrust reversers ##
 var thr_reverser = func {
 	var threv0 = props.globals.getNode("controls/engines/engine[0]/reverser",1);
 	var threv1 = props.globals.getNode("controls/engines/engine[1]/reverser",1);
@@ -271,12 +271,12 @@ var thr_reverser = func {
 	}
 }
 
-## Flaps
+## Flaps ##
 controls.flapsDown = func(step) {
     if (getprop("systems/hydraulic/equipment/enable-flap") or getprop("controls/flight/alt-flaps") != 0) {
     	if(step == 0) return;
     	if(props.globals.getNode("/sim/flaps") != nil) {
-        	controls.stepProps("/controls/flight/flaps", "/sim/flaps", step);
+        	globals.controls.stepProps("/controls/flight/flaps", "/sim/flaps", step);
         	return;
     	}
     	# Hard-coded flaps movement in 3 equal steps:
@@ -294,6 +294,23 @@ var altn_flapsDown = func(step) {
 	settimer(func {setprop("controls/flight/alt-flaps",0);},0.15);
 	if (getprop("controls/flight/flaps") >= 0.833 and step == 1) return;
 	controls.flapsDown(step);
+    }
+}
+
+## Flight Controls ##
+var fltctrls = props.globals.getNode("controls/flight",1);
+var ailnctrl = fltctrls.getNode("aileron",1);
+var elevctrl = fltctrls.getNode("elevator",1);
+var rudrctrl = fltctrls.getNode("rudder",1);
+var ailnpos = fltctrls.initNode("aileron-pos",0,"DOUBLE");
+var elevpos = fltctrls.initNode("elevator-pos",0,"DOUBLE");
+var rudrpos = fltctrls.initNode("rudder-pos",0,"DOUBLE");
+
+var set_fltctrls = func {
+    if (getprop("systems/hydraulic/equipment/enable-sfc")) {
+        ailnpos.setValue(ailnctrl.getValue());
+        elevpos.setValue(elevctrl.getValue());
+        rudrpos.setValue(rudrctrl.getValue());
     }
 }
 
@@ -354,7 +371,7 @@ var Engine = {
         m.fuel_pph=m.eng.getNode("fuel-flow_pph",1);
         m.fuel_pph.setDoubleValue(0);
         m.fuel_gph=m.eng.getNode("fuel-flow-gph",1);
-        m.hpump=props.globals.getNode("systems/hydraulics/pump-psi["~eng_num~"]",1);
+        m.hpump=props.globals.getNode("systems/hydraulic/pump-psi["~eng_num~"]",1);
         m.hpump.setDoubleValue(0);
     return m;
     },
@@ -741,6 +758,7 @@ var update_systems = func {
     Efis.update_wind();
     wiper.active();
     stall_horn();
+    set_fltctrls();
     if(getprop("controls/gear/gear-down")){
         setprop("sim/multiplay/generic/float[0]",getprop("gear/gear[0]/compression-m"));
         setprop("sim/multiplay/generic/float[1]",getprop("gear/gear[1]/compression-m"));
