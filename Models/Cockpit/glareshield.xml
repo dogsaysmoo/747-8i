@@ -3,191 +3,6 @@
 
 <path>glareshield.ac</path>
 
-<!--effect>
-	<inherits-from>Effects/lightmap</inherits-from>
-	<parameters>
-		<texture n="1">
-			<image>Aircraft/747-8i/Models/Effects/lightmap_glareshield.png</image>
-		</texture>
-		<factor><use>/controls/lighting/panel-glareshield-norm</use></factor>
-	</parameters>
-	<object-name>AFDS</object-name>
-	<object-name>EICAS</object-name>
-	<object-name>EFIS</object-name>
-</effect-->
-
-<!--model>
-	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
-	<offsets>
-		<x-m> 0.904</x-m>
-		<y-m>-0.178</y-m>
-		<z-m> 0.965</z-m>
-		<pitch-deg>-22</pitch-deg>
-	</offsets>
-	<condition>
-		<not>
-			<property>instrumentation/afds/inputs/ias-mach-selected</property>
-		</not>
-	</condition>
-	<overlay>
-		<params>
-			<property type="string">/autopilot/settings/target-speed-kt</property>
-			<format type="string">%03.0f</format>
-			<character-size type="double">0.009</character-size>
-			<color>
-				<red   type="double">0.7</red>
-				<green type="double">0.7</green>
-				<blue  type="double">0.7</blue>
-			</color>
-		</params>
-	</overlay>
-</model>
-
-<model>
-	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
-	<offsets>
-		<x-m> 0.904</x-m>
-		<y-m>-0.178</y-m>
-		<z-m> 0.965</z-m>
-		<pitch-deg>-22</pitch-deg>
-	</offsets>
-	<condition>
-		<property>instrumentation/afds/inputs/ias-mach-selected</property>
-	</condition>
-	<overlay>
-		<params>
-			<property type="string">/autopilot/settings/target-speed-mach</property>
-			<factor>100</factor>
-			<format type="string">%03.0f</format>
-			<character-size type="double">0.009</character-size>
-			<color>
-				<red   type="double">0.7</red>
-				<green type="double">0.7</green>
-				<blue  type="double">0.7</blue>
-			</color>
-		</params>
-	</overlay>
-</model-->
-
-<!--panel-->
-	<!--name>IAS/MACH toggle</name>
-	<background>Aircraft/747-8i/Models/Cockpit/transparent.png</background>
-	<w>12</w>
-	<h>6</h>
-	<instruments>
-		<instrument>
-			<name>panel hotspots</name>
-			<x>6</x>
-			<y>3</y>
-			<w>12</w>
-			<h>6</h>
-			<w-base>12</w-base>
-			<h-base>6</h-base>
-			<actions>
-				<action>
-					<name>IAS/MACH toggle</name>
-					<button>0</button>
-					<x>-6</x>
-					<y>-3</y>
-					<w>10</w>
-					<h>5</h>
-					<binding>
-						<command>property-toggle</command>
-						<property>instrumentation/afds/inputs/ias-mach-selected</property>
-					</binding>
-				</action>
-			</actions>
-		</instrument>
-	</instruments-->
-	<!--path>Aircraft/747-8i/Models/Cockpit/iasbutton.xml</path>
-	<bottom-left>
-		<x-m> 0.884</x-m>
-                <y-m>-0.188</y-m>
-                <z-m> 0.965</z-m>
-	</bottom-left>
-	<bottom-right>
-		<x-m> 0.884</x-m>
-                <y-m>-0.158</y-m>
-                <z-m> 0.965</z-m>
-	</bottom-right>
-	<top-left>
-		<x-m> 0.924</x-m>
-                <y-m>-0.188</y-m>
-                <z-m> 0.965</z-m>
-	</top-left>
-</panel-->
- 
-<!--model>
-	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
-	<offsets>
-		<x-m> 0.904</x-m>
-		<y-m>-0.096</y-m>
-		<z-m> 0.965</z-m>
-		<pitch-deg>-22</pitch-deg>
-	</offsets>
-	<overlay>
-		<params>
-			<property type="string">/autopilot/settings/heading-bug-deg</property>
-			<format type="string">%03.0f</format>
-			<character-size type="double">0.009</character-size>
-			<color>
-				<red   type="double">0.7</red>
-				<green type="double">0.7</green>
-				<blue  type="double">0.7</blue>
-			</color>
-		</params>
-	</overlay>
- </model>
-
- <model>
-	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
-	<offsets>
-		<x-m> 0.904</x-m>
-		<y-m>-0.035</y-m>
-		<z-m> 0.965</z-m>
-		<pitch-deg>-22</pitch-deg>
-	</offsets>
-	<overlay>
-		<params>
-			<property type="string">/autopilot/settings/vertical-speed-fpm</property>
-			<format type="string">%+05.0f</format>
-			<character-size type="double">0.009</character-size>
-			<color>
-				<red   type="double">0.7</red>
-				<green type="double">0.7</green>
-				<blue  type="double">0.7</blue>
-			</color>
-		</params>
-	</overlay-->
-	<!--condition>
-		<equals>
-			<property>/autopilot/locks/altitude</property>
-			<value>vertical-speed-hold</value>
-		</equals>
-	</condition-->
- <!--/model>
- 
-<model>
-	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
-	<offsets>
-		<x-m> 0.904</x-m>
-		<y-m> 0.035</y-m>
-		<z-m> 0.965</z-m>
-		<pitch-deg>-22</pitch-deg>
-	</offsets>
-	<overlay>
-		<params>
-			<property type="string">/autopilot/settings/target-altitude-ft</property>
-			<format type="string">%05.0f</format>
-			<character-size type="double">0.009</character-size>
-			<color>
-				<red   type="double">0.7</red>
-				<green type="double">0.7</green>
-				<blue  type="double">0.7</blue>
-			</color>
-	   </params>
-	</overlay>
-</model-->
 
 <!-- DIGITS -->
 	<!-- AT -->
@@ -439,8 +254,6 @@
 <animation>
 	<type>textranslate</type>
 	<object-name>Alt.Digit1</object-name>
-	<!--property>autopilot/settings/target-altitude-ft</property-->
-	<!--property>autopilot/settings/altitude-setting-ft</property-->
 	<property>autopilot/settings/alt-display-ft</property>
 	<factor>0.00001</factor>
 	<step>10000</step>
@@ -453,8 +266,6 @@
 <animation>
 	<type>textranslate</type>
 	<object-name>Alt.Digit2</object-name>
-	<!--property>autopilot/settings/target-altitude-ft</property-->
-	<!--property>autopilot/settings/altitude-setting-ft</property-->
 	<property>autopilot/settings/alt-display-ft</property>
 	<factor>0.0001</factor>
 	<step>1000</step>
@@ -467,8 +278,6 @@
 <animation>
 	<type>textranslate</type>
 	<object-name>Alt.Digit3</object-name>
-	<!--property>autopilot/settings/target-altitude-ft</property-->
-	<!--property>autopilot/settings/altitude-setting-ft</property-->
 	<property>autopilot/settings/alt-display-ft</property>
 	<factor>0.001</factor>
 	<step>100</step>
@@ -481,8 +290,6 @@
 <animation>
 	<type>textranslate</type>
 	<object-name>Alt.Digit4</object-name>
-	<!--property>autopilot/settings/target-altitude-ft</property-->
-	<!--property>autopilot/settings/altitude-setting-ft</property-->
 	<property>autopilot/settings/alt-display-ft</property>
 	<factor>0.01</factor>
 	<step>10</step>
@@ -495,8 +302,6 @@
 <animation>
 	<type>textranslate</type>
 	<object-name>Alt.Digit5</object-name>
-	<!--property>autopilot/settings/target-altitude-ft</property-->
-	<!--property>autopilot/settings/altitude-setting-ft</property-->
 	<property>autopilot/settings/alt-display-ft</property>
 	<factor>0.1</factor>
 	<step>1</step>
@@ -669,6 +474,7 @@
 	<object-name>sw.spd</object-name>
 	<action>
 		<button>0</button>
+		<button>3</button>
 		<repeatable>true</repeatable>  
 		<binding>
 			<condition>
@@ -695,6 +501,7 @@
 	</action>
 	<action>
 		<button>1</button>
+		<button>4</button>
 		<repeatable>true</repeatable>  
 		<binding>
 			<condition>
@@ -775,6 +582,7 @@
 	<object-name>sw.alt</object-name>
 	<action>
 		<button>0</button>
+		<button>3</button>
 		<repeatable>true</repeatable>  
 		<binding>
 			<command>property-adjust</command>
@@ -788,6 +596,7 @@
 	</action>
 	<action>
 		<button>1</button>
+		<button>4</button>
 		<repeatable>true</repeatable>  
 		<binding>
 			<command>property-adjust</command>
@@ -898,25 +707,9 @@
 	<object-name>sw.hdg</object-name>
 	<action>
 		<button>0</button>
+		<button>3</button>
 		<repeatable>true</repeatable>  
-		<!--binding>
-			<condition>
-				<equals>
-					<property>/autopilot/settings/heading-bug-deg</property>
-					<value>359</value>
-				</equals>
-			</condition>
-			<command>property-assign</command>
-			<property>/autopilot/settings/heading-bug-deg</property>
-			<value>000</value>
-		</binding-->
 		<binding>
-			<!--condition>
-				<not-equals>
-					<property>/autopilot/settings/heading-bug-deg</property>
-					<value>359</value>
-				</not-equals>
-			</condition-->
 			<command>property-adjust</command>
 			<property>/autopilot/settings/heading-bug-deg</property>
 			<step>1</step>
@@ -927,25 +720,9 @@
 	</action>
 	<action>
 		<button>1</button>
+		<button>4</button>
 		<repeatable>true</repeatable>  
-		<!--binding>
-			<condition>
-				<equals>
-					<property>/autopilot/settings/heading-bug-deg</property>
-					<value>000</value>
-				</equals>
-			</condition>
-			<command>property-assign</command>
-			<property>/autopilot/settings/heading-bug-deg</property>
-			<value>359</value>
-		</binding-->
 		<binding>
-			<!--condition>
-				<not-equals>
-					<property>/autopilot/settings/heading-bug-deg</property>
-					<value>000</value>
-				</not-equals>
-			</condition-->
 			<command>property-adjust</command>
 			<property>/autopilot/settings/heading-bug-deg</property>
 			<step>-1</step>
@@ -968,11 +745,6 @@
 		    <command>nasal</command>
                     <script>controls.click(4);Boeing747.afds.input(0,1);</script>
 		</binding>
-		<!--binding>
-                        <command>property-assign</command>
-                        <property>instrumentation/nav/slaved-to-gps</property>
-                        <value type="bool">false</value>
-                </binding-->
 	</action>
  </animation>
 

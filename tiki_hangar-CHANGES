@@ -94,3 +94,5 @@ Changes made by John W.
 -Added ground air to Control Panel dialog
 -Added IRS alignment timing to Control Panel dialog
 -Added engine property "started" for fuel starvation shutdown
+-Added scroll wheel controls for AP panel
+
