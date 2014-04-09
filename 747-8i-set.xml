@@ -73,7 +73,7 @@
 
 		<!-- Definicoes para splash screen -->
 		<startup>
-			<splash-texture>Aircraft/747-8i/splash_gva.png</splash-texture>
+			<splash-texture>Aircraft/747-8i/splash.png</splash-texture>
 		</startup>
 
 		<!-- Definio do Painel 2D da Aeronave -->
