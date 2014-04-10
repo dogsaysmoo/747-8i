@@ -232,7 +232,8 @@ var WEU =
             horn=1;
             shaker=1;
             # disable autopilot when stalled
-            setprop("autopilot/locks/passive-mode",1);
+	    if (me.speed<0.9 * stallspeed)
+            	setprop("instrumentation/afds/AP",0);
         }
 
         caution_state = (size(me.msgs_caution)>0);

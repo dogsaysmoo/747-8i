@@ -123,9 +123,9 @@ var AFDS = {
             }
 	    if (btn==2) {
 #		me.alt_setting.setValue(me.alt_display.getValue());
-		if ((me.vertical_mode.getValue() == 8) or (me.vertical_mode.getValue() == 12)) {
+#		if ((me.vertical_mode.getValue() == 8) or (me.vertical_mode.getValue() == 12)) {
 		    me.flch_mode.setBoolValue(1);
-		}
+#		}
 		if (vs_now > 6000) {
 		    me.vs_setting.setValue(6000);
 		} elsif (vs_now < -8000) {
