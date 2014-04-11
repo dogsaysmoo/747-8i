@@ -196,8 +196,10 @@ var AFDS = {
 		me.uses_autocoord = 1;
 		setprop("controls/flight/auto-coordination",0);
 	}
-	if (output == 1 and me.uses_autocoord == 1)
-		    setprop("controls/flight/auto-coordination",1);
+	if (output == 1 and me.uses_autocoord == 1) {
+		me.uses_autocoord = 0;
+		setprop("controls/flight/auto-coordination",1);
+	}
         me.AP_passive.setValue(output);
     },
 ###################
