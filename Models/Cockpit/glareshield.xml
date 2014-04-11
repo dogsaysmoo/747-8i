@@ -944,16 +944,16 @@
 			<value type="string"></value>
 		</binding>
 	</action>
- </animation>
+ </animation-->
 
 <animation>
     <type>select</type>
     <object-name>THR_lit</object-name>
     <condition>
-		<equals>
-			<property>/autopilot/locks/speed</property>
-			<value>speed-with-pitch-trim</value>
-		</equals>
+		<greater-than>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>0</value>
+                </greater-than>
     </condition>
 </animation>
 
@@ -961,18 +961,12 @@
     <type>select</type>
     <object-name>THR_unlit</object-name>
     <condition>
-		<or>
-			<equals>
-				<property>/autopilot/locks/speed</property>
-				<value></value>
-			</equals>
-			<equals>
-				<property>/autopilot/locks/speed</property>
-				<value>speed-with-throttle</value>
-			</equals>
-		</or>
+		<equals>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>0</value>
+		</equals>
     </condition>
-</animation-->
+</animation>
 
 <animation>
 	<type>pick</type>
