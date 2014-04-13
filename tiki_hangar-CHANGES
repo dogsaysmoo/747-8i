@@ -95,4 +95,7 @@ Changes made by John W.
 -Added IRS alignment timing to Control Panel dialog
 -Added engine property "started" for fuel starvation shutdown
 -Added scroll wheel controls for AP panel
+-Made FLCH automatic with V/S mode
+-Added THR light with SPD light on AT
+-Added function to turn off autocoordination with AP on
 
