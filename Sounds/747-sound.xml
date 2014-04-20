@@ -563,6 +563,7 @@
                         <mode>once</mode>
                         <path>Aircraft/747-8i/Sounds/apu_strt.wav</path>
                         <condition>
+			    <and>
                                 <equals>
                                         <property>/controls/electric/apu</property>
                                         <value>2</value>
@@ -571,10 +572,7 @@
                                         <property>/engines/apu/running</property>
                                         <value>0</value>
                                 </equals>
-                                <!--or>
-                                        <property>/controls/electric/battery-switch</property>
-                                        <property>/controls/electric/external-power</property>
-                                </or-->
+			    </and>
                         </condition>
                         <position>
                                 <x>42.218</x>
@@ -589,19 +587,9 @@
                         <mode>looped</mode>
                         <path>Aircraft/747-8i/Sounds/apu_run.wav</path>
                         <condition>
-                                <!--equals>
-                                        <property>/engines/apu/running</property>
-                                        <value>1</value>
-                                </equals>
-                                <not>
-                                <equals>
-                                	<property>/controls/electric/apu</property>
-                                        <value>0</value>
-                                </equals>
-                                </not-->
                                 <greater-than>
                                 	<property>/engines/apu/rpm</property>
-                                	<value>9000.0</value>
+                                	<value>5000.0</value>
                                 </greater-than>
                         </condition>
                         <position>
@@ -617,6 +605,7 @@
                         <mode>once</mode>
                         <path>Aircraft/747-8i/Sounds/apu_stop.wav</path>
                         <condition>
+			   <and>
                         	<greater-than>
                                         <property>/engines/apu/rpm</property>
                                         <value>5000.0</value>
@@ -625,10 +614,11 @@
                                         <property>/controls/electric/apu</property>
                                         <value>0</value>
                                 </equals>
-                                <equals>
+                                <!--equals>
                                 	<property>/engines/apu/running</property>
                                 	<value>0</value>
-                                </equals>
+                                </equals-->
+			   </and>
                         </condition>
                         <position>
                                 <x>42.218</x>
