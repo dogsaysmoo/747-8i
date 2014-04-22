@@ -28,21 +28,18 @@ closer to realitity.
 
 Authors:
 
-FGBr Group
+FGBr Group:
+Aurino das Neves - BR-NVS
+Isaias Prestes - PR-PRE
+Rick Britto - BR-RIC
+Wagner Silva - BR-WAG
 
 *********************
 Known bugs
 *********************
-- Full compatibility with 747-400 systems
 - Cabin model
 
 *********************
-Changelog
-*********************
-
-December 23, 2011 04:52:33 PM : First release.
-
-*********************
 Modified by J. Williams
-See 0321-changes in the 747-8i root directory
-August 12, 2013
+See tiki_hangar-changes in the 747-8i root directory
+August 12, 2013, April 22, 2014

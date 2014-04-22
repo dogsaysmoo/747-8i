@@ -19,16 +19,16 @@
  <sim>
 
 		<description>Boeing 747-800 Intercontinental</description>
-		<author>FGBr Group / Modified by John Williams</author>
+		<author>FGBr Group / John Williams</author>
 		
 		<!-- Estado de desenvolvimento da aeronave -->
 		<status>beta</status>
 
 	<rating>
-		<FDM type="int">1</FDM>
-		<systems type="int">3</systems>
-		<cockpit type="int">3</cockpit>
-		<model type="int">2</model>
+		<FDM type="int">3</FDM>
+		<systems type="int">4</systems>
+		<cockpit type="int">4</cockpit>
+		<model type="int">3</model>
 	</rating>
 		
 		<flight-model>yasim</flight-model>
