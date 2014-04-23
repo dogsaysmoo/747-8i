@@ -380,13 +380,15 @@ var AFDS = {
 		elsif(cCourseError < -8.0) cCourseError = -8.0;
 		setprop("autopilot/internal/course-error", cCourseError);
 
-		var wp_lead = 30;
-#		if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 240 and getprop("position/altitude-ft") < 9000)
-#		    wp_lead = 10;
 		if(enroute[1] != nil)   # Course deg
 		{
 		    var wpt_eta = (enroute[1] / groundspeed * 3600);
 		    var brg_err = getprop("/autopilot/route-manager/wp/true-bearing-deg") - getprop("/orientation/heading-deg");
+		    var wp_lead = 30;
+#		    if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 240 and getprop("position/altitude-ft") < 9000) {
+#			wp_lead = 10;
+#			brg_err = 0;
+#		    }
 		    if (brg_err < 0) {
 			brg_err = brg_err + 360;
 		    }
@@ -424,11 +426,11 @@ var AFDS = {
 			    me.heading_change_rate = 1.125 * 0.7;
 			}
 			if (banklimit==0 and ma_spd<=0.5 and ma_spd>0.3333) {
-			    lim=30;
+			    lim=25;
 			    me.heading_change_rate = 0.625 * 0.7;
 			}
 			if (banklimit==0 and ma_spd<=0.333) {
-			    lim=35;
+			    lim=30;
 			    me.heading_change_rate = 0.55 * 0.7;
 			}
 			if (banklimit==0){

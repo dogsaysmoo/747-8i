@@ -138,52 +138,6 @@
 	<object-name>wiperr</object-name>
 </effect-->
 
-<!-- 2D panels -->
-
-<!--animation>
-	<type>pick</type>
-	<object-name>panel.electric</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-assign</command>
-			<property>sim/panel/path</property>
-			<value>Aircraft/747-8i/Panels/744_elec_panel.xml</value>
-		</binding>
-		<binding>
-			<command>property-assign</command>
-			<property>sim/panel/visibility</property>
-			<value>true</value>
-		</binding>
-		<binding>
-			<command>panel-load</command>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>panel.hydraulic</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-assign</command>
-			<property>sim/panel/path</property>
-			<value>Aircraft/747-8i/Panels/744_hyd_panel.xml</value>
-		</binding>
-		<binding>
-			<command>property-assign</command>
-			<property>sim/panel/visibility</property>
-			<value>true</value>
-		</binding>
-		<binding>
-			<command>panel-load</command>
-		</binding>
-	</action>
-</animation-->
-
 <!-- Electrical -->
 <animation>
 	<type>pick</type>

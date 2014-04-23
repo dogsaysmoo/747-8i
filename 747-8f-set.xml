@@ -76,11 +76,6 @@
 			<splash-texture>Aircraft/747-8i/splash_747-8F.png</splash-texture>
 		</startup>
 
-		<!-- Definio do Painel 2D da Aeronave -->
-		<panel>
-			<path>Aircraft/747-8i/Panels/744_hyd_panel.xml</path>
-		</panel>
-
 		<!-- modificaes para funcionamento dos liveries - http://wiki.flightgear.org/index.php/Livery_over_MP -->
 		<model>
 			<path>Aircraft/747-8i/Models/747-8F.xml</path>
