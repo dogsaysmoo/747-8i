@@ -2,8 +2,7 @@
 
 <PropertyList>
 
-  <path>global.ac</path>
-  <!--path>planex.ac</path-->
+  <path>pushback.ac</path>
 
   <model>
     <path>Models/Airport/Pushback/Goldhofert-warning-light.xml</path>

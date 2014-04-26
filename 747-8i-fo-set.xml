@@ -65,11 +65,11 @@
     <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
     <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>
     <ground-level-nearplane-m type="double">6f</ground-level-nearplane-m>
-    <x-offset-m type="double">0.55</x-offset-m>
-    <y-offset-m type="double">3.8</y-offset-m>
-    <z-offset-m type="double">-24.05</z-offset-m>
+    <x-offset-m type="double">0.437141</x-offset-m>
+    <y-offset-m type="double">3.78648</y-offset-m>
+    <z-offset-m type="double">-27.6696</z-offset-m>
     <pitch-offset-deg>-10</pitch-offset-deg>
-    <default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
+    <default-field-of-view-deg type="double">-10.0</default-field-of-view-deg>
    </config>
    <dynamic>
     <enabled type="bool">false</enabled>
@@ -84,9 +84,9 @@
     <from-model type="bool">true</from-model>
     <from-model-idx type="int">0</from-model-idx>
     <ground-level-nearplane-m type="double">6f</ground-level-nearplane-m>
-    <x-offset-m type="double">-0.55</x-offset-m>
-    <y-offset-m type="double">3.7</y-offset-m>
-    <z-offset-m type="double">-24.05</z-offset-m>
+    <x-offset-m type="double">-0.437141</x-offset-m>
+    <y-offset-m type="double">3.78648</y-offset-m>
+    <z-offset-m type="double">-27.6696</z-offset-m>
     <pitch-offset-deg>-10</pitch-offset-deg>
     <default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
    </config>

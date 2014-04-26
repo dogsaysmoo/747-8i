@@ -879,6 +879,9 @@ Service ceiling	43,000 ft (13,000 m)
 		<dialogs>
 			<file>Aircraft/747-8i/Nasal/dialogs.nas</file>
 		</dialogs>
+		<auto-coord>
+			<file>Aircraft/747-8i/Nasal/auto_coord.nas</file>
+		</auto-coord>
 
 	</nasal>
 

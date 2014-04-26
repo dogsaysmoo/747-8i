@@ -211,7 +211,7 @@
 <model>
 	<name>Pushback</name>
 	<!--path>Models/Airport/Pushback/Goldhofert.xml</path-->
-	<path>Aircraft/747-8i/Models/Service/Pushback/PLX.xml</path>
+	<path>Aircraft/747-8i/Models/Service/Pushback/pushback.xml</path>
 	<offsets>
 		<x-m>-26.1012</x-m>
 		<y-m>  0.000</y-m>
