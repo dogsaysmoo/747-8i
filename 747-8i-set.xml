@@ -322,16 +322,14 @@
 4.  APU Generators ON.
 5.  APU Bleed ON
 6.  Fuel Pumps ON
-7.  Ignition Con ON
-8.  Pull 2 starters at a time, wait till N1 > 30, then pull other 2 starters.
+7.  Pull 2 starters at a time, wait till N1 > 30, then pull other 2 starters.
 
 When all 4 engines are running:
-9.  Ignition Con OFF
-10. Engine Bleeds ON
-11. APU OFF
-12. Demand Hydraulic pumps AUTO (knob in middle position)
-13. Engine Driven Hydraulic Pumps ON
-14. Left and Right fuel X-Feeds ON
+8. Engine Bleeds ON
+9. APU OFF
+10. Demand Hydraulic pumps AUTO (knob in middle position)
+11. Engine Driven Hydraulic Pumps ON
+12. Left and Right fuel X-Feeds ON
 
 -or-
 Use the autostart in the 747-8i menu, if you must.
@@ -456,7 +454,7 @@ Service ceiling	43,000 ft (13,000 m)
 					</binding>
 				</item>
 
-				<item>
+				<!--item>
 					<label>Select MP-copilot</label>
 					<binding>
 						<command>nasal</command>
@@ -465,7 +463,7 @@ Service ceiling	43,000 ft (13,000 m)
 							copilot_dialog.show(aircraft_dual_control.copilot_type);
 						</script>
 					</binding>
-				</item>
+				</item-->
 				
 				<item>
 					<label>Show/hide yokes</label>
