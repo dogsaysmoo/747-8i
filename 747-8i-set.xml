@@ -772,24 +772,6 @@ Service ceiling	43,000 ft (13,000 m)
 			</gear>
 		</gear>
 	
-		<lighting>
-			<beacon>0</beacon>
-			<landing-light-inbdl type="bool">0</landing-light-inbdl>
-			<landing-light-inbdr type="bool">0</landing-light-inbdr>
-			<landing-light-outbdl type="bool">0</landing-light-outbdl>
-			<landing-light-outbdr type="bool">0</landing-light-outbdr>
-			<landing-lights type="bool">0</landing-lights>
-			<landing-lights type="bool">0</landing-lights>
-			<landing-lights type="bool">0</landing-lights>
-			<logo-lights>0</logo-lights>
-			<nav-lights>0</nav-lights>
-			<panel-norm>0.2</panel-norm>
-			<strobe>0</strobe>
-			<taxi-lights>0</taxi-lights>
-			<turnoff-light-l type="bool">0</turnoff-light-l>
-			<turnoff-light-r type="bool">0</turnoff-light-r>
-		</lighting>	
-	
 		<groundservice>
 			<active type="bool">false</active>
 			<fueling>
@@ -800,18 +782,16 @@ Service ceiling	43,000 ft (13,000 m)
 		
 		<lighting>
 			<instruments-norm type="double">0.2</instruments-norm>
+			<panel-norm>0.2</panel-norm>
 			<landing-lights type="bool">0</landing-lights>
-			<landing-light-inbdl type="bool">0</landing-light-inbdl>
-			<landing-light-inbdr type="bool">0</landing-light-inbdr>
-			<landing-light-outbdl type="bool">0</landing-light-outbdl>
-			<landing-light-outbdr type="bool">0</landing-light-outbdr>
+			<landing-lights type="bool">0</landing-lights>
+			<landing-lights type="bool">0</landing-lights>
 			<logo-lights type="bool">0</logo-lights>
 			<beacon type="bool">0</beacon>
 			<strobe type="bool">0</strobe>
 			<nav-lights type="bool">0</nav-lights>
 			<cabin-lights type="bool">0</cabin-lights>
 			<wing-lights type="bool">0</wing-lights>
-			<taxi-light type="bool">0</taxi-light>
 			<taxi-lights type="bool">0</taxi-lights>
 			<instrument-lights type="bool">0</instrument-lights>
 		</lighting>

@@ -25,7 +25,7 @@
     <object-name>whitelight</object-name>
     <condition>
 			<and>
-				<property>controls/switches/wing-lights</property>
+				<property>controls/lighting/wing-lights</property>
 	    		<not>
 					<property>sim/crashed</property>
 	    		</not>

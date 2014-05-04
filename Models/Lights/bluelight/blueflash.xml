@@ -26,7 +26,7 @@
     <condition>
 		<or>
 			<and>
-				<property>controls/switches/nav-lights</property>
+				<property>controls/lighting/nav-lights</property>
 	    		<not>
 					<property>sim/crashed</property>
 	    		</not>

@@ -4099,7 +4099,7 @@
 		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
-			<property>controls/switches/taxi-lights</property>
+			<property>controls/lighting/taxi-lights</property>
 		</binding>
 		<binding>
 			<command>nasal</command>
@@ -4110,7 +4110,7 @@
 <animation>
 	<type>rotate</type>
 	<object-name>sw.taxi.001</object-name>
-	<property>controls/switches/taxi-lights</property>
+	<property>controls/lighting/taxi-lights</property>
 	<factor>-25</factor>
 	<center>
 		<x-m> 0.284</x-m>
@@ -4166,7 +4166,7 @@
 		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
-			<property>controls/switches/nav-lights</property>
+			<property>controls/lighting/nav-lights</property>
 		</binding>
 		<binding>
 			<command>nasal</command>
@@ -4178,7 +4178,7 @@
 <animation>
 	<type>rotate</type>
 	<object-name>sw.light.nav</object-name>
-	<property>controls/switches/nav-lights</property>
+	<property>controls/lighting/nav-lights</property>
 	<factor>-25</factor>
 	<center>
 		<x-m> 0.284</x-m>
@@ -4234,10 +4234,6 @@
 		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
-			<property>controls/switches/wing-lights</property>
-		</binding>
-		<binding>
-			<command>property-toggle</command>
 			<property>controls/lighting/wing-lights</property>
 		</binding>
 		<binding>
@@ -4272,10 +4268,6 @@
 		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
-			<property>controls/switches/logo-lights</property>
-		</binding>
-		<binding>
-			<command>property-toggle</command>
 			<property>controls/lighting/logo-lights</property>
 		</binding>
 		<binding>
@@ -4288,7 +4280,7 @@
 <animation>
 	<type>rotate</type>
 	<object-name>sw.logo</object-name>
-	<property>controls/switches/logo-lights</property>
+	<property>controls/lighting/logo-lights</property>
 	<factor>-25</factor>
 	<center>
 		<x-m> 0.284</x-m>

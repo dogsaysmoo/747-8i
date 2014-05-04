@@ -1,35 +1,58 @@
-<?xml version="1.0"?>
-<PropertyList>
-  <name>lightcontrol</name>
-  <layout>vbox</layout>
-
-  <text>
-    <label>Lights</label>
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <name>lightcontrol</name>
+
+  <layout>vbox</layout>
+
+
+
+  <text>
+
+    <label>Lights</label>
+
     <valign>center</valign>
     <halign>center</halign>
-  </text>
-
-  <hrule/>
+  </text>
+
+
+
+  <hrule/>
+
   
   <!-- Grupo geral -->
   <group>
     <layout>hbox</layout>
     <halign>center</halign>
     <valign>top</valign>  
-
-		  <group>
-		    <layout>vbox</layout>
-		    <halign>left</halign>
+
+
+		  <group>
+
+		    <layout>vbox</layout>
+
+		    <halign>left</halign>
+
 		    <valign>top</valign>
 		    
-		    <text>
-		      <label> </label>
-		    </text>
-		
-		    <checkbox>
-		      <halign>left</halign>
-		      <label>Landing lights</label>
-		      <property>controls/lighting/landing-lights[0]</property>
+		    <text>
+
+		      <label> </label>
+
+		    </text>
+
+		
+
+
+		    <checkbox>
+
+		      <halign>left</halign>
+
+		      <label>Landing lights</label>
+
+		      <property>controls/lighting/landing-lights[0]</property>
+
 		      <binding>
 		        <command>property-toggle</command>
 		        <property>controls/lighting/landing-lights[0]</property>
@@ -42,12 +65,17 @@
 		        <command>property-toggle</command>
 		        <property>controls/lighting/landing-lights[2]</property>
 		      </binding>
-		      <binding>
-		        <command>property-toggle</command>
-		        <property>/sim/sound/switch</property>
-		      </binding>
+		      <binding>
+
+		        <command>property-toggle</command>
+
+		        <property>/sim/sound/switch</property>
+
+		      </binding>
+
 		      <live>1</live>
-		    </checkbox>
+		    </checkbox>
+
 		
 		    <!--checkbox>
 		      <halign>left</halign>
@@ -76,20 +104,31 @@
 		        <property>/sim/sound/switch</property>
 		      </binding>
 		    </checkbox-->
-		
-		    <checkbox>
-		      <halign>left</halign>
-		      <label>Taxi lights</label>
-		      <property>controls/switches/taxi-lights</property>
-		      <binding>
-		        <command>property-toggle</command>
-		        <property>controls/switches/taxi-lights</property>
-		      </binding>
-		      <binding>
-		        <command>property-toggle</command>
+		
+
+		    <checkbox>
+
+		      <halign>left</halign>
+
+		      <label>Taxi lights</label>
+
+		      <property>controls/lighting/taxi-lights</property>
+		      <binding>
+
+		        <command>property-toggle</command>
+
+		        <property>controls/lighting/taxi-lights</property>
+		      </binding>
+
+		      <binding>
+
+		        <command>property-toggle</command>
+
 		        <property>/sim/sound/switch</property>
-		      </binding>
-		    </checkbox>
+		      </binding>
+
+		    </checkbox>
+
 		    
 		   <checkbox>
 		      <halign>left</halign>
@@ -108,10 +147,10 @@
 		    <checkbox>
 		      <halign>left</halign>
 		      <label>Navigation lights</label>
-		      <property>controls/switches/nav-lights</property>
+		      <property>controls/lighting/nav-lights</property>
 		      <binding>
 		        <command>property-toggle</command>
-		        <property>controls/switches/nav-lights</property>
+		        <property>controls/lighting/nav-lights</property>
 		      </binding>
 		      <binding>
 		        <command>property-toggle</command>
@@ -202,8 +241,10 @@
 		        </binding>
 		      </slider>
 		
-		
-		  </group>
+		
+
+		  </group>
+
 
 		  <group>
 		    <layout>vbox</layout>
@@ -230,11 +271,7 @@
 		   <checkbox>
 		     <halign>left</halign>
 		     <label>Logo lights</label>
-		     <property>/controls/switches/logo-lights</property>
-		     <binding>
-		       <command>property-toggle</command>
-		       <property>/controls/switches/logo-lights</property>
-		     </binding>
+		     <property>/controls/lighting/logo-lights</property>
 		     <binding>
 		       <command>property-toggle</command>
 		       <property>/controls/lighting/logo-lights</property>
@@ -253,10 +290,6 @@
 		       <command>property-toggle</command>
 		       <property>/controls/lighting/wing-lights</property>
 		     </binding>
-		     <binding>
-		       <command>property-toggle</command>
-		       <property>/controls/switches/wing-lights</property>
-		     </binding>
 		      <binding>
 		        <command>property-toggle</command>
 		        <property>/sim/sound/switch</property>
@@ -267,22 +300,41 @@
 		 
   </group>
   
-  <hrule/>
-
-  <group>
-    <layout>hbox</layout>
-    <empty><stretch>true</stretch></empty>
-
-    <button>
-      <legend>Close</legend>
-      <default>true</default>
-      <key>Esc</key>
-      <binding>
-        <command>dialog-close</command>
-      </binding>
-    </button>
-
-    <empty><stretch>true</stretch></empty>
-  </group>
-
-</PropertyList>
+  <hrule/>
+
+
+
+  <group>
+
+    <layout>hbox</layout>
+
+    <empty><stretch>true</stretch></empty>
+
+
+
+    <button>
+
+      <legend>Close</legend>
+
+      <default>true</default>
+
+      <key>Esc</key>
+
+      <binding>
+
+        <command>dialog-close</command>
+
+      </binding>
+
+    </button>
+
+
+
+    <empty><stretch>true</stretch></empty>
+
+  </group>
+
+
+
+</PropertyList>
+

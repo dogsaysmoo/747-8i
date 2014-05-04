@@ -221,7 +221,7 @@ var mouseHandler = MouseHandler.new();
 
 ## Lights ##
 
-strobe_switch = props.globals.getNode("controls/switches/strobe", 1);
+strobe_switch = props.globals.getNode("controls/lighting/strobe", 1);
 var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 1.2,], "/controls/lighting/beacon" );
 beacon_switch = props.globals.getNode("controls/lighting/beacon", 1);
 var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 3,], "/controls/lighting/strobe" );
@@ -587,15 +587,6 @@ setprop("controls/lighting/landing-lights[0]",1);
 setprop("controls/lighting/landing-lights[1]",1);
 setprop("controls/lighting/landing-lights[2]",1);
 
-setprop("controls/switches/nav-lights",1);
-setprop("controls/switches/strobe",1);
-setprop("controls/switches/strobe-lights",1);
-setprop("controls/switches/wing-lights",1);
-setprop("controls/switches/taxi-lights",1);
-setprop("controls/switches/logo-lights",1);
-setprop("controls/switches/landing-light",1);
-setprop("controls/switches/landing-lights",1);
-
 setprop("controls/engines/engine[0]/cutoff",0);
 setprop("controls/engines/engine[1]/cutoff",0);
 setprop("controls/engines/engine[2]/cutoff",0);
@@ -697,15 +688,6 @@ setprop("controls/lighting/cabin-lights",0);
 setprop("controls/lighting/landing-lights[0]",0);
 setprop("controls/lighting/landing-lights[1]",0);
 setprop("controls/lighting/landing-lights[2]",0);
-
-setprop("controls/switches/nav-lights",0);
-setprop("controls/switches/strobe",0);
-setprop("controls/switches/strobe-lights",0);
-setprop("controls/switches/wing-lights",0);
-setprop("controls/switches/taxi-lights",0);
-setprop("controls/switches/landing-light",0);
-setprop("controls/switches/landing-lights",0);
-setprop("controls/switches/logo-lights",0);
 
 setprop("controls/engines/engine[0]/cutoff",1);
 setprop("controls/engines/engine[1]/cutoff",1);

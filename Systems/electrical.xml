@@ -436,7 +436,7 @@
     <input>Master Bus</input>
     <output>Beacon Power</output>
     <switch>
-      <prop>/controls/switches/flashing-beacon</prop>
+      <prop>/controls/lighting/beacon</prop>
     </switch>
   </connector>
 
@@ -460,7 +460,7 @@
     <input>Master Bus</input>
     <output>Map Lights Power</output>
     <switch>
-      <prop>/controls/switches/nav-lights</prop>
+      <prop>/controls/lighting/nav-lights</prop>
     </switch>
   </connector>
 
@@ -476,7 +476,7 @@
     <input>Master Bus</input>
     <output>Strobe Lights Power</output>
     <switch>
-      <prop>/controls/switches/strobe-lights</prop>
+      <prop>/controls/lighting/strobe</prop>
     </switch>
   </connector>
 
@@ -484,7 +484,7 @@
     <input>Master Bus</input>
     <output>Taxi Lights Power</output>
     <switch>
-      <prop>/controls/switches/taxi-lights</prop>
+      <prop>/controls/lighting/taxi-lights</prop>
     </switch>
   </connector>
 

@@ -21,7 +21,7 @@
                   <and>
 			<or>
                               <property>controls/lighting/landing-lights[0]</property>
-			      <property>controls/switches/taxi-lights</property>
+			      <property>controls/lighting/taxi-lights</property>
 			</or>
                         <not>
                               <property>sim/crashed</property>

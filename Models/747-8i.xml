@@ -541,7 +541,7 @@
 	<object-name>pylon.lt.out</object-name>
 	<object-name>wing.lt.out</object-name>
 	<condition>
-		<property>/controls/switches/wing-lights</property>
+		<property>/controls/lighting/wing-lights</property>
 	</condition>
 </animation>
 
@@ -2839,7 +2839,7 @@
 	<object-name>rudder.lit</object-name>
 	<object-name>vstab.lit</object-name>
 	<condition>
-		<property>controls/switches/logo-lights</property>
+		<property>controls/lighting/logo-lights</property>
 	</condition>
 </animation>
 
