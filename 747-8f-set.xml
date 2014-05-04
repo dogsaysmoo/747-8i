@@ -265,6 +265,8 @@
             </generic>
         </multiplay>
 	  
+        <flight-recorder include="Systems/flight-recorder.xml"/>
+
 		<!-- O menu de ajuda da aeronave -->
         <help>
 			<title>747-8F</title>
