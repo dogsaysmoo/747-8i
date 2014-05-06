@@ -841,13 +841,6 @@ Service ceiling	43,000 ft (13,000 m)
 		<hydraulic>
 			<file>Aircraft/747-8i/Nasal/hydraulic.nas</file>
 		</hydraulic>
-		<!--tyresmoke>
-			<file>Aircraft/747-8i/Nasal/tyresmoke.nas</file>
-		</tyresmoke-->
-		<!--walk>
-			<file>Aircraft/747-8i/Nasal/walk.nas</file>
-		</walk-->	
-	
 		<livery>
 	        	<file>Aircraft/747-8i/Nasal/livery.nas</file>
 	    	</livery>

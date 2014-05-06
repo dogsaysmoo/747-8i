@@ -1219,6 +1219,23 @@
 	</action>
  </animation>
 
+ <animation>
+	<type>translate</type>
+	<object-name>disengage</object-name>
+	<property>instrumentation/afds/inputs/AP-disengage</property>
+	<factor>-0.012</factor>
+	<center>
+	    <x-m>0</x-m>
+	    <y-m>0.1</y-m>
+	    <z-m>0</z-m>
+	</center>
+	<axis>
+	    <x>-0.3</x>
+	    <y>0</y>
+	    <z>1.0</z>
+	</axis>
+ </animation>
+
 <!-- EICAS -->
 
 <animation>

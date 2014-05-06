@@ -28,8 +28,6 @@ var AFDS = {
         m.step=0;
 	m.heading_change_rate = 0;
 	
-#	m.uses_autocoord = 0;
-
         m.AFDS_node = props.globals.getNode("instrumentation/afds",1);
         m.AFDS_inputs = m.AFDS_node.getNode("inputs",1);
         m.AFDS_apmodes = m.AFDS_node.getNode("ap-modes",1);
@@ -62,9 +60,7 @@ var AFDS = {
         m.vs_setting = m.AP_settings.initNode("vertical-speed-fpm",0); # -8000 to +6000 #
         m.hdg_setting = m.AP_settings.initNode("heading-bug-deg",360,"INT");
         m.fpa_setting = m.AP_settings.initNode("flight-path-angle",0); # -9.9 to 9.9 #
-#        m.alt_setting = m.AP_settings.initNode("target-altitude-ft",10000,"DOUBLE");
         m.alt_setting = m.AP_settings.initNode("altitude-setting-ft",10000,"DOUBLE");
-#        m.FMS_alt = m.AP_settings.getNode("target-altitude-ft",1);
         m.FMS_alt = m.AP_settings.initNode("target-altitude-ft",10000,"DOUBLE");
         m.auto_brake_setting = m.AP_settings.initNode("autobrake",0.000,"DOUBLE");
 
@@ -197,14 +193,6 @@ var AFDS = {
         if((disabled)and(output==0)){output = 1;me.AP.setValue(0);}
         setprop("autopilot/internal/target-pitch-deg",getprop("orientation/pitch-deg"));
         setprop("autopilot/internal/target-roll-deg",0);
-#	if (output == 0 and getprop("controls/flight/auto-coordination")) {
-#		me.uses_autocoord = 1;
-#		setprop("controls/flight/auto-coordination",0);
-#	}
-#	if (output == 1 and me.uses_autocoord == 1) {
-#		me.uses_autocoord = 0;
-#		setprop("controls/flight/auto-coordination",1);
-#	}
         me.AP_passive.setValue(output);
     },
 ###################

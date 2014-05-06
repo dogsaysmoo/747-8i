@@ -99,4 +99,7 @@ Changes made by John W.
 -Added THR light with SPD light on AT
 -Added function to turn off autocoordination with AP on
 -Shortened turn anticipation time on approach
+-Fixed up replay / flight recorder
+-Re-rigged lights so they're all controlled in /controls/lighting instead of controls/switches
+-Animated AP disengage switch
 

@@ -25,17 +25,6 @@ var ac_handler = {
 	setlistener("controls/flight/auto-coordination", func {
 	    if (me.autocoord.getBoolValue()) me.update();
 	},0,0);
-#	var state = 1;
-#	var ac_state = func {
-#	    if (me.autocoord.getBoolValue() and state == 1) {
-#		me.update();
-#		state = 0;
-#	    }
-#	    if (!me.autocoord.getBoolValue()) state = 1;
-#	    settimer(ac_state,0);
-#	}
-#	ac_state();
-
 	setlistener("gear/gear[0]/wow", func {
 	    if (me.wow.getBoolValue()) {
 		me.update();
