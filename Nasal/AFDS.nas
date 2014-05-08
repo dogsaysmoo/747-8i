@@ -335,7 +335,7 @@ var AFDS = {
                 me.autothrottle_mode.setValue(0);
             }
         }elsif(me.step==5){
-	    if (getprop("/autopilot/route-manager/active")){
+	    if (getprop("/autopilot/route-manager/active") and getprop("/autopilot/route-manager/route/num") >= 2) {
 		max_wpt=getprop("/autopilot/route-manager/route/num");
 		atm_wpt=getprop("/autopilot/route-manager/current-wp");
 
