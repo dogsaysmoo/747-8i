@@ -102,9 +102,11 @@ var AFDS = {
         if(mode==0){
             # horizontal AP controls
             if(me.lateral_mode.getValue() ==btn) btn=0;
-#            if(btn==3)fms=1;
+	    if (btn == 2) {
+		var hdg_now = int(getprop("orientation/heading-magnetic-deg")+0.5);
+                me.hdg_setting.setValue(hdg_now);
+            }
             me.lateral_mode.setValue(btn);
-#            me.FMS.setValue(fms);
         }elsif(mode==1){
             # vertical AP controls
             if(me.vertical_mode.getValue() ==btn) btn=0;
@@ -243,33 +245,42 @@ var AFDS = {
 
         if(me.step==0){ ### glideslope armed ?###
             msg="";
-            if(me.gs_armed.getValue()){
+            if(me.gs_armed.getBoolValue()){
                 msg="G/S";
                 var gsdefl = getprop("instrumentation/nav/gs-needle-deflection");
                 var gsrange = getprop("instrumentation/nav/gs-in-range");
                 if(gsdefl< 0.5 and gsdefl>-0.5){
                     if(gsrange){
                         me.vertical_mode.setValue(6);
-                        me.gs_armed.setValue(0);
+                        me.gs_armed.setBoolValue(0);
                     }
                 }
             }
             me.AP_pitch_arm.setValue(msg);
 
         }elsif(me.step==1){ ### localizer armed ? ###
-            msg="";
-            if(me.loc_armed.getValue()){
-                msg="LOC";
+#            msg="";
+            if(me.loc_armed.getBoolValue()){
+#                msg="LOC";
                 var hddefl = getprop("instrumentation/nav/heading-needle-deflection");
                 if(hddefl< 8 and hddefl>-8){
                     me.lateral_mode.setValue(4);
-                    me.loc_armed.setValue(0);
+                    me.loc_armed.setBoolValue(0);
                 }
             }
-            me.AP_roll_arm.setValue(msg);
+#            me.AP_roll_arm.setValue(msg);
 
         }elsif(me.step==2){ ### check lateral modes  ###
             var idx=me.lateral_mode.getValue();
+	    msg = "";
+	    if (idx == 1) {
+		msg = "HDG HOLD";
+		if (abs(me.hdg_setting.getValue() - getprop("orientation/heading-magnetic-deg")) < 5) {
+		    me.lateral_mode.setValue(2);
+		}
+	    }
+	    if (me.loc_armed.getBoolValue()) msg = "LOC";
+	    me.AP_roll_arm.setValue(msg);
             me.AP_roll_mode.setValue(me.roll_list[idx]);
             me.AP_roll_engaged.setBoolValue(idx>0);
 
@@ -330,6 +341,15 @@ var AFDS = {
             me.AP_pitch_engaged.setBoolValue(idx>0);
 
         }elsif(me.step==4){             ### check speed modes  ###
+	    if (me.ias_mach_selected.getBoolValue()) {
+                var target = int(getprop("instrumentation/airspeed-indicator/indicated-speed-kt")+0.5);
+		if (target >= 100 and target <= 399)
+                    me.ias_setting.setValue(target);
+            } else {
+                var target = getprop("instrumentation/airspeed-indicator/indicated-mach");
+		if (target >= 0.4 and target <= 0.95)
+                    me.mach_setting.setValue(target);
+            }
             if (getprop("controls/engines/engine/reverser")) {
                 # auto-throttle disables when reverser is enabled
                 me.autothrottle_mode.setValue(0);

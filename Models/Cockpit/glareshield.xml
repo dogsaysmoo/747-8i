@@ -72,21 +72,9 @@
 		</and>
 	</condition>
 </animation>
-<!--animation>
-	<type>textranslate</type>
-	<object-name>Mach.Digit1</object-name>
-	<property>autopilot/settings/target-speed-mach</property>
-	<factor>0.001</factor>
-	<step>100</step>
-	<axis>
-		<x>0</x>
-		<y>1</y>
-		<z>0</z>
-	</axis>
-</animation-->
 <animation>
 	<type>textranslate</type>
-	<object-name>Mach.Digit2</object-name>
+	<object-name>Mach.Digit1</object-name>
 	<property>autopilot/settings/target-speed-mach</property>
 	<factor>1</factor>
 	<step>0.1</step>
@@ -98,10 +86,22 @@
 </animation>
 <animation>
 	<type>textranslate</type>
-	<object-name>Mach.Digit3</object-name>
+	<object-name>Mach.Digit2</object-name>
 	<property>autopilot/settings/target-speed-mach</property>
 	<factor>10</factor>
 	<step>0.01</step>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+<animation>
+	<type>textranslate</type>
+	<object-name>Mach.Digit3</object-name>
+	<property>autopilot/settings/target-speed-mach</property>
+	<factor>100</factor>
+	<step>0.001</step>
 	<axis>
 		<x>0</x>
 		<y>1</y>
@@ -484,7 +484,7 @@
 			</condition>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/target-speed-kt</property>
-			<step>10</step>
+			<step>1</step>
 			<min>100</min>
 			<max>399</max>
 		</binding>
@@ -494,7 +494,7 @@
 			</condition>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/target-speed-mach</property>
-			<step>0.01</step>
+			<step>0.001</step>
 			<min>0.40</min>
 			<max>0.95</max>
 		</binding>
@@ -511,7 +511,7 @@
 			</condition>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/target-speed-kt</property>
-			<step>-10</step>
+			<step>-1</step>
 			<min>100</min>
 			<max>399</max>
 		</binding>
@@ -521,7 +521,7 @@
 			</condition>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/target-speed-mach</property>
-			<step>-0.01</step>
+			<step>-0.001</step>
 			<min>0.40</min>
 			<max>0.95</max>
 		</binding>
@@ -706,7 +706,7 @@
 	<type>pick</type>
 	<object-name>sw.hdg</object-name>
 	<action>
-		<button>0</button>
+		<!--button>0</button-->
 		<button>3</button>
 		<repeatable>true</repeatable>  
 		<binding>
@@ -719,7 +719,7 @@
 		</binding>
 	</action>
 	<action>
-		<button>1</button>
+		<!--button>1</button-->
 		<button>4</button>
 		<repeatable>true</repeatable>  
 		<binding>
@@ -731,19 +731,27 @@
 			<wrap>true</wrap>
 		</binding>
 	</action>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.afds.input(0,1); controls.click(4);</script>
+		</binding>
+	</action>
 </animation>
 
 <animation>
 	<type>pick</type>
 	<object-name>HDG_HOLD</object-name>
-    <object-name>HDG_HOLD_lit</object-name>
-    <object-name>HDG_HOLD_unlit</object-name>
+    	<object-name>HDG_HOLD_lit</object-name>
+    	<object-name>HDG_HOLD_unlit</object-name>
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>  
 		<binding>
 		    <command>nasal</command>
-                    <script>controls.click(4);Boeing747.afds.input(0,1);</script>
+                    <script>controls.click(4);Boeing747.afds.input(0,2);</script>
 		</binding>
 	</action>
  </animation>
@@ -754,7 +762,7 @@
     <condition>
 		<equals>
 			<property>instrumentation/afds/ap-modes/roll-mode</property>
-			<value>HDG SEL</value>
+			<value>HDG HOLD</value>
 		</equals>
     </condition>
 </animation>
@@ -766,7 +774,7 @@
 		<not>
 			<equals>
 			<property>instrumentation/afds/ap-modes/roll-mode</property>
-			<value>HDG SEL</value>
+			<value>HDG HOLD</value>
 			</equals>
 		</not>
 	</condition>
