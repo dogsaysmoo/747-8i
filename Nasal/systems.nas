@@ -530,10 +530,10 @@ var IRS = {
 		irs_align(spin_time);
 	    } elsif (me.align.getValue() == 2) {
 		settimer(func {
-		    if (me.mode.getValue() == 0 and me.position.getValue() == 1) {
+		    if (me.mode.getValue() != 0 and me.position.getValue() == 1) {
 			me.align.setValue(1);
 	# spin up time (realignment)
-			irs_align(spin_time / 5);
+			irs_align(30);
 		    } else {
 			me.position.setValue(me.mode.getValue());
 		    }

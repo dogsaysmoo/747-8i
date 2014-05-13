@@ -102,4 +102,9 @@ Changes made by John W.
 -Fixed up replay / flight recorder
 -Re-rigged lights so they're all controlled in /controls/lighting instead of controls/switches
 -Animated AP disengage switch
+-Added proper HDG HOLD and HDG SEL modes to AP
+-Set AT to track IAS when in mach mode and track mach when in IAS mode
+-Fixed animation on nose gear torque linkages
+-Added rudder trim indicator
+-Activated aileron trim switches
 
