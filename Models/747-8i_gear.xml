@@ -144,12 +144,14 @@
 
 <animation>
  <name>GearNose</name>
- <object-name>GearNoseTorqueLinkLow</object-name>
+ <object-name>GearNoseTorqueLin.002</object-name>
+ <object-name>GearNoseTorqueLin.003</object-name>
+ <!--object-name>GearNoseTorqueLinkLow</object-name>
  <object-name>GearNoseTorqueLinkLow_1</object-name>
  <object-name>GearNoseTorqueLinkLow_0</object-name>
 
  <object-name>GearNoseTorqueLinkUp</object-name>
- <object-name>GearNoseTorqueLinkUpp</object-name>
+ <object-name>GearNoseTorqueLinkUpp</object-name-->
  <object-name>GearNoseMainStrutCyli</object-name>
  <object-name>GearNoseMainStrutColl</object-name>
  <object-name>GearNoseMainStrutPist</object-name>
@@ -207,11 +209,13 @@
 
 <animation>
  <type>rotate</type>
- <object-name>GearNoseTorqueLinkLow</object-name>
+ <object-name>GearNoseTorqueLin.002</object-name>
+ <object-name>GearNoseTorqueLin.003</object-name>
+ <!--object-name>GearNoseTorqueLinkLow</object-name>
  <object-name>GearNoseTorqueLinkLow_1</object-name>
  <object-name>GearNoseTorqueLinkLow_0</object-name>
  <object-name>GearNoseTorqueLinkUp</object-name>
- <object-name>GearNoseTorqueLinkUpp</object-name>
+ <object-name>GearNoseTorqueLinkUpp</object-name-->
  <object-name>GearNoseMainStrutPist</object-name>
  <object-name>GearNoseWheels</object-name>
  <condition>
@@ -236,9 +240,10 @@
 
 <animation>
  <type>translate</type>
- <object-name>GearNoseTorqueLinkLow</object-name>
+ <object-name>GearNoseTorqueLin.003</object-name>
+ <!--object-name>GearNoseTorqueLinkLow</object-name>
  <object-name>GearNoseTorqueLinkLow_1</object-name>
- <object-name>GearNoseTorqueLinkLow_0</object-name>
+ <object-name>GearNoseTorqueLinkLow_0</object-name-->
  <object-name>GearNoseMainStrutPist</object-name>
  <object-name>GearNoseWheels</object-name>
  <property>gear/gear[0]/compression-ft</property>
@@ -252,9 +257,10 @@
 
 <animation>
  <type>rotate</type>
- <object-name>GearNoseTorqueLinkLow</object-name>
+ <object-name>GearNoseTorqueLin.003</object-name>
+ <!--object-name>GearNoseTorqueLinkLow</object-name>
  <object-name>GearNoseTorqueLinkLow_1</object-name>
- <object-name>GearNoseTorqueLinkLow_0</object-name>
+ <object-name>GearNoseTorqueLinkLow_0</object-name-->
  <property>gear/gear[0]/compression-norm</property>
  <factor>-16</factor>
  <center>
@@ -271,8 +277,9 @@
 
 <animation>
  <type>rotate</type>
- <object-name>GearNoseTorqueLinkUp</object-name>
- <object-name>GearNoseTorqueLinkUpp</object-name>
+ <object-name>GearNoseTorqueLin.002</object-name>
+ <!--object-name>GearNoseTorqueLinkUp</object-name>
+ <object-name>GearNoseTorqueLinkUpp</object-name-->
  <property>gear/gear[0]/compression-norm</property>
  <factor>16</factor>
  <center>
