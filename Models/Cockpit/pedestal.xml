@@ -218,26 +218,6 @@
 			<max>0.5</max>
 		</binding>
 	</action>
-	<!--action>
-		<button>3</button>
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/flight/rudder-trim</property>
-			<step>0.05</step>
-			<min>-0.5</min>
-			<max>0.5</max>
-		</binding>
-	</action>
-	<action>
-		<button>4</button>
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/flight/rudder-trim</property>
-			<step>-0.05</step>
-			<min>-0.5</min>
-			<max>0.5</max>
-		</binding>
-	</action-->
 </animation>
 
 <animation>
@@ -353,6 +333,34 @@
 	    <y>0</y>
 	    <z>0</z>
 	</axis>
+</animation>
+
+<!-- Stabilizer Trim -->
+<animation>
+	<type>pick</type>
+	<object-name>StabTrimAltn</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>true</repeatable>
+		<binding>
+			<command>property-adjust</command>
+			<property>controls/flight/elevator-trim</property>
+			<step>0.01</step>
+			<min>-1</min>
+			<max>1</max>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>true</repeatable>
+		<binding>
+			<command>property-adjust</command>
+			<property>controls/flight/elevator-trim</property>
+			<step>-0.01</step>
+			<min>-1</min>
+			<max>1</max>
+		</binding>
+	</action>
 </animation>
 			
 <!-- SEATBELT SIGN -->
