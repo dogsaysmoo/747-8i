@@ -107,4 +107,7 @@ Changes made by John W.
 -Fixed animation on nose gear torque linkages
 -Added rudder trim indicator
 -Activated aileron trim switches
+-Added stab trim switches to pedestal
+-Added EICAS message for AP disconnect
+-Added Stabilizer Trim indicator to upper EICAS
 

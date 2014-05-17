@@ -116,6 +116,8 @@ var caution_messages = func {
 }
 
 var advisory_messages = func {
+	if (getprop("instrumentation/afds/settings/alarm"))
+		append(msgs_advisory, " A P DISCONNECT");
 	if (math.abs((getprop("/consumables/fuel/tank[1]/level-lbs")-getprop("/consumables/fuel/tank[2]/level-lbs"))) > 6000)
 		append(msgs_advisory," *FUEL IMBAL 2-3");
 	if (math.abs((getprop("/consumables/fuel/tank[4]/level-lbs")-getprop("/consumables/fuel/tank[3]/level-lbs"))) > 3000)

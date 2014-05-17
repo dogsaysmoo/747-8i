@@ -232,6 +232,31 @@
         </offsets>
     </model>
 
+<!-- Stabilizer Trim Indicator -->
+    <animation>
+	<type>select</type>
+	<object-name>StabTrim</object-name>
+	<object-name>StabTrimNeedle</object-name>
+	<condition>
+	    <not>
+		<property>instrumentation/afds/inputs/AP</property>
+	    </not>
+	</condition>
+    </animation>
+    <animation>
+	<type>translate</type>
+	<object-name>StabTrimNeedle</object-name>
+	<property>controls/flight/elevator-trim</property>
+	<factor>0.022</factor>
+	<axis>
+	    <x>0</x>
+	    <y>0</y>
+	    <z>1</z>
+	</axis>
+    </animation>
+		
+		
+
 <!-- EPR -->
 <!-- ENGINE 1 -->
 

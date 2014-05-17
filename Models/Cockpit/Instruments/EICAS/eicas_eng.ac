@@ -3,7 +3,7 @@ MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 
 MATERIAL "eicas.002" rgb 1 1 1 amb 1 1 1 emis 1 1 1 spec 0.33 0.33 0.33 shi 32 trans 0
 MATERIAL "_Black_.002" rgb 1 1 1 amb 1 1 1 emis 1 1 1 spec 0.33 0.33 0.33 shi 32 trans 0
 OBJECT world
-kids 19
+kids 21
 OBJECT poly
 name "EGT.001"
 data 17
@@ -471,6 +471,51 @@ refs 3
 3 0.997426152229 0.848340153694
 2 0.958819270134 0.848340153694
 1 0.997426152229 0.605495035648
+kids 0
+OBJECT poly
+name "StabTrim"
+data 21
+Mesh82 Flap_Annun.002
+texture "efis.png"
+texrep 1 1
+crease 30.000000
+numvert 4
+0.007748 -0.086423 -0.06932
+0.007748 -0.02865 -0.090062
+0.007748 -0.02865 -0.06932
+0.007748 -0.086423 -0.090062
+numsurf 2
+SURF 0x00
+mat 1
+refs 3
+0 0.458804786205 0.342349648476
+1 0.594031691551 0.719021141529
+2 0.458804786205 0.719021141529
+SURF 0x00
+mat 1
+refs 3
+1 0.594031691551 0.719021141529
+0 0.458804786205 0.342349648476
+3 0.594031691551 0.342349648476
+kids 0
+OBJECT poly
+name "StabTrimNeedle"
+data 21
+Mesh82 Flap_Annun.003
+texture "efis.png"
+texrep 1 1
+crease 30.000000
+numvert 3
+0.008138 -0.055224 -0.085088
+0.008138 -0.0578 -0.082505
+0.008138 -0.060379 -0.085088
+numsurf 1
+SURF 0x10
+mat 1
+refs 3
+0 0.216429769993 0.295221507549
+1 0.192562699318 0.271425336599
+2 0.216429769993 0.247593313456
 kids 0
 OBJECT poly
 name "background"

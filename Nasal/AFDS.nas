@@ -74,6 +74,7 @@ var AFDS = {
         m.pitch_min = m.AFDS_settings.initNode("pitch-min",-10);
         m.pitch_max = m.AFDS_settings.initNode("pitch-max",15);
         m.vnav_alt = m.AFDS_settings.initNode("vnav-alt",35000);
+	m.alarm = m.AFDS_settings.initNode("alarm",0,"BOOL");
 
         m.AP_roll_mode = m.AFDS_apmodes.initNode("roll-mode","TO/GA");
         m.AP_roll_arm = m.AFDS_apmodes.initNode("roll-mode-arm"," ");
@@ -196,6 +197,10 @@ var AFDS = {
         setprop("autopilot/internal/target-pitch-deg",getprop("orientation/pitch-deg"));
         setprop("autopilot/internal/target-roll-deg",0);
         me.AP_passive.setValue(output);
+	if (!me.AP.getBoolValue()) {
+	    me.alarm.setBoolValue(1);
+	    settimer(func me.alarm.setBoolValue(0), 3);
+	}
     },
 ###################
     setbank : func{
