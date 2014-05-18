@@ -110,4 +110,5 @@ Changes made by John W.
 -Added stab trim switches to pedestal
 -Added EICAS message for AP disconnect
 -Added Stabilizer Trim indicator to upper EICAS
+-Re-modelled speedbrake system
 

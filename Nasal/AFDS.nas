@@ -88,7 +88,14 @@ var AFDS = {
 
 	m.remaining_distance = m.AFDS_inputs.initNode("remaining-distance",0,"DOUBLE");
 
-        m.APl = setlistener(m.AP, func m.setAP(),0,0);
+	m.arm_alarm = 0;
+        m.APl = setlistener(m.AP, func {
+	    m.setAP();
+	    if (!m.AP.getBoolValue() and m.arm_alarm) {
+	    	m.alarm.setBoolValue(1);
+	    	settimer(func m.alarm.setBoolValue(0), 3);
+	    }
+	},0,0);
         m.APdisl = setlistener(m.AP_disengaged, func m.setAP(),0,0);
         m.Lbank = setlistener(m.bank_switch, func m.setbank(),0,0);
         m.LTMode = setlistener(m.autothrottle_mode, func m.updateATMode(),0,0);
@@ -197,10 +204,6 @@ var AFDS = {
         setprop("autopilot/internal/target-pitch-deg",getprop("orientation/pitch-deg"));
         setprop("autopilot/internal/target-roll-deg",0);
         me.AP_passive.setValue(output);
-	if (!me.AP.getBoolValue()) {
-	    me.alarm.setBoolValue(1);
-	    settimer(func me.alarm.setBoolValue(0), 3);
-	}
     },
 ###################
     setbank : func{
@@ -247,6 +250,7 @@ var AFDS = {
             me.AP.setBoolValue(0);
             me.autothrottle_mode.setValue(0);
         }
+	me.arm_alarm = me.AP.getBoolValue();
 	if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 0.9 * getprop("instrumentation/fmc/vspeeds/stall-speed"))
 	    me.AP.setBoolValue(0);
 
