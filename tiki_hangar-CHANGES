@@ -111,4 +111,5 @@ Changes made by John W.
 -Added EICAS message for AP disconnect
 -Added Stabilizer Trim indicator to upper EICAS
 -Re-modelled speedbrake system
+-Changed minimum contrail alt to 19000
 

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- 
-	Revisions
-	=========
+	This is a second generation model of the 747-8i.  The first generation
+	by Grupo FGBr was based on the 747-400 model by Gijs de Rooy.  This 
+	version is derived from the FGBr version with modifications to the 3D
+	models and FDM, and the addition of many systems.
+
+	747-8i v2.0 by John Williams
+	Original cockpit model, landing gear, and many textures by Gijs de Rooy
+	Wings, engines, original fuselage model, original FDM, and additional
+          textures by Grupo FGBr (Aurino das Neves, Isaias Prestes, Rick Britto,
+	  Wagner Silva)
+	Additional systems as noted in their .nas files
 	
-		SET-2009, inicio do desenvolvimento do modelo.
-		15-JAN-2010, primeira versao apresentada.
-		05-FEB-2010, atualizado o sistema de dialogos integrado.
-		04-JUN-2010, atualizado o sistema de som e eltrico.
-        03-MAR-2011, novo modelo, agora sem incompatibilidades com o FG 2.0 ou superior.
-        23-DEC-2011, primeiro release.
-		
 	License : GPL 2.0
     		
  -->
@@ -18,10 +20,9 @@
 <PropertyList>
  <sim>
 
-		<description>Boeing 747-800 Intercontinental</description>
-		<author>FGBr Group / John Williams</author>
+		<description>Boeing 747-8 Intercontinental</description>
+		<author>John Williams, Grupo FGBr</author>
 		
-		<!-- Estado de desenvolvimento da aeronave -->
 		<status>beta</status>
 
 	<rating>
@@ -33,15 +34,14 @@
 		
 		<flight-model>yasim</flight-model>
 
-		<!-- O nome basico do aviao fornecido ao FDM, 
-			geralmente o nome da pasta do aviao -->
+
 		<aero>747-8i-yasim</aero>
 		<variant type="string">8i</variant>
-        <fuel-fraction>0.2</fuel-fraction>
+        i	<fuel-fraction>0.2</fuel-fraction>
         
 		<virtual-cockpit archive="y">false</virtual-cockpit>
 
-		<!-- Definicoes dos sistemas -->
+		<!-- System defintions -->
 		<systems>
 			<autopilot>
 				<path>Aircraft/747-8i/Systems/747-8-autopilot.xml</path>
@@ -60,23 +60,20 @@
 			</electrical>
 		</systems>
 		
-		<!-- Definicoes para a instrumentacao da aeronave -->
 		<instrumentation>
  			<path>Aircraft/747-8i/Systems/instrumentation.xml</path>		
 		</instrumentation>
 
-		<!-- Definicoes para som da aeronave -->
 		<sound>
 			<audible>true</audible>
 			<path>Aircraft/747-8i/Sounds/747-sound.xml</path>
 		</sound>
 
-		<!-- Definicoes para splash screen -->
 		<startup>
 			<splash-texture>Aircraft/747-8i/splash.png</splash-texture>
 		</startup>
 
-		<!-- modificaes para funcionamento dos liveries - http://wiki.flightgear.org/index.php/Livery_over_MP -->
+		<!-- Default livery set up - http://wiki.flightgear.org/index.php/Livery_over_MP -->
 		<model>
 			<path>Aircraft/747-8i/Models/747-8i.xml</path>
 			<livery>
@@ -124,14 +121,13 @@
 		</hud>
 		
 		
-		<!-- Distancia padrao da vista para o aviao (metros) -->
 		<chase-distance-m>-110</chase-distance-m>
 		
-		<!-- Cameras da aeronave -->
+		<!-- View perspectives -->
 		<view>
 			<internal archive="y">true</internal>
 			<config>
-				<!-- x/y/z == (esquerda, direita)/(cima, baixo)/(frente, tras) -->
+				<!-- x/y/z == left,right/up,down/fwd,back -->
 				<x-offset-m archive="y">-0.437141</x-offset-m>
 				<!--y-offset-m archive="y">3.78648</y-offset-m-->
 				<y-offset-m archive="y">3.91048</y-offset-m>
@@ -205,7 +201,6 @@
 				<ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
 				<default-field-of-view-deg type="double">55</default-field-of-view-deg>
 				<heading-offset-deg type="double">0</heading-offset-deg>
-				<!-- x/y/z == (esquerda, direita)/(cima, baixo)/(frente, tras) -->
 				<x-offset-m archive="y">0.437141</x-offset-m>
 				<y-offset-m archive="y">3.78648</y-offset-m>
 				<z-offset-m archive="y">-27.6696</z-offset-m>
@@ -223,7 +218,6 @@
 				<ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
 				<default-field-of-view-deg type="double">75</default-field-of-view-deg>
 				<heading-offset-deg type="double">0</heading-offset-deg>
-				<!-- x/y/z == (esquerda, direita)/(cima, baixo)/(frente, tras) -->
 				<x-offset-m archive="y">0.0</x-offset-m>
 				<y-offset-m archive="y">3.78648</y-offset-m>
 				<z-offset-m archive="y">-27.6696</z-offset-m>
@@ -232,7 +226,7 @@
 		</view>
 		
 		
-		<!-- Ajuste dos flaps -->
+		<!-- Flap settings -->
         <flaps>
             <setting>0.000</setting>  <!-- flaps up -->
             <setting>0.033</setting>  <!-- flaps 1  -->
@@ -268,7 +262,7 @@
 	  
         <flight-recorder include="Systems/flight-recorder.xml"/>
 
-		<!-- O menu de ajuda da aeronave -->
+		<!-- Help menu -->
         <help>
 			<title>747-8i</title>
             <!--key>
@@ -289,7 +283,7 @@
 			</key>
 			<key>
 				<name>Ctrl+B</name>
-				<desc>Toggle SpeedBrake</desc>
+				<desc>Cycle SpeedBrake (Off - Arm - 50% - Full)</desc>
 			</key>
 		   <key>
 			    <name>b </name>
@@ -306,10 +300,6 @@
             <key>
                 <name>[/]</name>
                 <desc>raise/lower flaps</desc>
-            </key>
-            <key>
-                <name>s</name>
-                <desc>hold to start engines</desc>
             </key>
 	    <key>
 		<name>l</name>
@@ -347,11 +337,11 @@ Pre-departure:
    - In poor weather conditions, or crowded airport aprons, A Followme truck should be used if required
 
 Departure:
-2. Select 747-8i/Autostart (or hold s) to get the engines running
-3. set your flaps suitably for the conditions and runway length
+2. Select 747-8i/Autostart to get the engines running
+3. set your flaps suitably for the conditions and runway length (minimum 15)
 4. Release the parking brakes
 5. Apply throttle gently, until at 90% throttle
-6. Rotate at around 140-160kt
+6. Rotate at Vr
 7. Raise landing gear at positive climb
 8. Maintain positive climb
 
@@ -360,7 +350,7 @@ Captain Notes:
 - Never reverse from terminal without aid from a pushback. It should be used until the aircraft is on the taxiway.
 - Ensure you allow enough room to manoeuvre around the airport, given that it is a long aircraft.
 - On a short or wet runway, flaps should be set lower on both landing and takeoff, and throttle set to full on takeoff.
-- There are risks of overrunning the runway apron upon landing and takeoff, aswell as overrunning the taxiway corners in the 747-8i In wet conditions especially; take care and ensure that the correct speed guidelines and height are maintained.
+- There are risks of overrunning the runway apron upon landing and takeoff, as well as overrunning the taxiway corners in the 747-8i In wet conditions especially; take care and ensure that the correct speed guidelines and height are maintained.
 - During turbulant conditions, The seatbelt warning sound should be initiated by the captain.
 
 === Cruising ===
@@ -391,7 +381,7 @@ Service ceiling	43,000 ft (13,000 m)
 
 </text>
 	</help>
-		<!-- Entradas para o menu de apoio para controle da aeronave -->
+		<!-- Aircraft-specific menu entries -->
 	<menubar>
 		<default>
 
@@ -503,9 +493,9 @@ Service ceiling	43,000 ft (13,000 m)
 	    <min-lb type="double">0.0</min-lb>
 	</weight>
 
- </sim>		<!-- FIM DA SECAO SIM -->
+ </sim>
+<!-- END OF SIM SECTION -->
  
-	<!-- Definicoes para o estado dos motores e seus reversores de empuxo -->
 	<engines>
 		<engine n="0">
 			<running>false</running>
@@ -558,11 +548,11 @@ Service ceiling	43,000 ft (13,000 m)
 				<selected type="bool">0</selected>
 			</tank>
 			<tank n="5">
-				<name>Res #2</name>
+				<name>Res #1</name>
 				<selected type="bool">0</selected>
 			</tank>
 			<tank n="6">
-				<name>Res #3</name>
+				<name>Res #4</name>
 				<selected type="bool">0</selected>
 			</tank>
 			<tank n="7">
@@ -572,7 +562,6 @@ Service ceiling	43,000 ft (13,000 m)
 		</fuel>
 	</consumables>
 
-	<!-- Engines using thrust reversal keyboard. http://wiki.flightgear.org/index.php/Howto:_Add_thrust_reversal -->
 	<input>
 		<keyboard>
             <key n="108">
@@ -660,7 +649,6 @@ Service ceiling	43,000 ft (13,000 m)
 		</keyboard>
 	</input>
 			
-	<!-- Ajuste dos controles -->
 	<controls>
 		<electric>
 			<apu>0</apu>
@@ -794,7 +782,7 @@ Service ceiling	43,000 ft (13,000 m)
 		</cabin>
 	</controls>
 
-	<!-- Codigos NASAL -->
+	<!-- The NASAL scripts -->
 	<nasal>
 		  <Boeing747>
 			<file>Aircraft/747-8i/Nasal/copilot.nas</file>
@@ -856,7 +844,6 @@ Service ceiling	43,000 ft (13,000 m)
 
 	</nasal>
 
-	<!-- Ajustes da Instrumentao -->
 <instrumentation>
 	<annunciators>
 		<gpws>
@@ -1098,9 +1085,6 @@ Service ceiling	43,000 ft (13,000 m)
 		<slow type="bool">true</slow>
 		<real type="bool"></real>
 	</inertial-reference>
-	<!--pneumatic>
-		<bleed-air type="bool">false</bleed-air>
-	</pneumatic-->
 </systems>
 
 		<aircraft>
