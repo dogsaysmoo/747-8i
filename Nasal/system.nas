@@ -219,6 +219,18 @@ var MouseHandler = {
 
 var mouseHandler = MouseHandler.new();
 
+## Stall Horn ##
+var stall_horn = func {
+    var spd = getprop("instrumentation/airspeed-indicator/indicated-speed-kt");
+    var stall = getprop("instrumentation/fmc/vspeeds/stall-speed");
+    var wow = (getprop("gear/gear[1]/wow") or getprop("gear/gear[4]/wow"));
+    if (!wow and spd < 0.8 * stall) {
+        setprop("sim/alarms/stall-warning",1);
+    } else {
+        setprop("sim/alarms/stall-warning",0);
+    }
+}
+
 ## Lights ##
 
 strobe_switch = props.globals.getNode("controls/lighting/strobe", 1);

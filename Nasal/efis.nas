@@ -2,7 +2,7 @@
 #Syd Adams
 #
 
-var SndOut = props.globals.getNode("/sim/sound/Ovolume",1);
+#var SndOut = props.globals.getNode("/sim/sound/Ovolume",1);
 var chronometer = aircraft.timer.new("/instrumentation/clock/ET-sec",1);
 var fuel_density =0;
 
@@ -355,7 +355,7 @@ var Efis = EFIS.new("instrumentation/efis");
 #var wiper = Wiper.new("controls/electric/wipers","systems/electrical/bus-volts");
 
 setlistener("/sim/signals/fdm-initialized", func {
-    SndOut.setDoubleValue(0.15);
+#    SndOut.setDoubleValue(0.15);
     chronometer.stop();
     props.globals.initNode("/instrumentation/clock/ET-display",0,"INT");
     props.globals.initNode("/instrumentation/clock/time-display",0,"INT");
@@ -365,18 +365,18 @@ setlistener("/sim/signals/fdm-initialized", func {
 #    setprop("/instrumentation/groundradar/id",getprop("sim/tower/airport-id"));
 });
                            
-setlistener("/sim/signals/reinit", func {
-    SndOut.setDoubleValue(0.15);
-    Shutdown();
-});
-
-setlistener("/sim/current-view/internal", func(vw){
-    if(vw.getValue()){
-    SndOut.setDoubleValue(0.3);
-    }else{
-    SndOut.setDoubleValue(1.0);
-    }
-},1,0);
+#setlistener("/sim/signals/reinit", func {
+#    SndOut.setDoubleValue(0.15);
+#    Shutdown();
+#});
+#
+#setlistener("/sim/current-view/internal", func(vw){
+#    if(vw.getValue()){
+#    SndOut.setDoubleValue(0.3);
+#    }else{
+#    SndOut.setDoubleValue(1.0);
+#    }
+#},1,0);
 
 setlistener("/instrumentation/clock/et-knob", func(et){
     var tmp = et.getValue();
@@ -441,16 +441,16 @@ setlistener("instrumentation/tcas/outputs/traffic-alert", func(traffic_alert){
 setlistener("controls/flight/flaps", func { controls.click(6) } );
 setlistener("/controls/gear/gear-down", func { controls.click(8) } );
 
-stall_horn = func {
-    var spd = getprop("instrumentation/airspeed-indicator/indicated-speed-kt");
-    var stall = getprop("instrumentation/fmc/vspeeds/stall-speed");
-    var wow = (getprop("gear/gear[1]/wow") or getprop("gear/gear[4]/wow"));
-    if (!wow and spd < 0.8 * stall) {
-	setprop("sim/alarms/stall-warning",1);
-    } else {
-	setprop("sim/alarms/stall-warning",0);
-    }
-}
+#stall_horn = func {
+#    var spd = getprop("instrumentation/airspeed-indicator/indicated-speed-kt");
+#    var stall = getprop("instrumentation/fmc/vspeeds/stall-speed");
+#    var wow = (getprop("gear/gear[1]/wow") or getprop("gear/gear[4]/wow"));
+#    if (!wow and spd < 0.8 * stall) {
+#	setprop("sim/alarms/stall-warning",1);
+#    } else {
+#	setprop("sim/alarms/stall-warning",0);
+#    }
+#}
 #stall_horn = func{
 #    var alert=0;
 #    var kias=getprop("velocities/airspeed-kt");
@@ -481,88 +481,4 @@ stall_horn = func {
 #    setprop(propName,1);
 #    settimer(func { click_reset(propName) },0.4);
 #}
-
-# Inertial Reference System Controls
-var IRS = {
-    new : func (n) {
-        m = { parents : [IRS] };
-	m.position = props.globals.initNode("controls/inertial-reference/position["~n~"]",0,"INT");
-	m.mode = props.globals.initNode("systems/inertial-reference/mode["~n~"]",0,"INT");
-	m.align = props.globals.initNode("systems/inertial-reference/alignment["~n~"]",0,"INT");
-	return m;
-    },
-    knob : func (chg) {
-	var pos = me.position.getValue() + chg;
-	if (pos > 3) pos = 3;
-	if (pos < 0) pos = 0;
-	me.position.setValue(pos);
-
-	var spin_time = 300;
-	if (getprop("systems/inertial-reference/fast")) {
-		spin_time = 5;
-	} elsif (getprop("systems/inertial-reference/slow")) {
-		spin_time = 300;
-	} elsif (getprop("systems/inertial-reference/real")) {
-		spin_time = 780;
-	}
-
-	if (pos == 0) {
-		me.mode.setValue(0);
-		if (me.align.getValue() == 2) {
-		    settimer(func {
-			if (me.mode.getValue() == 0) me.align.setValue(0);
-		    },17);
-		# spin down time
-		} else {
-		    me.align.setValue(0);
-		}
-	}
-	if (pos == 1) {
-	    var tcnt = 0;
-	    var irs_align = func (spinup) {
-		settimer(func {
-		    if (me.align.getValue() == 1 and me.position.getValue() != 0 and getprop("controls/gear/brake-parking") and getprop("gear/gear/wow")) {
-			tcnt += 1;
-			if (tcnt >= spinup) {
-			    me.align.setValue(2);
-			} else {
-			    irs_align(spinup);
-			}
-		    } elsif (me.align.getValue() != 2) {
-		        me.align.setValue(0);
-		    }
-		},1);
-	    }
-
-	    if (me.align.getValue() == 0) {
-		me.align.setValue(1);
-	# spin up time
-		irs_align(spin_time);
-	    } elsif (me.align.getValue() == 2) {
-		settimer(func {
-		    if (me.mode.getValue() != 0 and me.position.getValue() == 1) {
-			me.align.setValue(1);
-	# spin up time (realignment)
-			irs_align(30);
-		    } else {
-			me.position.setValue(me.mode.getValue());
-		    }
-		},1);
-	    }
-	}
-	if (pos == 2) {
-		me.mode.setValue(2);
-	}
-	if (pos == 3)
-		me.mode.setValue(3);
-    }
-};
-var IRSl = IRS.new(0);
-var IRSc = IRS.new(1);
-var IRSr = IRS.new(2);
-	aircraft.data.add(
-		"systems/inertial-reference/fast",
-		"systems/inertial-reference/slow",
-		"systems/inertial-reference/real");
-
 

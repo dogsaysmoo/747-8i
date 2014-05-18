@@ -796,7 +796,7 @@ Service ceiling	43,000 ft (13,000 m)
 			<file>Aircraft/747-8i/Nasal/copilot.nas</file>
 			<file>Aircraft/747-8i/Nasal/doors.nas</file>
 			<file>Aircraft/747-8i/Nasal/eicas.nas</file>
-			<file>Aircraft/747-8i/Nasal/systems.nas</file>
+			<file>Aircraft/747-8i/Nasal/efis.nas</file>
 			<file>Aircraft/747-8i/Nasal/system.nas</file>
 			<file>Aircraft/747-8i/Nasal/vspeeds.nas</file>
 			<file>Aircraft/747-8i/Nasal/wipers.nas</file>
@@ -810,6 +810,7 @@ Service ceiling	43,000 ft (13,000 m)
 			<file>Aircraft/747-8i/Nasal/autobrakes.nas</file>
 			<file>Aircraft/747-8i/Nasal/brakesystem.nas</file>
 			<file>Aircraft/747-8i/Nasal/speedbrakes.nas</file>
+			<file>Aircraft/747-8i/Nasal/IRS-controls.nas</file>
 		</Boeing747>
 		  	  
 		<cdu>
