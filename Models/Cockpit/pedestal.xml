@@ -713,19 +713,13 @@
 		<button>0</button>
 		<repeatable>false</repeatable>  
 		<binding>
-			<condition>
-				<less-than>
-					<property>/autopilot/autospoilers/step</property>
-					<value>3</value>
-				</less-than>
-			</condition>
 			<command>property-adjust</command>
-			<property>/autopilot/autospoilers/step</property>
+			<property>controls/flight/speedbrake-lever</property>
 			<step>1</step>
 			<min>0</min>
 			<max>3</max>
 		</binding>
-		<binding>
+		<!--binding>
 			<condition>
 				<equals>
 					<property>/autopilot/autospoilers/step</property>
@@ -735,19 +729,14 @@
 			<command>property-assign</command>
 			<property>/autopilot/autospoilers/step</property>
 			<value>0</value>
-		</binding>
+		</binding-->
 	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>speedbrake</object-name>
 	<action>
 		<button>1</button>
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>property-adjust</command>
-			<property>/autopilot/autospoilers/step</property>
+			<property>controls/flight/speedbrake-lever</property>
 			<step>-1</step>
 			<min>0</min>
 			<max>3</max>
@@ -758,7 +747,8 @@
 <animation>
 	<type>rotate</type>
 	<object-name>speedbrake</object-name>
-	<property>/autopilot/autospoilers/step</property>
+	<property>controls/flight/speedbrake-lever</property>
+	<!--property>/autopilot/autospoilers/step</property-->
 	<interpolation>
 		<entry>
 			<ind>0</ind>

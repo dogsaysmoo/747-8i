@@ -10,7 +10,8 @@
       <type>gain</type>
       <gain>1.0</gain>
       <input>
-          <property>instrumentation/weu/state/stall-speed</property>
+          <!--property>instrumentation/weu/state/stall-speed</property-->
+          <property>instrumentation/fmc/vspeeds/stall-speed</property>
       </input>
       <reference>
           <property>velocities/airspeed-kt</property>

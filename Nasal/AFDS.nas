@@ -244,9 +244,11 @@ var AFDS = {
         if(hdgoffset > 180) hdgoffset +=-360;
         setprop("autopilot/internal/fdm-heading-bug-error-deg",hdgoffset);
         if(getprop("position/altitude-agl-ft")<200){
-            me.AP.setValue(0);
+            me.AP.setBoolValue(0);
             me.autothrottle_mode.setValue(0);
         }
+	if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 0.9 * getprop("instrumentation/fmc/vspeeds/stall-speed"))
+	    me.AP.setBoolValue(0);
 
         if(me.step==0){ ### glideslope armed ?###
             msg="";

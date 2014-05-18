@@ -265,8 +265,8 @@ var thr_reverser = func {
 		threv1.setBoolValue(1);
 		threv2.setBoolValue(1);
 		threv3.setBoolValue(1);
-		if (getprop("systems/hydraulic/equipment/enable-spoil"))
-		    setprop("controls/flight/speedbrake",1);
+#		if (getprop("systems/hydraulic/equipment/enable-spoil"))
+#		    setprop("controls/flight/speedbrake",1);
 	    }
 	}
 }
@@ -738,7 +738,7 @@ var update_systems = func {
     Efis.calc_kpa();
     Efis.update_temp();
     Efis.update_wind();
-    wiper.active();
+#    wiper.active();
     stall_horn();
     set_fltctrls();
     if(getprop("controls/gear/gear-down")){

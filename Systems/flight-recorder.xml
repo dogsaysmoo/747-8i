@@ -90,7 +90,7 @@
                 <type>bool</type><property type="string">controls/electric/battery</property>
             </signal>
             <signal>
-                <type>bool</type><property type="string">systmes/electrical/battery-off</property>
+                <type>bool</type><property type="string">systems/electrical/battery-off</property>
             </signal>
             <signal>
                 <type>bool</type><property type="string">controls/electric/inverter-switch</property>

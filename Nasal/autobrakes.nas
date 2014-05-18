@@ -72,7 +72,7 @@ var rto = func {
 setlistener("gear/gear[2]/wow", func(wow) {
 #	When main gear touches down, deploy speedbrakes, wait 3 sec and activate autobrakes.
 	if (wow.getBoolValue()) {
-		if (getprop("autopilot/autobrake/step") >= 0) setprop("controls/flight/speedbrake",1);
+#		if (getprop("autopilot/autobrake/step") >= 0) setprop("controls/flight/speedbrake",1);
 		settimer(func {
 			if (!(getprop("gear/gear/wow"))) autobrake();
 		},3);

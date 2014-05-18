@@ -17,7 +17,7 @@ var EFIS = {
         m.efis = props.globals.initNode(prop1);
         m.mfd = m.efis.initNode("mfd");
         m.pfd = m.efis.initNode("pfd");
-        m.eicas = m.efis.initNode("eicas");
+#        m.eicas = m.efis.initNode("eicas");
         m.mfd_mode_num = m.mfd.initNode("mode-num",2,"INT");
         m.mfd_display_mode = m.mfd.initNode("display-mode",m.mfd_mode_list[2]);
         m.kpa_mode = m.efis.initNode("inputs/kpa-mode",0,"BOOL");
@@ -52,9 +52,9 @@ var EFIS = {
 
         m.kpaL = setlistener("instrumentation/altimeter/setting-inhg", func m.calc_kpa());
 
-        m.eicas_msg_alert   = m.eicas.initNode("msg/alert"," ","STRING");
-        m.eicas_msg_caution = m.eicas.initNode("msg/caution"," ","STRING");
-        m.eicas_msg_info    = m.eicas.initNode("msg/info"," ","STRING");
+#        m.eicas_msg_alert   = m.eicas.initNode("msg/alert"," ","STRING");
+#        m.eicas_msg_caution = m.eicas.initNode("msg/caution"," ","STRING");
+#        m.eicas_msg_info    = m.eicas.initNode("msg/info"," ","STRING");
         m.update_radar_font();
     return m;
     },
@@ -283,76 +283,76 @@ var EFIS = {
 	    }
     },
 #### update EICAS messages ####
-    update_eicas : func(alertmsgs,cautionmsgs,infomsgs) {
-        var msg="";
-        var spacer="";
-        for(var i=0; i<size(alertmsgs); i+=1)
-        {
-            msg = msg ~ alertmsgs[i] ~ "\n";
-            spacer = spacer ~ "\n";
-        }
-        me.eicas_msg_alert.setValue(msg);
-        msg=spacer;
-        for(var i=0; i<size(cautionmsgs); i+=1)
-        {
-            msg = msg ~ cautionmsgs[i] ~ "\n";
-            spacer = spacer ~ "\n";
-        }
-        me.eicas_msg_caution.setValue(msg);
-        msg=spacer;
-        for(var i=0; i<size(infomsgs); i+=1)
-        {
-            msg = msg ~ infomsgs[i] ~ "\n";
-        }
-        me.eicas_msg_info.setValue(msg);
-    },
+#    update_eicas : func(alertmsgs,cautionmsgs,infomsgs) {
+#        var msg="";
+#        var spacer="";
+#        for(var i=0; i<size(alertmsgs); i+=1)
+#        {
+#            msg = msg ~ alertmsgs[i] ~ "\n";
+#            spacer = spacer ~ "\n";
+#        }
+#        me.eicas_msg_alert.setValue(msg);
+#        msg=spacer;
+#        for(var i=0; i<size(cautionmsgs); i+=1)
+#        {
+#            msg = msg ~ cautionmsgs[i] ~ "\n";
+#            spacer = spacer ~ "\n";
+#        }
+#        me.eicas_msg_caution.setValue(msg);
+#        msg=spacer;
+#        for(var i=0; i<size(infomsgs); i+=1)
+#        {
+#            msg = msg ~ infomsgs[i] ~ "\n";
+#        }
+#        me.eicas_msg_info.setValue(msg);
+#    },
 };
 
-var Wiper = {
-    new : func {
-        m = { parents : [Wiper] };
-        m.direction = 0;
-        m.delay_count = 0;
-        m.spd_factor = 0;
-        m.node = props.globals.getNode(arg[0],1);
-        m.power = props.globals.getNode(arg[1],1);
-        if(m.power.getValue()==nil)m.power.setDoubleValue(0);
-        m.spd = m.node.getNode("arc-sec",1);
-        if(m.spd.getValue()==nil)m.spd.setDoubleValue(1);
-        m.delay = m.node.getNode("delay-sec",1);
-        if(m.delay.getValue()==nil)m.delay.setDoubleValue(0);
-        m.position = m.node.getNode("position-norm", 1);
-        m.position.setDoubleValue(0);
-        m.switch = m.node.getNode("switch", 1);
-        if (m.switch.getValue() == nil)m.switch.setBoolValue(0);
-        return m;
-    },
-    active: func{
-    if(me.power.getValue()<=5)return;
-    var spd_factor = 1/me.spd.getValue();
-    var pos = me.position.getValue();
-    if(!me.switch.getValue()){
-        if(pos <= 0.000)return;
-        }
-    if(pos >=1.000){
-        me.direction=-1;
-        }elsif(pos <=0.000){
-        me.direction=0;
-        me.delay_count+=getprop("/sim/time/delta-sec");
-        if(me.delay_count >= me.delay.getValue()){
-            me.delay_count=0;
-            me.direction=1;
-            }
-        }
-    var wiper_time = spd_factor*getprop("/sim/time/delta-sec");
-    pos +=(wiper_time * me.direction);
-    me.position.setValue(pos);
-    }
-};
+#var Wiper = {
+#    new : func {
+#        m = { parents : [Wiper] };
+#        m.direction = 0;
+#        m.delay_count = 0;
+#        m.spd_factor = 0;
+#        m.node = props.globals.getNode(arg[0],1);
+#        m.power = props.globals.getNode(arg[1],1);
+#        if(m.power.getValue()==nil)m.power.setDoubleValue(0);
+#        m.spd = m.node.getNode("arc-sec",1);
+#        if(m.spd.getValue()==nil)m.spd.setDoubleValue(1);
+#        m.delay = m.node.getNode("delay-sec",1);
+#        if(m.delay.getValue()==nil)m.delay.setDoubleValue(0);
+#        m.position = m.node.getNode("position-norm", 1);
+#        m.position.setDoubleValue(0);
+#        m.switch = m.node.getNode("switch", 1);
+#        if (m.switch.getValue() == nil)m.switch.setBoolValue(0);
+#        return m;
+#    },
+#    active: func{
+#    if(me.power.getValue()<=5)return;
+#    var spd_factor = 1/me.spd.getValue();
+#    var pos = me.position.getValue();
+#    if(!me.switch.getValue()){
+#        if(pos <= 0.000)return;
+#        }
+#    if(pos >=1.000){
+#        me.direction=-1;
+#        }elsif(pos <=0.000){
+#        me.direction=0;
+#        me.delay_count+=getprop("/sim/time/delta-sec");
+#        if(me.delay_count >= me.delay.getValue()){
+#            me.delay_count=0;
+#            me.direction=1;
+#            }
+#        }
+#    var wiper_time = spd_factor*getprop("/sim/time/delta-sec");
+#    pos +=(wiper_time * me.direction);
+#    me.position.setValue(pos);
+#    }
+#};
 #####################
 
 var Efis = EFIS.new("instrumentation/efis");
-var wiper = Wiper.new("controls/electric/wipers","systems/electrical/bus-volts");
+#var wiper = Wiper.new("controls/electric/wipers","systems/electrical/bus-volts");
 
 setlistener("/sim/signals/fdm-initialized", func {
     SndOut.setDoubleValue(0.15);
@@ -403,74 +403,84 @@ setlistener("instrumentation/tcas/outputs/traffic-alert", func(traffic_alert){
     if (alert) setprop("instrumentation/radar/switch","on");
 },0,0);
 
-setlistener("controls/flight/speedbrake", func(spd_brake){
-    var brake = spd_brake.getValue();
-    # do not update lever when in AUTO position
-    if ((brake==0)and(getprop("controls/flight/speedbrake-lever")==2))
-    {
-        setprop("controls/flight/speedbrake-lever",0);
-    }
-    elsif ((brake==1)and(getprop("controls/flight/speedbrake-lever")==0))
-    {
-        setprop("controls/flight/speedbrake-lever",2);
-    }
-},0,0);
-
-setlistener("controls/flight/speedbrake-lever", func(spd_lever){
-    var lever = spd_lever.getValue();
-    controls.click(7);
-    # do not set speedbrake property unless changed (avoid revursive updates)
-    if ((lever==0)and(getprop("controls/flight/speedbrake")!=0))
-    {
-        setprop("controls/flight/speedbrake",0);
-    }
-    elsif ((lever==2)and(getprop("controls/flight/speedbrake")!=1))
-    {
-        setprop("controls/flight/speedbrake",1);
-    }
-},0,0);
-
-controls.toggleAutoSpoilers = func() {
-    # 0=spoilers retracted, 1=auto, 2=extended
-    if (getprop("controls/flight/speedbrake-lever")!=1)
-        setprop("controls/flight/speedbrake-lever",1);
-    else
-        setprop("controls/flight/speedbrake-lever",2*getprop("controls/flight/speedbrake"));
-}
+#setlistener("controls/flight/speedbrake", func(spd_brake){
+#    var brake = spd_brake.getValue();
+#    # do not update lever when in AUTO position
+#    if ((brake==0)and(getprop("controls/flight/speedbrake-lever")==2))
+#    {
+#        setprop("controls/flight/speedbrake-lever",0);
+#    }
+#    elsif ((brake==1)and(getprop("controls/flight/speedbrake-lever")==0))
+#    {
+#        setprop("controls/flight/speedbrake-lever",2);
+#    }
+#},0,0);
+#
+#setlistener("controls/flight/speedbrake-lever", func(spd_lever){
+#    var lever = spd_lever.getValue();
+#    controls.click(7);
+#    # do not set speedbrake property unless changed (avoid revursive updates)
+#    if ((lever==0)and(getprop("controls/flight/speedbrake")!=0))
+#    {
+#        setprop("controls/flight/speedbrake",0);
+#    }
+#    elsif ((lever==2)and(getprop("controls/flight/speedbrake")!=1))
+#    {
+#        setprop("controls/flight/speedbrake",1);
+#    }
+#},0,0);
+#
+#controls.toggleAutoSpoilers = func() {
+#    # 0=spoilers retracted, 1=auto, 2=extended
+#    if (getprop("controls/flight/speedbrake-lever")!=1)
+#        setprop("controls/flight/speedbrake-lever",1);
+#    else
+#        setprop("controls/flight/speedbrake-lever",2*getprop("controls/flight/speedbrake"));
+#}
 
 setlistener("controls/flight/flaps", func { controls.click(6) } );
 setlistener("/controls/gear/gear-down", func { controls.click(8) } );
 
-stall_horn = func{
-    var alert=0;
-    var kias=getprop("velocities/airspeed-kt");
-    if(kias>150){setprop("sim/sound/stall-horn",alert);return;};
-    var wow1=getprop("gear/gear[1]/wow");
-    var wow2=getprop("gear/gear[2]/wow");
-    if(!wow1 or !wow2){
-        var grdn=getprop("controls/gear/gear-down");
-        var flap=getprop("controls/flight/flaps");
-        if(kias<100){
-            alert=1;
-        }elsif(kias<120){
-            if(!grdn )alert=1;
-        }else{
-            if(flap==0)alert=1;
-        }
+stall_horn = func {
+    var spd = getprop("instrumentation/airspeed-indicator/indicated-speed-kt");
+    var stall = getprop("instrumentation/fmc/vspeeds/stall-speed");
+    var wow = (getprop("gear/gear[1]/wow") or getprop("gear/gear[4]/wow"));
+    if (!wow and spd < 0.8 * stall) {
+	setprop("sim/alarms/stall-warning",1);
+    } else {
+	setprop("sim/alarms/stall-warning",0);
     }
-    setprop("sim/sound/stall-horn",alert);
 }
+#stall_horn = func{
+#    var alert=0;
+#    var kias=getprop("velocities/airspeed-kt");
+#    if(kias>150){setprop("sim/sound/stall-horn",alert);return;};
+#    var wow1=getprop("gear/gear[1]/wow");
+#    var wow2=getprop("gear/gear[2]/wow");
+#    if(!wow1 or !wow2){
+#        var grdn=getprop("controls/gear/gear-down");
+#        var flap=getprop("controls/flight/flaps");
+#        if(kias<100){
+#            alert=1;
+#        }elsif(kias<120){
+#            if(!grdn )alert=1;
+#        }else{
+#            if(flap==0)alert=1;
+#        }
+#    }
+#    setprop("sim/sound/stall-horn",alert);
+#}
 
-var click_reset = func(propName) {
-    setprop(propName,0);
-}
-controls.click = func(button) {
-    if (getprop("sim/freeze/replay-state"))
-        return;
-    var propName="sim/sound/click"~button;
-    setprop(propName,1);
-    settimer(func { click_reset(propName) },0.4);
-}
+#var click_reset = func(propName) {
+#    setprop(propName,0);
+#}
+#controls.click = func(button) {
+#    if (getprop("sim/freeze/replay-state"))
+#        return;
+#    var propName="sim/sound/click"~button;
+#    setprop(propName,1);
+#    settimer(func { click_reset(propName) },0.4);
+#}
 
 # Inertial Reference System Controls
 var IRS = {

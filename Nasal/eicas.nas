@@ -23,7 +23,7 @@ msgs_caution = [];
 msgs_advisory = [];
 msgs_memo = [];
 
-props.globals.initNode("/instrumentation/weu/state/stall-speed",-100);
+#props.globals.initNode("/instrumentation/weu/state/stall-speed",-100);
 
 eicas = props.globals.initNode("/instrumentation/eicas");
 eicas_msg_warning	= eicas.initNode("msg/warning"," ","STRING");
@@ -176,9 +176,13 @@ var advisory_messages = func {
 		append(msgs_advisory,"INVALID ROUTE");
 	if (getprop("instrumentation/afds/ap-modes/roll-mode") == "LNAV" and !getprop("autopilot/route-manager/active"))
 		append(msgs_advisory,"NO ACTIVE ROUTE");
+	if (getprop("controls/flight/speedbrake") > 0)
+		append(msgs_advisory," *SPEEDBRAKE");
 }
 
 var memo_messages = func {
+	if (getprop("controls/flight/autospeedbrakes-armed"))
+		append(msgs_memo,"SPEEDBRAKE ARMED");
 	if (getprop("/controls/engines/con-ignition"))
 		append(msgs_memo,"CON IGNITION ON");
 	if (getprop("engines/apu/running"))

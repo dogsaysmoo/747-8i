@@ -436,10 +436,16 @@
 		<mode>looped</mode>
 		<path>Sounds/gear-hrn.wav</path>
 		<condition>
+		    <or>
 			<greater-than>
 				<property>/velocities/mach</property>
 				<value>0.9</value>
 			</greater-than>
+			<greater-than>
+				<property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+				<value>365</value>
+			</greater-than>
+		    </or>
 		</condition>
 	</overspeed>
 	
@@ -512,7 +518,8 @@
         <type>avionics</type>
         <path>Aircraft/747-8i/Sounds/autopilot-disengage.wav</path>
         <condition>
-            <property>instrumentation/weu/sound/autopilot-warning</property>
+            <!--property>instrumentation/weu/sound/autopilot-warning</property-->
+            <property>instrumentation/afds/settings/alarm</property>
         </condition>
         <volume>
             <factor>1</factor>

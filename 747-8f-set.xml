@@ -612,16 +612,12 @@ Service ceiling	43,000 ft (13,000 m)
 		<name>Ctrl-B</name>
 		<desc>Toggle Speedbrakes</desc>
 		<binding>
-		   <command>nasal</command>
-		   <script>
-                   if (getprop("systems/hydraulic/equipment/enable-spoil")) {
-			if (getprop("controls/flight/speedbrake")) {
-			   setprop("controls/flight/speedbrake",0); 
-			}else{
-			   setprop("controls/flight/speedbrake",1);
-			} 
-                   }
-                   </script>
+		    <command>property-cycle</command>
+		    <property>controls/flight/speedbrake-lever</property>
+		    <value type="int">0</value>
+		    <value type="int">1</value>
+		    <value type="int">2</value>
+		    <value type="int">3</value>
 		</binding>
 	    </key>
 
@@ -698,10 +694,6 @@ Service ceiling	43,000 ft (13,000 m)
 				<broken type="bool">0</broken>
 			</wings>
 		</failures>
-	
-		<flight>
-			<autospeedbrakes-armed type="string">true</autospeedbrakes-armed>
-		</flight>
 	
 		<fuel>
 			<auto-manage type="bool">0</auto-manage>
@@ -810,13 +802,14 @@ Service ceiling	43,000 ft (13,000 m)
 			<file>Aircraft/747-8i/Nasal/wipers.nas</file>
 			<file>Aircraft/Generic/limits.nas</file>
 			<file>Aircraft/747-8i/Nasal/gpws.nas</file>
-		        <file>Aircraft/747-8i/Nasal/warnsystem.nas</file>
+		        <!--file>Aircraft/747-8i/Nasal/warnsystem.nas</file-->
 			<file>Aircraft/747-8i/Nasal/AFDS.nas</file>
 			<file>Aircraft/747-8i/Nasal/fuel_system.nas</file>
 			<file>Aircraft/747-8i/Nasal/pneumatic.nas</file>
 			<file>Aircraft/747-8i/Nasal/transponder.nas</file>
 			<file>Aircraft/747-8i/Nasal/autobrakes.nas</file>
 			<file>Aircraft/747-8i/Nasal/brakesystem.nas</file>
+			<file>Aircraft/747-8i/Nasal/speedbrakes.nas</file>
 		</Boeing747>
 		  	  
 		<cdu>
@@ -844,12 +837,12 @@ Service ceiling	43,000 ft (13,000 m)
 		<lights>
 			<file>Aircraft/747-8i/Nasal/lights.nas</file>
 		</lights>
-		<groundservice>
+		<!--groundservice>
 			<file>Aircraft/747-8i/Nasal/groundservice.nas</file>
 		</groundservice>
 		<reversethrust>
 			<file>Aircraft/747-8i/Nasal/reverse-thrust.nas</file>
-		</reversethrust>
+		</reversethrust-->
 		<dialogs>
 			<file>Aircraft/747-8i/Nasal/dialogs.nas</file>
 		</dialogs>
