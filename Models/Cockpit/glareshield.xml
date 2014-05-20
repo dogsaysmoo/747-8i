@@ -1032,16 +1032,16 @@
     <type>select</type>
     <object-name>FLCH_lit</object-name>
     <condition>
-	<or>
+	<!--or-->
 		<equals>
 			<property>instrumentation/afds/ap-modes/pitch-mode</property>
 	                <value>FLCH SPD</value>
 		</equals>
-		<equals>
+		<!--equals>
 			<property>instrumentation/afds/settings/flch-mode</property>
 			<value>1</value>
 		</equals>
-	</or>
+	</or-->
     </condition>
 </animation>
 
@@ -1056,10 +1056,10 @@
 		                <value>FLCH SPD</value>
 			</equals>
 		</not>
-		<equals>
+		<!--equals>
 			<property>instrumentation/afds/settings/flch-mode</property>
 			<value>0</value>
-		</equals>
+		</equals-->
 	</and>
     </condition>
 </animation>
