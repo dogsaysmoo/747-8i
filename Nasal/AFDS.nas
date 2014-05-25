@@ -177,6 +177,7 @@ var AFDS = {
             # throttle AP controls
             if(me.autothrottle_mode.getValue() ==btn) btn=0;
             if(getprop("position/altitude-agl-ft")<200) btn=0;
+	    if(!me.at1.getBoolValue()) btn=0;
             me.autothrottle_mode.setValue(btn);
         }elsif(mode==3){
             var arm = 1-((me.loc_armed.getValue() or (4==me.lateral_mode.getValue())));
@@ -371,6 +372,7 @@ var AFDS = {
                 # auto-throttle disables when reverser is enabled
                 me.autothrottle_mode.setValue(0);
             }
+	    if (!me.at1.getBoolValue()) me.autothrottle_mode.setValue(0);
         }elsif(me.step==5){
 	    if (getprop("/autopilot/route-manager/active") and getprop("/autopilot/route-manager/route/num") >= 2) {
 		max_wpt=getprop("/autopilot/route-manager/route/num");

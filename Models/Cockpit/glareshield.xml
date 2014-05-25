@@ -955,6 +955,35 @@
  </animation-->
 
 <animation>
+    <type>pick</type>
+    <object-name>AT.toggle</object-name>
+    <action>
+	<button>0</button>
+	<repeatable>false</repeatable>
+	<binding>
+	    <command>property-toggle</command>
+	    <property>/instrumentation/afds/inputs/at-armed[0]</property>
+	</binding>
+    </action>
+</animation>
+<animation>
+    <type>rotate</type>
+    <object-name>AT.toggle</object-name>
+    <property>/instrumentation/afds/inputs/at-armed[0]</property>
+    <factor>-45</factor>
+    <center>
+	<x-m>0.905</x-m>
+	<y-m>0</y-m>
+	<z-m>0.969</z-m>
+    </center>
+    <axis>
+	<x>0</x>
+	<y>1</y>
+	<z>0</z>
+    </axis>
+</animation>
+
+<animation>
     <type>select</type>
     <object-name>THR_lit</object-name>
     <condition>
