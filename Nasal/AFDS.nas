@@ -219,6 +219,7 @@ var AFDS = {
     updateATMode : func()
     {
         var idx=me.autothrottle_mode.getValue();
+	if (me.AP_disengaged.getBoolValue()) idx = 0;
         me.AP_speed_mode.setValue(me.spd_list[idx]);
     },
 #################
