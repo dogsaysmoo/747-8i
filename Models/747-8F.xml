@@ -610,29 +610,6 @@
   </offsets>
 </model>
 
-
-
- <!-- Servico de solo
- <model>
-  <name>ServiceSolo</name>
-  <path>Aircraft/747-8i/Models/Service/Service_Cargo/service.xml</path>
-  <offsets>
-   <x-m>0.0</x-m>
-   <y-m>0.0</y-m>
-   <z-m>-5.625</z-m>
-  </offsets>
- </model>
- 
- <model>
-  <name>ServiceSolo</name>
-  <path>Aircraft/747-8i/Models/Service/Service_PAX/services.xml</path>
-  <offsets>
-   <x-m>0.0</x-m>
-   <y-m>0.0</y-m>
-   <z-m>-5.625</z-m>
-  </offsets>
- </model>
-  -->
   <!-- Une ombre pour OSG, adaptado by BR-NVS -->
     <model>
       <name>shadowOSG</name>
