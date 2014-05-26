@@ -548,11 +548,23 @@
 	<object-name>VS_dn</object-name>
 	<action>
 		<button>0</button>
+		<button>3</button>
 		<repeatable>true</repeatable>  
 		<binding>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/vertical-speed-fpm</property>
 			<step>-100</step>
+			<min>-8000</min>
+			<max>6000</max>
+		</binding>
+	</action>
+	<action>
+		<button>4</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/autopilot/settings/vertical-speed-fpm</property>
+			<step>100</step>
 			<min>-8000</min>
 			<max>6000</max>
 		</binding>
@@ -564,11 +576,23 @@
 	<object-name>VS_up</object-name>
 	<action>
 		<button>0</button>
+		<button>4</button>
 		<repeatable>true</repeatable>  
 		<binding>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/vertical-speed-fpm</property>
 			<step>100</step>
+			<min>-8000</min>
+			<max>6000</max>
+		</binding>
+	</action>
+	<action>
+		<button>3</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/autopilot/settings/vertical-speed-fpm</property>
+			<step>-100</step>
 			<min>-8000</min>
 			<max>6000</max>
 		</binding>
@@ -706,7 +730,7 @@
 	<type>pick</type>
 	<object-name>sw.hdg</object-name>
 	<action>
-		<!--button>0</button-->
+		<button>0</button>
 		<button>3</button>
 		<repeatable>true</repeatable>  
 		<binding>
@@ -719,7 +743,35 @@
 		</binding>
 	</action>
 	<action>
-		<!--button>1</button-->
+		<button>1</button>
+		<button>4</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/autopilot/settings/heading-bug-deg</property>
+			<step>-1</step>
+			<min>000</min>
+			<max>360</max>
+			<wrap>true</wrap>
+		</binding>
+	</action>
+</animation>
+<animation>
+	<type>pick</type>
+	<object-name>sw.hdgsel</object-name>
+	<action>
+		<button>3</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/autopilot/settings/heading-bug-deg</property>
+			<step>1</step>
+			<min>000</min>
+			<max>360</max>
+			<wrap>true</wrap>
+		</binding>
+	</action>
+	<action>
 		<button>4</button>
 		<repeatable>true</repeatable>  
 		<binding>
