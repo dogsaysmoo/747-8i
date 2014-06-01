@@ -89371,7 +89371,7 @@ refs 4
 18 0.731953024864 0.704478979111
 kids 0
 OBJECT poly
-name "cabinlighting.001"
+name "cabinlighting"
 data 9
 Plane.003
 crease 30.000000
