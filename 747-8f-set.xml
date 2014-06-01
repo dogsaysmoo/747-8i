@@ -23,10 +23,10 @@
 		<status>beta</status>
 
 	<rating>
-		<FDM type="int">3</FDM>
-		<systems type="int">4</systems>
+		<FDM type="int">4</FDM>
+		<systems type="int">5</systems>
 		<cockpit type="int">4</cockpit>
-		<model type="int">3</model>
+		<model type="int">4</model>
 	</rating>
 		
 		<flight-model>yasim</flight-model>

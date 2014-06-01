@@ -154,17 +154,17 @@ var AFDS = {
 #               me.vnav_alt.setValue(me.FMS_alt.getValue());   
             }
 	    if (btn==8) {
-		if (me.vertical_mode.getValue() == 2) {
-		    btn = 2;
+	#	if (me.vertical_mode.getValue() == 2) {
+	#	    btn = 2;
 	#	    if (me.flch_mode.getBoolValue()) {
 	#		me.flch_mode.setBoolValue(0);
 	#	    } else {
 	#		me.flch_mode.setBoolValue(1);
 	#	    }
-		}else {
+	#	}else {
 		    me.alt_setting.setValue(me.alt_display.getValue());
 #		    btn = 1;
-		}
+	#	}
 	    }
             if (btn==11)
             {
@@ -413,7 +413,7 @@ var AFDS = {
 		    var wpt_eta = (enroute[1] / groundspeed * 3600);
 		    var brg_err = getprop("/autopilot/route-manager/wp/true-bearing-deg") - getprop("/orientation/heading-deg");
 		    var wp_lead = 30;
-		    if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 240 and getprop("position/altitude-ft") < 9000) {
+		    if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 240 and getprop("position/altitude-ft") < 10000) {
 			wp_lead = 10;
 			brg_err = 0;
 		    }
@@ -421,7 +421,7 @@ var AFDS = {
 			brg_err = brg_err + 360;
 		    }
 		    brg_err = math.pi * (brg_err / 180);
-		    if (enroute[1] < 20) {
+		    if (enroute[1] < 8) {
 			wpt_eta = abs(wpt_eta * math.cos(brg_err));
 		    }
 
