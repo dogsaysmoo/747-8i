@@ -113,4 +113,6 @@ Changes made by John W.
 -Re-modelled speedbrake system
 -Changed minimum contrail alt to 19000
 -New AP dialog (finally)
+-Hide cockpit when viewpoint is more than 100 m away
+-Fix windows and cabin lights
 
