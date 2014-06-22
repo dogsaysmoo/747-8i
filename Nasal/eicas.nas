@@ -116,7 +116,7 @@ var caution_messages = func {
 }
 
 var advisory_messages = func {
-	if (getprop("instrumentation/afds/settings/alarm"))
+	if (getprop("instrumentation/afds/settings/alarm") or getprop("instrumentation/afds/inputs/reset"))
 		append(msgs_advisory, " A P DISCONNECT");
 	if (math.abs((getprop("/consumables/fuel/tank[1]/level-lbs")-getprop("/consumables/fuel/tank[2]/level-lbs"))) > 6000)
 		append(msgs_advisory," *FUEL IMBAL 2-3");
@@ -209,7 +209,7 @@ var memo_messages = func {
 		append(msgs_memo,"AUTOBRAKES 4");
 	if (getprop("/autopilot/autobrake/step") == 5)
 		append(msgs_memo,"AUTOBRAKES MAX");
-	if (getprop("/controls/switches/seatbelt-sign"))
+	if (getprop("/controls/cabin/seatbelt-sign"))
 		append(msgs_memo,"SEATBELTS ON");
 		
 	if (!getprop("/systems/pneumatic/pack[0]") and !getprop("/systems/pneumatic/pack[1]") and !getprop("/systems/pneumatic/pack[2]"))

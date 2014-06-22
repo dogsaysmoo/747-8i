@@ -455,7 +455,8 @@
 		<mode>once</mode>
 		<path>Aircraft/747-8i/Sounds/FastenSeatbelt.wav</path>
 		<condition>
-			<property>controls/switches/seatbelt-sign</property>
+			<!--property>controls/switches/seatbelt-sign</property-->
+			<property>controls/cabin/seatbelt-sign</property>
 		</condition>
 		<volume>
 			<factor>0.6</factor>
@@ -468,7 +469,8 @@
 		<path>Aircraft/747-8i/Sounds/FastenSeatbelt.wav</path>
 		<condition>
 			<not>
-			<property>controls/switches/seatbelt-sign</property>
+			<!--property>controls/switches/seatbelt-sign</property-->
+			<property>controls/cabin/seatbelt-sign</property>
 			</not>
 		</condition>
 		<volume>

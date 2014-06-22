@@ -115,4 +115,6 @@ Changes made by John W.
 -New AP dialog (finally)
 -Hide cockpit when viewpoint is more than 100 m away
 -Fix windows and cabin lights
+-Added Auto mode on seatbelts sign
+-Added reset to AFDS update
 

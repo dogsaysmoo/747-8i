@@ -375,7 +375,7 @@
 			<property>/controls/switches/seatbelt-sign</property>
 			<step>1</step>
 			<min>0</min>
-			<max>1</max>
+			<max>2</max>
 		</binding>
 	</action>
 	<action>
@@ -385,10 +385,10 @@
 			<property>/controls/switches/seatbelt-sign</property>
 			<step>-1</step>
 			<min>0</min>
-			<max>1</max>
+			<max>2</max>
 		</binding>
 	</action>
-	<action>
+	<!--action>
 		<button>3</button>
 		<binding>
 			<command>property-adjust</command>
@@ -407,14 +407,14 @@
 			<min></min>
 			<max>1</max>
 		</binding>
-	</action>
+	</action-->
 </animation>
 
 <animation>
 	<type>rotate</type>
 	<object-name>seatbelt_knob</object-name>
 	<property>/controls/switches/seatbelt-sign</property>
-	<factor>-90</factor>
+	<factor>-45</factor>
 	<center>
 		<x-m> 1.702</x-m>
 		<y-m>-0.106</y-m>

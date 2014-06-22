@@ -326,6 +326,29 @@ var set_fltctrls = func {
     }
 }
 
+## Seatbelt Sign ##
+var seatbelt_knob = props.globals.initNode("controls/switches/seatbelt-sign",0,"INT");
+var seatbelt_on = props.globals.initNode("controls/cabin/seatbelt-sign",0,"BOOL");
+var sblt_auto = func {
+    if (getprop("instrumentation/altimeter/indicated-altitude-ft") < 10000) {
+	seatbelt_on.setBoolValue(1);
+    } else {
+	seatbelt_on.setBoolValue(0);
+    }
+    settimer( func {
+	if (seatbelt_knob.getValue() == 1) sblt_auto();
+    }, 3);
+}
+setlistener("controls/switches/seatbelt-sign", func {
+    if (seatbelt_knob.getValue() == 0)
+	seatbelt_on.setBoolValue(0);
+    if (seatbelt_knob.getValue() == 1)
+	sblt_auto();
+    if (seatbelt_knob.getValue() == 2)
+	seatbelt_on.setBoolValue(1);
+},0,0);
+	    
+
 ## Switch click sound ##
 var click_reset = func(propName) {
 	setprop(propName,0);
