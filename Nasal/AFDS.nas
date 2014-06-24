@@ -485,6 +485,7 @@ var AFDS = {
         me.step+=1;
         if(me.step>6)me.step =0;
 
+# Debugging status 'light'
 	if (!me.status_light.getBoolValue() and (getprop("sim/time/elapsed-sec") - me.e_time > 2)) {
 	    me.status_light.setBoolValue(1);
 	    settimer( func {
@@ -493,7 +494,7 @@ var AFDS = {
 	    },0.2);
 	}
 
-     	},
+    },
 };
 #####################
 
