@@ -188,6 +188,24 @@
 		    </config>
 	    </view>
 		<view n="1502">
+			<name>Center Pedestal</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<enabled type="bool">false</enabled>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+				<default-field-of-view-deg type="double">67</default-field-of-view-deg>
+				<heading-offset-deg type="double">0</heading-offset-deg>
+				<x-offset-m archive="y">0.0</x-offset-m>
+				<y-offset-m archive="y">3.9</y-offset-m>
+				<z-offset-m archive="y">-28.01</z-offset-m>
+				<pitch-offset-deg archive="y">-90.0</pitch-offset-deg>
+			</config>
+		</view>
+		
+		<view n="1503">
 			<name>Copilot</name>
 			<type>lookfrom</type>
 			<internal archive="y">true</internal>
@@ -204,7 +222,7 @@
 			</config>
 		</view>
 
-		<view n="1503">
+		<view n="1504">
 			<name>Overhead Panel</name>
 			<type>lookfrom</type>
 			<internal archive="y">true</internal>
