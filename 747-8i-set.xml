@@ -195,7 +195,6 @@
 			<name>Center Pedestal</name>
 			<type>lookfrom</type>
 			<internal archive="y">true</internal>
-			<enabled type="bool">false</enabled>
 			<config>
 				<from-model type="bool">true</from-model>
 				<from-model-idx type="int">0</from-model-idx>
