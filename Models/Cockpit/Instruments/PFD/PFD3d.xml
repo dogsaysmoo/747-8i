@@ -967,6 +967,9 @@ Syd Adams
         <object-name>KPA</object-name>
         <object-name>MAG-annun</object-name>
         <object-name>mins</object-name>
+        <object-name>SPD</object-name>
+        <object-name>ROLL</object-name>
+        <object-name>PITCH</object-name>
         <emission>
             <red>0</red>
             <green>0.8</green>
@@ -996,7 +999,9 @@ Syd Adams
         <object-name>ASIdigits</object-name>
         <object-name>ALTdigits</object-name>
         <object-name>AOAtt</object-name>
-		<object-name>AOAttval</object-name>		
+	<object-name>AOAttval</object-name>		
+        <object-name>PITCH arm</object-name>
+        <object-name>ROLL arm</object-name>
         <emission>
             <red>0.9</red>
             <green>0.9</green>
@@ -1021,9 +1026,6 @@ Syd Adams
 
     <animation>
         <type>material</type><!--magenta-->
-        <object-name>SPD</object-name>
-        <object-name>ROLL</object-name>
-        <object-name>PITCH</object-name>
         <object-name>AP-annun</object-name>		
         <object-name>ALT-annun</object-name>
         <object-name>IAS-annun</object-name>
@@ -1053,9 +1055,7 @@ Syd Adams
 	
     <animation>
         <type>material</type><!--red-->
-        <object-name>PITCH arm</object-name>
-        <object-name>ROLL arm</object-name>
-		<object-name>DME</object-name>
+	<object-name>DME</object-name>
         <emission>
             <red>1</red>
             <green>0.2</green>

@@ -117,4 +117,6 @@ Changes made by John W.
 -Fix windows and cabin lights
 -Added Auto mode on seatbelts sign
 -Added reset to AFDS update
+-CDUs go dark when power is out
+-Changed colors on AP annunciators on PFD
 
