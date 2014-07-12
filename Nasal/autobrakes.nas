@@ -1,96 +1,145 @@
-# Autobrake controls - J Williams, Nov 2013
+# Autobrake controls - J Williams, Jul 2014
 
-var autobrake = func {
-#	Autobrake on landing
-	var ground = getprop("gear/gear[2]/wow");
-	var nlg = getprop("gear/gear/wow");
-        var mode = getprop("autopilot/autobrake/step");
-        var speed = getprop("gear/gear[2]/rollspeed-ms") * 1.94;
-	if (!nlg) mode = 1;
-	var brake_set = 0;
-	if (mode > 0) {
-		brake_set = 0.75 * 0.2 * mode;
+var throt = 0;
+var revrs = 0;
+var brake_set = 0.0;
+var abl_arm = 0;
+var speed = 0;
+
+var autobrakes = {
+    new : func {
+	m = { parents : [autobrakes] };
+
+	m.mode = props.globals.initNode("autopilot/autobrake/step",-1,"INT");
+	m.touchdown = props.globals.getNode("gear/gear[2]/wow",1);
+	m.nlg = props.globals.getNode("gear/gear/wow",1);
+	m.rollspeed = props.globals.getNode("gear/gear[2]/rollspeed-ms",1);
+
+	m.brake_left = props.globals.getNode("controls/gear/brake-left",1);
+	m.brake_right = props.globals.getNode("controls/gear/brake-right",1);
+
+	m.throttle = [ props.globals.getNode("controls/engines/engine[0]/throttle",1),
+		       props.globals.getNode("controls/engines/engine[1]/throttle",1), 
+		       props.globals.getNode("controls/engines/engine[2]/throttle",1), 
+		       props.globals.getNode("controls/engines/engine[3]/throttle",1) ];
+	m.reverser = [ props.globals.getNode("controls/engines/engine[0]/reverser",1),
+		       props.globals.getNode("controls/engines/engine[1]/reverser",1),
+		       props.globals.getNode("controls/engines/engine[2]/reverser",1),
+		       props.globals.getNode("controls/engines/engine[3]/reverser",1) ];
+
+	m.disarm_arm = 0;
+	m.rto_arm = 0;
+
+	m.td = 0;
+
+	return m;
+    },
+
+    rto : func {
+	throt = (me.throttle[0].getValue() < 0.1 and
+		 me.throttle[1].getValue() < 0.1 and
+		 me.throttle[2].getValue() < 0.1 and
+		 me.throttle[3].getValue() < 0.1);
+	revrs = (me.reverser[0].getBoolValue() and
+		 me.reverser[1].getBoolValue() and
+		 me.reverser[2].getBoolValue() and
+		 me.reverser[3].getBoolValue());
+
+	speed = me.rollspeed.getValue() * 1.94;
+
+	if (speed > 85) me.rto_arm = 1;
+	if (me.mode.getValue() == -2 and me.touchdown.getBoolValue() and (throt or revrs)) {
+	    if (me.rto_arm == 1) {
+		# If the throttles are retarded or the reversers engaged over
+		# 85 kts, RTO autobrakes engage at full.
+		me.brake_left.setValue(1.0);
+		me.brake_right.setValue(1.0);
+		if (speed >= 20)
+		    setprop("controls/gear/brake-parking",1);
+		if (speed < 20 and speed > 10)
+		    setprop("controls/gear/brake-parking",0);
+		if (getprop("controls/flight/autospeedbrakes-armed"))
+		    setprop("controls/flight/speedbrake-lever",3);
+	    }
+	}
+	if (me.mode.getValue() == -2) {
+	    settimer(func me.rto(),0);
+	} else {
+	    # RTO must be deactivated to free the brakes.
+	    me.rto_arm = 0;
+	}
+    },
+
+    auto_brake : func {
+	throt = (me.throttle[0].getValue() < 0.1 and
+		 me.throttle[1].getValue() < 0.1 and
+		 me.throttle[2].getValue() < 0.1 and
+		 me.throttle[3].getValue() < 0.1);
+	revrs = (me.reverser[0].getBoolValue() and
+		 me.reverser[1].getBoolValue() and
+		 me.reverser[2].getBoolValue() and
+		 me.reverser[3].getBoolValue());
+
+	speed = me.rollspeed.getValue() * 1.94;
+
+	if (!me.nlg.getBoolValue()) {
+	    # Autobrakes stay at 1 until the nose gear touches down
+	    brake_set = 0.16;
+	} else {
+	    brake_set = 0.16 * me.mode.getValue();
 	}
 
-        var stop0 = 0;
-        var stop1 = 0;
-        var stop2 = 0;
-        var stop3 = 0;
-
-        if ((getprop("controls/engines/engine/throttle") < 0.3) or (getprop("controls/engines/engine/reverser"))) stop0 = 1;
-        if ((getprop("controls/engines/engine[1]/throttle") < 0.3) or (getprop("controls/engines/engine[1]/reverser"))) stop1 = 1;
-        if ((getprop("controls/engines/engine[2]/throttle") < 0.3) or (getprop("controls/engines/engine[2]/reverser"))) stop2 = 1;
-        if ((getprop("controls/engines/engine[3]/throttle") < 0.3) or (getprop("controls/engines/engine[3]/reverser"))) stop3 = 1;
-
-        var stopping = 0;
-        if (stop0 and stop1 and stop2 and stop3) stopping = 1;
-
-#	Activated when wheels on the ground and throttles off or reversers on
-	if (speed > 50) {
-		if (ground == 1 and stopping == 1 and mode > 0) {
-			setprop("controls/gear/brake-left",brake_set);
-			setprop("controls/gear/brake-right",brake_set);
-		}
-		settimer(autobrake,0.1);
-#		Deactivated when speed below 50 kts
+	if (speed > 50 or getprop("instrumentation/airspeed-indicator/indicated-speed-kt") > 75) {
+	    me.disarm_arm = 1;
+	    if (me.brake_left.getValue() > 0.9 or me.brake_right.getValue() > 0.9)
+		# Autobrakes disarm when someone steps on the brakes manually
+		me.mode.setValue(0);
+	    if (me.mode.getValue() > 0 and me.touchdown.getBoolValue() and (throt or revrs)) {
+		me.brake_left.setValue(brake_set);
+		me.brake_right.setValue(brake_set);
+	    }
+	} elsif (me.disarm_arm == 1) {
+	    # Disarm when speed drops below 50 kts
+	    me.disarm_arm = 0;
+	    me.mode.setValue(0);
 	}
-}
 
-var rto = func {
-#	RTO autobrakes
-	var ground = getprop("gear/gear[2]/wow");
-	var mode = getprop("autopilot/autobrake/step");
-	var speed = getprop("gear/gear[2]/rollspeed-ms") * 1.94;
+	if (me.mode.getValue() > 0) settimer(func me.auto_brake(), 0);
+    },
 
-	var stop0 = 0;
-	var stop1 = 0;
-	var stop2 = 0;
-	var stop3 = 0;
-
-        if ((getprop("controls/engines/engine/throttle") < 0.1) or (getprop("controls/engines/engine/reverser"))) stop0 = 1;
-        if ((getprop("controls/engines/engine[1]/throttle") < 0.1) or (getprop("controls/engines/engine[1]/reverser"))) stop1 = 1;
-        if ((getprop("controls/engines/engine[2]/throttle") < 0.1) or (getprop("controls/engines/engine[2]/reverser"))) stop2 = 1;
-        if ((getprop("controls/engines/engine[3]/throttle") < 0.1) or (getprop("controls/engines/engine[3]/reverser"))) stop3 = 1;
-	
-	var stopping = 0;
-	if (stop0 and stop1 and stop2 and stop3) stopping = 1;
-#	Activated when on the ground and throttles off or reversers on and speed above 85 kts
-	if (ground == 1 and mode == -2 and stopping == 1) {
-		if (speed > 85) {
-			setprop("controls/gear/brake-left",1.0);
-			setprop("controls/gear/brake-right",1.0);
-			setprop("controls/gear/brake-parking",1);
-			setprop("controls/flight/speedbrake",1);
-		}
-		if (speed < 20 and speed > 10) {
-			setprop("controls/gear/brake-parking",0);
-		}
+    ab_lis : func {
+	if (me.mode.getValue() > 0) {
+	    if (abl_arm == 0) {
+		abl_arm = 1;
+		me.td = setlistener("gear/gear[2]/wow", func {
+		    if (me.touchdown.getBoolValue())
+			settimer(func me.auto_brake(),1);
+		},0,0);
+	    }
+	} elsif (abl_arm == 1) {
+	    removelistener(me.td);
+	    abl_arm = 0;
 	}
-	if (mode == -2) settimer(rto,0.1);
-}
+    },
+    listeners : func {
+	setlistener("autopilot/autobrake/step", func {
+	    if (me.mode.getValue() == -2)
+		me.rto();
+	    me.ab_lis();
+	},0,0);
+	setlistener("controls/gear/gear-down", func(down) {
+	    if (!down.getBoolValue()) {
+		me.mode.setValue(-1);
+		setprop("controls/flight/speedbrake-lever",0);
+	    }
+	},0,0);
+    },
+};
 
-setlistener("gear/gear[2]/wow", func(wow) {
-#	When main gear touches down, deploy speedbrakes, wait 3 sec and activate autobrakes.
-	if (wow.getBoolValue()) {
-#		if (getprop("autopilot/autobrake/step") >= 0) setprop("controls/flight/speedbrake",1);
-		settimer(func {
-			if (!(getprop("gear/gear/wow"))) autobrake();
-		},3);
-	}
+var ABSys = autobrakes.new();
+
+setlistener("/sim/signals/fdm-initialized", func {
+	settimer(func ABSys.listeners(),3);
 },0,0);
 
-setlistener("gear/gear/wow", func(wow) {
-#	When nose gear touches down, activate autobrake immediately.
-	if (wow.getBoolValue()) autobrake();
-},0,0);
-
-setlistener("autopilot/autobrake/step", func(brk) {
-#	RTO autobrake mode
-	if (brk.getValue() == -2) rto();
-},0,0);
-
-setlistener("controls/gear/gear-down", func(down) {
-#	Reset autobrakes when gear retracted.
-	if (!(down.getBoolValue())) setprop("autopilot/autobrake/step",-1);
-},0,0);
 
