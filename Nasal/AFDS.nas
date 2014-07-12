@@ -193,7 +193,7 @@ var AFDS = {
 		    me.flch_mode.setBoolValue(0);
 		} elsif (me.vertical_mode.getValue() == 5)
 		    me.vertical_mode.setValue(1);
-                var arm = arm or (1-(me.gs_armed.getValue() or (6==me.vertical_mode.getValue())));
+                arm = arm or (1-(me.gs_armed.getValue() or (6==me.vertical_mode.getValue())));
                 me.gs_armed.setValue(arm);
                 if ((arm==0)and(6==me.vertical_mode.getValue())) me.vertical_mode.setValue(0);
             }
