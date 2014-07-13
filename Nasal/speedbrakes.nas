@@ -66,7 +66,15 @@ var spoilers = {
     },
 
     autospeedbrake : func {
-	if (me.auto.getBoolValue() and getprop("gear/gear[2]/wow") and me.hydraulic.getBoolValue()) {
+	var throt = getprop("controls/engines/engine[0]/throttle") < 0.3 and
+		    getprop("controls/engines/engine[1]/throttle") < 0.3 and
+		    getprop("controls/engines/engine[2]/throttle") < 0.3 and
+		    getprop("controls/engines/engine[3]/throttle") < 0.3;
+	var revrs = getprop("controls/engines/engine[0]/reverser") and
+		    getprop("controls/engines/engine[1]/reverser") and
+		    getprop("controls/engines/engine[2]/reverser") and
+		    getprop("controls/engines/engine[3]/reverser");
+	if (me.auto.getBoolValue() and getprop("gear/gear[2]/wow") and me.hydraulic.getBoolValue() and (throt or revrs)) {
 	    me.pos_cmd.setValue(1.0);
 	    var lev_chg = setlistener("controls/flight/speedbrake-lever", func {
 		if (me.lever.getValue() > 1) {
