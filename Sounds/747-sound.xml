@@ -598,7 +598,7 @@
                         <condition>
                                 <greater-than>
                                 	<property>/engines/apu/rpm</property>
-                                	<value>5000.0</value>
+                                	<value>2000.0</value>
                                 </greater-than>
                         </condition>
                         <position>
@@ -636,6 +636,128 @@
                         </position>
                         <volume>0.5</volume>
                 </apu-shutdown>
+
+<!-- Packs -->
+    <pack0>
+	<name>pack-0</name>
+	<mode>looped</mode>
+	<path>Aircraft/747-8i/Sounds/FGOS_744Run.wav</path>
+	<condition>
+	    <and>
+		<property>systems/pneumatic/pack[0]</property>
+		<not>
+		<property>sim/current-view/internal</property>
+		</not>
+	    </and>
+	</condition>
+	<position>
+		<x>-28.0</x>
+		<y>  8.0</y>
+		<z> -2.0</z>
+	</position>
+	<volume>
+	    <factor>0.2</factor>
+	</volume>
+    </pack0>
+    <pack1>
+	<name>pack-1</name>
+	<mode>looped</mode>
+	<path>Aircraft/747-8i/Sounds/FGOS_744Run.wav</path>
+	<condition>
+	    <and>
+		<property>systems/pneumatic/pack[1]</property>
+		<not>
+		<property>sim/current-view/internal</property>
+		</not>
+	    </and>
+	</condition>
+	<position>
+		<x>-28.0</x>
+		<y>  0.0</y>
+		<z> -2.0</z>
+	</position>
+	<volume>
+	    <factor>0.2</factor>
+	</volume>
+    </pack1>
+    <pack2>
+	<name>pack-2</name>
+	<mode>looped</mode>
+	<path>Aircraft/747-8i/Sounds/FGOS_744Run.wav</path>
+	<condition>
+	    <and>
+		<property>systems/pneumatic/pack[2]</property>
+		<not>
+		<property>sim/current-view/internal</property>
+		</not>
+	    </and>
+	</condition>
+	<position>
+		<x>-28.0</x>
+		<y> -8.0</y>
+		<z> -2.0</z>
+	</position>
+	<volume>
+	    <factor>0.2</factor>
+	</volume>
+    </pack2>
+
+<!-- Hydraulic demand pumps -->
+
+    <hydro0>
+	<name>hydro-0</name>
+	<mode>looped</mode>
+	<path>Aircraft/747-8i/Sounds/FGOS_744Run.wav</path>
+	<condition>
+	    <and>
+		<greater-than>
+		    <property>controls/hydraulic/demand-pump[0]</property>
+		    <value>0</value>
+		</greater-than>
+		<not>
+		<property>sim/current-view/internal</property>
+		</not>
+	    </and>
+	</condition>
+	<position>
+		<x>-30.0</x>
+		<y> 40.0</y>
+		<z>  0.0</z>
+	</position>
+	<volume>
+	    <factor>0.4</factor>
+	</volume>
+	<pitch>
+	    <offset>-0.2</offset>
+	</pitch>
+    </hydro0>
+    <hydro3>
+	<name>hydro-3</name>
+	<mode>looped</mode>
+	<path>Aircraft/747-8i/Sounds/FGOS_744Run.wav</path>
+	<condition>
+	    <and>
+		<greater-than>
+		    <property>controls/hydraulic/demand-pump[3]</property>
+		    <value>0</value>
+		</greater-than>
+		<not>
+		<property>sim/current-view/internal</property>
+		</not>
+	    </and>
+	</condition>
+	<position>
+		<x>-30.0</x>
+		<y>-40.0</y>
+		<z>  0.0</z>
+	</position>
+	<volume>
+	    <factor>0.4</factor>
+	</volume>
+	<pitch>
+	    <offset>-0.2</offset>
+	</pitch>
+    </hydro3>
 
 </fx>
  
