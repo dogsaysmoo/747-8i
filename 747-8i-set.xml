@@ -37,7 +37,7 @@
 
 		<aero>747-8i-yasim</aero>
 		<variant type="string">8i</variant>
-        i	<fuel-fraction>0.2</fuel-fraction>
+        	<fuel-fraction>0.2</fuel-fraction>
         
 		<virtual-cockpit archive="y">false</virtual-cockpit>
 

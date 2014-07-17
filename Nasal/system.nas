@@ -144,10 +144,10 @@ var APU = {
 #				me.cutoff.setValue(1);
 #				me.shutdown();
 			};
-			settimer( func {
-				me.fuelcons();
-			}
-			,1);
+#			settimer( func {
+#				me.fuelcons();
+#			}
+#			,1);
 	},
 	
 #### update ####
@@ -793,6 +793,7 @@ var update_systems = func {
 }
 
 var update_fuel_apu = func {
-	EngAPU.fuelcons() ;
+	EngAPU.fuelcons();
+	settimer(update_fuel_apu,1);
 }
 

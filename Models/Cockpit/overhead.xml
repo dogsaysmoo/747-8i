@@ -2703,10 +2703,10 @@
 			<command>property-toggle</command>
 			<property>controls/fuel/fuel-xfer</property>
 		</binding>
-		<binding>
+		<!--binding>
 			<command>nasal</command>
 			<script>Boeing747.tanks_fuelxfer();</script>
-		</binding>
+		</binding-->
 	</action>
 </animation>
 <animation>
@@ -3377,7 +3377,7 @@
 		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
-			<property>/systems/pneumatic/APU-bleed-valve</property>
+			<property>/controls/pneumatic/APU-bleed-valve</property>
 		</binding>
 	</action>
 </animation>
@@ -3387,7 +3387,7 @@
 	<object-name>bleed_apu</object-name>
 	<object-name>bleed_apu.ON</object-name>
 	<object-name>bleed_apu.VALVE</object-name>
-	<property>/systems/pneumatic/APU-bleed-valve</property>
+	<property>/controls/pneumatic/APU-bleed-valve</property>
 	<factor>0.0045</factor>
 	<axis>
 		<x> 0</x>
@@ -3400,7 +3400,7 @@
 	<type>select</type>
 	<object-name>bleed_apu.ON</object-name>
 	<condition>
-		<property>/controls/pneumatic/APU-bleed</property>
+		<property>/systems/pneumatic/APU-bleed</property>
 	</condition>
 </animation>
 
@@ -3408,7 +3408,7 @@
 	<type>select</type>
 	<object-name>bleed_apu.VALVE</object-name>
 	<condition>
-		<property>/systems/pneumatic/APU-bleed-valve</property>
+		<property>/controls/pneumatic/APU-bleed-valve</property>
 	</condition>
 </animation>
 

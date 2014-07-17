@@ -43,10 +43,6 @@ var fuelsys = {
 	m.jett = m.fuelcontrols.getNode("dump-valve",1);
 	m.automng = m.fuelcontrols.getNode("auto-manage",1);
 	m.scavenge = 0;
-#	m.xfer5 = 0;
-#	m.xfer6 = 0;
-	m.xfer7 = 0;
-
 
 	m.sel = [ m.fueltanks.getNode("tank/selected",1),
 		m.fueltanks.getNode("tank[1]/selected",1),
@@ -153,11 +149,10 @@ var fuelsys = {
 	}
 
 	# Center Wing Tank
-	if (!me.emp[0].getBoolValue() and me.pumpcwt.getBoolValue() and me.lev[0].getValue() < 800 and me.scavenge == 0) {
-	    me.sel[0].setBoolValue(1);
+	if (!me.emp[0].getBoolValue() and me.pumpcwt.getBoolValue() and me.lev[0].getValue() < 800) {
 	    me.pumpcwt.setBoolValue(0);
-	    me.tanks_transfer(0,2,0.05);
-	    me.tanks_transfer(0,1,0.05);
+	    me.tanks_transfer(0,2,0.025);
+	    me.tanks_transfer(0,1,0.025);
 	    me.scavenge = 1;
 	}
 	if (me.emp[0].getBoolValue()) {
@@ -228,25 +223,28 @@ var fuelsys = {
 	    me.sel[4].setBoolValue(0);
 	    me.sel[6].setBoolValue(0);
 	}
+	if (getprop("controls/fuel/fuel-xfer")) {
+	    if (me.lev[3].getValue() > 7000)
+		me.tanks_transfer(3,1,0.4);
+	    if (me.lev[4].getValue() > 7000)
+		me.tanks_transfer(4,2,0.4);
+	    if (me.lev[3].getValue() <= 7000 and me.lev[4].getValue() <= 7000)
+		setprop("controls/fuel/fuel-xfer",0);
+	}
 
 	# Tail Plane Tank
 	if (me.pumphst.getBoolValue() and me.lev[0].getValue() <= 80000) {
 	    if (me.emp[7].getBoolValue()) {
 		me.hstactive.setBoolValue(0);
 		me.sel[7].setBoolValue(0);
-		me.xfer7 = 0;
 	    } else {
 		me.hstactive.setBoolValue(1);
 		me.sel[7].setBoolValue(1);
-		if (me.xfer7 == 0) {
-		    me.tanks_transfer(7,0,0.3);
-		    me.xfer7 = 1;
-		}
+		me.tanks_transfer(7,0,0.15);
 	    }
 	} else {
 	    me.hstactive.setBoolValue(0);
 	    me.sel[7].setBoolValue(0);
-	    me.xfer7 = 0;
 	}
 
 	# Engine Suction
@@ -284,7 +282,6 @@ var fuelsys = {
 	    }
 	}
 	me.power_update();
-	settimer(func { me.update();},0.5);
     },
     power_update : func {
 	var ac0 = getprop("systems/electrical/ac-bus");
@@ -309,35 +306,90 @@ var fuelsys = {
 	}
     },
     tanks_transfer : func(src,des,rate) {
-        var runxfer = 0;
-        var fuel_xfer = func {
-            src_lev = getprop("consumables/fuel/tank["~src~"]/level-gal_us");
-            des_lev = getprop("consumables/fuel/tank["~des~"]/level-gal_us");
-            des_cap = getprop("consumables/fuel/tank["~des~"]/capacity-gal_us");
-            if (des_lev < (des_cap - rate)) {
-                setprop("consumables/fuel/tank["~src~"]/level-gal_us",(src_lev - rate));
-                setprop("consumables/fuel/tank["~des~"]/level-gal_us",(des_lev + rate));
-            }
-            if ((runxfer == 1) and ( getprop("consumables/fuel/tank["~src~"]/selected")))
-                settimer(fuel_xfer,1);
-        }
-
-        if (( getprop("consumables/fuel/tank["~src~"]/selected")) and (getprop("consumables/fuel/tank["~src~"]/level-gal_us") > rate)) {
-            runxfer = 1;
-            settimer(fuel_xfer,1);
+	var src_lev = getprop("consumables/fuel/tank["~src~"]/level-gal_us");
+        var des_lev = getprop("consumables/fuel/tank["~des~"]/level-gal_us");
+        var des_cap = getprop("consumables/fuel/tank["~des~"]/capacity-gal_us");
+        if (des_lev < (des_cap - rate)) {
+            setprop("consumables/fuel/tank["~src~"]/level-gal_us",(src_lev - rate));
+            setprop("consumables/fuel/tank["~des~"]/level-gal_us",(des_lev + rate));
         }
     }
 };
 var B748fuel = fuelsys.new();
-settimer(func {B748fuel.update();},2);
+var update_fuel = func {
+	B748fuel.update();
+	settimer(update_fuel,0.5);
+}
 
 ############
+# Idle fuel consumption
+var tanks_idle = func {
+	var idle_ff = func(eng,src) {
+	    var cutoff = getprop("controls/engines/engine[" ~eng~ "]/cutoff");
+	    var n1 = getprop("engines/engine[" ~eng~ "]/n1-ind");
+	    var frate = getprop("engines/engine[" ~eng~ "]/fuel-flow-gph");
+	    var empty = getprop("consumables/fuel/tank[" ~src~ "]/empty");
+	    
+	    if (!cutoff and !empty and n1>30 and frate<10) {
+		setprop("consumables/fuel/tank[" ~src~ "]/level-gal_us",(getprop("consumables/fuel/tank[" ~src~ "]/level-gal_us") - 0.004));
+	    }
+	}
 
+	var src_tank = func(eng) {
+	    var src = 0; 
+	    if (eng == 0) src = 3;
+	    if (eng == 1) src = 1;
+	    if (eng == 2) src = 2;
+	    if (eng == 3) src = 4;
+
+	    var selected = getprop("consumables/fuel/tank[" ~src~ "]/selected");
+	    var ctr_sel = getprop("consumables/fuel/tank/selected");
+	    var xfeed = getprop("controls/fuel/tank[" ~src~ "]/x-feed");
+
+	    if (xfeed) {
+		if (eng==0) {
+		    if (getprop("consumables/fuel/tank[1]/selected") and (getprop("controls/fuel/tank[1]/ovrd-fwd") or getprop("controls/fuel/tank[1]/ovrd-aft"))) {
+			src = 1;
+		    } elsif (getprop("consumables/fuel/tank[2]/selected") and (getprop("controls/fuel/tank[2]/ovrd-fwd") or getprop("controls/fuel/tank[2]/ovrd-aft"))) {
+			src = 2;
+		    }
+		}
+		if (eng==3) {
+		    if (getprop("consumables/fuel/tank[2]/selected") and (getprop("controls/fuel/tank[2]/ovrd-fwd") or getprop("controls/fuel/tank[2]/ovrd-aft"))) {
+			src = 2;
+		    } elsif (getprop("consumables/fuel/tank[1]/selected") and (getprop("controls/fuel/tank[1]/ovrd-fwd") or getprop("controls/fuel/tank[1]/ovrd-aft"))) {
+			src = 1;
+		    }
+		}
+		if (ctr_sel) {
+		    src = 0;
+		}
+	    }
+	    return src;
+	}
+
+	idle_ff(0,src_tank(0));
+	idle_ff(1,src_tank(1));
+	idle_ff(2,src_tank(2));
+	idle_ff(3,src_tank(3));
+}
+var fuel_idle = func {
+	tanks_idle();
+	settimer(fuel_idle,0.1);
+}
+
+setlistener("/sim/signals/fdm-initialized", func {
+	update_fuel();
+	fuel_idle();
+},0,0);
+
+############
 
 ############
 # Fuel Jettison
+var FTR = 0;
 var dump_fuel = func {
-    var FTR = getprop("consumables/fuel/total-fuel-lbs") + 1500 - (getprop("/yasim/gross-weight-lbs") - getprop("limits/mass-and-balance/maximum-landing-mass-lbs"));
+    FTR = getprop("consumables/fuel/total-fuel-lbs") + 1500 - (getprop("/yasim/gross-weight-lbs") - getprop("limits/mass-and-balance/maximum-landing-mass-lbs"));
     if (getprop("controls/fuel/dump-valve")) {
         if (getprop("consumables/fuel/total-fuel-lbs") > FTR) {
                 # Center tank
@@ -397,36 +449,6 @@ setlistener("controls/fuel/dump-valve", func(dumpswitch) {
                 dump_fuel();
         }
 },0,0);	
-############
-
-var tanks_fuelxfer = func {
-	var grav_feed = func(out,in) {
-		var src = getprop("consumables/fuel/tank["~out~"]/level-lbs");
-		var des = getprop("consumables/fuel/tank["~in~"]/level-lbs");
-		if (src > 7000) {
-			setprop("consumables/fuel/tank["~out~"]/level-lbs",(src - 6));
-			setprop("consumables/fuel/tank["~in~"]/level-lbs",(des + 6));
-		}
-	}
-	var proceed = func {
-		var tank1 = getprop("consumables/fuel/tank[1]/level-gal_us");
-		var tank2 = getprop("consumables/fuel/tank[2]/level-gal_us");
-		var tank3 = getprop("consumables/fuel/tank[3]/level-lbs");
-		var tank4 = getprop("consumables/fuel/tank[4]/level-lbs");
-
-		if ((tank3 <= 7000) and (tank4 <= 7000))
-			setprop("controls/fuel/fuel-xfer",0);
-		if (tank1 < (getprop("consumables/fuel/tank[1]/capacity-gal_us") - 2))
-			grav_feed(3,1);
-		if (tank2 < (getprop("consumables/fuel/tank[2]/capacity-gal_us") - 2))
-			grav_feed(4,2);
-		if (getprop("controls/fuel/fuel-xfer"))
-			settimer(proceed,1);
-	}
-	proceed();
-}
-
-
 ############
 # Pump shutoff when tanks 1-4 are empty
 setlistener("consumables/fuel/tank[1]/empty", func(lev) {
@@ -541,63 +563,6 @@ var startup_dist = func {
 	setprop("controls/groundservice/fueling/target-gal_us",getprop("consumables/fuel/total-fuel-gal_us"));
 }
 settimer(startup_dist,3);
-
-############
-
-############
-# Idle fuel consumption
-var tanks_idle = func {
-	var idle_ff = func(eng,src) {
-	    var cutoff = getprop("controls/engines/engine[" ~eng~ "]/cutoff");
-	    var n1 = getprop("engines/engine[" ~eng~ "]/n1-ind");
-	    var frate = getprop("engines/engine[" ~eng~ "]/fuel-flow-gph");
-	    var empty = getprop("consumables/fuel/tank[" ~src~ "]/empty");
-	    
-	    if (!cutoff and !empty and n1>30 and frate<10) {
-		setprop("consumables/fuel/tank[" ~src~ "]/level-gal_us",(getprop("consumables/fuel/tank[" ~src~ "]/level-gal_us") - 0.0007));
-	    }
-	}
-
-	var src_tank = func(eng) {
-	    var src = 0; 
-	    if (eng == 0) src = 3;
-	    if (eng == 1) src = 1;
-	    if (eng == 2) src = 2;
-	    if (eng == 3) src = 4;
-
-	    var selected = getprop("consumables/fuel/tank[" ~src~ "]/selected");
-	    var ctr_sel = getprop("consumables/fuel/tank/selected");
-	    var xfeed = getprop("controls/fuel/tank[" ~src~ "]/x-feed");
-
-	    if (xfeed) {
-		if (eng==0) {
-		    if (getprop("consumables/fuel/tank[1]/selected") and (getprop("controls/fuel/tank[1]/ovrd-fwd") or getprop("controls/fuel/tank[1]/ovrd-aft"))) {
-			src = 1;
-		    } elsif (getprop("consumables/fuel/tank[2]/selected") and (getprop("controls/fuel/tank[2]/ovrd-fwd") or getprop("controls/fuel/tank[2]/ovrd-aft"))) {
-			src = 2;
-		    }
-		}
-		if (eng==3) {
-		    if (getprop("consumables/fuel/tank[2]/selected") and (getprop("controls/fuel/tank[2]/ovrd-fwd") or getprop("controls/fuel/tank[2]/ovrd-aft"))) {
-			src = 2;
-		    } elsif (getprop("consumables/fuel/tank[1]/selected") and (getprop("controls/fuel/tank[1]/ovrd-fwd") or getprop("controls/fuel/tank[1]/ovrd-aft"))) {
-			src = 1;
-		    }
-		}
-		if (ctr_sel) {
-		    src = 0;
-		}
-	    }
-	    return src;
-	}
-
-	idle_ff(0,src_tank(0));
-	idle_ff(1,src_tank(1));
-	idle_ff(2,src_tank(2));
-	idle_ff(3,src_tank(3));
-	settimer(tanks_idle,0);
-}
-tanks_idle();
 
 ############
 

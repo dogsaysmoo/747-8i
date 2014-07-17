@@ -50,10 +50,14 @@ var vspeeds = func {
 	setprop("/instrumentation/fmc/vspeeds/V2",V2);
 	setprop("/instrumentation/fmc/vspeeds/stall-speed",stallspeed);
 
-	settimer(vspeeds, 1);
 }
+var do_vspeeds = func {
+	vspeeds();
+	settimer(do_vspeeds, 1);
+}
+	
 
-_setlistener("/sim/signals/fdm-initialized", vspeeds);
+_setlistener("/sim/signals/fdm-initialized", do_vspeeds);
 
 
 # interpolates a value

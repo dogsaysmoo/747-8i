@@ -215,30 +215,23 @@ var resched_update = func
 }
 
 # Brake restrictors
-setlistener("systems/hydraulic/equipment/enable-brake", func (rst) {
-    var brake_reset = func {
-	if (getprop("controls/gear/brake-left") > getprop("systems/hydraulic/equipment/enable-brake"))
-	    setprop("controls/gear/brake-left",getprop("systems/hydraulic/equipment/enable-brake"));
-	if (getprop("controls/gear/brake-right") > getprop("systems/hydraulic/equipment/enable-brake"))
-	    setprop("controls/gear/brake-right",getprop("systems/hydraulic/equipment/enable-brake"));
-	if (rst.getValue() < 0.8)
-	    settimer(brake_reset,0);
-    }
-    if (rst.getValue() < 0.8)
-	brake_reset();
-},0,0);
+var brake_reset = func {
+    if (getprop("controls/gear/brake-left") > getprop("systems/hydraulic/equipment/enable-brake"))
+	setprop("controls/gear/brake-left",getprop("systems/hydraulic/equipment/enable-brake"));
 
-# Flight Control Surface (dis)Enable
-#setlistener("systems/hydraulic/equipment/enable-sfc", func (sfc) {
-#    var sfc_reset = func {
-#	setprop("controls/flight/aileron",0);
-#	setprop("controls/flight/elevator",0);
-#	if (getprop("/sim/model/pushback/position-norm") != 1.0)
-#	    setprop("controls/flight/rudder",0);
-#	if (!sfc.getBoolValue()) settimer(sfc_reset,0);
-#    }
-#    if (!sfc.getBoolValue()) sfc_reset();
-#},0,0);
+    if (getprop("controls/gear/brake-right") > getprop("systems/hydraulic/equipment/enable-brake"))
+	setprop("controls/gear/brake-right",getprop("systems/hydraulic/equipment/enable-brake"));
+}
+var do_brake_reset = func {
+    if (getprop("systems/hydraulic/equipment/enable-brake") < 0.8) {
+	brake_reset();
+	settimer(do_brake_reset,0);
+    }
+}
+setlistener("systems/hydraulic/equipment/enable-brake", func (rst) {
+    if (rst.getValue() < 0.8)
+	do_brake_reset();
+},0,0);
 
 
 # init
