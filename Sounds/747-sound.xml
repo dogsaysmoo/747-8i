@@ -658,6 +658,10 @@
 	<volume>
 	    <factor>0.2</factor>
 	</volume>
+	<pitch>
+	    <property>controls/pneumatic/pack-high-flow</property>
+	    <factor>0.05</factor>
+	</pitch>
     </pack0>
     <pack1>
 	<name>pack-1</name>
@@ -679,6 +683,10 @@
 	<volume>
 	    <factor>0.2</factor>
 	</volume>
+	<pitch>
+	    <property>controls/pneumatic/pack-high-flow</property>
+	    <factor>0.05</factor>
+	</pitch>
     </pack1>
     <pack2>
 	<name>pack-2</name>
@@ -700,6 +708,10 @@
 	<volume>
 	    <factor>0.2</factor>
 	</volume>
+	<pitch>
+	    <property>controls/pneumatic/pack-high-flow</property>
+	    <factor>0.05</factor>
+	</pitch>
     </pack2>
 
 <!-- Hydraulic demand pumps -->

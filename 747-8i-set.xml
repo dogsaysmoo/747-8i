@@ -860,6 +860,9 @@ Service ceiling	43,000 ft (13,000 m)
 		<auto-coord>
 			<file>Aircraft/747-8i/Nasal/auto_coord.nas</file>
 		</auto-coord>
+		<hour-meters>
+			<file>Aircraft/747-8i/Nasal/hour-meters.nas</file>
+		</hour-meters>
 
 	</nasal>
 
@@ -1104,6 +1107,14 @@ Service ceiling	43,000 ft (13,000 m)
 		<slow type="bool">true</slow>
 		<real type="bool"></real>
 	</inertial-reference>
+	<hour-meters>
+		<engine-hours n="0" type="float">0</engine-hours>
+		<engine-hours n="1" type="float">0</engine-hours>
+		<engine-hours n="2" type="float">0</engine-hours>
+		<engine-hours n="3" type="float">0</engine-hours>
+		<electrical-hours type="float">0</electrical-hours>
+		<flight-hours type="float">0</flight-hours>
+	</hour-meters>
 </systems>
 
 		<aircraft>
