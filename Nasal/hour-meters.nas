@@ -50,6 +50,11 @@ setlistener("gear/gear[2]/wow", func (wow) {
 	    FLTmeter.activate(1);
 	}
 },0,0);
+setlistener("sim/model/start-idling", func {
+# For in-air starting
+	if (!getprop("gear/gear[2]/wow") and FLTmeter.meter_active == 0)
+	    FLTmeter.activate(1);
+},0,0);
 
 var elec_check = func {
 	var acbus = [ getprop("systems/electrical/ac-bus[0]"),

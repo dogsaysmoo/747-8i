@@ -362,7 +362,9 @@ controls.click = func {
 }
 
 ## Yoke charts ##
-setprop("/instrumentation/groundradar/id", getprop("/sim/airport/closest-airport-id"));
+settimer(func {
+	setprop("/instrumentation/groundradar/id", getprop("/sim/airport/closest-airport-id"));
+},5);
 
 # 777-300 systems
 #Syd Adams
