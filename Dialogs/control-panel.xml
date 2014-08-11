@@ -304,7 +304,7 @@
 
   <hrule/>
 
-  <text>
+  <!--text>
 	<label>IRS Alignment Time</label>
   </text>
   <group>
@@ -351,6 +351,8 @@
     </radio>
   </group>
 
+  <hrule/-->
+
   <!--group>
     <layout>hbox</layout>
     <halign>right</halign>
@@ -362,6 +364,27 @@
 	<label>(realistic)</label>
     </text>
   </group-->
+
+    <group>
+      <layout>hbox</layout>
+      <button>
+	<halign>center</halign>
+	<legend>Advanced...</legend>
+	<binding>
+	    <command>nasal</command>
+	    <script>
+		var dlg = gui.Dialog.new("/sim/gui/dialogs/fuel-automanage/dialog", "Aircraft/747-8i/Dialogs/advanced-ctrl.xml");
+	    </script>
+	</binding>
+	<binding>
+	    <command>dialog-show</command>
+	    <dialog-name>advanced-ctrl</dialog-name>
+	</binding>
+	<binding>
+	    <command>dialog-close</command>
+	</binding>
+      </button>
+    </group>
 
   <hrule/>
 

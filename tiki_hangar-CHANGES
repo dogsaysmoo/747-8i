@@ -119,4 +119,6 @@ Changes made by John W.
 -Added reset to AFDS update
 -CDUs go dark when power is out
 -Changed colors on AP annunciators on PFD
+-Hour meters
+-Add advanced control panel dialog (with IRS alignment time, AFDS reset, hour meters
 
