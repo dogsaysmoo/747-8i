@@ -39,6 +39,10 @@
          <object-name>fuselage_in</object-name>
          <object-name>nosecone</object-name>
          <object-name>VHFantenna</object-name>
+         <object-name>antenna2</object-name>
+         <object-name>antenna3</object-name>
+         <object-name>antenna_bot</object-name>
+         <object-name>satcom</object-name>
          <!--object-name>cargodoor1.001</object-name-->
          <object-name>cargodoor</object-name>
          <!--object-name>nlg_large_door.left</object-name>

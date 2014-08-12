@@ -47,7 +47,11 @@
         <type>material</type>
          <object-name>fuselage_1</object-name>
          <object-name>nosecone</object-name>
-         <object-name>fuselage_0</object-name>
+         <object-name>VHFantenna</object-name>
+         <object-name>antenna2</object-name>
+         <object-name>antenna3</object-name>
+         <object-name>antenna_bot</object-name>
+         <object-name>satcom</object-name>
          <object-name>cargodoor1.001</object-name>
          <!--object-name>nlg_large_door.left</object-name>
          <object-name>nlg_large_door.right</object-name>
