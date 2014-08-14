@@ -334,7 +334,20 @@
  <object-name>wlg_left_poly1</object-name>
  <object-name>wlg_left_poly2</object-name>
  <object-name>wlg_left_support</object-name>
+ <object-name>wlg_left_upper</object-name>
+ <object-name>wlg_left_upper.001</object-name>
  <object-name>GearWingLeftStrut</object-name>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>GearWingLeft</object-name>
+ <condition>
+  <greater-than>
+   <property>gear/gear[1]/position-norm</property>
+   <value>0.0</value>
+  </greater-than>
+ </condition>
 </animation>
 
 <!-- basic movements -->
@@ -423,17 +436,23 @@
 
 <animation>
  <type>rotate</type>
+ <object-name>wlg_left_lower</object-name>
  <object-name>wlg_left_upper</object-name>
  <object-name>wlg_left_upper.001</object-name>
+ <object-name>wlg_left_support</object-name>
  <property>gear/gear[1]/position-norm</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
-   <dep>-45</dep>
+   <dep>40</dep>
   </entry>
   <entry>
-   <ind>0.3</ind>
-   <dep>-45</dep>
+   <ind>0.15</ind>
+   <dep>40</dep>
+  </entry>
+  <entry>
+   <ind>0.65</ind>
+   <dep>0</dep>
   </entry>
   <entry>
    <ind>1.0</ind>
@@ -442,8 +461,8 @@
  </interpolation>
  <center>
   <x-m> 2.099</x-m>
-  <y-m>-3.806</y-m>
-  <z-m>-2.207</z-m>
+  <y-m>-5.532</y-m>
+  <z-m>-3.937</z-m>
  </center>
  <axis>
   <x>1</x>
@@ -459,11 +478,15 @@
  <interpolation>
   <entry>
    <ind>0.0</ind>
-   <dep>-115</dep>
+   <dep>-135</dep>
   </entry>
   <entry>
-   <ind>0.3</ind>
-   <dep>-115</dep>
+   <ind>0.15</ind>
+   <dep>-135</dep>
+  </entry>
+  <entry>
+   <ind>0.65</ind>
+   <dep>0</dep>
   </entry>
   <entry>
    <ind>1.0</ind>
@@ -471,9 +494,12 @@
   </entry>
  </interpolation>
  <center>
-  <x-m> 2.099</x-m>
+  <!--x-m> 2.099</x-m>
   <y-m>-5.503</y-m>
-  <z-m>-2.647</z-m>
+  <z-m>-2.647</z-m-->
+  <x-m> 2.099</x-m>
+  <y-m>-4.373</y-m>
+  <z-m>-2.767</z-m>
  </center>
  <axis>
   <x>1</x>
@@ -484,16 +510,21 @@
 
 <animation>
  <type>rotate</type>
- <object-name>wlg_left_lower</object-name>
+ <object-name>wlg_left_upper</object-name>
+ <object-name>wlg_left_upper.001</object-name>
  <property>gear/gear[1]/position-norm</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
-   <dep>40</dep>
+   <dep>-150</dep>
   </entry>
   <entry>
-   <ind>0.3</ind>
-   <dep>40</dep>
+   <ind>0.15</ind>
+   <dep>-150</dep>
+  </entry>
+  <entry>
+   <ind>0.65</ind>
+   <dep>0</dep>
   </entry>
   <entry>
    <ind>1.0</ind>
@@ -502,8 +533,8 @@
  </interpolation>
  <center>
   <x-m> 2.099</x-m>
-  <y-m>-5.532</y-m>
-  <z-m>-3.937</z-m>
+  <y-m>-4.360</y-m>
+  <z-m>-2.760</z-m>
  </center>
  <axis>
   <x>1</x>
@@ -570,7 +601,20 @@
  <object-name>wlg_right_poly1</object-name>
  <object-name>wlg_right_poly2</object-name>
  <object-name>wlg_right_support</object-name>
+ <object-name>wlg_right_upper</object-name>
+ <object-name>wlg_right_upper.001</object-name>
  <object-name>GearWingRightStrut</object-name>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>GearWingRight</object-name>
+ <condition>
+  <greater-than>
+   <property>gear/gear[4]/position-norm</property>
+   <value>0.0</value>
+  </greater-than>
+ </condition>
 </animation>
 
 <!-- basic movements -->
@@ -659,17 +703,23 @@
 
 <animation>
  <type>rotate</type>
+ <object-name>wlg_right_lower</object-name>
  <object-name>wlg_right_upper</object-name>
  <object-name>wlg_right_upper.001</object-name>
+ <object-name>wlg_right_support</object-name>
  <property>gear/gear[4]/position-norm</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
-   <dep>45</dep>
+   <dep>-40</dep>
   </entry>
   <entry>
-   <ind>0.3</ind>
-   <dep>45</dep>
+   <ind>0.15</ind>
+   <dep>-40</dep>
+  </entry>
+  <entry>
+   <ind>0.65</ind>
+   <dep>0</dep>
   </entry>
   <entry>
    <ind>1.0</ind>
@@ -678,8 +728,43 @@
  </interpolation>
  <center>
   <x-m> 2.099</x-m>
-  <y-m> 3.806</y-m>
-  <z-m>-1.974</z-m>
+  <y-m> 5.532</y-m>
+  <z-m>-3.937</z-m>
+ </center>
+ <axis>
+  <x>1</x>
+  <y>0</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>wlg_right_upper</object-name>
+ <object-name>wlg_right_upper.001</object-name>
+ <property>gear/gear[4]/position-norm</property>
+ <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>150</dep>
+  </entry>
+  <entry>
+   <ind>0.15</ind>
+   <dep>150</dep>
+  </entry>
+  <entry>
+   <ind>0.65</ind>
+   <dep>0</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>0</dep>
+  </entry>
+ </interpolation>
+ <center>
+  <x-m> 2.099</x-m>
+  <y-m> 4.360</y-m>
+  <z-m>-2.760</z-m>
  </center>
  <axis>
   <x>1</x>
@@ -695,11 +780,15 @@
  <interpolation>
   <entry>
    <ind>0.0</ind>
-   <dep>115</dep>
+   <dep>135</dep>
   </entry>
   <entry>
-   <ind>0.3</ind>
-   <dep>115</dep>
+   <ind>0.15</ind>
+   <dep>135</dep>
+  </entry>
+  <entry>
+   <ind>0.65</ind>
+   <dep>0</dep>
   </entry>
   <entry>
    <ind>1.0</ind>
@@ -708,38 +797,8 @@
  </interpolation>
  <center>
   <x-m> 2.099</x-m>
-  <y-m> 5.503</y-m>
-  <z-m>-2.647</z-m>
- </center>
- <axis>
-  <x>1</x>
-  <y>0</y>
-  <z>0</z>
- </axis>
-</animation>
-
-<animation>
- <type>rotate</type>
- <object-name>wlg_right_lower</object-name>
- <property>gear/gear[4]/position-norm</property>
- <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>-40</dep>
-  </entry>
-  <entry>
-   <ind>0.3</ind>
-   <dep>-40</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <center>
-  <x-m> 2.099</x-m>
-  <y-m> 5.532</y-m>
-  <z-m>-3.937</z-m>
+  <y-m> 4.373</y-m>
+  <z-m>-2.767</z-m>
  </center>
  <axis>
   <x>1</x>
@@ -807,8 +866,6 @@
 <animation>
  <type>select</type>
  <object-name>GearBodyLeft</object-name>
- <object-name>wlg_left_upper</object-name>
- <object-name>wlg_left_upper.001</object-name>
  <condition>
   <greater-than>
    <property>gear/gear[2]/position-norm</property>
@@ -827,11 +884,11 @@
    <dep>90</dep>
   </entry>
   <entry>
-   <ind>0.15</ind>
+   <ind>0.30</ind>
    <dep>90</dep>
   </entry>
   <entry>
-   <ind>0.85</ind>
+   <ind>0.77</ind>
    <dep>0</dep>
   </entry>
   <entry>
@@ -854,8 +911,14 @@
 <animation>
  <type>rotate</type>
  <object-name>GearBodyLeftWheels</object-name>
- <property>gear/gear[2]/steering-norm</property>
- <factor>-13</factor>
+ <condition>
+  <less-than>
+   <property>position/altitude-agl-ft</property>
+   <value>30.0</value>
+  </less-than>
+ </condition>
+ <property>gear/gear/steering-norm</property>
+ <factor>8</factor>
  <center>
   <x-m>5.457</x-m>
   <y-m>-1.904</y-m>
@@ -970,8 +1033,6 @@
 <animation>
  <type>select</type>
  <object-name>GearBodyRight</object-name>
- <object-name>wlg_right_upper</object-name>
- <object-name>wlg_right_upper.001</object-name>
  <condition>
   <greater-than>
    <property>gear/gear[3]/position-norm</property>
@@ -990,11 +1051,11 @@
    <dep>90</dep>
   </entry>
   <entry>
-   <ind>0.15</ind>
+   <ind>0.30</ind>
    <dep>90</dep>
   </entry>
   <entry>
-   <ind>0.85</ind>
+   <ind>0.77</ind>
    <dep>0</dep>
   </entry>
   <entry>
@@ -1017,8 +1078,14 @@
 <animation>
  <type>rotate</type>
  <object-name>GearBodyRightWheels</object-name>
- <property>gear/gear[3]/steering-norm</property>
- <factor>-13</factor>
+ <condition>
+  <less-than>
+   <property>position/altitude-agl-ft</property>
+   <value>30.0</value>
+  </less-than>
+ </condition>
+ <property>gear/gear/steering-norm</property>
+ <factor>8</factor>
  <center>
   <x-m>5.05</x-m>
   <y-m>1.445</y-m>
