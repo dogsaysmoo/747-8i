@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 
 <PropertyList>
-
 	<particlesystem>
-		<name>tyre-smoke-p</name>
+		<name>tyre-smoke</name>
 		<texture>smoke.png</texture>
 		<emissive>false</emissive>
 		<lighting>false</lighting>
@@ -13,25 +12,6 @@
 			<y-m>0</y-m>
 			<z-m>0</z-m>
 		</offsets>
-
-		<condition>
-			<and>
-				<equals>
-					<property>/gear/gear[1]/tyre-smoke</property>
-					<value>1</value>
-				</equals>
-				<less-than>
-					<property>/velocities/speed-down-fps</property>
-					<value>5</value>
-				</less-than>		
-				<not>
-					<equals>
-						<property>/gear/gear[1]/spray</property>
-						<value>1</value>
-					</equals>
-				</not>
-			</and>
-		</condition>
 
 		<attach>world</attach>
 

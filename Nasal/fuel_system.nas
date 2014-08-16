@@ -864,7 +864,7 @@ setlistener("controls/gear/brake-parking", func(ebrake) {
 	}
 },0,0);
 
-setlistener("controls/gear/gear/wow", func(wow) {
+setlistener("gear/gear/wow", func(wow) {
 	if (!wow.getBoolValue()) {
 	    setprop("controls/groundservice/fueling/loading",0);
 	    setprop("controls/groundservice/fueling/truck",0);

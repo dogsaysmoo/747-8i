@@ -47,6 +47,12 @@ var BrakeSystem =
        m.SmokeActive   = 0;
        m.SmokeToggle   = 0;
        m.LnCoolFactor  = math.ln(1-m.CoolingFactor);
+
+       m.abnormal = [ props.globals.initNode("gear/gear[0]/abnormal-temperature",0,"BOOL"),
+		      props.globals.initNode("gear/gear[1]/abnormal-temperature",0,"BOOL"),
+		      props.globals.initNode("gear/gear[2]/abnormal-temperature",0,"BOOL"),
+		      props.globals.initNode("gear/gear[3]/abnormal-temperature",0,"BOOL"),
+		      props.globals.initNode("gear/gear[4]/abnormal-temperature",0,"BOOL") ];
        
        return m;
     },
@@ -124,10 +130,21 @@ var BrakeSystem =
                     SmokeDelay = 0;
             }
 #            setprop("/gear/gear[0]/tyre-smoke",SmokeValue);
-			setprop("/gear/gear[1]/tyre-smoke",SmokeValue);
+	    setprop("/gear/gear[1]/tyre-smoke",SmokeValue);
             setprop("/gear/gear[2]/tyre-smoke",SmokeValue);
-			setprop("/gear/gear[3]/tyre-smoke",SmokeValue);
-			setprop("/gear/gear[4]/tyre-smoke",SmokeValue);
+	    setprop("/gear/gear[3]/tyre-smoke",SmokeValue);
+	    setprop("/gear/gear[4]/tyre-smoke",SmokeValue);
+	    if (me.ThermalEnergy > 4.3) {
+		me.abnormal[1].setBoolValue(1);
+		me.abnormal[2].setBoolValue(1);
+		me.abnormal[3].setBoolValue(1);
+		me.abnormal[4].setBoolValue(1);
+	    } else {
+		me.abnormal[1].setBoolValue(0);
+		me.abnormal[2].setBoolValue(0);
+		me.abnormal[3].setBoolValue(0);
+		me.abnormal[4].setBoolValue(0);
+	    }
             settimer(func { BrakeSys.smoke(); },SmokeDelay);
         }
         else
@@ -136,8 +153,8 @@ var BrakeSystem =
 #			setprop("/gear/gear[0]/tyre-smoke",0);
             setprop("/gear/gear[1]/tyre-smoke",0);
             setprop("/gear/gear[2]/tyre-smoke",0);
-			setprop("/gear/gear[3]/tyre-smoke",0);
-			setprop("/gear/gear[4]/tyre-smoke",0);
+	    setprop("/gear/gear[3]/tyre-smoke",0);
+	    setprop("/gear/gear[4]/tyre-smoke",0);
             me.SmokeActive = 0;
         }
     },

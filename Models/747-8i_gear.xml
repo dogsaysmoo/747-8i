@@ -6,53 +6,88 @@
 
 <model>
  <name>tyre-smoke-n</name>
- <path>Aircraft/Generic/Effects/tyre-smoke-nose.xml</path>
+ <path>Aircraft/747-8i/Models/Effects/TireSmoke/tyre-smoke.xml</path>
  <offsets>
   <x-m>-26.1032</x-m>
   <y-m>  0.000</y-m>
   <z-m> -5.000</z-m>
  </offsets>
 </model>
+<animation>
+ <type>select</type>
+ <object-name>tyre-smoke-n</object-name>
+ <condition>
+    <property>gear/gear[0]/tyre-smoke</property>
+ </condition>
+</animation>
 
 <model>
  <name>tyre-smoke-po</name>
- <path>Aircraft/Generic/Effects/tyre-smoke-port.xml</path>
+ <path>Aircraft/747-8i/Models/Effects/TireSmoke/tyre-smoke.xml</path>
  <offsets>
   <x-m>  1.607</x-m>
   <y-m> -5.511</y-m>
   <z-m> -5.055</z-m>
  </offsets>
 </model>
+<animation>
+ <type>select</type>
+ <object-name>tyre-smoke-po</object-name>
+ <condition>
+    <property>gear/gear[1]/tyre-smoke</property>
+ </condition>
+</animation>
 
 <model>
  <name>tyre-smoke-pi</name>
- <path>Aircraft/Generic/Effects/tyre-smoke-port.xml</path>
+ <path>Aircraft/747-8i/Models/Effects/TireSmoke/tyre-smoke.xml</path>
  <offsets>
   <x-m>  5.473</x-m>
   <y-m> -1.904</y-m>
   <z-m> -5.055</z-m>
  </offsets>
 </model>
+<animation>
+ <type>select</type>
+ <object-name>tyre-smoke-pi</object-name>
+ <condition>
+    <property>gear/gear[2]/tyre-smoke</property>
+ </condition>
+</animation>
 
 <model>
  <name>tyre-smoke-si</name>
- <path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
+ <path>Aircraft/747-8i/Models/Effects/TireSmoke/tyre-smoke.xml</path>
  <offsets>
   <x-m>  5.473</x-m>
   <y-m>  1.904</y-m>
   <z-m> -5.055</z-m>
  </offsets>
 </model>
+<animation>
+ <type>select</type>
+ <object-name>tyre-smoke-si</object-name>
+ <condition>
+    <property>gear/gear[3]/tyre-smoke</property>
+ </condition>
+</animation>
 
 <model>
  <name>tyre-smoke-so</name>
- <path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
+ <path>Aircraft/747-8i/Models/Effects/TireSmoke/tyre-smoke.xml</path>
  <offsets>
   <x-m>  1.607</x-m>
   <y-m>  5.511</y-m>
   <z-m> -5.055</z-m>
  </offsets>
 </model>
+<animation>
+ <type>select</type>
+ <object-name>tyre-smoke-so</object-name>
+ <condition>
+    <property>gear/gear[4]/tyre-smoke</property>
+ </condition>
+</animation>
 
 <!-- GEAR FIRE -->
 
@@ -70,10 +105,7 @@
  <type>select</type>
  <object-name>gearfire.1</object-name>
  <condition>
-  <equals>
    <property>/gear/gear[1]/abnormal-temperature</property>
-   <value>1</value>
-  </equals>
  </condition>
 </animation>
 
@@ -91,10 +123,7 @@
  <type>select</type>
  <object-name>gearfire.2</object-name>
  <condition>
-  <equals>
    <property>/gear/gear[2]/abnormal-temperature</property>
-   <value>1</value>
-  </equals>
  </condition>
 </animation>
 
@@ -112,10 +141,7 @@
  <type>select</type>
  <object-name>gearfire.3</object-name>
  <condition>
-  <equals>
    <property>/gear/gear[3]/abnormal-temperature</property>
-   <value>1</value>
-  </equals>
  </condition>
 </animation>
 
@@ -133,10 +159,7 @@
  <type>select</type>
  <object-name>gearfire.4</object-name>
  <condition>
-  <equals>
    <property>/gear/gear[4]/abnormal-temperature</property>
-   <value>1</value>
-  </equals>
  </condition>
 </animation>
 

@@ -259,6 +259,9 @@ setlistener("controls/gear/alt-gear", func (alt) {
 	}
 },0,0);
 
+# Gear smoke on touchdown
+aircraft.tyresmoke_system.new(0, 1, 2, 3, 4);
+
 ## Thrust reversers ##
 var thr_reverser = func {
 	var threv0 = props.globals.getNode("controls/engines/engine[0]/reverser",1);
