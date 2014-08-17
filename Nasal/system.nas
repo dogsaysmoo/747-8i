@@ -266,6 +266,7 @@ var MG_steer = {
 
 	m.nose = props.globals.getNode("controls/flight/rudder",0);
 	m.rear = props.globals.initNode("controls/gear/main-gear-steering-norm",0,"DOUBLE");
+	m.push = props.globals.initNode("sim/model/pushback/position-norm",0,"DOUBLE");
 
 	return m;
     },
