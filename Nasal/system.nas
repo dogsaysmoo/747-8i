@@ -259,6 +259,30 @@ setlistener("controls/gear/alt-gear", func (alt) {
 	}
 },0,0);
 
+# Main gear steering
+var MG_steer = {
+    new : func {
+	m = { parents : [MG_steer] };
+
+	m.nose = props.globals.getNode("controls/flight/rudder",0);
+	m.rear = props.globals.initNode("controls/gear/main-gear-steering-norm",0,"DOUBLE");
+
+	return m;
+    },
+    update : func {
+	if (math.abs(me.nose.getValue()) > 0.186) {
+	    if (me.nose.getValue() > 0)
+		me.rear.setValue(0.228 - (1.228 * me.nose.getValue()));
+	    if (me.nose.getValue() < 0)
+		me.rear.setValue(-0.228 - (1.228 * me.nose.getValue()));
+	} else {
+	    me.rear.setValue(0);
+	}
+	setprop("controls/gear/steering",me.nose.getValue());
+    },
+};
+var maingear_steer = MG_steer.new();
+
 # Gear smoke on touchdown
 aircraft.tyresmoke_system.new(0, 1, 2, 3, 4);
 
@@ -781,6 +805,7 @@ var update_systems = func {
 #    wiper.active();
     stall_horn();
     set_fltctrls();
+    maingear_steer.update();
     if(getprop("controls/gear/gear-down")){
         setprop("sim/multiplay/generic/float[0]",getprop("gear/gear[0]/compression-m"));
         setprop("sim/multiplay/generic/float[1]",getprop("gear/gear[1]/compression-m"));

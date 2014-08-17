@@ -124,4 +124,7 @@ Changes made by John W.
 -Add more antennas
 -Add pitot tubes
 -Fix main gear animations
+-Fix and cleanup tire smoke on landing and when brakes over heat
+-Fixed gear fire when brakes really over heat
+-Fixed steering and added main (body) gear steering
 

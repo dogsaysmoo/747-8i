@@ -146,7 +146,7 @@ http://www.boeing.com/commercial/aeromagazine/articles/2010_q3/2/
 <!-- +==============+ -->
 
     <!-- Nosegear -->
-    <gear x="29.7925" y="0.0" z="-5.625" compression="0.25" spring="0.7" damp="4">
+    <gear x="29.7925" y="0.0" z="-5.625" compression="0.25" spring="0.7" damp="4" sfric="1.5" dfric="1.0">
         <control-input axis="/controls/flight/rudder" control="STEER" square="true" />
         <control-input axis="/controls/gear/gear-down" control="EXTEND" />
         <control-output control="EXTEND" prop="/gear/gear[0]/position-norm" />
@@ -163,6 +163,8 @@ http://www.boeing.com/commercial/aeromagazine/articles/2010_q3/2/
 	</gear>
 	
 	<gear x="-2.12895" y="2.12895" z="-5.663" compression="1.1"> <!-- rear left main -->
+    <control-input control="STEER" axis="/controls/gear/main-gear-steering-norm" src0="-1.0" dst0="-0.1396263402" src1="1.0" dst1="0.1396263402" />
+    <control-output control="STEER" prop="gear/gear[2]/steering-angle-rad" />
 	  <control-input axis="/controls/gear/brake-left" control="BRAKE"/>
 	  <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
 	  <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
@@ -171,6 +173,8 @@ http://www.boeing.com/commercial/aeromagazine/articles/2010_q3/2/
 	</gear>
 	
 	<gear x="-2.12895" y="-2.12895" z="-5.663" compression="1.1"> <!-- rear right main -->
+    <control-input control="STEER" axis="/controls/gear/main-gear-steering-norm" src0="-1.0" dst0="-0.1396263402" src1="1.0" dst1="0.1396263402" />
+    <control-output control="STEER" prop="gear/gear[3]/steering-angle-rad" />
 	  <control-input axis="/controls/gear/brake-right" control="BRAKE"/>
 	  <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
 	  <control-input axis="/controls/gear/gear-down" control="EXTEND"/>

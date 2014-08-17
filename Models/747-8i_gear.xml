@@ -247,7 +247,7 @@
    <value>30.0</value>
   </less-than>
  </condition>
- <property>gear/gear[0]/steering-norm</property>
+ <property>controls/gear/steering</property>
  <factor>-70</factor>
  <center>
   <x-m>-26.1012</x-m>
@@ -940,8 +940,8 @@
    <value>30.0</value>
   </less-than>
  </condition>
- <property>gear/gear/steering-norm</property>
- <factor>8</factor>
+ <property>controls/gear/main-gear-steering-norm</property>
+ <factor>-8</factor>
  <center>
   <x-m>5.457</x-m>
   <y-m>-1.904</y-m>
@@ -1107,8 +1107,8 @@
    <value>30.0</value>
   </less-than>
  </condition>
- <property>gear/gear/steering-norm</property>
- <factor>8</factor>
+ <property>controls/gear/main-gear-steering-norm</property>
+ <factor>-8</factor>
  <center>
   <x-m>5.05</x-m>
   <y-m>1.445</y-m>
