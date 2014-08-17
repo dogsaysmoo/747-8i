@@ -270,7 +270,7 @@ var MG_steer = {
 	return m;
     },
     update : func {
-	if (math.abs(me.nose.getValue()) > 0.186) {
+	if (math.abs(me.nose.getValue()) > 0.186 and getprop("/sim/model/pushback/position-norm") < 0.5) {
 	    if (me.nose.getValue() > 0)
 		me.rear.setValue(0.228 - (1.228 * me.nose.getValue()));
 	    if (me.nose.getValue() < 0)
