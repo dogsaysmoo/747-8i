@@ -149,7 +149,7 @@ Syd Adams
         </axis>
     </animation>
 
-    <animation>
+    <!--animation>
         <object-name>StallSpeedInd</object-name>
         <property>instrumentation/pfd/stallspeed-diff</property>
         <type>translate</type>
@@ -159,6 +159,16 @@ Syd Adams
             <z>1</z>
         </axis>
         <factor>0.000646</factor>
+    </animation-->
+    <animation>
+        <object-name>StallSpeedInd</object-name>
+        <property>instrumentation/pfd/stallspeed-diff</property>
+        <type>textranslate</type>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+        </axis>
+        <factor>-0.0013</factor>
     </animation>
     <animation>
         <type>select</type>
