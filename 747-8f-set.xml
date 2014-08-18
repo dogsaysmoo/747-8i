@@ -66,7 +66,7 @@
 		</sound>
 
 		<startup>
-			<splash-texture>Aircraft/747-8i/splash_747-8F.png</splash-texture>
+			<splash-texture>Aircraft/747-8i/splash-8F.png</splash-texture>
 		</startup>
 
 		<!-- Default livery - http://wiki.flightgear.org/index.php/Livery_over_MP -->
