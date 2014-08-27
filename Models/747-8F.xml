@@ -130,7 +130,7 @@
          <object-name>corpo_middle</object-name>
          <property-base>sim/model/turbofans</property-base>
          <texture-prop>texture</texture-prop>
-      <texture>turbofan-white.png</texture>
+      <texture>turbofan.png</texture>
     </animation>
 
     <animation>
@@ -147,7 +147,7 @@
 	<object-name>pylon.lt.out</object-name>
 	<property-base>sim/model/nightengines</property-base>
 	<texture-prop>texture</texture-prop>
-	<texture>turbofan-wht-lts.png</texture>
+	<texture>turbofan-lts.png</texture>
     </animation>
  
      <animation>

@@ -30181,7 +30181,7 @@ OBJECT poly
 name "blades_1"
 data 9
 Mesh.1299
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 150
@@ -30691,7 +30691,7 @@ OBJECT poly
 name "blades_2"
 data 9
 Mesh.1300
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 150
@@ -31201,7 +31201,7 @@ OBJECT poly
 name "blades_3"
 data 9
 Mesh.1301
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 150
@@ -31711,7 +31711,7 @@ OBJECT poly
 name "blades_4"
 data 9
 Mesh.1302
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 150
@@ -32221,7 +32221,7 @@ OBJECT poly
 name "corpo_end"
 data 9
 Mesh.1303
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 225
@@ -33800,7 +33800,7 @@ OBJECT poly
 name "corpo_end.001"
 data 9
 Mesh.1304
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 225
@@ -35379,7 +35379,7 @@ OBJECT poly
 name "corpo_end.002"
 data 9
 Mesh.1305
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 225
@@ -36958,7 +36958,7 @@ OBJECT poly
 name "corpo_end.003"
 data 9
 Mesh.1306
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 234
@@ -38546,7 +38546,7 @@ OBJECT poly
 name "corpo_front"
 data 9
 Mesh.1307
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 150
@@ -39546,7 +39546,7 @@ OBJECT poly
 name "corpo_front.001"
 data 9
 Mesh.1308
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 150
@@ -40546,7 +40546,7 @@ OBJECT poly
 name "corpo_front.002"
 data 9
 Mesh.1309
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 150
@@ -41546,7 +41546,7 @@ OBJECT poly
 name "corpo_front.003"
 data 9
 Mesh.1310
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 156
@@ -42552,7 +42552,7 @@ OBJECT poly
 name "corpo_middle"
 data 9
 Mesh.1311
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 75
@@ -42973,7 +42973,7 @@ OBJECT poly
 name "corpo_middle.001"
 data 9
 Mesh.1312
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 75
@@ -43394,7 +43394,7 @@ OBJECT poly
 name "corpo_middle.002"
 data 9
 Mesh.1313
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 75
@@ -43815,7 +43815,7 @@ OBJECT poly
 name "corpo_middle.003"
 data 9
 Mesh.1314
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 78
@@ -49807,7 +49807,7 @@ OBJECT poly
 name "line"
 data 9
 Mesh.1319
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 504
@@ -53597,7 +53597,7 @@ OBJECT poly
 name "line"
 data 9
 Mesh.1320
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 504
@@ -57387,7 +57387,7 @@ OBJECT poly
 name "pin_1"
 data 9
 Mesh.1321
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 169
@@ -58718,7 +58718,7 @@ OBJECT poly
 name "pin_2"
 data 9
 Mesh.1322
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 169
@@ -60049,7 +60049,7 @@ OBJECT poly
 name "pin_3"
 data 9
 Mesh.1323
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 169
@@ -61380,7 +61380,7 @@ OBJECT poly
 name "pin_4"
 data 9
 Mesh.1324
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 169
@@ -62711,7 +62711,7 @@ OBJECT poly
 name "turbofan_capa_L_1"
 data 9
 Mesh.1325
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -63316,7 +63316,7 @@ OBJECT poly
 name "turbofan_capa_L_2"
 data 9
 Mesh.1326
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -63921,7 +63921,7 @@ OBJECT poly
 name "turbofan_capa_L_3"
 data 9
 Mesh.1327
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -64526,7 +64526,7 @@ OBJECT poly
 name "turbofan_capa_L_4"
 data 9
 Mesh.1328
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -65131,7 +65131,7 @@ OBJECT poly
 name "turbofan_capa_R_1"
 data 9
 Mesh.1329
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -65736,7 +65736,7 @@ OBJECT poly
 name "turbofan_capa_R_2"
 data 9
 Mesh.1330
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -66341,7 +66341,7 @@ OBJECT poly
 name "turbofan_capa_R_3"
 data 9
 Mesh.1331
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -66946,7 +66946,7 @@ OBJECT poly
 name "turbofan_capa_R_4"
 data 9
 Mesh.1332
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -67551,7 +67551,7 @@ OBJECT poly
 name "turbofan_capa_noz"
 data 9
 Mesh.1333
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 152
@@ -68641,7 +68641,7 @@ OBJECT poly
 name "turbofan_capa_noz.001"
 data 9
 Mesh.1334
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 152
@@ -69731,7 +69731,7 @@ OBJECT poly
 name "turbofan_capa_noz.002"
 data 9
 Mesh.1335
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 152
@@ -70821,7 +70821,7 @@ OBJECT poly
 name "turbofan_capa_noz.003"
 data 9
 Mesh.1336
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 168
@@ -72007,7 +72007,7 @@ OBJECT poly
 name "turbofan_capa_noz.004"
 data 9
 Mesh.1337
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 152
@@ -73097,7 +73097,7 @@ OBJECT poly
 name "turbofan_capa_noz.005"
 data 9
 Mesh.1338
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 168
@@ -74283,7 +74283,7 @@ OBJECT poly
 name "turbofan_capa_noz.006"
 data 9
 Mesh.1339
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 336
@@ -76645,7 +76645,7 @@ OBJECT poly
 name "turbofan_capa_rev_L_1"
 data 9
 Mesh.1340
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -77394,7 +77394,7 @@ OBJECT poly
 name "turbofan_capa_rev_L_2"
 data 9
 Mesh.1341
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -78143,7 +78143,7 @@ OBJECT poly
 name "turbofan_capa_rev_L_3"
 data 9
 Mesh.1342
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -78892,7 +78892,7 @@ OBJECT poly
 name "turbofan_capa_rev_L_4"
 data 9
 Mesh.1343
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -79641,7 +79641,7 @@ OBJECT poly
 name "turbofan_capa_rev_R_1"
 data 9
 Mesh.1344
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -80390,7 +80390,7 @@ OBJECT poly
 name "turbofan_capa_rev_R_2"
 data 9
 Mesh.1345
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -81139,7 +81139,7 @@ OBJECT poly
 name "turbofan_capa_rev_R_3"
 data 9
 Mesh.1346
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -81888,7 +81888,7 @@ OBJECT poly
 name "turbofan_capa_rev_R_4"
 data 9
 Mesh.1347
-texture "turbofan-white.png"
+texture "turbofan.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -87373,7 +87373,7 @@ OBJECT poly
 name "e1f.lt"
 data 9
 Mesh.1356
-texture "turbofan-wht-lts.png"
+texture "turbofan-lts.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -87978,7 +87978,7 @@ OBJECT poly
 name "e1r.lt"
 data 9
 Mesh.1357
-texture "turbofan-wht-lts.png"
+texture "turbofan-lts.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -88727,7 +88727,7 @@ OBJECT poly
 name "e2f.lt"
 data 9
 Mesh.1358
-texture "turbofan-wht-lts.png"
+texture "turbofan-lts.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -89332,7 +89332,7 @@ OBJECT poly
 name "e2r.lt"
 data 9
 Mesh.1359
-texture "turbofan-wht-lts.png"
+texture "turbofan-lts.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -90081,7 +90081,7 @@ OBJECT poly
 name "e3f.lt"
 data 9
 Mesh.1360
-texture "turbofan-wht-lts.png"
+texture "turbofan-lts.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -90686,7 +90686,7 @@ OBJECT poly
 name "e3r.lt"
 data 9
 Mesh.1361
-texture "turbofan-wht-lts.png"
+texture "turbofan-lts.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -91435,7 +91435,7 @@ OBJECT poly
 name "e4f.lt"
 data 9
 Mesh.1362
-texture "turbofan-wht-lts.png"
+texture "turbofan-lts.png"
 texrep 1 1
 crease 45.000000
 numvert 91
@@ -92040,7 +92040,7 @@ OBJECT poly
 name "e4r.lt"
 data 9
 Mesh.1363
-texture "turbofan-wht-lts.png"
+texture "turbofan-lts.png"
 texrep 1 1
 crease 45.000000
 numvert 103
@@ -119015,7 +119015,7 @@ OBJECT poly
 name "pylon.lt.in"
 data 9
 Mesh.1378
-texture "turbofan-wht-lts.png"
+texture "turbofan-lts.png"
 texrep 1 1
 crease 45.000000
 numvert 280
@@ -120943,7 +120943,7 @@ OBJECT poly
 name "pylon.lt.out"
 data 9
 Mesh.1379
-texture "turbofan-wht-lts.png"
+texture "turbofan-lts.png"
 texrep 1 1
 crease 45.000000
 numvert 286

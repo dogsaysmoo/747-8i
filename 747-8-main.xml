@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	This is a second generation model of the 747-8i.  The first generation
+	by Grupo FGBr was based on the 747-400 model by Gijs de Rooy.  This 
+	version is derived from the FGBr version with modifications to the 3D
+	models and FDM, and the addition of many systems.
+
+	747-8i v2.0 by John Williams
+	Original cockpit model, landing gear, and many textures by Gijs de Rooy
+	Wings, engines, original fuselage model, original FDM, and additional
+          textures by Grupo FGBr (Aurino das Neves, Isaias Prestes, Rick Britto,
+	  Wagner Silva)
+	Additional systems as noted in their .nas files
+	
+	License : GPL 2.0
+    		
+ -->
+
+<PropertyList>
+	<sim>
+
+		<rating>
+			<FDM type="int">4</FDM>
+			<systems type="int">5</systems>
+			<cockpit type="int">4</cockpit>
+			<model type="int">4</model>
+		</rating>
+		
+		<flight-model>yasim</flight-model>
+
+        	<fuel-fraction>0.2</fuel-fraction>
+        
+		<virtual-cockpit archive="y">false</virtual-cockpit>
+
+		<!-- System defintions -->
+		<systems>
+			<autopilot>
+				<path>Aircraft/747-8i/Systems/747-8-autopilot.xml</path>
+			</autopilot>
+			<autopilot>
+				<path>Aircraft/747-8i/Systems/747-8-autothrottle.xml</path>
+			</autopilot>
+			<autopilot>
+				<path>Aircraft/Generic/generic-autopilot-helper.xml</path>
+			</autopilot>
+			<autopilot>
+				<path>Aircraft/747-8i/Systems/747-8-PFD.xml</path>
+			</autopilot>
+			<electrical>
+				<path>Aircraft/747-8i/Systems/electrical.xml</path>
+			</electrical>
+		</systems>
+		
+		<instrumentation>
+ 			<path>Aircraft/747-8i/Systems/instrumentation.xml</path>
+		</instrumentation>
+
+		<sound>
+			<audible>true</audible>
+			<path>Aircraft/747-8i/Sounds/747-sound.xml</path>
+		</sound>
+
+		<model>
+			<hide-yoke type="bool">0</hide-yoke>
+		</model>
+		
+		<hud>   
+			<enable3d n="1">false</enable3d>
+		</hud>
+		
+		<chase-distance-m>-110</chase-distance-m>
+		
+		<!-- View perspectives -->
+		<view>
+			<internal archive="y">true</internal>
+			<config>
+				<!-- x/y/z == left,right/up,down/fwd,back -->
+				<x-offset-m archive="y">-0.437141</x-offset-m>
+				<!--y-offset-m archive="y">3.78648</y-offset-m-->
+				<y-offset-m archive="y">3.91048</y-offset-m>
+				<!--z-offset-m archive="y">-27.6696</z-offset-m-->
+				<z-offset-m archive="y">-28.0</z-offset-m>
+				<pitch-offset-deg archive="y">-12</pitch-offset-deg>
+			</config>
+		</view>
+		<view n="1">
+			<internal archive="y">false</internal>
+		</view>
+		<view n="2">
+			<name>Good runway angle</name>
+			<internal archive="y">false</internal>
+			<config>
+				<z-offset-m type="double" archive="y">-80.0</z-offset-m>
+				<pitch-offset-deg archive="y"> 12.0</pitch-offset-deg>
+			</config>
+		</view>
+		<view n="3">
+			<internal archive="y">false</internal>
+		</view>
+		<view n="4">
+			<internal archive="y">false</internal>
+		</view>
+		<view n="5">
+			<internal archive="y">false</internal>
+		</view>
+		<view n="6">
+			<internal archive="y">false</internal>
+		</view>
+		<view n="1500">
+		    <name>Left Wing</name>
+		    <type>lookfrom</type>
+		    <internal archive="y">false</internal>
+		    <config>
+		      <from-model type="bool">true</from-model>
+		      <from-model-idx type="int">0</from-model-idx>
+		      <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+		      <default-field-of-view-deg type="double">55</default-field-of-view-deg>
+		      <pitch-offset-deg>-8.0</pitch-offset-deg>
+		      <heading-offset-deg type="double">90</heading-offset-deg> <!-- parallel to the panel -->
+		      <x-offset-m archive="y"> -4.0 </x-offset-m> <!--Left/Right -->
+		      <y-offset-m archive="y"> 0.80 </y-offset-m> <!--Up/Down -->
+		      <z-offset-m archive="y"> 4.00 </z-offset-m> <!--Fdw/Back -->
+		    </config>
+	        </view>
+		<view n="1501">
+		    <name>Right Turbofan</name>
+		    <type>lookfrom</type>
+		    <internal archive="y">false</internal>
+		    <config>
+			      <from-model type="bool">true</from-model>
+			      <from-model-idx type="int">0</from-model-idx>
+			      <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+			      <default-field-of-view-deg type="double">45</default-field-of-view-deg>
+			      <pitch-offset-deg>-8.0</pitch-offset-deg>
+			      <heading-offset-deg type="double">225</heading-offset-deg> <!-- parallel to the panel -->
+			      <x-offset-m archive="y"> 4.0 </x-offset-m> <!--Left/Right -->
+			      <y-offset-m archive="y"> 0.80 </y-offset-m> <!--Up/Down -->
+			      <z-offset-m archive="y"> -15.00 </z-offset-m> <!--Fdw/Back -->
+		    </config>
+	        </view>
+		<view n="1502">
+			<name>Center Pedestal</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+				<default-field-of-view-deg type="double">67</default-field-of-view-deg>
+				<heading-offset-deg type="double">0</heading-offset-deg>
+				<x-offset-m archive="y">0.0</x-offset-m>
+				<y-offset-m archive="y">3.9</y-offset-m>
+				<z-offset-m archive="y">-28.01</z-offset-m>
+				<pitch-offset-deg archive="y">-90.0</pitch-offset-deg>
+			</config>
+		</view>
+		
+		<view n="1503">
+			<name>Copilot</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+				<default-field-of-view-deg type="double">55</default-field-of-view-deg>
+				<heading-offset-deg type="double">0</heading-offset-deg>
+				<x-offset-m archive="y">0.437141</x-offset-m>
+				<y-offset-m archive="y">3.78648</y-offset-m>
+				<z-offset-m archive="y">-27.6696</z-offset-m>
+				<pitch-offset-deg archive="y">-10.0</pitch-offset-deg>
+			</config>
+		</view>
+
+		<view n="1504">
+			<name>Overhead Panel</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+				<default-field-of-view-deg type="double">75</default-field-of-view-deg>
+				<heading-offset-deg type="double">0</heading-offset-deg>
+				<x-offset-m archive="y">0.0</x-offset-m>
+				<y-offset-m archive="y">3.78648</y-offset-m>
+				<z-offset-m archive="y">-27.6696</z-offset-m>
+				<pitch-offset-deg archive="y">44.0</pitch-offset-deg>
+			</config>
+		</view>
+		
+		
+		<!-- Flap settings -->
+        	<flaps>
+            		<setting>0.000</setting>  <!-- flaps up -->
+            		<setting>0.033</setting>  <!-- flaps 1  -->
+            		<setting>0.166</setting>  <!-- flaps 5  -->
+            		<setting>0.500</setting>  <!-- flaps 15 -->
+            		<setting>0.666</setting>  <!-- flaps 20 -->
+            		<setting>0.833</setting>  <!-- flaps 25 -->
+            		<setting>1.000</setting>  <!-- flaps 30 -->
+        	</flaps>
+	   
+        	<multiplay>
+            	    <generic>
+                	<int n="0" alias="/systems/electrical/outputs/strobe"/>
+                	<int n="1" alias="/systems/electrical/outputs/beacon"/>
+                	<int n="2" alias="/systems/electrical/outputs/taxi-lights"/>
+                	<int n="3" alias="/systems/electrical/outputs/logo-lights"/>
+                	<int n="4" alias="/systems/electrical/outputs/landing-light[0]"/>
+                	<int n="5" alias="/systems/electrical/outputs/landing-light[1]"/>
+                	<int n="6" alias="/systems/electrical/outputs/landing-light[2]"/>
+                	<int n="7" alias="/systems/electrical/outputs/nav-lights"/>
+                	<int n="8" alias="/systems/electrical/outputs/cabin-lights"/>
+
+                	<float n="0" alias="/gear/gear[0]/compression-m"/>
+                	<float n="1" alias="/gear/gear[1]/compression-m"/>
+                	<float n="2" alias="/gear/gear[2]/compression-m"/>
+                	<float n="3" alias="/gear/gear[3]/compression-m"/>
+                	<float n="4" alias="/gear/gear[4]/compression-m"/>
+                	<float n="5" alias="/surface-positions/speedbrake-norm"/>
+                	<float n="6" alias="/surface-positions/reverser-norm"/>
+                	<string  alias="/sim/multiplay/callsign"/>
+            	    </generic>
+        	</multiplay>
+	  
+        	<flight-recorder include="Systems/flight-recorder.xml"/>
+
+	</sim>
+<!-- END OF SIM SECTION -->
+ 
+	<engines>
+		<engine n="0">
+			<running>false</running>
+			<reverser-position type="double">0.000000</reverser-position>
+			<reverser-pos-norm type="bool">false</reverser-pos-norm>
+		</engine>
+		<engine n="1">
+			<running>false</running>
+			<reverser-position type="double">0.000000</reverser-position>
+		</engine>
+		<engine n="2">
+			<running>false</running>
+			<reverser-position type="double">0.000000</reverser-position>
+		</engine>
+		<engine n="3">
+			<running>false</running>
+			<reverser-position type="double">0.000000</reverser-position>
+		</engine>   
+		<engine n="4">
+			<running>false</running>
+			<reverser-position type="double">0.000000</reverser-position>
+		</engine> 
+		<apu> 
+			<n1 alias="/engines/engine[4]/n1" /> 
+			<n2 alias="/engines/engine[4]/n2" /> 
+			<egt-degf alias="/engines/engine[4]/egt-degf" /> 
+		</apu> 
+	</engines>
+	 
+	<consumables>
+		<fuel>
+			<tank n="0">
+				<name>Center</name>
+				<selected type="bool">0</selected>
+			</tank>
+			<tank n="1">
+				<name>Main #2</name>
+				<selected type="bool">0</selected>
+			</tank>
+			<tank n="2">
+				<name>Main #3</name>
+				<selected type="bool">0</selected>
+			</tank>
+			<tank n="3">
+				<name>Main #1</name>
+				<selected type="bool">0</selected>
+			</tank>
+			<tank n="4">
+				<name>Main #4</name>
+				<selected type="bool">0</selected>
+			</tank>
+			<tank n="5">
+				<name>Res #1</name>
+				<selected type="bool">0</selected>
+			</tank>
+			<tank n="6">
+				<name>Res #4</name>
+				<selected type="bool">0</selected>
+			</tank>
+			<tank n="7">
+				<name>Stab (Disabled)</name>
+				<selected type="bool">0</selected>
+			</tank>
+		</fuel>
+	</consumables>
+
+	<input>
+	  <keyboard>
+            <key n="108">
+                <name>l</name>
+                <desc>toggle landing lights</desc>
+                <binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[0]</property>
+		</binding>
+                <binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[1]</property>
+		</binding>
+                <binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[2]</property>
+		</binding>
+	    </key>
+	    <key n="40">
+		<name>(</name>
+		<desc>Toggle Strobe</desc>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/strobe</property>
+		</binding>
+	    </key>
+
+            <key n="127">
+                <name>Delete</name>
+                <desc>Toggle Reversers</desc>
+		<binding>
+		    <command>nasal</command>
+		    <script>Boeing747.thr_reverser();</script>
+		</binding>
+            </key>
+	    <key n="2">
+		<name>Ctrl-B</name>
+		<desc>Toggle Speedbrakes</desc>
+		<binding>
+                    <command>property-cycle</command>
+                    <property>controls/flight/speedbrake-lever</property>
+                    <value type="int">0</value>
+                    <value type="int">1</value>
+                    <value type="int">2</value>
+                    <value type="int">3</value>
+                </binding>
+	    </key>
+
+      	    <key n="267">
+        	<name>F11</name>
+        	<desc>Pop up autopilot dialog</desc>
+        	<binding>
+        	    <command>nasal</command>
+         	    <script>dialogs.ap_settings.toggle()</script>
+        	</binding>
+      	    </key>
+      	    <key n="268">
+        	<name>F12</name>
+        	<desc>Radio Stack</desc>
+          	<binding>
+        	    <command>nasal</command>
+       	 	    <script>dialogs.Radio.toggle()</script>
+          	</binding>
+      	    </key>
+	  </keyboard>
+	</input>
+			
+	<controls>
+		<electric>
+			<apu>0</apu>
+			<wipers>
+				<switch type="bool">0</switch>
+				<position-norm type="double">0</position-norm>
+			</wipers>
+		</electric>
+	 
+		<engines>
+			<autostart>0</autostart>
+		</engines>
+	
+		<failures>
+			<gear>
+				<stuck type="bool">0</stuck>
+			</gear>
+			<gear n="1">
+				<stuck type="bool">0</stuck>
+			</gear>
+			<gear n="2">
+				<stuck type="bool">0</stuck>
+			</gear>
+			<gear n="3">
+				<stuck type="bool">0</stuck>
+			</gear>
+			<gear n="4">
+				<stuck type="bool">0</stuck>
+			</gear>
+			<wings>
+				<broken type="bool">0</broken>
+			</wings>
+		</failures>
+	
+		<fuel>
+			<auto-manage type="bool">0</auto-manage>
+			<fuel-xfer type="bool">0</fuel-xfer>
+			<tank n="0">
+				<pump type="bool">0</pump>
+				<auto-manage type="bool">0</auto-manage>
+			</tank>
+			<tank n="1">
+				<x-feed type="bool">0</x-feed>
+				<pump-fwd type="bool">0</pump-fwd>
+				<pump-aft type="bool">0</pump-aft>
+				<ovrd-aft type="bool">0</ovrd-aft>
+				<ovrd-fwd type="bool">0</ovrd-fwd>
+				<auto-manage type="bool">0</auto-manage>
+			</tank>
+			<tank n="2">
+				<x-feed type="bool">0</x-feed>
+				<pump-fwd type="bool">0</pump-fwd>
+				<pump-aft type="bool">0</pump-aft>
+				<ovrd-aft type="bool">0</ovrd-aft>
+				<ovrd-fwd type="bool">0</ovrd-fwd>
+				<auto-manage type="bool">0</auto-manage>
+			</tank>
+			<tank n="3">
+				<x-feed type="bool">0</x-feed>
+				<pump-fwd type="bool">0</pump-fwd>
+				<pump-aft type="bool">0</pump-aft>
+			</tank>
+			<tank n="4">
+				<x-feed type="bool">0</x-feed>
+				<pump-fwd type="bool">0</pump-fwd>
+				<pump-aft type="bool">0</pump-aft>
+			</tank>
+		</fuel>
+	
+		<gear>
+			<brake-parking>1</brake-parking>
+			<alt-gear-cvr type="bool">0</alt-gear-cvr>
+			<alt-gear type="bool">0</alt-gear>
+			<gear n="0">
+				<tyre-smoke type="int">0</tyre-smoke>
+				<sprayspeed-ms type="double">0</sprayspeed-ms>
+				<spray-density type="double">0</spray-density>			
+			</gear>
+			<gear n="1">
+				<tyre-smoke type="int">0</tyre-smoke>
+				<sprayspeed-ms type="double">0</sprayspeed-ms>
+				<spray-density type="double">0</spray-density>
+			</gear>
+			<gear n="2">
+				<tyre-smoke type="int">0</tyre-smoke>
+				<sprayspeed-ms type="double">0</sprayspeed-ms>
+				<spray-density type="double">0</spray-density>
+			</gear>
+			<gear n="3">
+				<tyre-smoke type="int">0</tyre-smoke>
+				<sprayspeed-ms type="double">0</sprayspeed-ms>
+				<spray-density type="double">0</spray-density>
+			</gear>
+			<gear n="4">
+				<tyre-smoke type="int">0</tyre-smoke>
+				<sprayspeed-ms type="double">0</sprayspeed-ms>
+				<spray-density type="double">0</spray-density>
+			</gear>
+		</gear>
+	
+		<groundservice>
+			<active type="bool">false</active>
+			<fueling>
+				<truck type="bool">false</truck>
+				<!--pumper type="bool">false</pumper-->
+			</fueling>
+		</groundservice>
+		
+		<lighting>
+			<instruments-norm type="double">0.2</instruments-norm>
+			<panel-norm>0.2</panel-norm>
+			<landing-lights type="bool">0</landing-lights>
+			<landing-lights type="bool">0</landing-lights>
+			<landing-lights type="bool">0</landing-lights>
+			<logo-lights type="bool">0</logo-lights>
+			<beacon type="bool">0</beacon>
+			<strobe type="bool">0</strobe>
+			<nav-lights type="bool">0</nav-lights>
+			<cabin-lights type="bool">0</cabin-lights>
+			<wing-lights type="bool">0</wing-lights>
+			<taxi-lights type="bool">0</taxi-lights>
+			<instrument-lights type="bool">0</instrument-lights>
+		</lighting>
+		
+		<cabin>
+			<fan type="bool">0</fan>
+			<heat type="bool">0</heat>
+		</cabin>
+	</controls>
+
+	<!-- The NASAL scripts -->
+	<nasal>
+		  <Boeing747>
+			<file>Aircraft/747-8i/Nasal/copilot.nas</file>
+			<file>Aircraft/747-8i/Nasal/doors.nas</file>
+			<file>Aircraft/747-8i/Nasal/eicas.nas</file>
+			<file>Aircraft/747-8i/Nasal/efis.nas</file>
+			<file>Aircraft/747-8i/Nasal/system.nas</file>
+			<file>Aircraft/747-8i/Nasal/vspeeds.nas</file>
+			<file>Aircraft/747-8i/Nasal/wipers.nas</file>
+			<file>Aircraft/Generic/limits.nas</file>
+			<file>Aircraft/747-8i/Nasal/gpws.nas</file>
+			<file>Aircraft/747-8i/Nasal/AFDS.nas</file>
+			<file>Aircraft/747-8i/Nasal/fuel_system.nas</file>
+			<file>Aircraft/747-8i/Nasal/pneumatic.nas</file>
+			<file>Aircraft/747-8i/Nasal/transponder.nas</file>
+			<file>Aircraft/747-8i/Nasal/autobrakes.nas</file>
+			<file>Aircraft/747-8i/Nasal/brakesystem.nas</file>
+			<file>Aircraft/747-8i/Nasal/IRS-controls.nas</file>
+		</Boeing747>
+		  	  
+		<cdu>
+			<file>Aircraft/747-8i/Nasal/boeing_cdu.nas</file>
+		</cdu>
+		<dual_control_tools>
+			<file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
+		</dual_control_tools>
+		<aircraft_dual_control>
+			<file>Aircraft/747-8i/DualControl/747-8i-dual-control.nas</file>
+		</aircraft_dual_control>
+		<dual_control>
+			<file>Aircraft/Generic/DualControl/pilot-dual-control.nas</file>
+		</dual_control>
+		<electrical>
+			<file>Aircraft/747-8i/Nasal/electrical.nas</file>
+		</electrical>
+		<hydraulic>
+			<file>Aircraft/747-8i/Nasal/hydraulic.nas</file>
+		</hydraulic>
+		<spoilers>
+			<file>Aircraft/747-8i/Nasal/speedbrakes.nas</file>
+		</spoilers>
+		<lights>
+			<file>Aircraft/747-8i/Nasal/lights.nas</file>
+		</lights>
+		<dialogs>
+			<file>Aircraft/747-8i/Nasal/dialogs.nas</file>
+		</dialogs>
+		<auto-coord>
+			<file>Aircraft/747-8i/Nasal/auto_coord.nas</file>
+		</auto-coord>
+		<hour-meters>
+			<file>Aircraft/747-8i/Nasal/hour-meters.nas</file>
+		</hour-meters>
+
+	</nasal>
+
+	<instrumentation>
+	    <annunciators>
+		<gpws>
+			<volume>1</volume>
+		</gpws>
+	    </annunciators>
+	    <dme n="0">
+            	<serviceable>true</serviceable>
+            	<frequencies>
+                    <source>/instrumentation/nav[0]/frequencies/selected-mhz</source>
+            	</frequencies>
+            </dme>
+            <dme n="1">
+            	<serviceable>true</serviceable>
+            	<frequencies>
+                    <source>/instrumentation/nav[1]/frequencies/selected-mhz</source>
+            	</frequencies>
+            </dme>
+	    <efis>
+		<mfd>
+			<display-mode>MAP</display-mode>
+		</mfd>
+	    </efis>
+	    <eicas>
+		<messages>
+			<line1 type="string"></line1>
+			<line2 type="string"></line2>
+			<line3 type="string"></line3>
+			<line4 type="string"></line4>
+		</messages>
+	    </eicas>
+	    <fmc>
+		<to-flap>20</to-flap>
+	    </fmc>
+	    <groundradar>
+		<range>2</range>
+	    </groundradar>
+	    <mk-viii>  <!-- mk-viii configuration, see: http://wiki.flightgear.org/index.php/GPWS -->
+            <serviceable>true</serviceable>     <!-- EGPWS_ENABLE -->
+            <configuration-module>
+                <category-1>                    <!-- AIRCRAFT_MODE_TYPE_SELECT -->
+                   255 <!-- aircraft type T1, fast turbofan -->
+                </category-1>
+                <category-4>                    <!-- ALTITUDE_CALLOUTS -->
+                    13 <!-- enable all altitude callouts -->
+                </category-4>
+                <category-8>                    <!-- RADIO_ALTITUDE_INPUT_SELECT -->
+                     3 <!-- use precise (but YASim-specific) gear altitude --> 
+                </category-8>
+                <category-13>                   <!-- INPUT_OUTPUT_DISCRETE_TYPE_SELECT -->
+                     5 <!-- flashing warning lamp -->
+                </category-13>
+            </configuration-module>
+            <voice>
+                <file-prefix type="string">Sounds/mk-viii/</file-prefix>
+            </voice>
+            <inputs>                            <!-- Module I/O -->
+                <arinc429>
+                    <!-- provide fixed value for decision height -->
+                    <decision-height-ncd> false </decision-height-ncd>
+                    <decision-height> 250 </decision-height>
+                </arinc429>
+            </inputs>
+            <input-feeders>    <!-- disable some internal default feeders -->
+                <discretes>
+                    <!-- will provide custom (nasal) sources for the following input feeders -->
+                    <glideslope-inhibit> false </glideslope-inhibit>
+                    <landing-gear> false </landing-gear>
+                    <landing-flaps> false </landing-flaps>
+                </discretes>
+            </input-feeders>
+            <speaker>                           <!-- Speaker Configuration -->
+                <max-dist type="double"> 5 </max-dist>        <!-- Max. distance where speaker is heard -->
+                <reference-dist type="double"> 2 </reference-dist> <!-- Distance to pilot -->
+                <volume type="double"> 0.6 </volume>          <!-- Volume at reference distance -->
+            </speaker>
+            </mk-viii>
+
+	    <radar>
+            <switch type="string" archive="y">on</switch>
+            <mode-control type="int" archive="y">1</mode-control>
+            <display-mode type="string">plan</display-mode>
+            <display-controls>
+                <WX type="bool" archive="y">false</WX>
+                <pos type="bool" archive="y">false</pos>
+                <data type="bool" archive="y">false</data>
+                <symbol type="bool" archive="y">true</symbol>
+                <rotate type="bool" archive="y">true</rotate>
+                <tcas type="bool" archive="n">true</tcas>
+                <abs-altitude type="bool" archive="y">false</abs-altitude>
+            </display-controls>
+            <serviceable type="bool">true</serviceable>
+            <range type="int" archive="y">10</range>
+            <reference-range-nm type="double" archive="y">640</reference-range-nm>
+            <mode type="string" archive="y">WX</mode>
+            <font>
+                <color>
+                    <red type="float">0.7</red>
+                    <green type="float">0.7</green>
+                    <blue type="float">0.7</blue>
+                    <alpha type="float">1</alpha>
+                </color>
+                <tcas>
+                    <color n="0"> <!-- distant targets -->
+                        <red type="float">0</red>
+                        <green type="float">1</green>
+                        <blue type="float">1</blue>
+                    </color>
+                    <color n="1"> <!-- proximity targets -->
+                        <red type="float">0</red>
+                        <green type="float">1</green>
+                        <blue type="float">1</blue>
+                    </color>
+                    <color n="2"> <!-- TA threat targets -->
+                        <red type="float">1</red>
+                        <green type="float">0.5</green>
+                        <blue type="float">0</blue>
+                    </color>
+                    <color n="3"> <!-- RA threat targets -->
+                        <red type="float">1</red>
+                        <green type="float">0</green>
+                        <blue type="float">0</blue>
+                    </color>
+                </tcas>
+                <name type="string">helvetica_bold.txf</name>
+                <size type="float">12</size>
+                <line-spacing type="float">0.01</line-spacing>
+            </font>
+            <lightning type="bool" archive="y">true</lightning>
+            <radar-texture-path type="string">Aircraft/747-8i/Models/Cockpit/Instruments/MFD/od_wxradar.png</radar-texture-path>
+            <echo-texture-path type="string">Aircraft/747-8i/Models/Cockpit/Instruments/MFD/wxecho.png</echo-texture-path>
+            <minimized type="bool">false</minimized>
+            <heading-marker type="bool">true</heading-marker>
+            <limit-deg type="int">360</limit-deg>
+            </radar>
+
+            <tcas>
+            <serviceable type="bool">true</serviceable>
+            <inputs>
+                <mode type="int">0</mode>       <!-- 0=off, 1=standby, 2=TA-only, 3=auto(TA/RA) -->
+            </inputs>
+            <!--voice>
+                <file-prefix type="string">Sounds/tcas/</file-prefix>
+            </voice-->
+            <speaker>                           <!-- Speaker Configuration -->
+                <max-dist type="double"> 2 </max-dist>        <!-- Max. distance where speaker is heard -->
+                <reference-dist type="double"> 1 </reference-dist> <!-- Distance to pilot -->
+                <volume type="double"> 1 </volume>          <!-- Volume at reference distance -->
+            </speaker>
+            </tcas>
+
+	    <nd>
+            <radar-texture-path type="string">Aircraft/747-8i/Models/Cockpit/Instruments/MFD/od_wxradar.png</radar-texture-path>
+            <symbol-texture-path type="string">Aircraft/747-8i/Models/Cockpit/Instruments/MFD/nd_symbols.png</symbol-texture-path>
+            <symbol-texture-size type="int">512</symbol-texture-size>
+
+                        <font>
+                <color>
+                    <red type="float">0.7</red>
+                    <green type="float">0.7</green>
+                    <blue type="float">0.7</blue>
+                    <alpha type="float">1</alpha>
+                </color>
+                <name type="string">helvetica_bold.txf</name>
+                <size type="float">20</size>
+                <line-spacing type="float">0.01</line-spacing>
+            </font>
+            <serviceable type="bool">true</serviceable>
+            <range n="0" alias="/instrumentation/efis/inputs/range"/>
+            <aircraft-heading-up type="bool">true</aircraft-heading-up>
+            <heading-up-deg type="float">0.01</heading-up-deg>
+            <x-center type="float">0.5</x-center>
+            <y-center type="float">0.5</y-center>
+                        <line-width type="double">3</line-width>
+
+                        <symbols>
+                        </symbols>
+            </nd>
+
+	    <transponder>
+	    	<inputs>
+		    <knob-pos type="int">0</knob-pos>
+	    	</inputs>
+	    	<id-code type="string">1200</id-code>
+            	<serviceable type="bool">true</serviceable>
+	    </transponder>
+    	</instrumentation>
+	
+    	<limits>
+	    <max-flap-extension-speed>
+		<flaps>0.033</flaps>
+		<speed>285</speed>
+	    </max-flap-extension-speed>
+	    <max-flap-extension-speed>
+		<flaps>0.167</flaps>
+		<speed>260</speed>
+	    </max-flap-extension-speed>
+	    <max-flap-extension-speed>
+		<flaps>0.333</flaps>
+		<speed>240</speed>
+	    </max-flap-extension-speed>
+	    <max-flap-extension-speed>
+		<flaps>0.667</flaps>
+		<speed>230</speed>
+	    </max-flap-extension-speed>
+	    <max-flap-extension-speed>
+		<flaps>0.833</flaps>
+		<speed>205</speed>
+	    </max-flap-extension-speed>
+	    <max-flap-extension-speed>
+		<flaps>1.000</flaps>
+		<speed>180</speed>
+	    </max-flap-extension-speed>
+	    <max-gear-extension-speed>270</max-gear-extension-speed>
+	    <vne>600</vne>
+	    <max-positive-g>2.5</max-positive-g> 
+	</limits>
+
+    	<systems>
+	    <electrical>
+		<outputs>
+			<efis>20</efis>
+			<mk-viii>28</mk-viii>
+		</outputs>
+	    </electrical>
+	    <inertial-reference>
+		<fast type="bool"></fast>
+		<slow type="bool">true</slow>
+		<real type="bool"></real>
+	    </inertial-reference>
+	    <hour-meters>
+		<engine-hours n="0" type="float">0</engine-hours>
+		<engine-hours n="1" type="float">0</engine-hours>
+		<engine-hours n="2" type="float">0</engine-hours>
+		<engine-hours n="3" type="float">0</engine-hours>
+		<electrical-hours type="float">0</electrical-hours>
+		<flight-hours type="float">0</flight-hours>
+	    </hour-meters>
+	</systems>
+
+</PropertyList>
+
