@@ -287,6 +287,14 @@ var maingear_steer = MG_steer.new();
 # Gear smoke on touchdown
 aircraft.tyresmoke_system.new(0, 1, 2, 3, 4);
 
+# Brake unblocking
+setlistener("controls/gear/brake-parking", func (brk) {
+	if (!brk.getBoolValue()) {
+	    setprop("controls/gear/brake-left", 0);
+	    setprop("controls/gear/brake-right", 0);
+	}
+},0,0);
+
 ## Thrust reversers ##
 var thr_reverser = func {
 	var threv0 = props.globals.getNode("controls/engines/engine[0]/reverser",1);
