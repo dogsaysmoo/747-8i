@@ -127,4 +127,6 @@ Changes made by John W.
 -Fix and cleanup tire smoke on landing and when brakes over heat
 -Fixed gear fire when brakes really over heat
 -Fixed steering and added main (body) gear steering
+-Switched -set files to use centralized -main file
+-Changed multiplay aliases for lights... they don't appear over MP.
 
