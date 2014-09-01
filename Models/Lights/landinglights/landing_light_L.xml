@@ -17,7 +17,7 @@
             <type>select</type>
             <object-name>LHLND.flare</object-name>
             <condition>
-            	<!--or-->
+            	<or>
                   <and>
                         <property>controls/lighting/landing-lights[1]</property>
                         <not>
@@ -28,11 +28,11 @@
                               <value>24.0</value>
                         </greater-than>
                   </and>
-                        <!--greater-than>
-			                  <property>sim/multiplay/generic/int[4]</property>
-                              <value>5</value>
-                        </greater-than>
-				</or-->
+                  <greater-than>
+		  	<property>sim/multiplay/generic/int[4]</property>
+                        <value>0</value>
+                  </greater-than>
+		</or>
             </condition>
       </animation>
       

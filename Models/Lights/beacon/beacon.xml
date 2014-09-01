@@ -23,7 +23,7 @@
     <type>select</type>
     <object-name>Beacon02</object-name>
     <condition>
-		<!--or-->
+		<or>
 			<and>
 				<property>sim/model/lights/beacon/enabled</property>
 				<property>controls/lighting/beacon</property>
@@ -35,11 +35,11 @@
 					<value>24.0</value>
 				</greater-than>
 			</and>
-			<!--greater-than>
+			<greater-than>
 				<property>sim/multiplay/generic/int[1]</property>
 				<value>0</value>
 			</greater-than>
-		</or-->
+		</or>
     </condition>
   </animation>
 <!--

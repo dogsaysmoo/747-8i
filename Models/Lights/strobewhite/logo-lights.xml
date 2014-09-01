@@ -44,7 +44,7 @@
 			</and>
 			<greater-than>
 				<property>sim/multiplay/generic/int[7]</property>
-				<value>5</value>
+				<value>0</value>
 			</greater-than>
 		</or>
     </condition>

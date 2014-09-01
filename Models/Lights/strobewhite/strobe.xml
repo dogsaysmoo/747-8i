@@ -26,11 +26,11 @@
     <condition>
 		<or>
 			<and>
-				<property>sim/model/lights/strobe/state</property>
+				<property>sim/model/lights/strobe/enabled</property>
 				<property>controls/lighting/strobe</property>
-	    		<not>
+		    		<not>
 					<property>sim/crashed</property>
-	    		</not>
+		    		</not>
 				<greater-than>
 					<property>systems/electrical/bus-volts</property>
 					<value>24.0</value>
@@ -38,7 +38,7 @@
 			</and>
 			<greater-than>
 				<property>sim/multiplay/generic/int[0]</property>
-				<value>5</value>
+				<value>0</value>
 			</greater-than>
 		</or>
     </condition>

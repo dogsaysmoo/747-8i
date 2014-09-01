@@ -17,7 +17,7 @@
             <type>select</type>
             <object-name>CTRLND.flare</object-name>
             <condition>
-            	<!--or-->
+            	<or>
                   <and>
 			<or>
                               <property>controls/lighting/landing-lights[0]</property>
@@ -35,17 +35,13 @@
                               <value>24.0</value>
                         </greater-than>
                   </and>
-                  <!--and>
+                  <and>
                         <greater-than>
-			                  <property>sim/multiplay/generic/int[5]</property>
-                              <value>5</value>
-                        </greater-than>
-                        <greater-than>
-                              <property>gear/gear[0]/position-norm</property>
-                              <value>0.75</value>
+			      <property>sim/multiplay/generic/int[5]</property>
+                              <value>0</value>
                         </greater-than>
                   </and>
-				</or-->
+		</or>
             </condition>
       </animation>
       
