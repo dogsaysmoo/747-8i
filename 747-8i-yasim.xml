@@ -164,7 +164,7 @@ http://www.boeing.com/commercial/aeromagazine/articles/2010_q3/2/
 	</gear>
 	
 	<gear x="-2.12895" y="2.12895" z="-5.663" compression="1.1"> <!-- rear left main -->
-	  <control-input control="STEER" axis="/controls/gear/main-gear-steering-norm" src0="-1.0" dst0="-0.1396263402" src1="1.0" dst1="0.1396263402" />
+	  <control-input control="STEER" axis="/controls/gear/main-gear-steering-norm" src0="-1.0" dst0="-0.191986214" src1="1.0" dst1="0.226892799" />
 	  <control-output control="STEER" prop="gear/gear[2]/steering-angle-rad" />
 	  <control-input axis="/controls/gear/brake-left" control="BRAKE"/>
 	  <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
@@ -174,7 +174,7 @@ http://www.boeing.com/commercial/aeromagazine/articles/2010_q3/2/
 	</gear>
 	
 	<gear x="-2.12895" y="-2.12895" z="-5.663" compression="1.1"> <!-- rear right main -->
-	  <control-input control="STEER" axis="/controls/gear/main-gear-steering-norm" src0="-1.0" dst0="-0.1396263402" src1="1.0" dst1="0.1396263402" />
+	  <control-input control="STEER" axis="/controls/gear/main-gear-steering-norm" src0="-1.0" dst0="-0.226892799" src1="1.0" dst1="0.191986214" />
 	  <control-output control="STEER" prop="gear/gear[3]/steering-angle-rad" />
 	  <control-input axis="/controls/gear/brake-right" control="BRAKE"/>
 	  <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>

@@ -268,17 +268,30 @@ var MG_steer = {
 	m.rear = props.globals.initNode("controls/gear/main-gear-steering-norm",0,"DOUBLE");
 	m.push = props.globals.initNode("sim/model/pushback/position-norm",0,"DOUBLE");
 
+	m.arm = 0;
+
 	return m;
     },
     update : func {
-	if (math.abs(me.nose.getValue()) > 0.186 and getprop("/sim/model/pushback/position-norm") < 0.5) {
+	var speed = getprop("gear/gear[2]/rollspeed-ms") * 1.94;
+	if (getprop("gear/gear/wow")) {
+	    if (me.arm == 1 and speed > 20) me.arm = 0;
+	    if (me.arm == 0 and speed < 15) me.arm = 1;
+	} else {
+	    me.arm = 0;
+	}
+
+	var enable = math.abs(me.nose.getValue()) > 0.286 and me.arm == 1 and !getprop("/systems/hydraulic/system-fault[0]");
+
+	if (enable) {
 	    if (me.nose.getValue() > 0)
-		me.rear.setValue(0.228 - (1.228 * me.nose.getValue()));
+		me.rear.setValue(0.349 - (1.349 * me.nose.getValue()));
 	    if (me.nose.getValue() < 0)
-		me.rear.setValue(-0.228 - (1.228 * me.nose.getValue()));
+		me.rear.setValue(-0.349 - (1.349 * me.nose.getValue()));
 	} else {
 	    me.rear.setValue(0);
 	}
+
 	setprop("controls/gear/steering",me.nose.getValue());
     },
 };
