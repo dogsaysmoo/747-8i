@@ -25,7 +25,7 @@
     <condition>
 		<or>
 			<and>
-				<property>sim/model/lights/beacon/enabled</property>
+				<property>sim/model/lights/beacon/state</property>
 				<property>controls/lighting/beacon</property>
 	    			<not>
 					<property>sim/crashed</property>

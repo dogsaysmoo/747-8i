@@ -204,8 +204,8 @@
 	   
         	<multiplay>
             	    <generic>
-                	<int n="0" alias="/sim/model/lights/strobe/enabled"/>
-                	<int n="1" alias="/sim/model/lights/beacon/enabled"/>
+                	<int n="0" alias="/sim/model/lights/strobe/state"/>
+                	<int n="1" alias="/sim/model/lights/beacon/state"/>
                 	<int n="2" alias="/controls/lighting/taxi-lights"/>
                 	<int n="3" alias="/controls/lighting/logo-lights"/>
                 	<int n="4" alias="/controls/lighting/landing-lights[0]"/>
@@ -536,9 +536,6 @@
 		<spoilers>
 			<file>Aircraft/747-8i/Nasal/speedbrakes.nas</file>
 		</spoilers>
-		<lights>
-			<file>Aircraft/747-8i/Nasal/lights.nas</file>
-		</lights>
 		<dialogs>
 			<file>Aircraft/747-8i/Nasal/dialogs.nas</file>
 		</dialogs>
