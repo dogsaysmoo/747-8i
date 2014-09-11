@@ -2879,7 +2879,7 @@
         <condition>
 		<!--and-->
                 <greater-than>
-                    <property>sim/time/sun-angle-rad</property>
+                    <property>/sim/time/sun-angle-rad</property>
                     <value>1.55</value>
                 </greater-than>
 		<!--not>
@@ -2895,7 +2895,7 @@
         <condition>
 		<!--and-->
                 <less-than>
-                    <property>sim/time/sun-angle-rad</property>
+                    <property>/sim/time/sun-angle-rad</property>
                     <value>1.55</value>
                 </less-than>
 		<!--not>

@@ -35,12 +35,16 @@
                               <value>24.0</value>
                         </greater-than>
                   </and>
-                  <and>
+                  <or>
                         <greater-than>
-			      <property>sim/multiplay/generic/int[5]</property>
-                              <value>0</value>
+			      	<property>sim/multiplay/generic/int[5]</property>
+                              	<value>0</value>
                         </greater-than>
-                  </and>
+			<greater-than>
+				<property>sim/multiplay/generic/int[2]</property>
+				<value>0</value>
+			</greater-than>
+                  </or>
 		</or>
             </condition>
       </animation>

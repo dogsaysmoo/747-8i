@@ -221,6 +221,7 @@
                 	<float n="4" alias="/gear/gear[4]/compression-m"/>
                 	<float n="5" alias="/surface-positions/speedbrake-norm"/>
                 	<float n="6" alias="/surface-positions/reverser-norm"/>
+			<float n="7" alias="/position/altitude-agl-ft"/>
                 	<string  alias="/sim/multiplay/callsign"/>
             	    </generic>
         	</multiplay>
