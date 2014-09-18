@@ -238,6 +238,97 @@ var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 1.2,], "/con
 beacon_switch = props.globals.getNode("controls/lighting/beacon", 1);
 var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 3,], "/controls/lighting/strobe" );
 
+var light_stat = {
+    new : func {
+	m = { parents : [light_stat] };
+	
+	m.light_controls = props.globals.getNode("controls/lighting",0);
+
+	m.beacon_sw = m.light_controls.getNode("beacon",0);
+	m.nav_sw = m.light_controls.getNode("nav-lights",0);
+	m.strobe_sw = m.light_controls.getNode("strobe",0);
+	m.logo_sw = m.light_controls.getNode("logo-lights",0);
+	m.wing_sw = m.light_controls.getNode("wing-lights",0);
+	m.taxi_sw = m.light_controls.getNode("taxi-lights",0);
+	m.Lland_sw = m.light_controls.getNode("landing-lights[1]",0);
+	m.Rland_sw = m.light_controls.getNode("landing-lights[2]",0);
+	
+	m.beacon = props.globals.initNode("systems/electrical/lighting/beacon",0,"BOOL");
+	m.nav = props.globals.initNode("systems/electrical/lighting/nav-lights",0,"BOOL");
+	m.strobe = props.globals.initNode("systems/electrical/lighting/strobe",0,"BOOL");
+	m.logo = props.globals.initNode("systems/electrical/lighting/logo-lights",0,"BOOL");
+	m.wing = props.globals.initNode("systems/electrical/lighting/wing-lights",0,"BOOL");
+	m.taxi = props.globals.initNode("systems/electrical/lighting/landing-lights[0]",0,"BOOL");
+	m.Lland = props.globals.initNode("systems/electrical/lighting/landing-lights[1]",0,"BOOL");
+	m.Rland = props.globals.initNode("systems/electrical/lighting/landing-lights[2]",0,"BOOL");
+
+	return m;
+    },
+    update : func {
+	if (getprop("systems/electrical/bus-volts") > 24 and !getprop("sim/crashed")) {
+	    # Beacon:
+	    if (me.beacon_sw.getBoolValue() and getprop("sim/model/lights/beacon/state")) {
+		me.beacon.setBoolValue(1);
+	    } else {
+		me.beacon.setBoolValue(0);
+	    }
+	    # Strobe:
+	    if (me.strobe_sw.getBoolValue() and getprop("sim/model/lights/strobe/state")) {
+		me.strobe.setBoolValue(1);
+	    } else {
+		me.strobe.setBoolValue(0);
+	    }
+	    # Nav lights:
+	    if (me.nav_sw.getBoolValue()) {
+		me.nav.setBoolValue(1);
+	    } else {
+		me.nav.setBoolValue(0);
+	    }
+	    # Logo lights:
+	    if (me.logo_sw.getBoolValue()) {
+		me.logo.setBoolValue(1);
+	    } else {
+		me.logo.setBoolValue(0);
+	    }
+	    # Wing lights:
+	    if (me.wing_sw.getBoolValue()) {
+		me.wing.setBoolValue(1);
+	    } else {
+		me.wing.setBoolValue(0);
+	    }
+	    # Taxi light:
+	    if (me.taxi_sw.getBoolValue() and getprop("gear/gear[0]/position-norm") > 0.75) {
+		me.taxi.setBoolValue(1);
+	    } else {
+		me.taxi.setBoolValue(0);
+	    }
+	    # Left landing light:
+	    if (me.Lland_sw.getBoolValue()) {
+		me.Lland.setBoolValue(1);
+	    } else {
+		me.Lland.setBoolValue(0);
+	    }
+	    # Right landing light:
+	    if (me.Rland_sw.getBoolValue()) {
+		me.Rland.setBoolValue(1);
+	    } else {
+		me.Rland.setBoolValue(0);
+	    }
+	} else {
+	    me.beacon.setBoolValue(0);
+	    me.strobe.setBoolValue(0);
+	    me.nav.setBoolValue(0);
+	    me.logo.setBoolValue(0);
+	    me.wing.setBoolValue(0);
+	    me.taxi.setBoolValue(0);
+	    me.Lland.setBoolValue(0);
+	    me.Rland.setBoolValue(0);
+	}
+    },
+};
+var lighting_status = light_stat.new();
+	    
+
 ## Landing Gear ##
 
 controls.gearDown = func(v) {
@@ -828,6 +919,7 @@ var update_systems = func {
     stall_horn();
     set_fltctrls();
     maingear_steer.update();
+    lighting_status.update();
     if(getprop("controls/gear/gear-down")){
         setprop("sim/multiplay/generic/float[0]",getprop("gear/gear[0]/compression-m"));
         setprop("sim/multiplay/generic/float[1]",getprop("gear/gear[1]/compression-m"));

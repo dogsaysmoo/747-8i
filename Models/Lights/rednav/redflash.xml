@@ -24,7 +24,7 @@
     <type>select</type>
     <object-name>redflash</object-name>
     <condition>
-		<or>
+		<!--or>
 			<and>
 				<property>controls/lighting/nav-lights</property>
 		    		<not>
@@ -34,12 +34,12 @@
 					<property>systems/electrical/bus-volts</property>
 					<value>24.0</value>
 				</greater-than>
-			</and>
+			</and-->
 			<greater-than>
 				<property>sim/multiplay/generic/int[7]</property>
 				<value>0</value>
 			</greater-than>
-		</or>
+		<!--/or-->
     </condition>
   </animation>
 

@@ -37,14 +37,14 @@
 	                    <value>true</value>
 	            	</equals-->
 	            	<equals>
-	                    <property>controls/lighting/landing-lights[2]</property>
+	                    <property>systems/electrical/lighting/landing-lights[2]</property>
 	                    <value>true</value>
 	            	</equals>
             	<!--/or-->
-                <greater-than>
+                <!--greater-than>
                     <property>systems/electrical/outputs/landing-light[2]</property>
                     <value>5</value>
-                </greater-than>
+                </greater-than-->
                 <greater-than>
                     <property>/sim/time/sun-angle-rad</property>
                     <value>1.55</value>
@@ -65,18 +65,18 @@
 	                    <value>true</value>
 	            	</equals-->
 	            	<equals>
-	                    <property>controls/lighting/landing-lights[0]</property>
+	                    <property>systems/electrical/lighting/landing-lights[0]</property>
 	                    <value>true</value>
 	            	</equals>
             	<!--/or-->
-                <greater-than>
+                <!--greater-than>
                     <property>systems/electrical/outputs/landing-light[0]</property>
                     <value>5</value>
                 </greater-than>
                 <equals>
                     <property>gear/gear[0]/position-norm</property>
                     <value>1.0</value>
-                </equals>
+                </equals-->
                 <greater-than>
                     <property>/sim/time/sun-angle-rad</property>
                     <value>1.55</value>
@@ -98,14 +98,14 @@
 	                    <value>true</value>
 	            	</equals-->
 	            	<equals>
-	                    <property>controls/lighting/landing-lights[1]</property>
+	                    <property>systems/electrical/lighting/landing-lights[1]</property>
 	                    <value>true</value>
 	            	</equals>
             	<!--/or-->
-                <greater-than>
+                <!--greater-than>
                     <property>systems/electrical/outputs/landing-light[1]</property>
                     <value>5</value>
-                </greater-than>
+                </greater-than-->
                 <greater-than>
                     <property>/sim/time/sun-angle-rad</property>
                     <value>1.55</value>

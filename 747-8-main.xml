@@ -204,15 +204,15 @@
 	   
         	<multiplay>
             	    <generic>
-                	<int n="0" alias="/sim/model/lights/strobe/state"/>
-                	<int n="1" alias="/sim/model/lights/beacon/state"/>
+                	<int n="0" alias="/systems/electrical/lighting/strobe"/>
+                	<int n="1" alias="/systems/electrical/lighting/beacon"/>
                 	<int n="2" alias="/controls/lighting/taxi-lights"/>
-                	<int n="3" alias="/controls/lighting/logo-lights"/>
-                	<int n="4" alias="/controls/lighting/landing-lights[0]"/>
-                	<int n="5" alias="/controls/lighting/landing-lights[1]"/>
-                	<int n="6" alias="/controls/lighting/landing-lights[2]"/>
-                	<int n="7" alias="/controls/lighting/nav-lights"/>
-                	<int n="8" alias="/controls/lighting/wing-lights"/>
+                	<int n="3" alias="/systems/electrical/lighting/logo-lights"/>
+                	<int n="4" alias="/systems/electrical/lighting/landing-lights[0]"/>
+                	<int n="5" alias="/systems/electrical/lighting/landing-lights[1]"/>
+                	<int n="6" alias="/systems/electrical/lighting/landing-lights[2]"/>
+                	<int n="7" alias="/systems/electrical/lighting/nav-lights"/>
+                	<int n="8" alias="/systems/electrical/lighting/wing-lights"/>
 
                 	<float n="0" alias="/gear/gear[0]/compression-m"/>
                 	<float n="1" alias="/gear/gear[1]/compression-m"/>
@@ -302,10 +302,10 @@
             <key n="108">
                 <name>l</name>
                 <desc>toggle landing lights</desc>
-                <binding>
+                <!--binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-lights[0]</property>
-		</binding>
+		</binding-->
                 <binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-lights[1]</property>

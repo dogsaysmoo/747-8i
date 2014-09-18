@@ -499,15 +499,6 @@
 	</offsets>
 </model>
 
-<animation> 
-	<type>select</type> 
-	<object-name>light.logo1</object-name>
-	<object-name>light.logo2</object-name>
-	<condition>
-		<property>/controls/lighting/logo-lights</property> 
-	</condition>
-</animation> 
-
 <!-- Wing Lights -->
 
 <model>
@@ -543,7 +534,11 @@
 	<object-name>pylon.lt.out</object-name>
 	<object-name>wing.lt.out</object-name>
 	<condition>
-		<property>/controls/lighting/wing-lights</property>
+		<!--property>/controls/lighting/wing-lights</property-->
+	    <greater-than>
+                <property>sim/multiplay/generic/int[8]</property>
+                <value>0</value>
+            </greater-than>
 	</condition>
 </animation>
 
@@ -2565,7 +2560,11 @@
 	<object-name>rudder.lit</object-name>
 	<object-name>vstab.lit</object-name>
 	<condition>
-		<property>controls/lighting/logo-lights</property>
+		<!--property>controls/lighting/logo-lights</property-->
+	    <greater-than>
+                <property>sim/multiplay/generic/int[3]</property>
+                <value>0</value>
+            </greater-than>
 	</condition>
 </animation>
 
@@ -2575,9 +2574,17 @@
 	<!--object-name>cargodoor.lit</object-name-->
 	<condition>
 		<or>
-			<!--property>controls/lighting/landing-lights[0]</property-->
+			<!--property>controls/lighting/landing-lights[0]</property>
 			<property>controls/lighting/landing-lights[1]</property>
-			<property>controls/lighting/landing-lights[2]</property>
+			<property>controls/lighting/landing-lights[2]</property-->
+		    <greater-than>
+                        <property>sim/multiplay/generic/int[5]</property>
+                        <value>0</value>
+                    </greater-than>
+                    <greater-than>
+                        <property>sim/multiplay/generic/int[6]</property>
+                        <value>0</value>
+                    </greater-than>
 		</or>
 	</condition>
 </animation>
@@ -2586,7 +2593,11 @@
         <object-name>cargodoor.lit</object-name>
         <condition>
                 <and>
-                        <property>controls/lighting/landing-lights[2]</property>
+                        <!--property>controls/lighting/landing-lights[2]</property-->
+		    <greater-than>
+                        <property>sim/multiplay/generic/int[6]</property>
+                        <value>0</value>
+                    </greater-than>
 			<less-than>
 	                        <property>controls/doors/cargo1/position-norm</property>
 				<value>0.02</value>

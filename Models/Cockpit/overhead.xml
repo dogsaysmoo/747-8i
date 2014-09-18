@@ -3913,14 +3913,14 @@
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>	
-		<binding>
+		<!--binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-light-inbdl</property>
 		</binding>
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-lights[0]</property>
-		</binding>
+		</binding-->
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-lights[1]</property>
@@ -3939,7 +3939,7 @@
 <animation>
 	<type>rotate</type>
 	<object-name>inbdl</object-name>
-	<property>controls/lighting/landing-lights[0]</property>
+	<property>controls/lighting/landing-lights[1]</property>
 	<factor>-25</factor>
 	<center>
 		<x-m> 0.285</x-m>
@@ -3959,14 +3959,14 @@
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>	
-		<binding>
+		<!--binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-light-inbdr</property>
 		</binding>
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-lights[0]</property>
-		</binding>
+		</binding-->
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-lights[1]</property>
@@ -3985,7 +3985,7 @@
 <animation>
 	<type>rotate</type>
 	<object-name>inbdr</object-name>
-	<property>controls/lighting/landing-lights[0]</property>
+	<property>controls/lighting/landing-lights[2]</property>
 	<factor>-25</factor>
 	<center>
 		<x-m> 0.285</x-m>
@@ -4005,14 +4005,14 @@
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>	
-		<binding>
+		<!--binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-light-outbdl</property>
 		</binding>
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-lights[0]</property>
-		</binding>
+		</binding-->
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-lights[1]</property>
@@ -4031,7 +4031,7 @@
 <animation>
 	<type>rotate</type>
 	<object-name>outbdl</object-name>
-	<property>controls/lighting/landing-lights[0]</property>
+	<property>controls/lighting/landing-lights[1]</property>
 	<factor>-25</factor>
 	<center>
 		<x-m> 0.285</x-m>
@@ -4051,14 +4051,14 @@
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>	
-		<binding>
+		<!--binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-light-outbdr</property>
 		</binding>
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-lights[0]</property>
-		</binding>
+		</binding-->
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-lights[1]</property>
@@ -4077,7 +4077,7 @@
 <animation>
 	<type>rotate</type>
 	<object-name>outbdr</object-name>
-	<property>controls/lighting/landing-lights[0]</property>
+	<property>controls/lighting/landing-lights[2]</property>
 	<factor>-25</factor>
 	<center>
 		<x-m> 0.285</x-m>
@@ -4100,6 +4100,10 @@
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/taxi-lights</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[0]</property>
 		</binding>
 		<binding>
 			<command>nasal</command>
