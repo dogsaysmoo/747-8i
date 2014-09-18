@@ -85,7 +85,8 @@ Adaptado por Aurino das Neves
   <animation>
    <type>translate</type>
    <object-name>shadow</object-name>
-   <property>position/altitude-agl-ft</property>
+   <!--property>position/altitude-agl-ft</property-->
+   <property>sim/multiplay/generic/float[7]</property>
    <factor>-0.3</factor>
    <center>
      <x-m>0</x-m>
