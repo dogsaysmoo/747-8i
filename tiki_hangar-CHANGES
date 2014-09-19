@@ -129,4 +129,5 @@ Changes made by John W.
 -Fixed steering and added main (body) gear steering
 -Switched -set files to use centralized -main file
 -Changed multiplay aliases for lights... they don't appear over MP.
+-Re-did lights so they work over MP better
 
