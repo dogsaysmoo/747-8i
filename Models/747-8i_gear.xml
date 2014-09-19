@@ -247,7 +247,8 @@
    <value>30.0</value>
   </less-than>
  </condition>
- <property>controls/gear/steering</property>
+ <!--property>controls/gear/steering</property-->
+ <property>sim/multiplay/generic/float[8]</property>
  <factor>-70</factor>
  <center>
   <x-m>-26.1012</x-m>
@@ -940,7 +941,8 @@
    <value>30.0</value>
   </less-than>
  </condition>
- <property>gear/gear[2]/steering-angle-rad</property>
+ <!--property>gear/gear[2]/steering-angle-rad</property-->
+ <property>sim/multiplay/generic/float[9]</property>
  <factor>-57.3</factor>
  <center>
   <x-m>5.457</x-m>
@@ -1107,7 +1109,8 @@
    <value>30.0</value>
   </less-than>
  </condition>
- <property>gear/gear[3]/steering-angle-rad</property>
+ <!--property>gear/gear[3]/steering-angle-rad</property-->
+ <property>sim/multiplay/generic/float[10]</property>
  <factor>-57.3</factor>
  <center>
   <x-m>5.05</x-m>

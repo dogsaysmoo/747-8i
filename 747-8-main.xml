@@ -222,6 +222,9 @@
                 	<float n="5" alias="/surface-positions/speedbrake-norm"/>
                 	<float n="6" alias="/surface-positions/reverser-norm"/>
 			<float n="7" alias="/position/altitude-agl-ft"/>
+			<float n="8" alias="/controls/gear/steering"/>
+			<float n="9" alias="/gear/gear[2]/steering-angle-rad"/>
+			<float n="10" alias="/gear/gear[3]/steering-angle-rad"/>
                 	<string  alias="/sim/multiplay/callsign"/>
             	    </generic>
         	</multiplay>
