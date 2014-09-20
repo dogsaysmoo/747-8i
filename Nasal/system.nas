@@ -233,10 +233,8 @@ var stall_horn = func {
 
 ## Lights ##
 
-strobe_switch = props.globals.getNode("controls/lighting/strobe", 1);
-var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 1.2,], "/controls/lighting/beacon" );
-beacon_switch = props.globals.getNode("controls/lighting/beacon", 1);
-var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 3,], "/controls/lighting/strobe" );
+var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.15, 1.2,], "/controls/lighting/beacon" );
+var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.07, 2,], "/controls/lighting/strobe" );
 
 var light_stat = {
     new : func {
