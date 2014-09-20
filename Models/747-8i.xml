@@ -2266,7 +2266,7 @@
 <!-- Ailerons -->
 <!-- ######## -->
 
-<!-- Externo -->
+<!-- Outboard -->
   <animation>
   <type>rotate</type>
   <object-name>aileron_L</object-name>
@@ -2282,7 +2282,7 @@
             	</less-than>
 			</or>
         </condition>
-  <property>controls/flight/aileron-pos</property>
+  <property>surface-positions/left-aileron-pos-norm</property>
   <factor> 30</factor>
   <axis>
      <x1-m> 16.4032</x1-m>
@@ -2309,8 +2309,8 @@
             	</less-than>
 			</or>
         </condition>
-  <property>controls/flight/aileron-pos</property>
-  <factor>30</factor>
+  <property>surface-positions/right-aileron-pos-norm</property>
+  <factor>-30</factor>
   <axis>
      <x1-m> 16.4032</x1-m>
      <y1-m>28.048</y1-m>
@@ -2320,7 +2320,244 @@
      <z2-m>0.901563</z2-m>
   </axis>
  </animation>
- 
+
+  <!-- droop with flaps --> 
+  <animation>
+  <type>rotate</type>
+  <object-name>aileron_L</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+		  <interpolation>
+		    <entry>
+		      <ind>0.00</ind>
+		      <dep>0.0</dep>
+		    </entry>
+		    <entry>
+		      <ind>0.666</ind>
+		      <dep>0.0</dep>
+		    </entry>
+		    <entry>
+		      <ind>0.75</ind>
+		      <dep>5</dep>
+		    </entry>
+		    <entry>
+		      <ind>1.00</ind>
+		      <dep>15</dep>
+		    </entry>
+		  </interpolation>
+  <axis>
+     <x1-m> 16.4032</x1-m>
+     <y1-m>-28.048</y1-m>
+     <z1-m> 1.49937</z1-m>
+     <x2-m> 12.1688</x2-m>
+     <y2-m>-21.3423</y2-m>
+     <z2-m>0.901563</z2-m>
+  </axis>
+ </animation>
+
+  <animation>
+  <type>rotate</type>
+  <object-name>aileron_R</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+		  <interpolation>
+		    <entry>
+		      <ind>0.00</ind>
+		      <dep>0.0</dep>
+		    </entry>
+		    <entry>
+		      <ind>0.666</ind>
+		      <dep>0.0</dep>
+		    </entry>
+		    <entry>
+		      <ind>0.75</ind>
+		      <dep>-5</dep>
+		    </entry>
+		    <entry>
+		      <ind>1.00</ind>
+		      <dep>-15</dep>
+		    </entry>
+		  </interpolation>
+  <axis>
+     <x1-m> 16.4032</x1-m>
+     <y1-m>28.048</y1-m>
+     <z1-m> 1.49937</z1-m>
+     <x2-m> 12.1688</x2-m>
+     <y2-m>21.3423</y2-m>
+     <z2-m>0.901563</z2-m>
+  </axis>
+ </animation>
+
+<!-- Inboard -->
+  <animation>
+  <type>rotate</type>
+  <object-name>aileron_int_L</object-name>
+        <condition>
+	    <or>
+            	<less-than>
+            	    <property>velocities/mach</property>
+            	    <value>0.59</value>
+            	</less-than>
+            	<less-than>
+            	    <property>velocities/airspeed-kt</property>
+            	    <value>278</value>
+            	</less-than>
+	    </or>
+        </condition>
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <factor> 30</factor>
+  <axis>
+     <x1-m> 6.280</x1-m>
+     <y1-m>-12.850</y1-m>
+     <z1-m> 0.200</z1-m>
+     <x2-m> 6.280</x2-m>
+     <y2-m>-11.110</y2-m>
+     <z2-m> 0.200</z2-m>
+  </axis>
+ </animation>
+  <animation>
+  <type>rotate</type>
+  <object-name>aileron_int_L</object-name>
+        <condition>
+	    <or>
+            	<greater-than-equals>
+            	    <property>velocities/mach</property>
+            	    <value>0.59</value>
+            	</greater-than-equals>
+            	<greater-than-equals>
+            	    <property>velocities/airspeed-kt</property>
+            	    <value>278</value>
+            	</greater-than-equals>
+	    </or>
+        </condition>
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <factor> 10</factor>
+  <axis>
+     <x1-m> 6.280</x1-m>
+     <y1-m>-12.850</y1-m>
+     <z1-m> 0.200</z1-m>
+     <x2-m> 6.280</x2-m>
+     <y2-m>-11.110</y2-m>
+     <z2-m> 0.200</z2-m>
+  </axis>
+ </animation>
+
+  <animation>
+  <type>rotate</type>
+  <object-name>aileron_int_R</object-name>
+        <condition>
+	    <or>
+            	<less-than>
+            	    <property>velocities/mach</property>
+            	    <value>0.59</value>
+            	</less-than>
+            	<less-than>
+            	    <property>velocities/airspeed-kt</property>
+            	    <value>278</value>
+            	</less-than>
+	    </or>
+        </condition>
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <factor> 30</factor>
+  <axis>
+     <x1-m> 6.280</x1-m>
+     <y1-m> 12.850</y1-m>
+     <z1-m> 0.200</z1-m>
+     <x2-m> 6.280</x2-m>
+     <y2-m> 11.110</y2-m>
+     <z2-m> 0.200</z2-m>
+  </axis>
+ </animation>
+  <animation>
+  <type>rotate</type>
+  <object-name>aileron_int_R</object-name>
+        <condition>
+	    <or>
+            	<greater-than-equals>
+            	    <property>velocities/mach</property>
+            	    <value>0.59</value>
+            	</greater-than-equals>
+            	<greater-than-equals>
+            	    <property>velocities/airspeed-kt</property>
+            	    <value>278</value>
+            	</greater-than-equals>
+	    </or>
+        </condition>
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <factor> 10</factor>
+  <axis>
+     <x1-m> 6.280</x1-m>
+     <y1-m> 12.850</y1-m>
+     <z1-m> 0.200</z1-m>
+     <x2-m> 6.280</x2-m>
+     <y2-m> 11.110</y2-m>
+     <z2-m> 0.200</z2-m>
+  </axis>
+ </animation>
+
+  <!-- droop with flaps -->
+  <animation>
+  <type>rotate</type>
+  <object-name>aileron_int_L</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+		  <interpolation>
+		    <entry>
+		      <ind>0.00</ind>
+		      <dep>0.0</dep>
+		    </entry>
+		    <entry>
+		      <ind>0.666</ind>
+		      <dep>0.0</dep>
+		    </entry>
+		    <entry>
+		      <ind>0.75</ind>
+		      <dep>5</dep>
+		    </entry>
+		    <entry>
+		      <ind>1.00</ind>
+		      <dep>15</dep>
+		    </entry>
+		  </interpolation>
+  <axis>
+     <x1-m> 6.280</x1-m>
+     <y1-m>-12.850</y1-m>
+     <z1-m> 0.200</z1-m>
+     <x2-m> 6.280</x2-m>
+     <y2-m>-11.110</y2-m>
+     <z2-m> 0.200</z2-m>
+  </axis>
+ </animation>
+
+  <animation>
+  <type>rotate</type>
+  <object-name>aileron_int_R</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+		  <interpolation>
+		    <entry>
+		      <ind>0.00</ind>
+		      <dep>0.0</dep>
+		    </entry>
+		    <entry>
+		      <ind>0.666</ind>
+		      <dep>0.0</dep>
+		    </entry>
+		    <entry>
+		      <ind>0.75</ind>
+		      <dep>-5</dep>
+		    </entry>
+		    <entry>
+		      <ind>1.00</ind>
+		      <dep>-15</dep>
+		    </entry>
+		  </interpolation>
+  <axis>
+     <x1-m> 6.280</x1-m>
+     <y1-m> 12.850</y1-m>
+     <z1-m> 0.200</z1-m>
+     <x2-m> 6.280</x2-m>
+     <y2-m> 11.110</y2-m>
+     <z2-m> 0.200</z2-m>
+  </axis>
+ </animation>
+
  
 <!-- ############ -->
 <!--  Speedbrake  -->
@@ -2729,7 +2966,7 @@
   <object-name>rudder</object-name>
   <object-name>rudder_1</object-name>
   <object-name>rudder_0</object-name>
-  <property>controls/flight/rudder-pos</property>
+  <property>surface-positions/rudder-pos-norm</property>
   <factor>35</factor>
   <offset-deg>0</offset-deg>   
 	  <axis>
@@ -2748,7 +2985,7 @@
  <animation>
   <type>rotate</type>
   <object-name>elevator_right</object-name>
-  <property>controls/flight/elevator-pos</property>
+  <property>surface-positions/elevator-pos-norm</property>
   <factor>10</factor>
   <offset-deg>0</offset-deg>   
 		  <axis>
@@ -2764,7 +3001,7 @@
  <animation>
   <type>rotate</type>
   <object-name>elevator_left</object-name>
-  <property>controls/flight/elevator-pos</property>
+  <property>surface-positions/elevator-pos-norm</property>
   <factor>-10</factor>
   <offset-deg>0</offset-deg>
 		  <axis>
@@ -2780,7 +3017,6 @@
     <animation>
         <type>rotate</type>
 		<object-name>hstab_L</object-name>
-		<object-name>elevator_left</object-name>
         <property>controls/flight/elevator-trim</property>
         <factor>-15</factor>
 	  <offset-deg>0</offset-deg>   
@@ -2797,7 +3033,6 @@
     <animation>
         <type>rotate</type>
 		<object-name>hstab_R</object-name>
-		<object-name>elevator_right</object-name>
         <property>controls/flight/elevator-trim</property>
         <factor>15</factor>
 	  <offset-deg>0</offset-deg>   

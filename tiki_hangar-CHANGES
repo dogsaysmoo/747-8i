@@ -130,4 +130,6 @@ Changes made by John W.
 -Switched -set files to use centralized -main file
 -Changed multiplay aliases for lights... they don't appear over MP.
 -Re-did lights so they work over MP better
+-Add droop to the ailerons when flaps are out past 20 deg
+-Animate inboard ailerons
 
