@@ -132,4 +132,4 @@ Changes made by John W.
 -Re-did lights so they work over MP better
 -Add droop to the ailerons when flaps are out past 20 deg
 -Animate inboard ailerons
-
+-Restore old magnetic compass
