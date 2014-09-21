@@ -438,7 +438,7 @@ var AFDS = {
 			brg_err = brg_err + 360;
 		    }
 		    brg_err = math.pi * (brg_err / 180);
-		    if (enroute[1] < 8) {
+		    if (enroute[1] < 16) {
 			wpt_eta = abs(wpt_eta * math.cos(brg_err));
 		    }
 
