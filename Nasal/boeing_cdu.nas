@@ -3,18 +3,65 @@
 var input = func(v) {
 		setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~v);
 	}
+
+var wpCurr = getprop("/autopilot/route-manager/current-wp");
+if (wpCurr < 1) wpCurr = 1;
+wp1 = wpCurr + 1;
+wp2 = wpCurr + 2;
+wp3 = wpCurr + 3;
+wp4 = wpCurr + 4;
+
+var wpt_updater = func {
+	wp1 = wpCurr + 1;
+	wp2 = wpCurr + 2;
+	wp3 = wpCurr + 3;
+	wp4 = wpCurr + 4;
+}
+wpt_updater();
+setlistener("/autopilot/route-manager/current-wp", func {
+	wpCurr = getprop("/autopilot/route-manager/current-wp");
+	wpt_updater();
+}
+
+var pgupdn = func (dir) {
+	var wpNow = getprop("/autopilot/route-manager/current-wp");
+	var Nwpts = getprop("/autopilot/route-manager/route/num");
+	if (dir == 1) {
+	    if (wpCurr + 3 < wpNow) {
+		wpCurr = wpCurr + 3;
+	    } elsif (wpCurr < wpNow) {
+		wpCurr = wpNow;
+#	    } elsif (wpCurr + 5 < Nwpts) {
+	    } else {
+		wpCurr = wpCurr + 5;
+	    }
+	}
+	if (dir == -1) {
+	    if (wpCurr - 5 >= wpNow) {
+		wpCurr = wpCurr - 5;
+	    } elsif (wpCurr > wpNow) {
+		wpCurr = wpNow;
+#	    } elsif (wpCurr - 3 >= 1) {d
+	    } else {
+		wpCurr = wpCurr - 3;
+	    }
+	}
+	if (wpCurr < 1) wpCurr = 1;
+	if (wpCurr >= Nwpts) wpCurr = Nwpts - 1;
+	wpt_updater();
+}
 	
 var key = func(v) {
 		var cduDisplay = getprop("/instrumentation/cdu/display");
 		var serviceable = getprop("/instrumentation/cdu/serviceable");
 		var eicasDisplay = getprop("/instrumentation/eicas/display");
 		var cduInput = getprop("/instrumentation/cdu/input");
-		var wpCurr = getprop("/autopilot/route-manager/current-wp");
-		if (wpCurr < 1) wpCurr = 1;
-		var wp1 = wpCurr + 1;
-		var wp2 = wpCurr + 2;
-		var wp3 = wpCurr + 3;
-		var wp4 = wpCurr + 4;
+#		var wpCurr = getprop("/autopilot/route-manager/current-wp");
+#		if (wpCurr < 1) wpCurr = 1;
+#		var wp1 = wpCurr + 1;
+#		var wp2 = wpCurr + 2;
+#		var wp3 = wpCurr + 3;
+#		var wp4 = wpCurr + 4;
 		
 		if (serviceable == 1){
 			if (v == "LSK1L"){
@@ -583,13 +630,13 @@ var cdu = func{
 			line6r = "ROUTE>";
 		}
 		if (display == "RTE1_LEGS") {
-			var wpCurr = getprop("/autopilot/route-manager/current-wp");
-			if (wpCurr < 1) wpCurr = 1;
-			var wp1 = wpCurr + 1;
-			var wp2 = wpCurr + 2;
-			var wp3 = wpCurr + 3;
-			var wp4 = wpCurr + 4;
-			var wpN = getprop("/autopilot/route-manager/route/num");
+#			var wpCurr = getprop("/autopilot/route-manager/current-wp");
+#			if (wpCurr < 1) wpCurr = 1;
+#			var wp1 = wpCurr + 1;
+#			var wp2 = wpCurr + 2;
+#			var wp3 = wpCurr + 3;
+#			var wp4 = wpCurr + 4;
+#			var wpN = getprop("/autopilot/route-manager/route/num");
 			if (getprop("/autopilot/route-manager/active") == 1){
 				title = "ACT RTE 1 LEGS";
 				}
