@@ -21,7 +21,7 @@ wpt_updater();
 setlistener("/autopilot/route-manager/current-wp", func {
 	wpCurr = getprop("/autopilot/route-manager/current-wp");
 	wpt_updater();
-}
+},0,0);
 
 var pgupdn = func (dir) {
 	var wpNow = getprop("/autopilot/route-manager/current-wp");
