@@ -439,7 +439,7 @@
 		    <or>
 			<greater-than>
 				<property>/velocities/mach</property>
-				<value>0.9</value>
+				<value>0.905</value>
 			</greater-than>
 			<greater-than>
 				<property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
