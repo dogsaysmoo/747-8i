@@ -64,10 +64,10 @@ var RunwayAnnounceClass = {
         me.mode = mode;
 
         if (mode != '') {
-            logger.warn(sprintf("Set mode to %s", mode));
+#            logger.warn(sprintf("Set mode to %s", mode));
         }
         else {
-            logger.warn("Reset mode");
+#            logger.warn("Reset mode");
         }
     },
 

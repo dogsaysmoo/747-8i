@@ -28,7 +28,7 @@ var make_notification_cb = func (format, action=nil) {
             }
 
             copilot_say(message);
-            logger.info(sprintf("Announcing '%s'", message));
+#            logger.info(sprintf("Announcing '%s'", message));
         }
 
         if (typeof(action) == "func") {
@@ -39,7 +39,7 @@ var make_notification_cb = func (format, action=nil) {
 
 var stop_announcer = func {
     landing_announcer.stop();
-    logger.warn("Stopping landing announce");
+#    logger.warn("Stopping landing announce");
 
     takeoff_announcer.set_mode("taxi-and-takeoff");
 };
@@ -62,7 +62,7 @@ takeoff_announcer.connect("approaching-runway", make_notification_cb("Approachin
 var landing_config = { parents: [runway.LandingRunwayAnnounceConfig] };
 
 var landing_announcer = runway.LandingRunwayAnnounceClass.new(landing_config);
-landing_announcer.connect("remaining-distance", make_notification_cb("%d remaining"));
+landing_announcer.connect("remaining-distance", make_notification_cb("%d m remaining"));
 landing_announcer.connect("vacated-runway", make_notification_cb("Vacated runway %s", stop_announcer));
 landing_announcer.connect("landed-runway", make_notification_cb("Touchdown on runway %s"));
 landing_announcer.connect("landed-outside-runway", make_notification_cb(nil, stop_announcer));
@@ -92,7 +92,7 @@ var have_been_in_air = 0;
 var test_on_ground = func (on_ground) {
     if (on_ground) {
         takeoff_announcer.start();
-        logger.warn("Starting takeoff announce");
+#        logger.warn("Starting takeoff announce");
 
         if (have_been_in_air == 1) {
             have_been_in_air = 0;
@@ -101,15 +101,15 @@ var test_on_ground = func (on_ground) {
 
             landing_announcer.start();
             landing_announcer.set_mode("landing");
-            logger.warn("Starting landing announce");
+#            logger.warn("Starting landing announce");
         }
     }
     else {
         takeoff_announcer.stop();
-        logger.warn("Stopping takeoff announce");
+#        logger.warn("Stopping takeoff announce");
 
         landing_announcer.stop();
-        logger.warn("Stopping landing announce");
+#        logger.warn("Stopping landing announce");
 
         if (have_been_in_air == 0) {
             have_been_in_air = 1;
@@ -128,7 +128,7 @@ var init_announcers = func {
 };
 
 setlistener("/sim/signals/fdm-initialized", func {
-    logger.warn("FDM initialized");
+#    logger.warn("FDM initialized");
 
     var timer = maketimer(5.0, func init_announcers());
     timer.singleShot = 1;
