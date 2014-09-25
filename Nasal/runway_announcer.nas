@@ -263,6 +263,9 @@ var LandingRunwayAnnounceConfig = {
     distances_unit: "meter",
     # The unit to use for the remaining distance. Can be "meter" or "feet"
 
+    distance_center_nose_m: 0,
+    # Distance from the center to the nose in meters
+
     diff_runway_heading_deg: 15,
     # Difference in heading between runway and aircraft in order to
     # detect the correct runway on which the aircraft is landing.
@@ -361,15 +364,17 @@ var LandingRunwayAnnounceClass = {
         # Aircraft has already landed on the given runway and is now
         # rolling out
         if (me.landed_runway == runway and me.distance_index >= 0) {
+            var nose_distance = result.distance_stop - me.config.distance_center_nose_m;
+
             if (me.config.distances_unit == "meter") {
                 var unit_ps = getprop("/velocities/uBody-fps") * globals.FT2M;
                 var dist_upper = me.config.distances_meter[me.distance_index];
-                var remaining_distance = result.distance_stop;
+                var remaining_distance = nose_distance;
             }
             elsif (me.config.distances_unit == "feet") {
                 var unit_ps = getprop("/velocities/uBody-fps");
                 var dist_upper = me.config.distances_feet[me.distance_index];
-                var remaining_distance = result.distance_stop * globals.M2FT;
+                var remaining_distance = nose_distance * globals.M2FT;
             }
 
             # Distance travelled in two timer periods
