@@ -37,22 +37,41 @@ var make_notification_cb = func (format, action=nil) {
     };
 };
 
+var make_distance_cb = func (format) {
+    return func (data=nil) {
+        if (format != nil) {
+            var message = sprintf(format, data.getValue(), landing_config.distances_unit);
+            copilot_say(message);
+#            logger.info(sprintf("Announcing '%s'", message));
+        }
+    };
+};
+
 var stop_announcer = func {
     landing_announcer.stop();
 #    logger.warn("Stopping landing announce");
 
     takeoff_announcer.set_mode("taxi-and-takeoff");
+#    logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
 };
 
 var switch_to_takeoff = func {
     if (takeoff_announcer.mode == "taxi-and-takeoff") {
         takeoff_announcer.set_mode("takeoff");
+#        logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
     }
 };
 
 var takeoff_config = { parents: [runway.TakeoffRunwayAnnounceConfig] };
+
+# Will cause the announcer to emit the "on-runway" signal if the
+# aircraft is within 600 meters of the beginning of the runway and
+# at most 15 meters from the center line of the runway
 takeoff_config.distance_center_line_m = 15;
 takeoff_config.distance_start_m = 600;
+
+# Let the announcer emit the "approaching-runway" signal if the
+# aircraft comes within 200 meters of the runway
 takeoff_config.distance_edge_max_m = 200;
 
 var takeoff_announcer = runway.TakeoffRunwayAnnounceClass.new(takeoff_config);
@@ -60,9 +79,11 @@ takeoff_announcer.connect("on-runway", make_notification_cb("On runway %s", swit
 takeoff_announcer.connect("approaching-runway", make_notification_cb("Approaching runway %s"));
 
 var landing_config = { parents: [runway.LandingRunwayAnnounceConfig] };
+landing_config.distances_unit = "meter";
+landing_config.distance_center_nose_m = 30;
 
 var landing_announcer = runway.LandingRunwayAnnounceClass.new(landing_config);
-landing_announcer.connect("remaining-distance", make_notification_cb("%d m remaining"));
+landing_announcer.connect("remaining-distance", make_distance_cb("%d %s remaining"));
 landing_announcer.connect("vacated-runway", make_notification_cb("Vacated runway %s", stop_announcer));
 landing_announcer.connect("landed-runway", make_notification_cb("Touchdown on runway %s"));
 landing_announcer.connect("landed-outside-runway", make_notification_cb(nil, stop_announcer));
@@ -80,6 +101,7 @@ var make_switch_mode_cb = func (wow_mode, no_wow_mode) {
         else {
             takeoff_announcer.set_mode("");
         }
+#        logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
     };
 };
 
