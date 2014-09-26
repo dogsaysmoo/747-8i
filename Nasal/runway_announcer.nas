@@ -310,6 +310,12 @@ var LandingRunwayAnnounceConfig = {
     # Difference in heading between runway and aircraft in order to
     # detect the correct runway on which the aircraft is landing.
 
+    groundspeed_min_kt: 40,
+    # Minimum groundspeed in knots for remaining distance callouts
+
+    agl_max_ft: 100,
+    # Maximum AGL in feet for remaining distance callouts
+
 };
 
 var LandingRunwayAnnounceClass = {
@@ -403,7 +409,9 @@ var LandingRunwayAnnounceClass = {
 
         # Aircraft has already landed on the given runway and is now
         # rolling out
-        if (me.landed_runway == runway and me.distance_index >= 0) {
+        if (me.landed_runway == runway and me.distance_index >= 0
+          and getprop("/velocities/groundspeed-kt") > me.config.groundspeed_min_kt
+          and getprop("/position/gear-agl-ft") < me.config.agl_max_ft) {
             var nose_distance = result.distance_stop - me.config.distance_center_nose_m;
 
             if (me.config.distances_unit == "meter") {
