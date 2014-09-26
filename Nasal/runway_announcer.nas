@@ -142,6 +142,10 @@ var TakeoffRunwayAnnounceConfig = {
     # required for a normal takeoff, then the on-short-runway instead of
     # on-runway signal will be emitted.
 
+    distances_unit: "meter",
+    # The unit to use for the remaining distance of short runways. Can
+    # be "meter" or "feet".
+
 };
 
 var TakeoffRunwayAnnounceClass = {
@@ -222,7 +226,7 @@ var TakeoffRunwayAnnounceClass = {
                             me.notify_observers("on-runway", runway);
                         }
                         else {
-                            me.notify_observers("on-short-runway", runway);
+                            me._on_short_runway(runway, result.distance_stop);
                         }
                         me.last_announced_runway = runway;
                     }
@@ -273,6 +277,19 @@ var TakeoffRunwayAnnounceClass = {
                 me.last_announced_approach = runway;
             }
         }
+    },
+
+    _on_short_runway: func (runway, distance_remaining) {
+        var distance = distance_remaining;
+        if (me.config.distances_unit == "feet") {
+            distance = distance * globals.M2FT;
+        }
+
+        # Round down to nearest multiple of 100
+        distance = int(distance / 100) * 100;
+
+        setprop("/sim/runway-announcer/short-runway-distance", distance);
+        me.notify_observers("on-short-runway", runway);
     }
 
 };
