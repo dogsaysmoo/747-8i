@@ -113,7 +113,7 @@ var RunwayAnnounceClass = {
 
 var TakeoffRunwayAnnounceConfig = {
 
-    distance_start_m: 200,
+    distance_start_m: nil,
     # The maximum distance in meters from the starting position
     # on the runway. Large runways are usually 40 to 60 meters wide
     # to give you an idea of the scale. If nil then the distance is

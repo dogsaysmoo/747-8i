@@ -69,7 +69,6 @@ var switch_to_takeoff = func {
 };
 
 var takeoff_config = { parents: [runway.TakeoffRunwayAnnounceConfig] };
-takeoff_config.distance_start_m = nil;
 takeoff_config.distances_unit = "meter";
 
 # Will cause the announcer to emit the "on-runway" signal if the
