@@ -115,7 +115,10 @@ var TakeoffRunwayAnnounceConfig = {
 
     distance_start_m: 200,
     # The maximum distance in meters from the starting position
-    # on the runway. Large runways are usually 40 to 60 meters wide.
+    # on the runway. Large runways are usually 40 to 60 meters wide
+    # to give you an idea of the scale. If nil then the distance is
+    # not taken into account, which means the aircraft can be anywhere
+    # on the runway for the on-runway signal to be emitted.
 
     diff_runway_heading_deg: 20,
     # Difference in heading between runway and aircraft in order to
@@ -133,6 +136,12 @@ var TakeoffRunwayAnnounceConfig = {
     # Minimum and maximum distance in meters from the edge of the runway
     # for announcing approaches.
 
+    nominal_distance_takeoff_m: 3000,
+    # Minimum distance in meters required for a normal takeoff. If
+    # remaining distance when entering the runway is less than the distance
+    # required for a normal takeoff, then the on-short-runway instead of
+    # on-runway signal will be emitted.
+
 };
 
 var TakeoffRunwayAnnounceClass = {
@@ -143,8 +152,8 @@ var TakeoffRunwayAnnounceClass = {
     # takeoff. Valid modes and the signals they emit are:
     #
     # - taxi:               approaching-runway
-    # - taxi-and-takeoff:   approaching-runway, on-runway
-    # - takeoff:            on-runway
+    # - taxi-and-takeoff:   approaching-runway, on-runway, on-short-runway
+    # - takeoff:            on-runway, on-short-runway
 
     new: func (config) {
         var m = {
@@ -204,17 +213,31 @@ var TakeoffRunwayAnnounceClass = {
             if (result.on_runway) {
                 if (me.mode == "taxi-and-takeoff" or me.mode == "takeoff") {
                     var heading_diff = abs(self_heading - runway_heading);
-                    if (heading_diff <= me.config.diff_runway_heading_deg
-                      and result.distance_start <= me.config.distance_start_m
+
+                    if (me.last_announced_runway != runway
+                      and heading_diff <= me.config.diff_runway_heading_deg
+                      and (me.config.distance_start_m == nil or result.distance_start <= me.config.distance_start_m)
                       and result.crosstrack_error <= me.config.distance_center_line_m) {
-                        if (me.last_announced_runway != runway) {
+                        if (result.distance_stop >= me.config.nominal_distance_takeoff_m) {
                             me.notify_observers("on-runway", runway);
-                            me.last_announced_runway = runway;
                         }
+                        else {
+                            me.notify_observers("on-short-runway", runway);
+                        }
+                        me.last_announced_runway = runway;
                     }
                 }
             }
             else {
+                if (me.mode == "taxi-and-takeoff" or me.mode == "takeoff") {
+                    # If aircraft is no longer on the last announced runway
+                    # (when it has vacated onto a taxiway for example), then
+                    # reset last_announced_runway field so that on-runway signal
+                    # will be emitted if the aircraft enters this same runway again.
+                    if (me.last_announced_runway == runway) {
+                        me.last_announced_runway = "";
+                    }
+                }
                 if (me.mode == "taxi-and-takeoff" or me.mode == "taxi") {
                     if (me.config.distance_edge_min_m <= result.edge_rem
                       and result.edge_rem <= me.config.distance_edge_max_m) {

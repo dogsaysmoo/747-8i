@@ -63,6 +63,7 @@ var switch_to_takeoff = func {
 };
 
 var takeoff_config = { parents: [runway.TakeoffRunwayAnnounceConfig] };
+takeoff_config.distance_start_m = nil;
 
 # Will cause the announcer to emit the "on-runway" signal if the
 # aircraft is within 600 meters of the beginning of the runway and
@@ -76,6 +77,7 @@ takeoff_config.distance_edge_max_m = 200;
 
 var takeoff_announcer = runway.TakeoffRunwayAnnounceClass.new(takeoff_config);
 takeoff_announcer.connect("on-runway", make_notification_cb("On runway %s", switch_to_takeoff));
+takeoff_announcer.connect("on-short-runway", make_notification_cb("On short runway %s", switch_to_takeoff));
 takeoff_announcer.connect("approaching-runway", make_notification_cb("Approaching runway %s"));
 
 var landing_config = { parents: [runway.LandingRunwayAnnounceConfig] };
