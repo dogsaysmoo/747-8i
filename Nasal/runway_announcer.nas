@@ -117,7 +117,7 @@ var TakeoffRunwayAnnounceConfig = {
     # The maximum distance in meters from the starting position
     # on the runway. Large runways are usually 40 to 60 meters wide.
 
-    diff_runway_heading_deg: 10,
+    diff_runway_heading_deg: 20,
     # Difference in heading between runway and aircraft in order to
     # get an announcement that the aircraft is on the runway for takeoff.
 
