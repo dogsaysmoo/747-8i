@@ -103,9 +103,11 @@ var RunwayAnnounceClass = {
             # Distance from outside the runway to the nearest side edge
             # of the RWY. 0 if on_runway is true. Orthogonal to the runway.
 
-            distance_start:     distance_start
+            distance_start:     distance_start,
             # Distance to the center of the starting position on the
             # runway. This is a direct line; not parallel or orthogonal.
+
+            runway:             rwy
         };
     }
 
@@ -113,11 +115,14 @@ var RunwayAnnounceClass = {
 
 var TakeoffRunwayAnnounceConfig = {
 
-    distance_start_m: 200,
+    distance_start_m: nil,
     # The maximum distance in meters from the starting position
-    # on the runway. Large runways are usually 40 to 60 meters wide.
+    # on the runway. Large runways are usually 40 to 60 meters wide
+    # to give you an idea of the scale. If nil then the distance is
+    # not taken into account, which means the aircraft can be anywhere
+    # on the runway for the on-runway signal to be emitted.
 
-    diff_runway_heading_deg: 10,
+    diff_runway_heading_deg: 20,
     # Difference in heading between runway and aircraft in order to
     # get an announcement that the aircraft is on the runway for takeoff.
 
@@ -133,6 +138,16 @@ var TakeoffRunwayAnnounceConfig = {
     # Minimum and maximum distance in meters from the edge of the runway
     # for announcing approaches.
 
+    nominal_distance_takeoff_m: 3000,
+    # Minimum distance in meters required for a normal takeoff. If
+    # remaining distance when entering the runway is less than the distance
+    # required for a normal takeoff, then the on-short-runway instead of
+    # on-runway signal will be emitted.
+
+    distances_unit: "meter",
+    # The unit to use for the remaining distance of short runways. Can
+    # be "meter" or "feet".
+
 };
 
 var TakeoffRunwayAnnounceClass = {
@@ -143,8 +158,8 @@ var TakeoffRunwayAnnounceClass = {
     # takeoff. Valid modes and the signals they emit are:
     #
     # - taxi:               approaching-runway
-    # - taxi-and-takeoff:   approaching-runway, on-runway
-    # - takeoff:            on-runway
+    # - taxi-and-takeoff:   approaching-runway, on-runway, on-short-runway
+    # - takeoff:            on-runway, on-short-runway
 
     new: func (config) {
         var m = {
@@ -204,17 +219,31 @@ var TakeoffRunwayAnnounceClass = {
             if (result.on_runway) {
                 if (me.mode == "taxi-and-takeoff" or me.mode == "takeoff") {
                     var heading_diff = abs(self_heading - runway_heading);
-                    if (heading_diff <= me.config.diff_runway_heading_deg
-                      and result.distance_start <= me.config.distance_start_m
+
+                    if (me.last_announced_runway != runway
+                      and heading_diff <= me.config.diff_runway_heading_deg
+                      and (me.config.distance_start_m == nil or result.distance_start <= me.config.distance_start_m)
                       and result.crosstrack_error <= me.config.distance_center_line_m) {
-                        if (me.last_announced_runway != runway) {
+                        if (result.distance_stop >= me.config.nominal_distance_takeoff_m) {
                             me.notify_observers("on-runway", runway);
-                            me.last_announced_runway = runway;
                         }
+                        else {
+                            me._on_short_runway(runway, result.distance_stop);
+                        }
+                        me.last_announced_runway = runway;
                     }
                 }
             }
             else {
+                if (me.mode == "taxi-and-takeoff" or me.mode == "takeoff") {
+                    # If aircraft is no longer on the last announced runway
+                    # (when it has vacated onto a taxiway for example), then
+                    # reset last_announced_runway field so that on-runway signal
+                    # will be emitted if the aircraft enters this same runway again.
+                    if (me.last_announced_runway == runway) {
+                        me.last_announced_runway = "";
+                    }
+                }
                 if (me.mode == "taxi-and-takeoff" or me.mode == "taxi") {
                     if (me.config.distance_edge_min_m <= result.edge_rem
                       and result.edge_rem <= me.config.distance_edge_max_m) {
@@ -250,6 +279,19 @@ var TakeoffRunwayAnnounceClass = {
                 me.last_announced_approach = runway;
             }
         }
+    },
+
+    _on_short_runway: func (runway, distance_remaining) {
+        var distance = distance_remaining;
+        if (me.config.distances_unit == "feet") {
+            distance = distance * globals.M2FT;
+        }
+
+        # Round down to nearest multiple of 100
+        distance = int(distance / 100) * 100;
+
+        setprop("/sim/runway-announcer/short-runway-distance", distance);
+        me.notify_observers("on-short-runway", runway);
     }
 
 };
@@ -270,6 +312,12 @@ var LandingRunwayAnnounceConfig = {
     # Difference in heading between runway and aircraft in order to
     # detect the correct runway on which the aircraft is landing.
 
+    groundspeed_min_kt: 40,
+    # Minimum groundspeed in knots for remaining distance callouts
+
+    agl_max_ft: 100,
+    # Maximum AGL in feet for remaining distance callouts
+
 };
 
 var LandingRunwayAnnounceClass = {
@@ -279,6 +327,7 @@ var LandingRunwayAnnounceClass = {
     # Announce remaining distance after landing on a runway. Valid modes
     # and the signals they emit are:
     #
+    # - takeoff: remaining-distance, vacated-runway
     # - landing: remaining-distance, landed-runway, vacated-runway, landed-outside-runway
 
     new: func (config) {
@@ -291,6 +340,7 @@ var LandingRunwayAnnounceClass = {
         m.last_announced_runway = "";
         m.landed_runway = "";
         m.distance_index = -1;
+        m.gs_max_kt = 0;
 
         return m;
     },
@@ -313,6 +363,7 @@ var LandingRunwayAnnounceClass = {
         me.last_announced_runway = "";
         me.landed_runway = "";
         me.distance_index = -1;
+        me.gs_max_kt = 0;
     },
 
     _check_position: func {
@@ -329,10 +380,10 @@ var LandingRunwayAnnounceClass = {
             var self = geo.aircraft_position();
             var result = me._check_runway(apt, runway, self);
 
-            if (me.mode == "landing") {
+            if (me.mode == "landing" or me.mode == "takeoff") {
                 if (result.on_runway) {
                     on_number_of_rwys += 1;
-                    me._on_runway(runway, result, self_heading, apt.runway(runway).heading);
+                    me._on_runway(runway, result, self_heading);
                 }
                 else {
                     me._not_on_runway(runway);
@@ -350,43 +401,66 @@ var LandingRunwayAnnounceClass = {
         }
     },
 
-    _on_runway: func (runway, result, self_heading, runway_heading) {
+    _on_runway: func (runway, result, self_heading) {
+        var runway_heading = result.runway.heading;
+
         # Aircraft just landed on the given runway
         if (me.landed_runway == "") {
             var heading_diff = abs(self_heading - runway_heading);
             if (heading_diff <= me.config.diff_runway_heading_deg) {
                 me.landed_runway = runway;
                 me.distance_index = size(me.config.distances_meter) - 1;
-                me.notify_observers("landed-runway", runway);
+                if (me.mode == "landing") {
+                    me.notify_observers("landed-runway", runway);
+                }
             }
         }
 
+        var groundspeed = getprop("/velocities/groundspeed-kt");
+
         # Aircraft has already landed on the given runway and is now
         # rolling out
-        if (me.landed_runway == runway and me.distance_index >= 0) {
+        if (me.landed_runway == runway and me.distance_index >= 0
+          and groundspeed > me.config.groundspeed_min_kt
+          and getprop("/position/gear-agl-ft") < me.config.agl_max_ft) {
             var nose_distance = result.distance_stop - me.config.distance_center_nose_m;
 
-            if (me.config.distances_unit == "meter") {
-                var unit_ps = getprop("/velocities/uBody-fps") * globals.FT2M;
-                var dist_upper = me.config.distances_meter[me.distance_index];
-                var remaining_distance = nose_distance;
+            if (me.mode == "landing") {
+                var extra_conditions_ok = 1;
             }
-            elsif (me.config.distances_unit == "feet") {
-                var unit_ps = getprop("/velocities/uBody-fps");
-                var dist_upper = me.config.distances_feet[me.distance_index];
-                var remaining_distance = nose_distance * globals.M2FT;
-            }
+            elsif (me.mode == "takeoff") {
+                me.gs_max_kt = max(groundspeed, me.gs_max_kt);
 
-            # Distance travelled in two timer periods
-            var dist_lower = dist_upper - unit_ps * LandingRunwayAnnounceClass.period * 2;
+                # Past 50 % of runway and GS < max groundspeed - 7
+                var past_half_runway = (nose_distance / result.runway.length) < 0.50;
+                var below_rto_speed  = groundspeed < me.gs_max_kt - 7;
 
-            if (dist_lower <= remaining_distance and remaining_distance <= dist_upper) {
-                me.notify_observers("remaining-distance", dist_upper);
+                var extra_conditions_ok = past_half_runway and below_rto_speed;
             }
 
-            if (remaining_distance <= dist_upper) {
-                me.distance_index = me.distance_index - 1;
-            };
+            if (extra_conditions_ok) {
+                if (me.config.distances_unit == "meter") {
+                    var unit_ps = getprop("/velocities/uBody-fps") * globals.FT2M;
+                    var dist_upper = me.config.distances_meter[me.distance_index];
+                    var remaining_distance = nose_distance;
+                }
+                elsif (me.config.distances_unit == "feet") {
+                    var unit_ps = getprop("/velocities/uBody-fps");
+                    var dist_upper = me.config.distances_feet[me.distance_index];
+                    var remaining_distance = nose_distance * globals.M2FT;
+                }
+
+                # Distance travelled in two timer periods
+                var dist_lower = dist_upper - unit_ps * LandingRunwayAnnounceClass.period * 2;
+
+                if (dist_lower <= remaining_distance and remaining_distance <= dist_upper) {
+                    me.notify_observers("remaining-distance", dist_upper);
+                }
+
+                if (remaining_distance <= dist_upper) {
+                    me.distance_index = me.distance_index - 1;
+                };
+            }
         }
     },
 
@@ -395,6 +469,7 @@ var LandingRunwayAnnounceClass = {
         # have vacated the runway
         if (runway == me.landed_runway) {
             me.distance_index = -1;
+            me.gs_max_kt = 0;
             if (me.last_announced_runway != runway) {
                 me.notify_observers("vacated-runway", runway);
                 me.last_announced_runway = runway;
