@@ -12,6 +12,7 @@ wp3 = wpCurr + 3;
 wp4 = wpCurr + 4;
 
 var wpt_updater = func {
+	if (wpCurr < 1) wpCurr = 1;
 	wp1 = wpCurr + 1;
 	wp2 = wpCurr + 2;
 	wp3 = wpCurr + 3;
