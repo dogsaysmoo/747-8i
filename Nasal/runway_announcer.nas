@@ -343,7 +343,7 @@ var LandingRunwayAnnounceClass = {
 
         m.last_announced_runway = "";
         m.landed_runway = "";
-        m.distance_index = -1;
+        me.last_announced_distance = nil;
         m.gs_max_kt = 0;
 
         return m;
@@ -366,8 +366,7 @@ var LandingRunwayAnnounceClass = {
 
         me.last_announced_runway = "";
         me.landed_runway = "";
-        me.distance_index = -1;
-        me.gs_max_kt = 0;
+        me.last_announced_distance = nil;
     },
 
     _check_position: func {
@@ -409,11 +408,11 @@ var LandingRunwayAnnounceClass = {
         var runway_heading = result.runway.heading;
 
         # Aircraft just landed on the given runway
-        if (me.landed_runway == "") {
+        if (me.landed_runway != runway) {
             var heading_diff = abs(self_heading - runway_heading);
             if (heading_diff <= me.config.diff_runway_heading_deg) {
                 me.landed_runway = runway;
-                me.distance_index = size(me.config.distances_meter) - 1;
+                me.last_announced_distance = nil;
                 if (me.mode == "landing") {
                     me.notify_observers("landed-runway", runway);
                 }
@@ -422,9 +421,16 @@ var LandingRunwayAnnounceClass = {
 
         var groundspeed = getprop("/velocities/groundspeed-kt");
 
+        # Reset the maximum groundspeed. This is needed if the aircraft
+        # does a rejected takeoff and then decides to do another takeoff
+        # without leaving the runway
+        if (groundspeed < me.config.groundspeed_min_kt) {
+            me.gs_max_kt = 0;
+        }
+
         # Aircraft has already landed on the given runway and is now
         # rolling out
-        if (me.landed_runway == runway and me.distance_index >= 0
+        if (me.landed_runway == runway
           and groundspeed > me.config.groundspeed_min_kt
           and getprop("/position/gear-agl-ft") < me.config.agl_max_ft) {
             var nose_distance = result.distance_stop - me.config.distance_center_nose_m;
@@ -445,25 +451,28 @@ var LandingRunwayAnnounceClass = {
             if (extra_conditions_ok) {
                 if (me.config.distances_unit == "meter") {
                     var unit_ps = getprop("/velocities/uBody-fps") * globals.FT2M;
-                    var dist_upper = me.config.distances_meter[me.distance_index];
+                    var distances = me.config.distances_meter;
                     var remaining_distance = nose_distance;
                 }
                 elsif (me.config.distances_unit == "feet") {
                     var unit_ps = getprop("/velocities/uBody-fps");
-                    var dist_upper = me.config.distances_feet[me.distance_index];
+                    var distances = me.config.distances_feet;
                     var remaining_distance = nose_distance * globals.M2FT;
                 }
 
-                # Distance travelled in two timer periods
-                var dist_lower = dist_upper - unit_ps * LandingRunwayAnnounceClass.period * 2;
+                var max_index = size(me.config.distances_meter) - 1;
+                for (var index = max_index; index >= 0; index = index - 1) {
+                    if (me.last_announced_distance != index) {
+                        # Distance travelled in two timer periods
+                        var dist_upper = distances[index];
+                        var dist_lower = dist_upper - unit_ps * LandingRunwayAnnounceClass.period * 2;
 
-                if (dist_lower <= remaining_distance and remaining_distance <= dist_upper) {
-                    me.notify_observers("remaining-distance", dist_upper);
+                        if (dist_lower <= remaining_distance and remaining_distance <= dist_upper) {
+                            me.notify_observers("remaining-distance", dist_upper);
+                            me.last_announced_distance = index;
+                        }
+                    }
                 }
-
-                if (remaining_distance <= dist_upper) {
-                    me.distance_index = me.distance_index - 1;
-                };
             }
         }
     },
@@ -472,8 +481,7 @@ var LandingRunwayAnnounceClass = {
         # Aircraft is no longer on the runway it landed on, so it must
         # have vacated the runway
         if (runway == me.landed_runway) {
-            me.distance_index = -1;
-            me.gs_max_kt = 0;
+            me.last_announced_distance = nil;
             if (me.last_announced_runway != runway) {
                 me.notify_observers("vacated-runway", runway);
                 me.last_announced_runway = runway;
