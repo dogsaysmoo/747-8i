@@ -15,33 +15,7 @@
 
 var copilot_say = func (message) {
     setprop("/sim/messages/copilot", message);
-};
-
-var make_notification_cb = func (format, action=nil) {
-    return func (data=nil) {
-        if (format != nil) {
-            if (typeof(format) == "func") {
-                var message_format = format();
-            }
-            else {
-                var message_format = format;
-            }
-
-            if (data != nil) {
-                var message = sprintf(message_format, data.getValue());
-            }
-            else {
-                var message = message_format;
-            }
-
-            copilot_say(message);
-#            logger.info(sprintf("Announcing '%s'", message));
-        }
-
-        if (typeof(action) == "func") {
-            action();
-        }
-    };
+#    logger.info(sprintf("Announcing '%s'", message));
 };
 
 var on_short_runway_format = func {
@@ -55,7 +29,7 @@ var remaining_distance_format = func {
 
 var stop_announcer = func {
     landing_announcer.stop();
-#    logger.warn("Stopping landing announce");
+#    logger.warn("Stopping landing announcer");
 
     takeoff_announcer.set_mode("taxi-and-takeoff");
 #    logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
@@ -68,7 +42,7 @@ var switch_to_takeoff = func {
 
         landing_announcer.set_mode("takeoff");
         landing_announcer.start();
-#        logger.warn("Starting landing announce");
+#        logger.warn(sprintf("Starting landing (%s) announcer", landing_announcer.mode));
     }
 };
 
@@ -84,65 +58,45 @@ takeoff_config.distance_center_line_m = 15;
 takeoff_config.distance_edge_max_m = 200;
 
 var takeoff_announcer = runway.TakeoffRunwayAnnounceClass.new(takeoff_config);
-takeoff_announcer.connect("on-runway", make_notification_cb("On runway %s", switch_to_takeoff));
-takeoff_announcer.connect("on-short-runway", make_notification_cb(on_short_runway_format, switch_to_takeoff));
-takeoff_announcer.connect("approaching-runway", make_notification_cb("Approaching runway %s"));
+takeoff_announcer.connect("on-runway", runway.make_betty_cb(copilot_say, "On runway %s", switch_to_takeoff));
+takeoff_announcer.connect("on-short-runway", runway.make_betty_cb(copilot_say, on_short_runway_format, switch_to_takeoff));
+takeoff_announcer.connect("approaching-runway", runway.make_betty_cb(copilot_say, "Approaching runway %s"));
 
 var landing_config = { parents: [runway.LandingRunwayAnnounceConfig] };
 landing_config.distances_unit = "feet";
 landing_config.distance_center_nose_m = 30;
 
 var landing_announcer = runway.LandingRunwayAnnounceClass.new(landing_config);
-landing_announcer.connect("remaining-distance", make_notification_cb(remaining_distance_format));
-landing_announcer.connect("vacated-runway", make_notification_cb("Vacated runway %s", stop_announcer));
-landing_announcer.connect("landed-runway", make_notification_cb("Touchdown on runway %s"));
-landing_announcer.connect("landed-outside-runway", make_notification_cb(nil, stop_announcer));
-
-var make_switch_mode_cb = func (wow_mode, no_wow_mode) {
-    return func (node) {
-        if (node.getBoolValue()) {
-            if (getprop("/gear/gear[2]/wow") and getprop("/gear/gear[3]/wow")) {
-                takeoff_announcer.set_mode(wow_mode);
-            }
-            else {
-                takeoff_announcer.set_mode(no_wow_mode);
-            }
-        }
-        else {
-            takeoff_announcer.set_mode("");
-        }
-#        logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
-    };
-};
-
-setlistener("/controls/lighting/nav-lights",
-  make_switch_mode_cb("taxi-and-takeoff", "taxi"),
-  startup=1, runtime=0);
+landing_announcer.connect("remaining-distance", runway.make_betty_cb(copilot_say, remaining_distance_format));
+landing_announcer.connect("vacated-runway", runway.make_betty_cb(copilot_say, "Vacated runway %s", stop_announcer));
+landing_announcer.connect("landed-runway", runway.make_betty_cb(copilot_say, "Touchdown on runway %s"));
+landing_announcer.connect("landed-outside-runway", runway.make_betty_cb(copilot_say, nil, stop_announcer));
 
 var have_been_in_air = 0;
 
 var test_on_ground = func (on_ground) {
     if (on_ground) {
-        takeoff_announcer.start();
-#        logger.warn("Starting takeoff announce");
-
         if (have_been_in_air == 1) {
             have_been_in_air = 0;
 
             takeoff_announcer.set_mode("");
-#            logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
 
             landing_announcer.set_mode("landing");
             landing_announcer.start();
-#            logger.warn("Starting landing announce");
+#            logger.warn(sprintf("Starting landing (%s) announcer", landing_announcer.mode));
         }
+        else {
+            takeoff_announcer.set_mode("taxi-and-takeoff");
+        }
+        takeoff_announcer.start();
+#        logger.warn(sprintf("Starting takeoff (%s) announcer", takeoff_announcer.mode));
     }
     else {
         takeoff_announcer.stop();
-#        logger.warn("Stopping takeoff announce");
+#        logger.warn("Stopping takeoff announcer");
 
         landing_announcer.stop();
-#        logger.warn("Stopping landing announce");
+#        logger.warn("Stopping landing announcer");
 
         if (have_been_in_air == 0) {
             have_been_in_air = 1;
@@ -161,8 +115,6 @@ var init_announcers = func {
 };
 
 setlistener("/sim/signals/fdm-initialized", func {
-#    logger.warn("FDM initialized");
-
     var timer = maketimer(5.0, func init_announcers());
     timer.singleShot = 1;
     timer.start();

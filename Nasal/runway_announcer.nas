@@ -482,3 +482,34 @@ var LandingRunwayAnnounceClass = {
     }
 
 };
+
+var make_betty_cb = func (betty_say, format, action=nil) {
+    if (format != nil and typeof(betty_say) != "func") {
+        die("Error: betty_say is not a function");
+    }
+
+    return func (data=nil) {
+        if (format != nil) {
+            if (typeof(format) == "func") {
+                var message_format = format();
+            }
+            else {
+                var message_format = format;
+            }
+
+            if (data != nil) {
+                var message = sprintf(message_format, data.getValue());
+            }
+            else {
+                var message = message_format;
+            }
+
+            # Let Betty announce the message
+            betty_say(message);
+        }
+
+        if (typeof(action) == "func") {
+            action();
+        }
+    };
+};
