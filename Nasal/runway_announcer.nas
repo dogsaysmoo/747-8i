@@ -192,6 +192,10 @@ var TakeoffRunwayAnnounceClass = {
         me.last_announced_approach = "";
     },
 
+    get_short_runway_distance: func {
+        return getprop("/sim/runway-announcer/short-runway-distance");
+    },
+
     _check_position: func {
         if (me.mode == "") {
             return;

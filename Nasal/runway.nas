@@ -45,7 +45,7 @@ var make_notification_cb = func (format, action=nil) {
 };
 
 var on_short_runway_format = func {
-    var distance = getprop("/sim/runway-announcer/short-runway-distance");
+    var distance = takeoff_announcer.get_short_runway_distance();
     return sprintf("On runway %%s, %d %s remaining", distance, takeoff_config.distances_unit);
 };
 
