@@ -294,7 +294,7 @@
 				<selected type="bool">0</selected>
 			</tank>
 			<tank n="7">
-				<name>Stab (Disabled)</name>
+				<name>Horiz Stabilizer</name>
 				<selected type="bool">0</selected>
 			</tank>
 		</fuel>

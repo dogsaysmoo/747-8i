@@ -73,7 +73,7 @@ var switch_to_takeoff = func {
 };
 
 var takeoff_config = { parents: [runway.TakeoffRunwayAnnounceConfig] };
-takeoff_config.distances_unit = "meter";
+takeoff_config.distances_unit = "feet";
 
 # Will cause the announcer to emit the "on-runway" signal if the
 # aircraft is at most 15 meters from the center line of the runway
@@ -89,7 +89,7 @@ takeoff_announcer.connect("on-short-runway", make_notification_cb(on_short_runwa
 takeoff_announcer.connect("approaching-runway", make_notification_cb("Approaching runway %s"));
 
 var landing_config = { parents: [runway.LandingRunwayAnnounceConfig] };
-landing_config.distances_unit = "meter";
+landing_config.distances_unit = "feet";
 landing_config.distance_center_nose_m = 30;
 
 var landing_announcer = runway.LandingRunwayAnnounceClass.new(landing_config);

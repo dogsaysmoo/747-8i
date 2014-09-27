@@ -133,3 +133,7 @@ Changes made by John W.
 -Add droop to the ailerons when flaps are out past 20 deg
 -Animate inboard ailerons
 -Restore old magnetic compass
+-Add paging on CDU LEGS page
+-Add RAAS ROPS system from onox
+-Better contrails from abassign
+
