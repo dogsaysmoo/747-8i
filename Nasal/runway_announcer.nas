@@ -148,6 +148,9 @@ var TakeoffRunwayAnnounceConfig = {
     # The unit to use for the remaining distance of short runways. Can
     # be "meter" or "feet".
 
+    groundspeed_max_kt: 40,
+    # Maximum groundspeed in knots for approaching runway callouts
+
 };
 
 var TakeoffRunwayAnnounceClass = {
@@ -249,20 +252,22 @@ var TakeoffRunwayAnnounceClass = {
                     }
                 }
                 if (me.mode == "taxi-and-takeoff" or me.mode == "taxi") {
+                    var groundspeed = getprop("/velocities/groundspeed-kt");
+
+                    var ac_angle1 = cos(90.0 - (mod(runway_heading, 180) - self_heading));
+                    var ac_angle2 = cos(90.0 - (self_heading - mod(runway_heading, 180)));
+                    var ac_angle = max(ac_angle1, ac_angle2);
+
                     if (me.config.distance_edge_min_m <= result.edge_rem
-                      and result.edge_rem <= me.config.distance_edge_max_m) {
-                        var ac_angle1 = cos(90.0 - (mod(runway_heading, 180) - self_heading));
-                        var ac_angle2 = cos(90.0 - (self_heading - mod(runway_heading, 180)));
-                        var ac_angle = max(ac_angle1, ac_angle2);
+                      and result.edge_rem <= me.config.distance_edge_max_m
+                      and ac_angle > 0 and ac_angle >= cos(me.config.diff_approach_heading_deg)
+                      and groundspeed < me.config.groundspeed_max_kt) {
+                        self.apply_course_distance(self_heading, result.crosstrack_error / ac_angle);
+                        var result_future = me._check_runway(apt, runway, self);
 
-                        if (ac_angle > 0 and ac_angle >= cos(me.config.diff_approach_heading_deg)) {
-                            self.apply_course_distance(self_heading, result.crosstrack_error / ac_angle);
-                            var result_future = me._check_runway(apt, runway, self);
-
-                            # If in the future we are on the runway, we are approaching it
-                            if (result_future.on_runway) {
-                                approaching_runways[runway] = result.distance_start;
-                            }
+                        # If in the future we are on the runway, we are approaching it
+                        if (result_future.on_runway) {
+                            approaching_runways[runway] = result.distance_start;
                         }
                     }
                 }
