@@ -23,6 +23,11 @@ var on_short_runway_format = func {
     return sprintf("On runway %%s, %d %s remaining", distance, takeoff_config.distances_unit);
 };
 
+var approaching_short_runway_format = func {
+    var distance = takeoff_announcer.get_short_runway_distance();
+    return sprintf("Approaching runway %%s, %d %s available", distance, takeoff_config.distances_unit);
+};
+
 var remaining_distance_format = func {
     return sprintf("%%d %s remaining", landing_config.distances_unit);
 };
@@ -61,6 +66,7 @@ var takeoff_announcer = runway.TakeoffRunwayAnnounceClass.new(takeoff_config);
 takeoff_announcer.connect("on-runway", runway.make_betty_cb(copilot_say, "On runway %s", switch_to_takeoff));
 takeoff_announcer.connect("on-short-runway", runway.make_betty_cb(copilot_say, on_short_runway_format, switch_to_takeoff));
 takeoff_announcer.connect("approaching-runway", runway.make_betty_cb(copilot_say, "Approaching runway %s"));
+takeoff_announcer.connect("approaching-short-runway", runway.make_betty_cb(copilot_say, approaching_short_runway_format));
 
 var landing_config = { parents: [runway.LandingRunwayAnnounceConfig] };
 landing_config.distances_unit = "feet";
@@ -87,13 +93,14 @@ var test_on_ground = func (on_ground) {
         }
         else {
             takeoff_announcer.set_mode("taxi-and-takeoff");
+#            logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
         }
         takeoff_announcer.start();
 #        logger.warn(sprintf("Starting takeoff (%s) announcer", takeoff_announcer.mode));
     }
     else {
-        takeoff_announcer.stop();
-#        logger.warn("Stopping takeoff announcer");
+        takeoff_announcer.set_mode("approach");
+#        logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
 
         landing_announcer.stop();
 #        logger.warn("Stopping landing announcer");
@@ -105,8 +112,8 @@ var test_on_ground = func (on_ground) {
 };
 
 var init_announcers = func {
-    setlistener("/gear/on-ground", func (n) {
-        test_on_ground(n.getBoolValue());
+    setlistener("/gear/on-ground", func (node) {
+        test_on_ground(node.getBoolValue());
     }, startup=1, runtime=0);
 };
 
