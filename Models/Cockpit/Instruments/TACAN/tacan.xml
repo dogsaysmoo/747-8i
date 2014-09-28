@@ -1,0 +1,212 @@
+<PropertyList>
+
+<path>tacan.ac</path>
+
+<animation>
+	<type>material</type>
+	<object-name>coverplate</object-name>
+	<emission>
+		<red>0.5</red>
+                <green>0.4</green>
+                <blue>0.2</blue>
+                <factor-prop>controls/lighting/panel-norm</factor-prop>
+        </emission>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>Digit.100</object-name>
+	<object-name>Digit.10</object-name>
+	<object-name>Digit.1</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<property>instrumentation/tacan/powered</property>
+	    </and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>Digit.X</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<property>instrumentation/tacan/powered</property>
+		<equals>
+		    <property>instrumentation/tacan/frequencies/selected-channel[4]</property>
+		    <value>X</value>
+		</equals>
+	    </and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>Digit.Y</object-name>
+	<condition>
+	    <and>
+		<not><property>systems/electrical/battery-off</property></not>
+		<property>instrumentation/tacan/powered</property>
+		<equals>
+		    <property>instrumentation/tacan/frequencies/selected-channel[4]</property>
+		    <value>Y</value>
+		</equals>
+	    </and>
+	</condition>
+</animation>
+
+<animation>
+	<type>textranslate</type>
+	<object-name>Digit.100</object-name>
+	<property>instrumentation/tacan/frequencies/selected-channel</property>
+	<factor>0.001</factor>
+	<step>100</step>
+	<axis>
+	    <x>0</x>
+	    <y>1</y>
+	</axis>
+</animation>
+<animation>
+	<type>textranslate</type>
+	<object-name>Digit.10</object-name>
+	<property>instrumentation/tacan/frequencies/selected-channel</property>
+	<factor>0.01</factor>
+	<step>10</step>
+	<axis>
+	    <x>0</x>
+	    <y>1</y>
+	</axis>
+</animation>
+<animation>
+	<type>textranslate</type>
+	<object-name>Digit.1</object-name>
+	<property>instrumentation/tacan/frequencies/selected-channel</property>
+	<factor>0.1</factor>
+	<step>1</step>
+	<axis>
+	    <x>0</x>
+	    <y>1</y>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Pwr.knob</object-name>
+	<action>
+	    <button>0</button>
+	    <button>1</button>
+	    <binding>
+		<command>property-toggle</command>
+		<property>instrumentation/tacan/powered</property>
+	    </binding>
+	</action>
+</animation>
+<animation>
+	<type>rotate</type>
+	<object-name>Pwr.knob</object-name>
+	<property>instrumentation/tacan/powered</property>
+	<factor>-45</factor>
+	<center>
+	    <x-m> 1.567</x-m>
+            <y-m> 0.098</y-m>
+            <z-m> 0.417</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>XY.knob</object-name>
+	<action>
+	    <button>0</button>
+	    <button>1</button>
+	    <binding>
+		<command>property-toggle</command>
+		<property>instrumentation/tacan/xy</property>
+	    </binding>
+	    <binding>
+		<command>property-cycle</command>
+		<property>instrumentation/tacan/frequencies/selected-channel[4]</property>
+		<value type="string">X</value>
+		<value type="string">Y</value>
+	    </binding>
+	</action>
+</animation>
+<animation>
+	<type>rotate</type>
+	<object-name>XY.knob</object-name>
+	<property>instrumentation/tacan/xy</property>
+	<factor>-45</factor>
+	<center>
+	    <x-m> 1.567</x-m>
+            <y-m> 0.197</y-m>
+            <z-m> 0.417</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>1s.knob</object-name>
+	<action>
+	    <button>0</button>
+	    <button>3</button>
+	    <binding>
+		<command>property-adjust</command>
+		<property>instrumentation/tacan/frequencies/selected-channel</property>
+		<min>1</min>
+		<max>126</max>
+		<step>1</step>
+	    </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <button>4</button>
+	    <binding>
+		<command>property-adjust</command>
+		<property>instrumentation/tacan/frequencies/selected-channel</property>
+		<min>1</min>
+		<max>126</max>
+		<step>-1</step>
+	    </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>10s.knob</object-name>
+	<action>
+	    <button>0</button>
+	    <button>3</button>
+	    <binding>
+		<command>property-adjust</command>
+		<property>instrumentation/tacan/frequencies/selected-channel</property>
+		<min>1</min>
+		<max>126</max>
+		<step>10</step>
+	    </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <button>4</button>
+	    <binding>
+		<command>property-adjust</command>
+		<property>instrumentation/tacan/frequencies/selected-channel</property>
+		<min>1</min>
+		<max>126</max>
+		<step>-10</step>
+	    </binding>
+	</action>
+</animation>
+
+</PropertyList>
+

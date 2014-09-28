@@ -1,0 +1,25 @@
+<PropertyList>
+
+<model>
+	<name>pedestal</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/TACAN/tacan.xml</path>
+	<offsets> 
+		<x-m>-25.60</x-m>
+		<y-m>  0.0 </y-m>
+		<z-m>  2.65005</z-m>
+	</offsets>
+</model>
+
+<model>
+	<name>Air2AirRefueling</name>
+	<path>Aircraft/747-8i/Models/Cockpit/aar.xml</path>
+	<offsets>
+		<x-m>-24.14</x-m>
+		<y-m>  0.0 </y-m>
+		<z-m>  4.02</z-m>
+		<pitch-deg>162</pitch-deg>
+	</offsets>
+</model>
+
+</PropertyList>
+

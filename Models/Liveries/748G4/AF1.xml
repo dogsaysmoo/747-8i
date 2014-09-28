@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+<sim>
+    <model>
+			<livery>
+				<name type="string">Air Force One</name>
+				<texture>Liveries/7488G4/AF1.png</texture>
+			</livery>
+			<nightlights>
+				<name type="string">Air Force One</name>
+				<texture>Liveries/7488G4/AF1-lights.png</texture>
+			</nightlights>
+			<turbofans>
+				<name type="string">Air Force One</name>
+				<texture>Liveries/7488G4/AF1-engines.png</texture>
+			</turbofans>
+			<wings>
+				<name type="string">Air Force One</name>
+				<texture>Liveries/7488G4/AF1-wings.png</texture>
+			</wings>
+			<nightwings>
+				<name type="string">Air Force One</name>
+				<texture>Liveries/7488G4/wings-lts.png</texture>
+			</nightwings>
+			<nightengines>
+				<name type="string">Air Force One</name>
+				<texture>Liveries/7488G4/AF1-eng-lts.png</texture>
+			</nightengines>
+    </model>
+</sim>
+</PropertyList>

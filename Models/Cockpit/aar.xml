@@ -1,0 +1,104 @@
+<PropertyList>
+
+<path>aar.ac</path>
+
+<animation>
+	<type>material</type>
+	<object-name>panel</object-name>
+        <emission>
+                <red>0.5</red>
+                <green>0.4</green>
+                <blue>0.2</blue>
+                <factor-prop>controls/lighting/panel-norm</factor-prop>
+        </emission>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>inlet</object-name>
+	<object-name>inlet.lit</object-name>
+	<object-name>inlet.unlit</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>property-toggle</command>
+			<property>systems/refuel/enable</property>
+		</binding>
+	</action>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>inlet.lit</object-name>
+	<condition>
+		<property>systems/refuel/enable</property>
+	</condition>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>inlet.unlit</object-name>
+	<condition>
+	    <not>
+		<property>systems/refuel/enable</property>
+	    </not>
+	</condition>
+</animation>
+<animation>
+	<type>translate</type>
+	<object-name>inlet</object-name>
+	<object-name>inlet.lit</object-name>
+	<object-name>inlet.unlit</object-name>
+	<property>systems/refuel/enable</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xfer</object-name>
+	<object-name>xfer.lit</object-name>
+	<object-name>xfer.unlit</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>property-toggle</command>
+			<property>systems/refuel/transfer-valves</property>
+		</binding>
+	</action>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>xfer.lit</object-name>
+	<condition>
+		<property>systems/refuel/transfer-valves</property>
+	</condition>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>xfer.unlit</object-name>
+	<condition>
+	    <not>
+		<property>systems/refuel/transfer-valves</property>
+	    </not>
+	</condition>
+</animation>
+<animation>
+	<type>translate</type>
+	<object-name>xfer</object-name>
+	<object-name>xfer.lit</object-name>
+	<object-name>xfer.unlit</object-name>
+	<property>systems/refuel/transfer-valves</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+</PropertyList>
