@@ -1,7 +1,20 @@
 <?xml version="1.0"?>
 
-
 <PropertyList>
+
+    <logic>
+        <name>Aircraft On Ground Logic</name>
+        <update-interval-secs type="double">0.1</update-interval-secs>
+        <input>
+            <and>
+                <property>/gear/gear[2]/wow</property>
+                <property>/gear/gear[3]/wow</property>
+            </and>
+        </input>
+        <output>
+            <property>/gear/on-ground</property>
+        </output>
+    </logic>
 
   <!-- =============================================================== -->
   <!--                        Lateral Modes                            -->

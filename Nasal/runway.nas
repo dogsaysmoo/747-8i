@@ -105,12 +105,8 @@ var test_on_ground = func (on_ground) {
 };
 
 var init_announcers = func {
-    setlistener("/gear/gear[2]/wow", func (n) {
-        test_on_ground(getprop("/gear/gear[2]/wow") and getprop("/gear/gear[3]/wow"));
-    }, startup=1, runtime=0);
-
-    setlistener("/gear/gear[3]/wow", func (n) {
-        test_on_ground(getprop("/gear/gear[2]/wow") and getprop("/gear/gear[3]/wow"));
+    setlistener("/gear/on-ground", func (n) {
+        test_on_ground(n.getBoolValue());
     }, startup=1, runtime=0);
 };
 
