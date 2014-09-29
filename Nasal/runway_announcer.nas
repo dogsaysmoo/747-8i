@@ -361,9 +361,9 @@ var TakeoffRunwayAnnounceClass = {
 
 var LandingRunwayAnnounceConfig = {
 
-    distances_meter: [ 30, 100,  300,  600,  900, 1200, 1500],
+    distances_meter: [100,  300,  600,  900, 1200, 1500],
 
-    distances_feet:  [100, 300, 1000, 2000, 3000, 4000, 5000],
+    distances_feet:  [500, 1000, 2000, 3000, 4000, 5000],
 
     distances_unit: "meter",
     # The unit to use for the remaining distance. Can be "meter" or "feet"
@@ -610,7 +610,6 @@ var make_set_ground_func = func (takeoff_announcer, landing_announcer) {
 
     return func (on_ground) {
         if (on_ground) {
-            debug.dump(have_been_in_air);
             if (have_been_in_air == 1) {
                 have_been_in_air = 0;
 
