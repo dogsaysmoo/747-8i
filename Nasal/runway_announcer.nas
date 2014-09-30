@@ -286,7 +286,7 @@ var TakeoffRunwayAnnounceClass = {
                     }
                 }
                 if (me.mode == "approach") {
-                    var afe_ft = getprop("/position/gear-agl-ft") - apt.elevation * globals.M2FT;
+                    var afe_ft = getprop("/position/altitude-ft") - apt.elevation * globals.M2FT;
 
                     if (runway_heading_error <= 20.0
                       and result.crosstrack_error <= result.runway.width + 200 * globals.FT2M
