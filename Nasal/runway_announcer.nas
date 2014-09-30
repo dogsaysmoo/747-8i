@@ -361,9 +361,9 @@ var TakeoffRunwayAnnounceClass = {
 
 var LandingRunwayAnnounceConfig = {
 
-    distances_meter: [ 30, 100,  300,  600,  900, 1200, 1500],
+    distances_meter: [100,  300,  600,  900, 1200, 1500],
 
-    distances_feet:  [100, 300, 1000, 2000, 3000, 4000, 5000],
+    distances_feet:  [500, 1000, 2000, 3000, 4000, 5000],
 
     distances_unit: "meter",
     # The unit to use for the remaining distance. Can be "meter" or "feet"
@@ -578,6 +578,64 @@ var make_betty_cb = func (betty_say, format, action=nil) {
 
         if (typeof(action) == "func") {
             action();
+        }
+    };
+};
+
+var make_stop_announcer_func = func (takeoff_announcer, landing_announcer) {
+    return func {
+        landing_announcer.stop();
+#        logger.warn("Stopping landing announcer");
+
+        takeoff_announcer.set_mode("taxi-and-takeoff");
+#        logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
+    };
+};
+
+var make_switch_to_takeoff_func = func (takeoff_announcer, landing_announcer) {
+    return func {
+        if (takeoff_announcer.mode == "taxi-and-takeoff") {
+            takeoff_announcer.set_mode("takeoff");
+#            logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
+
+            landing_announcer.set_mode("takeoff");
+            landing_announcer.start();
+#            logger.warn(sprintf("Starting landing (%s) announcer", landing_announcer.mode));
+        }
+    };
+};
+
+var make_set_ground_func = func (takeoff_announcer, landing_announcer) {
+    var have_been_in_air = 0;
+
+    return func (on_ground) {
+        if (on_ground) {
+            if (have_been_in_air == 1) {
+                have_been_in_air = 0;
+
+                takeoff_announcer.set_mode("");
+
+                landing_announcer.set_mode("landing");
+                landing_announcer.start();
+#                logger.warn(sprintf("Starting landing (%s) announcer", landing_announcer.mode));
+            }
+            else {
+                takeoff_announcer.set_mode("taxi-and-takeoff");
+#                logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
+            }
+            takeoff_announcer.start();
+#            logger.warn(sprintf("Starting takeoff (%s) announcer", takeoff_announcer.mode));
+        }
+        else {
+            takeoff_announcer.set_mode("approach");
+#            logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
+
+            landing_announcer.stop();
+#            logger.warn("Stopping landing announcer");
+
+            if (have_been_in_air == 0) {
+                have_been_in_air = 1;
+            }
         }
     };
 };
