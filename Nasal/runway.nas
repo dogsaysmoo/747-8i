@@ -45,7 +45,7 @@ takeoff_config.distance_edge_max_m = 200;
 
 var landing_config = { parents: [runway.LandingRunwayAnnounceConfig] };
 landing_config.distances_unit = "feet";
-landing_config.distance_center_nose_m = 30;
+landing_config.distance_center_nose_m = 37;
 
 # Create announcers
 var takeoff_announcer = runway.TakeoffRunwayAnnounceClass.new(takeoff_config);

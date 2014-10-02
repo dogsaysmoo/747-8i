@@ -117,7 +117,8 @@ var TakeoffRunwayAnnounceConfig = {
 
     diff_runway_heading_deg: 20,
     # Difference in heading between runway and aircraft in order to
-    # get an announcement that the aircraft is on the runway for takeoff.
+    # get an announcement that the aircraft is on the runway for takeoff
+    # or approaching while airborne.
 
     diff_approach_heading_deg: 40,
     # Maximum angle at which the aircraft should approach the runway.
@@ -279,7 +280,7 @@ var TakeoffRunwayAnnounceClass = {
                 if (me.mode == "approach") {
                     var afe_ft = getprop("/position/altitude-ft") - apt.elevation * globals.M2FT;
 
-                    if (runway_heading_error <= 20.0
+                    if (runway_heading_error <= diff_runway_heading_deg
                       and result.crosstrack_error <= result.runway.width + 200 * globals.FT2M
                       and result.runway.length < result.distance_stop
                       and result.distance_start < result.distance_stop
@@ -362,7 +363,7 @@ var LandingRunwayAnnounceConfig = {
     distance_center_nose_m: 0,
     # Distance from the center to the nose in meters
 
-    diff_runway_heading_deg: 15,
+    diff_runway_heading_deg: 20,
     # Difference in heading between runway and aircraft in order to
     # detect the correct runway on which the aircraft is landing.
 
@@ -393,7 +394,8 @@ var LandingRunwayAnnounceClass = {
 
         m.last_announced_runway = "";
         m.landed_runway = "";
-        me.last_announced_distance = nil;
+        m.last_announced_distance = nil;
+        m.last_announced_end = nil;
         m.gs_max_kt = 0;
 
         return m;
@@ -417,6 +419,7 @@ var LandingRunwayAnnounceClass = {
         me.last_announced_runway = "";
         me.landed_runway = "";
         me.last_announced_distance = nil;
+        me.last_announced_end = nil;
     },
 
     _check_position: func {
@@ -456,11 +459,11 @@ var LandingRunwayAnnounceClass = {
 
     _on_runway: func (runway, result, self_heading) {
         var runway_heading = result.runway.heading;
+        var runway_heading_error = abs(runway_heading - self_heading);
 
         # Aircraft just landed on the given runway
         if (me.landed_runway != runway) {
-            var heading_diff = abs(self_heading - runway_heading);
-            if (heading_diff <= me.config.diff_runway_heading_deg) {
+            if (runway_heading_error <= me.config.diff_runway_heading_deg) {
                 me.landed_runway = runway;
                 me.last_announced_distance = nil;
                 if (me.mode == "landing") {
@@ -524,6 +527,28 @@ var LandingRunwayAnnounceClass = {
                         }
                     }
                 }
+            }
+        }
+
+        if (runway_heading_error <= me.config.diff_runway_heading_deg
+          and groundspeed < me.config.groundspeed_min_kt
+          and gear_agl_ft < 5.0) {
+            var nose_distance = result.distance_stop - me.config.distance_center_nose_m;
+
+            if (me.config.distances_unit == "meter") {
+                var remaining_distance = nose_distance;
+                var dist_upper = 30;
+            }
+            elsif (me.config.distances_unit == "feet") {
+                var remaining_distance = nose_distance * globals.M2FT;
+                var dist_upper = 100;
+            }
+
+            # This is the lowest distance that is announced, so no need
+            # to check lower bound like above
+            if (me.last_announced_end != runway and remaining_distance <= dist_upper) {
+                me.notify_observers("remaining-distance", dist_upper);
+                me.last_announced_end = runway;
             }
         }
     },
