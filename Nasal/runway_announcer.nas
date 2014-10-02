@@ -115,13 +115,6 @@ var RunwayAnnounceClass = {
 
 var TakeoffRunwayAnnounceConfig = {
 
-    distance_start_m: nil,
-    # The maximum distance in meters from the starting position
-    # on the runway. Large runways are usually 40 to 60 meters wide
-    # to give you an idea of the scale. If nil then the distance is
-    # not taken into account, which means the aircraft can be anywhere
-    # on the runway for the on-runway signal to be emitted.
-
     diff_runway_heading_deg: 20,
     # Difference in heading between runway and aircraft in order to
     # get an announcement that the aircraft is on the runway for takeoff.
@@ -241,7 +234,6 @@ var TakeoffRunwayAnnounceClass = {
                     if (me.last_announced_runway != runway
                       and gear_agl_ft < 5.0
                       and runway_heading_error <= me.config.diff_runway_heading_deg
-                      and (me.config.distance_start_m == nil or result.distance_start <= me.config.distance_start_m)
                       and result.crosstrack_error <= me.config.distance_center_line_m) {
                         if (result.distance_stop >= me.config.nominal_distance_takeoff_m) {
                             me.notify_observers("on-runway", runway);
