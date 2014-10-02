@@ -159,7 +159,6 @@ var TakeoffRunwayAnnounceClass = {
     # Announce when approaching a runway or when on a runway ready for
     # takeoff. Valid modes and the signals they emit are:
     #
-    # - taxi:               approaching-runway
     # - taxi-and-takeoff:   approaching-runway, on-runway, on-short-runway
     # - takeoff:            on-runway, on-short-runway
     # - approach:           approaching-runway, approaching-short-runway
@@ -218,7 +217,7 @@ var TakeoffRunwayAnnounceClass = {
             # Reset flag for announced approaching runway, so that
             # the airplane could turn around, approach the same runway,
             # and read/hear the announcement again
-            if (me.mode == "taxi-and-takeoff" or me.mode == "taxi") {
+            if (me.mode == "taxi-and-takeoff") {
                 if (runway == me.last_announced_approach
                   and gear_agl_ft < 5.0
                   and result.edge_rem > me.config.distance_edge_max_m) {
@@ -256,7 +255,7 @@ var TakeoffRunwayAnnounceClass = {
                     }
                 }
 
-                if (me.mode == "taxi-and-takeoff" or me.mode == "taxi") {
+                if (me.mode == "taxi-and-takeoff") {
                     var groundspeed = getprop("/velocities/groundspeed-kt");
 
                     var ac_angle1 = cos(90.0 - (mod(runway_heading, 180) - self_heading));
