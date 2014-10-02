@@ -151,6 +151,15 @@ var TakeoffRunwayAnnounceConfig = {
     groundspeed_max_kt: 40,
     # Maximum groundspeed in knots for approaching runway callouts
 
+    approach_afe_min_ft: 300,
+    approach_afe_max_ft: 750,
+    # Minimum and maximum altitude Above Field Elevation in feet. Used to
+    # decide whether to announce that the aircraft is approaching a runway.
+
+    approach_distance_max_nm: 3.0,
+    # Maximum distance in nautical miles of the aircraft to the
+    # approaching runway
+
 };
 
 var TakeoffRunwayAnnounceClass = {
@@ -280,12 +289,13 @@ var TakeoffRunwayAnnounceClass = {
                 if (me.mode == "approach") {
                     var afe_ft = getprop("/position/altitude-ft") - apt.elevation * globals.M2FT;
 
-                    if (runway_heading_error <= diff_runway_heading_deg
+                    if (runway_heading_error <= me.config.diff_runway_heading_deg
                       and result.crosstrack_error <= result.runway.width + 200 * globals.FT2M
                       and result.runway.length < result.distance_stop
                       and result.distance_start < result.distance_stop
-                      and result.distance_start <= 3.0 * globals.NM2M
-                      and (300 <= afe_ft <= 450 or 550 <= afe_ft <= 750)) {
+                      and result.distance_start <= me.config.approach_distance_max_nm * globals.NM2M
+                      and me.config.approach_afe_min_ft <= afe_ft
+                      and afe_ft <= me.config.approach_afe_max_ft) {
                         approaching_runways_airborne[runway] = runway_heading_error;
                     }
                 }
