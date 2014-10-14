@@ -319,8 +319,8 @@ Service ceiling	43,000 ft (13,000 m)
 			<file>Aircraft/747-8i/Nasal/livery_8G4.nas</file>
 	    	</livery>
 		<aar>
-	        	<file>Aircraft/Generic/aar.nas</file>
-	        	<!--file>Aircraft/747-8i/Nasal/aar.nas</file-->
+	        	<!--file>Aircraft/Generic/aar.nas</file-->
+	        	<file>Aircraft/747-8i/Nasal/aar.nas</file>
 		</aar>
 	</nasal>
 

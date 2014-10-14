@@ -22,7 +22,6 @@ var ai_enabled = nil;
 var engines = nil;
 var tanks = [];
 var refuelingN = nil;
-var contactN = nil;
 var aimodelsN = nil;
 var types = {};
 
@@ -50,185 +49,69 @@ var update_loop = func {
 		}
 	}
 
-	enabled = getprop("systems/refuel/enable");
-	var refueling = serviceable and enabled and size(tankers) > 0;
-	
-	if (refuelingN.getNode("report-contact", 1).getValue()) {
-		if (refueling and !contactN.getValue()) {
-			setprop("/sim/messages/copilot", "Engage");
-		}
-	  
-		if (!refueling and contactN.getValue()) {
-			setprop("/sim/messages/copilot", "Disengage");
-		}
-	}
-	
-	contactN.setBoolValue(refueling);
-	if (fuel_freeze) return settimer(update_loop, UPDATE_PERIOD);
+	var refueling = serviceable and size(tankers) > 0;
+	refuelingN.setBoolValue(refueling);
 
-	# sum up consumed fuel
-	var consumed = 0;
-	foreach (var e; engines) {
-		var fuel = e.getNode("fuel-consumed-lbs");
-		consumed += fuel.getValue();
-		fuel.setDoubleValue(0);
-	}
+	if (fuel_freeze)
+		return settimer(update_loop, UPDATE_PERIOD);
 
 	# calculate fuel received
 	var received = 0;
 	if (refueling) {
-		# Flow rate is the minimum of the tanker maxium rate
-		# and the aircraft maximum rate.  Both are expressed
-		# in lbs/min
-		var fuel_rate = 6000;
-		if (getprop("systems/refuel/max-fuel-transfer-lbs-min")<fuel_rate) {
-			fuel_rate=getprop("systems/refuel/max-fuel-transfer-lbs-min");
-		}
-
-		received =  UPDATE_PERIOD * fuel_rate / 60;
+		# assume max flow rate is 6000 lbs/min (for KC135)
+		received = -100 * UPDATE_PERIOD;
 #		consumed -= received;
 	}
 
+	var lbs = getprop("consumables/fuel/tank[0]/level-lbs") + received;
+	setprop("consumables/fuel/tank[0]/level-lbs",lbs);
 
-	# make list of selected tanks
-	var selected_tanks = [];
-	foreach (var t; tanks) {
-		var cap = t.getNode("capacity-gal_us", 1).getValue();
-		if (cap != nil and cap > 0.01 and t.getNode("selected", 1).getBoolValue())
-			append(selected_tanks, t);
+	if (getprop("systems/refuel/transfer-valves") and refueling)
+		Boeing747.startup_dist();
+
+}
+var do_update_loop = func {
+	if (getprop("systems/refuel/enable")) {
+	    update_loop();
+	    settimer(update_loop, UPDATE_PERIOD);
 	}
-
-
-	var out_of_fuel = 0;
-	var fuel_per_tank = consumed / size(selected_tanks);
-	if (size(selected_tanks) == 0) {
-		out_of_fuel = 1;
-
-	} elsif (fuel_per_tank - received >= 0 and getprop("consumables/fuel/tank[0]/selected")) {
-#		foreach (var t; selected_tanks) {
-#			var ppg = t.getNode("density-ppg").getValue();
-#			var lbs = t.getNode("level-gal_us").getValue() * ppg;
-			var ppg = getprop("consumables/fuel/tank[0]/density-ppg");
-			var lbs = getprop("consumables/fuel/tank[0]/level-gal_us") * ppg;
-			lbs -= (fuel_per_tank - received);
-
-			if (lbs < 0) {
-				lbs = 0;
-				# Kill the engines if we're told to, otherwise simply
-				# deselect the tank.
-#				if (t.getNode("kill-when-empty", 1).getBoolValue())
-#					out_of_fuel = 1;
-#				else
-#					t.getNode("selected", 1).setBoolValue(0);
-			}
-
-			var gals = lbs / ppg;
-#			t.getNode("level-gal_us").setDoubleValue(gals);
-#			t.getNode("level-lbs").setDoubleValue(lbs);
-			setprop("consumables/fuel/tank[0]/level-gal_us",gals);
-			setprop("consumables/fuel/tank[0]/level-lbs",lbs);
-#		}
-
-	} else {
-		if (getprop("consumables/fuel/tank[0]/selected")) {
-			fuel_per_tank -= received;
-		} else {
-			fuel_per_tank = -received;
-		}
-		#find the number of tanks which can accept fuel
-#		var available = 0;
-
-#		foreach (var t; selected_tanks) {
-#			var ppg = t.getNode("density-ppg").getValue();
-#			var capacity = t.getNode("capacity-gal_us").getValue() * ppg;
-#			var lbs = t.getNode("level-gal_us").getValue() * ppg;
-
-#			if (lbs < capacity) available += 1;
-#		}
-
-#		if (available > 0) {
-#			var fuel_per_tank = -consumed / available;
-
-			# add fuel to each available tank
-#			foreach (var t; selected_tanks) {
-#				var ppg = t.getNode("density-ppg").getValue();
-#				var capacity = t.getNode("capacity-gal_us").getValue() * ppg;
-#				var lbs = t.getNode("level-gal_us").getValue() * ppg;
-				var ppg = getprop("consumables/fuel/tank[0]/density-ppg");
-				var capacity = getprop("consumables/fuel/tank[0]/capacity-gal_us") * ppg;
-				var lbs = getprop("consumables/fuel/tank[0]/level-gal_us") * ppg;
-
-				lbs -= fuel_per_tank;
-				if (lbs > capacity)
-					lbs = capacity;
-
-#				t.getNode("level-gal_us").setDoubleValue(lbs / ppg);
-#				t.getNode("level-lbs").setDoubleValue(lbs);
-				setprop("consumables/fuel/tank[0]/level-gal_us",lbs/ppg);
-				setprop("consumables/fuel/tank[0]/level-lbs",lbs);
-#			}
-
-			# print ("available ", available , " fuel_per_tank " , fuel_per_tank);
-#		}
-	}
-
-
-	var gals = 0;
-	var lbs = 0;
-	var cap = 0;
-	foreach (var t; tanks) {
-		gals += t.getNode("level-gal_us", 1).getValue();
-		lbs += t.getNode("level-lbs", 1).getValue();
-		cap += t.getNode("capacity-gal_us", 1).getValue();
-	}
-
-	setprop("/consumables/fuel/total-fuel-gals", gals);
-	setprop("/consumables/fuel/total-fuel-lbs", lbs);
-	if (cap == 0)
-		setprop("/consumables/fuel/total-fuel-norm", 0);
-	else
-		setprop("/consumables/fuel/total-fuel-norm", gals / cap);
-
-	foreach (var e; engines)
-		e.getNode("out-of-fuel", 1).setBoolValue(out_of_fuel);
-
-	if (xfer_sw.getBoolValue() and enabled) Boeing747.startup_dist();
-
-	settimer(update_loop, UPDATE_PERIOD);
 }
 
 
-
 setlistener("/sim/signals/fdm-initialized", func {
-	if (contains(globals, "fuel") and typeof(fuel) == "hash") fuel.loop = func nil;       # kill $FG_ROOT/Nasal/fuel.nas' loop
+#	if (contains(globals, "fuel") and typeof(fuel) == "hash")
+#		fuel.loop = func nil;       # kill $FG_ROOT/Nasal/fuel.nas' loop
 
-	contactN = props.globals.initNode("/systems/refuel/contact", 0, "BOOL");
-	refuelingN = props.globals.getNode("/systems/refuel", 1);
+	refuelingN = props.globals.initNode("/systems/refuel/contact", 0, "BOOL");
 	aimodelsN = props.globals.getNode("ai/models", 1);
-	engines = props.globals.getNode("engines", 1).getChildren("engine");
+#	engines = props.globals.getNode("engines", 1).getChildren("engine");
+#
+#	foreach (var e; engines) {
+#		e.getNode("fuel-consumed-lbs", 1).setDoubleValue(0);
+#		e.getNode("out-of-fuel", 1).setBoolValue(0);
+#	}
+#
+#	foreach (var t; props.globals.getNode("consumables/fuel", 1).getChildren("tank")) {
+#		if (!t.getAttribute("children"))
+#			continue;           # skip native_fdm.cxx generated zombie tanks
+#
+#		append(tanks, t);
+#		t.initNode("level-gal_us", 0.0);
+#		t.initNode("level-lbs", 0.0);
+#		t.initNode("capacity-gal_us", 0.01); # not zero (div/zero issue)
+#		t.initNode("density-ppg", 6.0);      # gasoline
+#		t.initNode("selected", 1, "BOOL");
+#	}
 
-	foreach (var e; engines) {
-		e.getNode("fuel-consumed-lbs", 1).setDoubleValue(0);
-		e.getNode("out-of-fuel", 1).setBoolValue(0);
-	}
-
-	foreach (var t; props.globals.getNode("consumables/fuel", 1).getChildren("tank")) {
-		if (!t.getAttribute("children")) continue;           # skip native_fdm.cxx generated zombie tanks
-		append(tanks, t);
-		t.initNode("level-gal_us", 0.0);
-		t.initNode("level-lbs", 0.0);
-		t.initNode("capacity-gal_us", 0.01); # not zero (div/zero issue)
-		t.initNode("density-ppg", 6.0);      # gasoline
-		t.initNode("selected", 1, "BOOL");
-	}
-
-	foreach (var t; props.globals.getNode("systems/refuel", 1).getChildren("type")) types[t.getValue()] = 1;
+	foreach (var t; props.globals.getNode("systems/refuel", 1).getChildren("type"))
+		types[t.getValue()] = 1;
 
 	setlistener("sim/freeze/fuel", func(n) fuel_freeze = n.getBoolValue(), 1);
 	setlistener("sim/ai/enabled", func(n) ai_enabled = n.getBoolValue(), 1);
 	setlistener("systems/refuel/serviceable", func(n) serviceable = n.getBoolValue(), 1);
-	update_loop();
-
+	setlistener("systems/refuel/enable", func {
+		do_update_loop();
+	},0,0);
 });
 
 
