@@ -319,8 +319,8 @@ Service ceiling	43,000 ft (13,000 m)
 			<file>Aircraft/747-8i/Nasal/livery_8G4.nas</file>
 	    	</livery>
 		<aar>
-	        	<!--file>Aircraft/Generic/aar.nas</file-->
-	        	<file>Aircraft/747-8i/Nasal/aar.nas</file>
+	        	<file>Aircraft/Generic/aar.nas</file>
+	        	<file>Aircraft/747-8i/Nasal/B747_aar.nas</file>
 		</aar>
 	</nasal>
 
@@ -361,7 +361,7 @@ Service ceiling	43,000 ft (13,000 m)
 		</electrical>
 		<refuel>
 			<type>boom</type>
-			<serviceable type="bool">true</serviceable>
+			<serviceable type="bool">false</serviceable>
 			<max-fuel-transfer-lbs-min>6000</max-fuel-transfer-lbs-min>
 			<offset-x-m>-33.908398</offset-x-m>
 			<offset-y-m>0.0</offset-y-m>
