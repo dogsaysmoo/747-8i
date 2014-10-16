@@ -86874,7 +86874,7 @@ refs 4
 58 0.0215952992439 0.746267974377
 kids 0
 OBJECT poly
-name "cargodoor"
+name "cargodoor1"
 data 12
 Cylinder.002
 texture "freighter.png"
