@@ -62,7 +62,7 @@ takeoff_announcer.connect("approaching-short-runway", runway.make_betty_cb(copil
 landing_announcer.connect("remaining-distance", runway.make_betty_cb(copilot_say, remaining_distance_format));
 landing_announcer.connect("vacated-runway", runway.make_betty_cb(copilot_say, "Vacated runway %s", stop_announcer));
 landing_announcer.connect("landed-runway", runway.make_betty_cb(copilot_say, "Touchdown on runway %s"));
-landing_announcer.connect("landed-outside-runway", runway.make_betty_cb(copilot_say, nil, stop_announcer));
+landing_announcer.connect("landed-outside-runway", runway.make_betty_cb(nil, nil, stop_announcer));
 
 var set_on_ground = runway.make_set_ground_func(takeoff_announcer, landing_announcer);
 
