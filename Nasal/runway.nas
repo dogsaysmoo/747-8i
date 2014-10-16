@@ -65,11 +65,13 @@ landing_announcer.connect("landed-runway", runway.make_betty_cb(copilot_say, "To
 landing_announcer.connect("landed-outside-runway", runway.make_betty_cb(nil, nil, stop_announcer));
 
 var set_on_ground = runway.make_set_ground_func(takeoff_announcer, landing_announcer);
+var init_takeoff  = runway.make_init_func(takeoff_announcer);
 
 var init_announcers = func {
     setlistener("/gear/on-ground", func (node) {
         set_on_ground(node.getBoolValue());
-    }, startup=1, runtime=0);
+    }, startup=0, runtime=0);
+    init_takeoff();
 };
 
 setlistener("/sim/signals/fdm-initialized", func {

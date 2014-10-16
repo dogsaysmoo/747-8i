@@ -632,23 +632,14 @@ var make_switch_to_takeoff_func = func (takeoff_announcer, landing_announcer) {
 };
 
 var make_set_ground_func = func (takeoff_announcer, landing_announcer) {
-    var have_been_in_air = 0;
-
     return func (on_ground) {
         if (on_ground) {
-            if (have_been_in_air == 1) {
-                have_been_in_air = 0;
+            takeoff_announcer.set_mode("");
 
-                takeoff_announcer.set_mode("");
+            landing_announcer.set_mode("landing");
+            landing_announcer.start();
+#            logger.warn(sprintf("Starting landing (%s) announcer", landing_announcer.mode));
 
-                landing_announcer.set_mode("landing");
-                landing_announcer.start();
-#                logger.warn(sprintf("Starting landing (%s) announcer", landing_announcer.mode));
-            }
-            else {
-                takeoff_announcer.set_mode("taxi-and-takeoff");
-#                logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
-            }
             takeoff_announcer.start();
 #            logger.warn(sprintf("Starting takeoff (%s) announcer", takeoff_announcer.mode));
         }
@@ -658,10 +649,16 @@ var make_set_ground_func = func (takeoff_announcer, landing_announcer) {
 
             landing_announcer.stop();
 #            logger.warn("Stopping landing announcer");
-
-            if (have_been_in_air == 0) {
-                have_been_in_air = 1;
-            }
         }
+    };
+};
+
+var make_init_func = func (takeoff_announcer) {
+    return func {
+        takeoff_announcer.set_mode("taxi-and-takeoff");
+#        logger.warn(sprintf("Takeoff mode: %s", takeoff_announcer.mode));
+
+        takeoff_announcer.start();
+#        logger.warn(sprintf("Starting takeoff (%s) announcer", takeoff_announcer.mode));
     };
 };
