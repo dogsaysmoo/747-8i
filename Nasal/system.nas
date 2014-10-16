@@ -263,7 +263,7 @@ var light_stat = {
 	return m;
     },
     update : func {
-	if (getprop("systems/electrical/bus-volts") > 24 and !getprop("sim/crashed")) {
+	if (getprop("systems/electrical/ac-bus") and !getprop("sim/crashed")) {
 	    # Beacon:
 	    if (me.beacon_sw.getBoolValue() and getprop("sim/model/lights/beacon/state")) {
 		me.beacon.setBoolValue(1);
@@ -275,12 +275,6 @@ var light_stat = {
 		me.strobe.setBoolValue(1);
 	    } else {
 		me.strobe.setBoolValue(0);
-	    }
-	    # Nav lights:
-	    if (me.nav_sw.getBoolValue()) {
-		me.nav.setBoolValue(1);
-	    } else {
-		me.nav.setBoolValue(0);
 	    }
 	    # Logo lights:
 	    if (me.logo_sw.getBoolValue()) {
@@ -315,13 +309,18 @@ var light_stat = {
 	} else {
 	    me.beacon.setBoolValue(0);
 	    me.strobe.setBoolValue(0);
-	    me.nav.setBoolValue(0);
 	    me.logo.setBoolValue(0);
 	    me.wing.setBoolValue(0);
 	    me.taxi.setBoolValue(0);
 	    me.Lland.setBoolValue(0);
 	    me.Rland.setBoolValue(0);
 	}
+	    # Nav lights:
+	    if (me.nav_sw.getBoolValue() and !getprop("sim/crashed")) {
+		me.nav.setBoolValue(1);
+	    } else {
+		me.nav.setBoolValue(0);
+	    }
     },
 };
 var lighting_status = light_stat.new();
