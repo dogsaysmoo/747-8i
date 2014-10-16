@@ -11,17 +11,6 @@
 	COMUNIDADES, CONVERSAS
 	
 -->
-
-	<!-- O Sistema de selecao de textura -->
-	<!-- Livery System -->
-	<!--sim>
-	  <model>
-	    <livery>
-		<config type="int">0</config>
-	    </livery>
-	  </model>
-	</sim-->
-
     <nasal>
 	<load>
             var livery_update = aircraft.livery_update.new("Aircraft/747-8i/Models/Liveries/748G4", 10);
@@ -53,14 +42,6 @@
          <object-name>antenna_bot</object-name>
          <object-name>satcom</object-name>
          <object-name>cargodoor1.001</object-name>
-         <!--object-name>nlg_large_door.left</object-name>
-         <object-name>nlg_large_door.right</object-name>
-         <object-name>nlg_small_door.left</object-name>
-         <object-name>nlg_small_door.right</object-name>
-         <object-name>wlg_inner_door.left</object-name>
-         <object-name>wlg_inner_door.right</object-name>
-         <object-name>wlg_outer_door.left</object-name>
-         <object-name>wlg_outer_door.right</object-name-->
 	 <object-name>NLG_L_lg</object-name>
          <object-name>NLG_R_lg</object-name>
          <object-name>NLG_L_sm</object-name>
@@ -77,7 +58,6 @@
          <object-name>FLG_RR_out</object-name>
          <object-name>FLG_RL_in</object-name>
          <object-name>FLG_RL_out</object-name>
-         <!--object-name>rudder_0</object-name-->
          <object-name>vstab</object-name>
          <object-name>rudder_1</object-name>
 	 <object-name>cabinwindows</object-name>
@@ -272,50 +252,8 @@
 <!-- LIGHTS -->
 <!-- ###### -->
 
-<!-- LANDING LIGHTS WINGS -->
-<!--
-<model>
-	<path>Aircraft/747-8i/Models/Lights/light-cone.xml</path>
-	<name>LandingLight.Outbd.Left</name>
-	<offsets>
-		<x-m>-6.5</x-m>
-		<y-m>-6</y-m>
-		<z-m>-1</z-m>
-	</offsets>
-</model>
+<!-- LANDING LIGHTS -->
 
-<animation>
-	<type>select</type>
-	<object-name>LandingLight.Outbd.Left</object-name>
-	<condition>
-		<property>controls/lighting/landing-light-outbdl</property>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>LandingLight.Inbd.Left</object-name>
-		<condition>
-		<property>controls/lighting/landing-light-inbdl</property>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>LandingLight.Inbd.Right</object-name>
-	<condition>
-		<property>controls/lighting/landing-light-inbdr</property>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>LandingLight.Outbd.Right</object-name>
-	<condition>
-		<property>controls/lighting/landing-light-outbdr</property>
-	</condition>
-</animation>
--->
 <model>
 	<path>Aircraft/747-8i/Models/Lights/landinglights/landing_light_R.xml</path>
 	<name>LandingLight.Outbd.Left</name>
@@ -366,61 +304,6 @@
 	</offsets>
 </model>
 
-
-<!--
-<animation> 
-	<type>select</type> 
-	<object-name>LandingLight.Taxi</object-name>
-	<condition>
-		<equals>
-			<property>/controls/lighting/taxi-lights</property> 
-			<value>1</value>
-		</equals>
-	</condition>
-</animation> 
-
-<animation> 
-	<type>select</type> 
-	<object-name>LandingLight.Turnoff.Left</object-name>
-	<condition>
-		<equals>
-			<property>/controls/lighting/turnoff-light-l</property> 
-			<value>1</value>
-		</equals>
-	</condition>
-</animation> 
-
-<animation> 
-	<type>select</type> 
-	<object-name>LandingLight.Turnoff.Right</object-name>
-	<condition>
-		<equals>
-			<property>/controls/lighting/turnoff-light-r</property> 
-			<value>1</value>
-		</equals>
-	</condition>
-</animation> 
-
-<animation> 
-	<type>select</type> 
-	<object-name>LandingLight.Turnoff.Left</object-name>
-	<object-name>LandingLight.Turnoff.Right</object-name>
-	<object-name>LandingLight.Taxi</object-name>
-	<condition>
-		<and>
-			<equals>
-				<property>/gear/gear/position-norm</property> 
-				<value>1</value>
-			</equals>
-			<equals>
-				<property>/gear/gear/wow</property> 
-				<value>1</value>
-			</equals>
-		</and>
-	</condition>
-</animation> 
--->
-
 <!-- ANTI-COLLISION LIGHTS -->
 
 <model>
@@ -462,38 +345,6 @@
 		<z-m>2.67235</z-m>
 	</offsets>
 </model>
-
-<!--
-<model>
-	<path>Aircraft/747-8i/Models/Lights/flash.xml</path>
-	<name>StrobeLight.Tail</name>
-	<offsets>
-		<x-m>38.65</x-m>
-		<y-m>0</y-m>
-		<z-m>2.55</z-m>
-	</offsets>
-</model>
-
-<model>
-	<path>Aircraft/747-8i/Models/Lights/beacon.xml</path>
-	<name>Beacon.Lower</name>
-	<offsets>
-		<x-m>-5.6</x-m>
-		<y-m>0</y-m>
-		<z-m>-3.2</z-m>
-	</offsets>
-</model>
-
-<model>
-	<path>Aircraft/747-8i/Models/Lights/beacon.xml</path>
-	<name>Beacon.Upper</name>
-	<offsets>
-		<x-m>-15.75</x-m>
-		<y-m>0</y-m>
-		<z-m>5.15</z-m>
-	</offsets>
-</model>
--->
 
 <!-- TAIL LOGO LIGHTS -->
 
@@ -552,7 +403,6 @@
 	<object-name>pylon.lt.out</object-name>
 	<object-name>wing.lt.out</object-name>
 	<condition>
-		<!--property>/controls/lighting/wing-lights</property-->
 	    <greater-than>
 		<property>sim/multiplay/generic/int[8]</property>
 		<value>0</value>
@@ -647,287 +497,10 @@
 
 
 <!-- ###################################################################### -->
-<!-- Animacoes -->
+<!-- Animations -->
 <!-- ######### -->
 
-<!-- ############# -->
-<!-- Trem de Pouso -->
-<!-- ############# -->
-
 <!-- NOSE GEAR DOORS -->
-
-<!--animation>
-	<type>rotate</type>
-	<object-name>nlg_large_door.left</object-name>
-	<object-name>nlg_lg_lt.in</object-name>
-	<property>gear/gear[0]/position-norm</property>
-	<interpolation>
-		<entry>
-			<ind>0.0</ind>
-			<dep>0</dep>
-		</entry>
-		<entry>
-			<ind>0.1</ind>
-			<dep>-80</dep>
-		</entry>
-		<entry>
-			<ind>0.9</ind>
-			<dep>-80</dep>
-		</entry>
-		<entry>
-			<ind>1.0</ind>
-			<dep>0</dep>
-		</entry>
-	</interpolation>
-	<axis>
-		<x1-m>-30.45</x1-m>
-		<y1-m> -0.880</y1-m>
-		<z1-m> -1.497</z1-m>
-		<x2-m>-27.56</x2-m>
-		<y2-m> -0.880</y2-m>
-		<z2-m> -2.225</z2-m>
-	</axis>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>nlg_large_door.right</object-name>
-	<object-name>nlg_lg_rt.in</object-name>
-	<property>gear/gear[0]/position-norm</property>
-	<interpolation>
-		<entry>
-			<ind>0.0</ind>
-			<dep>0</dep>
-		</entry>
-		<entry>
-			<ind>0.1</ind>
-			<dep>80</dep>
-		</entry>
-		<entry>
-			<ind>0.9</ind>
-			<dep>80</dep>
-		</entry>
-		<entry>
-			<ind>1.0</ind>
-			<dep>0</dep>
-		</entry>
-	</interpolation>
-	<axis>
-		<x1-m>-30.45</x1-m>
-		<y1-m>  0.880</y1-m>
-		<z1-m> -1.497</z1-m>
-		<x2-m>-27.56</x2-m>
-		<y2-m>  0.880</y2-m>
-		<z2-m> -2.225</z2-m>
-	</axis>
-</animation>	
-
-<animation>
-	<type>rotate</type>
-	<object-name>nlg_small_door.left</object-name>
-	<object-name>nlg_sm_lt.in</object-name>
-	<property>gear/gear[0]/position-norm</property>
-	<interpolation>
-		<entry>
-			<ind>0.0</ind>
-			<dep>0</dep>
-		</entry>
-		<entry>
-			<ind>0.1</ind>
-			<dep>-50</dep>
-		</entry>
-		<entry>
-			<ind>0.9</ind>
-			<dep>-100</dep>
-		</entry>
-		<entry>
-			<ind>1.0</ind>
-			<dep>-100</dep>
-		</entry>
-	</interpolation>
-	<axis>
-		<x1-m>-26.88</x1-m>
-		<y1-m> -0.575</y1-m>
-		<z1-m> -2.383</z1-m>
-		<x2-m>-25.831</x2-m>
-		<y2-m> -0.575</y2-m>
-		<z2-m> -2.518</z2-m>
-	</axis>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>nlg_small_door.right</object-name>
-	<object-name>nlg_sm_rt.in</object-name>
-	<property>gear/gear[0]/position-norm</property>
-	<interpolation>
-		<entry>
-			<ind>0.0</ind>
-			<dep>0</dep>
-		</entry>
-		<entry>
-			<ind>0.1</ind>
-			<dep>50</dep>
-		</entry>
-		<entry>
-			<ind>0.9</ind>
-			<dep>100</dep>
-		</entry>
-		<entry>
-			<ind>1.0</ind>
-			<dep>100</dep>
-		</entry>
-	</interpolation>
-	<axis>
-		<x1-m>-26.88</x1-m>
-		<y1-m>  0.575</y1-m>
-		<z1-m> -2.383</z1-m>
-		<x2-m>-25.831</x2-m>
-		<y2-m>  0.575</y2-m>
-		<z2-m> -2.518</z2-m>
-	 </axis>
-</animation-->
-
-<!-- WING GEAR DOORS -->
-
-<!--animation>
-	<type>rotate</type>
-	<object-name>wlg_inner_door.left</object-name>
-	<object-name>wlg_outer_door.left</object-name>
-	<object-name>wlgin_lt.in</object-name>
-	<object-name>wlgout_lt.in</object-name>
-	<property>gear/gear[2]/position-norm</property>
-	<interpolation>
-		<entry>
-			<ind>0.0</ind>
-			<dep>0</dep>
-		</entry>
-		<entry>
-			<ind>0.15</ind>
-			<dep>100</dep>
-		</entry>
-		<entry>
-			<ind>0.65</ind>
-			<dep>100</dep>
-		</entry>
-		<entry>
-			<ind>1.0</ind>
-			<dep>0</dep>
-		</entry>
-	</interpolation>
-	<axis>
-		<x1-m>-0.008</x1-m>
-		<y1-m>-0.300</y1-m>
-		<z1-m>-2.919</z1-m>
-		<x2-m> 3.994</x2-m>
-		<y2-m>-0.300</y2-m>
-		<z2-m>-2.919</z2-m>
-	</axis>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>wlg_inner_door.right</object-name>
-	<object-name>wlg_outer_door.right</object-name>
-	<object-name>wlgin_rt.in</object-name>
-	<object-name>wlgout_rt.in</object-name>
-	<property>gear/gear[3]/position-norm</property>
-	<interpolation>
-		<entry>
-			<ind>0.0</ind>
-			<dep>0</dep>
-		</entry>
-		<entry>
-			<ind>0.15</ind>
-			<dep>-100</dep>
-		</entry>
-		<entry>
-			<ind>0.65</ind>
-			<dep>-100</dep>
-		</entry>
-		<entry>
-			<ind>1.0</ind>
-			<dep>0</dep>
-		</entry>
-	</interpolation>
-	<axis>
-		<x1-m>-0.008</x1-m>
-		<y1-m> 0.300</y1-m>
-		<z1-m>-2.919</z1-m>
-		<x2-m> 3.994</x2-m>
-		<y2-m> 0.300</y2-m>
-		<z2-m>-2.919</z2-m>
-	</axis>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>wlg_outer_door.left</object-name>
-	<object-name>wlgout_lt.in</object-name>
-	<property>gear/gear[2]/position-norm</property>
-	<interpolation>
-		<entry>
-			<ind>0.0</ind>
-			<dep>0</dep>
-		</entry>
-		<entry>
-			<ind>0.15</ind>
-			<dep>-155</dep>
-		</entry>
-		<entry>
-			<ind>0.65</ind>
-			<dep>-155</dep>
-		</entry>
-		<entry>
-			<ind>1.0</ind>
-			<dep>0</dep>
-		</entry>
-	</interpolation>
-	<axis>
-		<x1-m>-0.008</x1-m>
-		<y1-m>-1.918</y1-m>
-		<z1-m>-2.792</z1-m>
-		<x2-m> 3.994</x2-m>
-		<y2-m>-1.918</y2-m>
-		<z2-m>-2.792</z2-m>
-	</axis>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>wlg_outer_door.right</object-name>
-	<object-name>wlgout_rt.in</object-name>
-	<property>gear/gear[3]/position-norm</property>
-	<interpolation>
-		<entry>
-			<ind>0.0</ind>
-			<dep>0</dep>
-		</entry>
-		<entry>
-			<ind>0.15</ind>
-			<dep>155</dep>
-		</entry>
-		<entry>
-			<ind>0.65</ind>
-			<dep>155</dep>
-		</entry>
-		<entry>
-			<ind>1.0</ind>
-			<dep>0</dep>
-		</entry>
-	</interpolation>
-	<axis>
-		<x1-m>-0.008</x1-m>
-		<y1-m> 1.918</y1-m>
-		<z1-m>-2.792</z1-m>
-		<x2-m> 3.994</x2-m>
-		<y2-m> 1.918</y2-m>
-		<z2-m>-2.792</z2-m>
-	</axis>
-</animation-->
-
-
-
 
 <animation>
 	<type>rotate</type>
@@ -2717,8 +2290,6 @@
 		  </axis>
     </animation>
      
-<!-- NOVO NOVO NOVO fim -->
-
 <!-- ########## -->
 <!-- Engine Fan -->
 <!-- ########## -->
@@ -3066,7 +2637,6 @@
 	<object-name>rudder.lit</object-name>
 	<object-name>vstab.lit</object-name>
 	<condition>
-		<!--property>controls/lighting/logo-lights</property-->
 	    <greater-than>
 		<property>sim/multiplay/generic/int[3]</property>
 		<value>0</value>
@@ -3077,12 +2647,8 @@
 <animation>
 	<type>select</type>
 	<object-name>fuselage.lit</object-name>
-	<!--object-name>cargodoor.lit</object-name-->
 	<condition>
 		<or>
-			<!--property>controls/lighting/landing-lights[0]</property>
-			<property>controls/lighting/landing-lights[1]</property>
-			<property>controls/lighting/landing-lights[2]</property-->i
 		    <greater-than>
 			<property>sim/multiplay/generic/int[5]</property>
 			<value>0</value>
@@ -3099,7 +2665,6 @@
         <object-name>cargodoor.lit</object-name>
         <condition>
                 <and>
-                        <!--property>controls/lighting/landing-lights[2]</property-->
 		    <greater-than>
 			<property>sim/multiplay/generic/int[6]</property>
 			<value>0</value>
@@ -3133,32 +2698,20 @@
         <type>select</type>
         <object-name>cabinlighting</object-name>
         <condition>
-		<!--and-->
                 <greater-than>
                     <property>/sim/time/sun-angle-rad</property>
                     <value>1.55</value>
                 </greater-than>
-		<!--not>
-			<property>sim/model/livery/config</property>
-			<value>1</value>
-		</not>
-		</and-->
         </condition>
     </animation>
     <animation>
         <type>select</type>
         <object-name>cabinwindows</object-name>
         <condition>
-		<!--and-->
                 <less-than>
                     <property>/sim/time/sun-angle-rad</property>
                     <value>1.55</value>
                 </less-than>
-		<!--not>
-			<property>sim/model/livery/config</property>
-			<value>1</value>
-		</not>
-		</and-->
         </condition>
     </animation>
     
