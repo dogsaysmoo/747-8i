@@ -471,14 +471,15 @@ var LandingRunwayAnnounceClass = {
         var runway_heading = result.runway.heading;
         var runway_heading_error = abs(runway_heading - self_heading);
 
-        # Aircraft just landed on the given runway
-        if (me.landed_runway != runway) {
-            if (runway_heading_error <= me.config.diff_runway_heading_deg) {
-                me.landed_runway = runway;
-                me.last_announced_distance = nil;
-                if (me.mode == "landing") {
-                    me.notify_observers("landed-runway", runway);
-                }
+        # If aircraft is aligned with this runway, then we just landed
+        # on this runway (the only other possible runway is the opposite
+        # runway)
+        if (me.landed_runway != runway
+          and runway_heading_error <= me.config.diff_runway_heading_deg) {
+            me.landed_runway = runway;
+            me.last_announced_distance = nil;
+            if (me.mode == "landing" and me.landed_runway == "") {
+                me.notify_observers("landed-runway", runway);
             }
         }
 
