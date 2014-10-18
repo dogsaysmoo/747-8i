@@ -26,7 +26,7 @@ http://www.boeing.com/commercial/aeromagazine/articles/2010_q3/2/
 <airplane mass="485300">
 
 <!-- Approach Configuration -->
-<approach speed="155" aoa="5" fuel="0.3">
+<approach speed="155" aoa="4.7" fuel="0.3">
   <control-setting axis="/controls/engines/engine[0]/throttle-fdm" value="0.2"/>
   <control-setting axis="/controls/engines/engine[1]/throttle-fdm" value="0.2"/>
   <control-setting axis="/controls/engines/engine[2]/throttle-fdm" value="0.2"/>
@@ -193,7 +193,6 @@ http://www.boeing.com/commercial/aeromagazine/articles/2010_q3/2/
 
 <!-- Maximum Fuel Capacity	 Intercontinental: 63,034 (59,734 without the rear stabilizer tanks) U.S. gallons (242,470 L)  -->
 <!-- 63034 * 6.84 = 431152.6 (- 3300 * 6.84)-->	
-<!--tank x="-2" y="0" z="-1.45" jet="true" capacity="132078.1"/-->
 <tank x="-2" y="0" z="-1.45" jet="true" capacity="116489.8"/>
 <tank x="-5.6" y="8" z="-1.45" jet="true" capacity="107493.6"/>
 <tank x="-5.6" y="-8" z="-1.45" jet="true" capacity="107493.6"/>
@@ -201,19 +200,19 @@ http://www.boeing.com/commercial/aeromagazine/articles/2010_q3/2/
 <tank x="0.2" y="-17.1" z="-0.85" jet="true" capacity="29694.4"/>
 <tank x="0.9" y="26.3" z="0.15" jet="true" capacity="8857.4"/>
 <tank x="0.9" y="-26.3" z="0.15" jet="true" capacity="8857.4"/>
-<!--tank x="-29.9" y="0" z="2.86" jet="true" capacity="0.1"/-->
 <tank x="-29.9" y="0" z="2.86" jet="true" capacity="22572.0"/> <!-- Disabled stabilizer tank per Boeing -->
 
 <weight x="31.0" y="0" z="3.97" mass-prop="/sim/weight[0]/weight-lb"/>
 <weight x="-2.0" y="0" z="0" mass-prop="/sim/weight[1]/weight-lb"/>
 
+<!-- Original: -->
 <!--ballast x="18.5"  y="0" z="-3.4" mass="90000"/>
 <ballast x="12.5" y="0" z="-3.4" mass="90000"/>
 <ballast x="6.5" y="0" z="-3.4" mass="70000"/>
 <ballast x="0.5" y="0" z="-3.4" mass="70000"/-->
-<ballast x="18.5"  y="0" z="-3.43" mass="90000"/>
-<ballast x="12.5" y="0" z="-3.4" mass="94500"/>
-<ballast x="6.5" y="0" z="-3.4" mass="75000"/>
-<ballast x="0.5" y="0" z="-3.4" mass="70500"/>
+<ballast x="18.5"  y="0" z="-3.3" mass="90000"/>
+<ballast x="12.5" y="0" z="-3.4" mass="90000"/>
+<ballast x="6.5" y="0" z="-3.4" mass="80000"/>
+<ballast x="0.5" y="0" z="-3.3" mass="75000"/>
 
 </airplane>
