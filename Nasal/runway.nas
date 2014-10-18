@@ -45,7 +45,7 @@ takeoff_config.distance_edge_max_m = 200;
 
 var landing_config = { parents: [runway.LandingRunwayAnnounceConfig] };
 landing_config.distances_unit = "feet";
-landing_config.distance_center_nose_m = 30;
+landing_config.distance_center_nose_m = 37;
 
 # Create announcers
 var takeoff_announcer = runway.TakeoffRunwayAnnounceClass.new(takeoff_config);
@@ -62,14 +62,16 @@ takeoff_announcer.connect("approaching-short-runway", runway.make_betty_cb(copil
 landing_announcer.connect("remaining-distance", runway.make_betty_cb(copilot_say, remaining_distance_format));
 landing_announcer.connect("vacated-runway", runway.make_betty_cb(copilot_say, "Vacated runway %s", stop_announcer));
 landing_announcer.connect("landed-runway", runway.make_betty_cb(copilot_say, "Touchdown on runway %s"));
-landing_announcer.connect("landed-outside-runway", runway.make_betty_cb(copilot_say, nil, stop_announcer));
+landing_announcer.connect("landed-outside-runway", runway.make_betty_cb(nil, nil, stop_announcer));
 
 var set_on_ground = runway.make_set_ground_func(takeoff_announcer, landing_announcer);
+var init_takeoff  = runway.make_init_func(takeoff_announcer);
 
 var init_announcers = func {
     setlistener("/gear/on-ground", func (node) {
         set_on_ground(node.getBoolValue());
-    }, startup=1, runtime=0);
+    }, startup=0, runtime=0);
+    init_takeoff();
 };
 
 setlistener("/sim/signals/fdm-initialized", func {
