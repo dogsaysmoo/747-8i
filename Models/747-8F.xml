@@ -11,17 +11,6 @@
 	COMUNIDADES, CONVERSAS
 	
 -->
-
-	<!-- O Sistema de selecao de textura -->
-	<!-- Livery System -->
-	<!--sim>
-	  <model>
-	    <livery>
-		<config type="int">0</config>
-	    </livery>
-	  </model>
-	</sim-->
-
     <nasal>
 	<load>
             var livery_update = aircraft.livery_update.new("Aircraft/747-8i/Models/Liveries/748F", 10);
@@ -34,7 +23,6 @@
     
      <animation>
         <type>material</type>
-         <!--object-name>fuselage_1</object-name-->
          <object-name>fuselage</object-name>
          <object-name>fuselage_in</object-name>
          <object-name>nosecone</object-name>
@@ -43,16 +31,7 @@
          <object-name>antenna3</object-name>
          <object-name>antenna_bot</object-name>
          <object-name>satcom</object-name>
-         <!--object-name>cargodoor1.001</object-name-->
-         <object-name>cargodoor</object-name>
-         <!--object-name>nlg_large_door.left</object-name>
-         <object-name>nlg_large_door.right</object-name>
-         <object-name>nlg_small_door.left</object-name>
-         <object-name>nlg_small_door.right</object-name>
-         <object-name>wlg_inner_door.left</object-name>
-         <object-name>wlg_inner_door.right</object-name>
-         <object-name>wlg_outer_door.left</object-name>
-         <object-name>wlg_outer_door.right</object-name-->
+         <object-name>cargodoor1</object-name>
          <object-name>NLG_L_lg</object-name>
          <object-name>NLG_R_lg</object-name>
          <object-name>NLG_L_sm</object-name>
@@ -71,12 +50,10 @@
          <object-name>FLG_RL_out</object-name>
          <object-name>vstab</object-name>
          <object-name>rudder_1</object-name>
-         <!--object-name>rudder_0</object-name-->
 	 <object-name>cabinwindows</object-name>
 	 <object-name>cabinlighting</object-name>
          <property-base>sim/model/livery</property-base>
          <texture-prop>texture</texture-prop>
-      <!--texture>fuselage.png</texture-->
       <texture>freighter.png</texture>
     </animation>
     
@@ -254,50 +231,8 @@
 <!-- LIGHTS -->
 <!-- ###### -->
 
-<!-- LANDING LIGHTS WINGS -->
-<!--
-<model>
-	<path>Aircraft/747-8i/Models/Lights/light-cone.xml</path>
-	<name>LandingLight.Outbd.Left</name>
-	<offsets>
-		<x-m>-6.5</x-m>
-		<y-m>-6</y-m>
-		<z-m>-1</z-m>
-	</offsets>
-</model>
+<!-- LANDING LIGHTS -->
 
-<animation>
-	<type>select</type>
-	<object-name>LandingLight.Outbd.Left</object-name>
-	<condition>
-		<property>controls/lighting/landing-light-outbdl</property>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>LandingLight.Inbd.Left</object-name>
-		<condition>
-		<property>controls/lighting/landing-light-inbdl</property>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>LandingLight.Inbd.Right</object-name>
-	<condition>
-		<property>controls/lighting/landing-light-inbdr</property>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>LandingLight.Outbd.Right</object-name>
-	<condition>
-		<property>controls/lighting/landing-light-outbdr</property>
-	</condition>
-</animation>
--->
 <model>
 	<path>Aircraft/747-8i/Models/Lights/landinglights/landing_light_R.xml</path>
 	<name>LandingLight.Outbd.Left</name>
@@ -348,61 +283,6 @@
 	</offsets>
 </model>
 
-
-<!--
-<animation> 
-	<type>select</type> 
-	<object-name>LandingLight.Taxi</object-name>
-	<condition>
-		<equals>
-			<property>/controls/lighting/taxi-lights</property> 
-			<value>1</value>
-		</equals>
-	</condition>
-</animation> 
-
-<animation> 
-	<type>select</type> 
-	<object-name>LandingLight.Turnoff.Left</object-name>
-	<condition>
-		<equals>
-			<property>/controls/lighting/turnoff-light-l</property> 
-			<value>1</value>
-		</equals>
-	</condition>
-</animation> 
-
-<animation> 
-	<type>select</type> 
-	<object-name>LandingLight.Turnoff.Right</object-name>
-	<condition>
-		<equals>
-			<property>/controls/lighting/turnoff-light-r</property> 
-			<value>1</value>
-		</equals>
-	</condition>
-</animation> 
-
-<animation> 
-	<type>select</type> 
-	<object-name>LandingLight.Turnoff.Left</object-name>
-	<object-name>LandingLight.Turnoff.Right</object-name>
-	<object-name>LandingLight.Taxi</object-name>
-	<condition>
-		<and>
-			<equals>
-				<property>/gear/gear/position-norm</property> 
-				<value>1</value>
-			</equals>
-			<equals>
-				<property>/gear/gear/wow</property> 
-				<value>1</value>
-			</equals>
-		</and>
-	</condition>
-</animation> 
--->
-
 <!-- ANTI-COLLISION LIGHTS -->
 
 <model>
@@ -444,38 +324,6 @@
 		<z-m>2.67235</z-m>
 	</offsets>
 </model>
-
-<!--
-<model>
-	<path>Aircraft/747-8i/Models/Lights/flash.xml</path>
-	<name>StrobeLight.Tail</name>
-	<offsets>
-		<x-m>38.65</x-m>
-		<y-m>0</y-m>
-		<z-m>2.55</z-m>
-	</offsets>
-</model>
-
-<model>
-	<path>Aircraft/747-8i/Models/Lights/beacon.xml</path>
-	<name>Beacon.Lower</name>
-	<offsets>
-		<x-m>-5.6</x-m>
-		<y-m>0</y-m>
-		<z-m>-3.2</z-m>
-	</offsets>
-</model>
-
-<model>
-	<path>Aircraft/747-8i/Models/Lights/beacon.xml</path>
-	<name>Beacon.Upper</name>
-	<offsets>
-		<x-m>-15.75</x-m>
-		<y-m>0</y-m>
-		<z-m>5.15</z-m>
-	</offsets>
-</model>
--->
 
 <!-- TAIL LOGO LIGHTS -->
 
@@ -534,7 +382,6 @@
 	<object-name>pylon.lt.out</object-name>
 	<object-name>wing.lt.out</object-name>
 	<condition>
-		<!--property>/controls/lighting/wing-lights</property-->
 	    <greater-than>
                 <property>sim/multiplay/generic/int[8]</property>
                 <value>0</value>
@@ -629,19 +476,13 @@
 
 
 <!-- ###################################################################### -->
-<!-- Animacoes -->
+<!-- Animations -->
 <!-- ######### -->
-
-<!-- ############# -->
-<!-- Trem de Pouso -->
-<!-- ############# -->
 
 <!-- NOSE GEAR DOORS -->
 
 <animation>
 	<type>rotate</type>
-	<!--object-name>nlg_large_door.left</object-name>
-	<object-name>nlg_lg_lt.in</object-name-->
 	<object-name>NLG_L_lg.in</object-name>
 	<object-name>NLG_L_lg</object-name>
 	<property>gear/gear[0]/position-norm</property>
@@ -675,8 +516,6 @@
 
 <animation>
 	<type>rotate</type>
-	<!--object-name>nlg_large_door.right</object-name>
-	<object-name>nlg_lg_rt.in</object-name-->
 	<object-name>NLG_R_lg.in</object-name>
 	<object-name>NLG_R_lg</object-name>
 	<property>gear/gear[0]/position-norm</property>
@@ -710,8 +549,6 @@
 
 <animation>
 	<type>rotate</type>
-	<!--object-name>nlg_small_door.left</object-name>
-	<object-name>nlg_sm_lt.in</object-name-->
 	<object-name>NLG_L_sm.in</object-name>
 	<object-name>NLG_L_sm</object-name>
 	<property>gear/gear[0]/position-norm</property>
@@ -745,8 +582,6 @@
 
 <animation>
 	<type>rotate</type>
-	<!--object-name>nlg_small_door.right</object-name>
-	<object-name>nlg_sm_rt.in</object-name-->
 	<object-name>NLG_R_sm.in</object-name>
 	<object-name>NLG_R_sm</object-name>
 	<property>gear/gear[0]/position-norm</property>
@@ -782,10 +617,6 @@
 
 <animation>
 	<type>rotate</type>
-	<!--object-name>wlg_inner_door.left</object-name>
-	<object-name>wlg_outer_door.left</object-name>
-	<object-name>wlgin_lt.in</object-name>
-	<object-name>wlgout_lt.in</object-name-->
 	<object-name>FLG_FL_in</object-name>
 	<object-name>FLG_FL_out</object-name>
 	<object-name>FLG_FL_in.in</object-name>
@@ -821,10 +652,6 @@
 
 <animation>
 	<type>rotate</type>
-	<!--object-name>wlg_inner_door.right</object-name>
-	<object-name>wlg_outer_door.right</object-name>
-	<object-name>wlgin_rt.in</object-name>
-	<object-name>wlgout_rt.in</object-name-->
 	<object-name>FLG_FR_in</object-name>
 	<object-name>FLG_FR_out</object-name>
 	<object-name>FLG_FR_in.in</object-name>
@@ -860,8 +687,6 @@
 
 <animation>
 	<type>rotate</type>
-	<!--object-name>wlg_outer_door.left</object-name>
-	<object-name>wlgout_lt.in</object-name-->
 	<object-name>FLG_FL_out</object-name>
 	<object-name>FLG_FL_out.in</object-name>
 	<property>gear/gear[2]/position-norm</property>
@@ -895,8 +720,6 @@
 
 <animation>
 	<type>rotate</type>
-	<!--object-name>wlg_outer_door.right</object-name>
-	<object-name>wlgout_rt.in</object-name-->
 	<object-name>FLG_FR_out</object-name>
 	<object-name>FLG_FR_out.in</object-name>
 	<property>gear/gear[3]/position-norm</property>
@@ -1371,7 +1194,7 @@
 
 <animation>
  <type>pick</type>
- <object-name>cargodoor</object-name>
+ <object-name>cargodoor1</object-name>
  <action>
   <button>0</button>
   <repeatable>false</repeatable>
@@ -1384,7 +1207,7 @@
 
 <animation>
  <type>rotate</type>
- <object-name>cargodoor</object-name>
+ <object-name>cargodoor1</object-name>
  <property>controls/doors/cargo1/position-norm</property>
  <factor>-130</factor>
  <axis>
@@ -2445,8 +2268,6 @@
 		     <z2-m>-2.48954</z2-m>
 		  </axis>
     </animation>
-     
-<!-- NOVO NOVO NOVO fim -->
 
 <!-- ########## -->
 <!-- Engine Fan -->
@@ -2797,7 +2618,6 @@
 	<object-name>rudder.lit</object-name>
 	<object-name>vstab.lit</object-name>
 	<condition>
-		<!--property>controls/lighting/logo-lights</property-->
 	    <greater-than>
                 <property>sim/multiplay/generic/int[3]</property>
                 <value>0</value>
@@ -2808,12 +2628,8 @@
 <animation>
 	<type>select</type>
 	<object-name>fuselage.lit</object-name>
-	<!--object-name>cargodoor.lit</object-name-->
 	<condition>
 		<or>
-			<!--property>controls/lighting/landing-lights[0]</property>
-			<property>controls/lighting/landing-lights[1]</property>
-			<property>controls/lighting/landing-lights[2]</property-->
 		    <greater-than>
                         <property>sim/multiplay/generic/int[5]</property>
                         <value>0</value>
@@ -2830,7 +2646,6 @@
         <object-name>cargodoor.lit</object-name>
         <condition>
                 <and>
-                        <!--property>controls/lighting/landing-lights[2]</property-->
 		    <greater-than>
                         <property>sim/multiplay/generic/int[6]</property>
                         <value>0</value>
