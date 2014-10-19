@@ -59,7 +59,7 @@
 
        <counter>
          <particles-per-sec>
-           <value>200</value>
+           <value>40</value>
            <spread>100</spread>
          </particles-per-sec>
        </counter>
@@ -92,7 +92,7 @@
          </end>
 
          <life-sec>
-           <value>60</value>
+           <value>40</value>
          </life-sec>
            
          <mass-kg>  0.01 </mass-kg>
@@ -102,7 +102,7 @@
        <program>
          <fluid> air </fluid>  <!-- air / water -->
          <gravity type="bool"> true </gravity>
-         <wind typ="bool">     true </wind>
+         <wind type="bool">     true </wind>
        </program>
 
      </particlesystem>

@@ -102,31 +102,41 @@
     <number>0</number>
   </marker-beacon>
 
-    <KT-70>
-        <name>kt-70</name>
-        <number>0</number>
-    </KT-70>
+  <KT-70>
+    <name>kt-70</name>
+    <number>0</number>
+  </KT-70>
 
-    <KT-70>
-        <name>kt-70</name>
-        <number>1</number>
-    </KT-70>
+  <KT-70>
+    <name>kt-70</name>
+    <number>1</number>
+  </KT-70>
 
   <magnetic-compass>
     <name>magnetic-compass</name>
     <number>0</number>
   </magnetic-compass>
 
+  <comm-radio>
+    <name>comm</name>
+    <number>0</number>
+  </comm-radio>
+
+  <comm-radio>
+    <name>comm</name>
+    <number>1</number>
+  </comm-radio>
+
   <nav-radio>
     <name>nav</name>
     <number>0</number>
-  <serviceable>true</serviceable>
+    <serviceable>true</serviceable>
   </nav-radio>
 
   <nav-radio>
     <name>nav</name>
     <number>1</number>
-  <serviceable>true</serviceable>
+    <serviceable>true</serviceable>
   </nav-radio>
 
   <slip-skid-ball>
