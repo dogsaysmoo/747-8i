@@ -499,9 +499,6 @@
 
 	<!-- The NASAL scripts -->
 	<nasal>
-        	<runway>
-            		<file>Aircraft/747-8i/Nasal/runway_announcer.nas</file>
-        	</runway>
 		<Boeing747>
 			<file>Aircraft/747-8i/Nasal/copilot.nas</file>
 			<file>Aircraft/747-8i/Nasal/doors.nas</file>
@@ -519,7 +516,6 @@
 			<file>Aircraft/747-8i/Nasal/autobrakes.nas</file>
 			<file>Aircraft/747-8i/Nasal/brakesystem.nas</file>
 			<file>Aircraft/747-8i/Nasal/IRS-controls.nas</file>
-            		<file>Aircraft/747-8i/Nasal/runway.nas</file>
 		</Boeing747>
 		  	  
 		<cdu>
