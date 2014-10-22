@@ -25,7 +25,7 @@ var on_short_runway_format = func {
 
 var approaching_short_runway_format = func {
     var distance = takeoff_announcer.get_short_runway_distance();
-    return sprintf("Approaching runway %%s, %d %s available", distance, takeoff_config.distances_unit);
+    return sprintf("Approaching %%s, %d %s available", distance, takeoff_config.distances_unit);
 };
 
 var remaining_distance_format = func {
