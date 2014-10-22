@@ -476,9 +476,10 @@ var LandingRunwayAnnounceClass = {
         # runway)
         if (me.landed_runway != runway
           and runway_heading_error <= me.config.diff_runway_heading_deg) {
+            var prev_landed_runway = me.landed_runway;
             me.landed_runway = runway;
             me.last_announced_distance = nil;
-            if (me.mode == "landing" and me.landed_runway == "") {
+            if (me.mode == "landing" and prev_landed_runway == "") {
                 me.notify_observers("landed-runway", runway);
             }
         }
