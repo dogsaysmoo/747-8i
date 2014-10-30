@@ -168,7 +168,7 @@
 
 
 <!-- canvas nav displays -->
-<animation>
+<!--animation>
 	<type>select</type>
 	<object-name>ND_L.off</object-name>
 	<condition>
@@ -176,7 +176,7 @@
 		<property>/controls/electric/battery</property>
 	    </not>
 	</condition>
-</animation>
+</animation-->
 <animation>
 	<type>select</type>
 	<object-name>ND.screenL</object-name>
