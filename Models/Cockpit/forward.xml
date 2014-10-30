@@ -168,15 +168,6 @@
 
 
 <!-- canvas nav displays -->
-<!--animation>
-	<type>select</type>
-	<object-name>ND_L.off</object-name>
-	<condition>
-	    <not>
-		<property>/controls/electric/battery</property>
-	    </not>
-	</condition>
-</animation-->
 <animation>
 	<type>select</type>
 	<object-name>ND.screenL</object-name>
@@ -185,15 +176,6 @@
 	</condition>
 </animation>
 
-<animation>
-	<type>select</type>
-	<object-name>ND_R.off</object-name>
-	<condition>
-	    <not>
-		<property>/controls/electric/battery</property>
-	    </not>
-	</condition>
-</animation>
 <animation>
 	<type>select</type>
 	<object-name>ND.screenR</object-name>
