@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<name>MFD text</name>
+<background>Aircraft/747-8i/Models/Cockpit/Instruments/MFD/transparent.png</background>
+<w>400</w>
+<h>256</h>
+
+<instruments>
+
+    <instrument include="maptext.xml">
+        <condition>
+            <and>
+            <greater-than>
+                <property>systems/electrical/outputs/efis</property>
+                <value>15</value>
+            </greater-than>
+                <equals>
+                    <property>instrumentation/efis/mfd/display-mode</property>
+                    <value>MAP</value>
+                </equals>
+            </and>
+        </condition>
+        <name>MFD</name>
+        <x>200</x>
+        <y>128</y>
+        <w>400</w>
+        <h>256</h>
+    </instrument>
+
+</instruments>
+
+</PropertyList>

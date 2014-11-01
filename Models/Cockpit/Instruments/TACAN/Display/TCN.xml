@@ -1,0 +1,48 @@
+<!--
+Syd Adams
+777-200LR Navigation display
+-->
+
+<PropertyList>
+
+ <!--path>EFIS.ac</path-->
+
+    <panel>
+        <path>Aircraft/747-8i/Models/Cockpit/Instruments/TACAN/Display/tac-panel.xml</path>
+        <bottom-left>
+            <x-m>0.003</x-m>
+            <y-m>-0.090</y-m>
+            <z-m>-0.087</z-m>
+        </bottom-left>
+        <bottom-right>
+            <x-m>0.003</x-m>
+            <y-m>0.090</y-m>
+            <z-m>-0.087</z-m>
+        </bottom-right>
+        <top-left>
+            <x-m>0.003</x-m>
+            <y-m>-0.090</y-m>
+            <z-m>0.094</z-m>
+        </top-left>
+    </panel>
+
+    <panel>
+        <path>Aircraft/747-8i/Models/Cockpit/Instruments/TACAN/Display/tactext-panel.xml</path>
+        <bottom-left>
+            <x-m>0.005</x-m>
+            <y-m>-0.090</y-m>
+            <z-m>-0.087</z-m>
+        </bottom-left>
+        <bottom-right>
+            <x-m>0.005</x-m>
+            <y-m>0.090</y-m>
+            <z-m>-0.087</z-m>
+        </bottom-right>
+        <top-left>
+            <x-m>0.005</x-m>
+            <y-m>-0.090</y-m>
+            <z-m>0.094</z-m>
+        </top-left>
+    </panel>
+
+</PropertyList>

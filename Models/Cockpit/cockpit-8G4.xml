@@ -21,5 +21,33 @@
 	</offsets>
 </model>
 
+<model>
+	<name>TACAN1</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/TACAN/Display/TCN.xml</path>
+	<offsets>
+		<x-m>-24.9147</x-m>
+		<y-m>-0.3207</y-m>
+		<z-m> 3.301</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
+</model>
+  
+<model>
+	<name>TACAN2</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/TACAN/Display/TCN.xml</path>
+	<offsets>
+		<x-m>-24.9147</x-m>
+		<y-m> 0.3207</y-m>
+		<z-m> 3.301</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
+</model>
+  
 </PropertyList>
 
