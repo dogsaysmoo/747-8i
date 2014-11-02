@@ -46,11 +46,11 @@
             <transformations>
                 <transformation>
                     <type>x-shift</type>
-                    <offset>-86</offset>
+                    <offset>-80</offset>
                 </transformation>
                 <transformation>
                     <type>y-shift</type>
-                    <offset>-100</offset>
+                    <offset>-108</offset>
                 </transformation>
             </transformations>
         </layer>
@@ -77,11 +77,11 @@
             <transformations>
                 <transformation>
                     <type>x-shift</type>
-                    <offset>-86</offset>
+                    <offset>-80</offset>
                 </transformation>
                 <transformation>
                     <type>y-shift</type>
-                    <offset>-110</offset>
+                    <offset>-118</offset>
                 </transformation>
             </transformations>
         </layer>
@@ -112,11 +112,11 @@
             <transformations>
                 <transformation>
                     <type>x-shift</type>
-                    <offset>-86</offset>
+                    <offset>-80</offset>
                 </transformation>
                 <transformation>
                     <type>y-shift</type>
-                    <offset>-120</offset>
+                    <offset>-128</offset>
                 </transformation>
             </transformations>
         </layer>
