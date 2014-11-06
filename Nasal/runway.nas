@@ -20,12 +20,12 @@ var copilot_say = func (message) {
 
 var on_short_runway_format = func {
     var distance = takeoff_announcer.get_short_runway_distance();
-    return sprintf("On runway %%s, %d %s remaining", distance, takeoff_config.distances_unit);
+    return sprintf("On runway .. %%s .. %d %s remaining", distance, takeoff_config.distances_unit);
 };
 
 var approaching_short_runway_format = func {
     var distance = takeoff_announcer.get_short_runway_distance();
-    return sprintf("Approaching %%s, %d %s available", distance, takeoff_config.distances_unit);
+    return sprintf("Approaching .. %%s .. %d %s available", distance, takeoff_config.distances_unit);
 };
 
 var remaining_distance_format = func {
@@ -54,14 +54,14 @@ var landing_announcer = runway.LandingRunwayAnnounceClass.new(landing_config);
 var stop_announcer    = runway.make_stop_announcer_func(takeoff_announcer, landing_announcer);
 var switch_to_takeoff = runway.make_switch_to_takeoff_func(takeoff_announcer, landing_announcer);
 
-takeoff_announcer.connect("on-runway", runway.make_betty_cb(copilot_say, "On runway %s", switch_to_takeoff));
-takeoff_announcer.connect("on-short-runway", runway.make_betty_cb(copilot_say, on_short_runway_format, switch_to_takeoff));
-takeoff_announcer.connect("approaching-runway", runway.make_betty_cb(copilot_say, "Approaching runway %s"));
-takeoff_announcer.connect("approaching-short-runway", runway.make_betty_cb(copilot_say, approaching_short_runway_format));
+takeoff_announcer.connect("on-runway", runway.make_betty_cb(copilot_say, "On runway .. %s", switch_to_takeoff, runway.runway_number_filter));
+takeoff_announcer.connect("on-short-runway", runway.make_betty_cb(copilot_say, on_short_runway_format, switch_to_takeoff, runway.runway_number_filter));
+takeoff_announcer.connect("approaching-runway", runway.make_betty_cb(copilot_say, "Approaching .. %s", nil, runway.runway_number_filter));
+takeoff_announcer.connect("approaching-short-runway", runway.make_betty_cb(copilot_say, approaching_short_runway_format, nil, runway.runway_number_filter));
 
 landing_announcer.connect("remaining-distance", runway.make_betty_cb(copilot_say, remaining_distance_format));
-landing_announcer.connect("vacated-runway", runway.make_betty_cb(copilot_say, "Vacated runway %s", stop_announcer));
-landing_announcer.connect("landed-runway", runway.make_betty_cb(copilot_say, "Touchdown on runway %s"));
+landing_announcer.connect("vacated-runway", runway.make_betty_cb(copilot_say, "Vacated runway .. %s", stop_announcer, runway.runway_number_filter));
+landing_announcer.connect("landed-runway", runway.make_betty_cb(copilot_say, "Touchdown on runway .. %s", nil, runway.runway_number_filter));
 landing_announcer.connect("landed-outside-runway", runway.make_betty_cb(nil, nil, stop_announcer));
 
 var set_on_ground = runway.make_set_ground_func(takeoff_announcer, landing_announcer);
