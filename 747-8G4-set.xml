@@ -76,6 +76,7 @@
 				<position-z-m type="float">-0.24</position-z-m>
 				<jetway-hood-deg type="float">0</jetway-hood-deg>
 			</door-->
+			<enable-canvas-tacan-display type="bool">true</enable-canvas-tacan-display>
 		</model>
 
 		<!-- Help menu -->
@@ -322,6 +323,9 @@ Service ceiling	43,000 ft (13,000 m)
 	        	<file>Aircraft/Generic/aar.nas</file>
 	        	<file>Aircraft/747-8i/Nasal/B747_aar.nas</file>
 		</aar>
+		<tacan>
+			<file>Aircraft/747-8i/Nasal/canvas_tacan.nas</file>
+		</tacan>
 	</nasal>
 
 	<instrumentation>

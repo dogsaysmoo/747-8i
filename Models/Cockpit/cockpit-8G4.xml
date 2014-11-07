@@ -21,7 +21,7 @@
 	</offsets>
 </model>
 
-<model>
+<!--model>
 	<name>TACAN1</name>
 	<path>Aircraft/747-8i/Models/Cockpit/Instruments/TACAN/Display/TCN.xml</path>
 	<offsets>
@@ -47,7 +47,7 @@
 	<condition>
 		<property>/controls/electric/battery</property>
 	</condition>
-</model>
+</model-->
   
 </PropertyList>
 
