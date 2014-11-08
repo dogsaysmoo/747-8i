@@ -476,9 +476,10 @@ var LandingRunwayAnnounceClass = {
         # runway)
         if (me.landed_runway != runway
           and runway_heading_error <= me.config.diff_runway_heading_deg) {
+            var prev_landed_runway = me.landed_runway;
             me.landed_runway = runway;
             me.last_announced_distance = nil;
-            if (me.mode == "landing" and me.landed_runway == "") {
+            if (me.mode == "landing" and prev_landed_runway == "") {
                 me.notify_observers("landed-runway", runway);
             }
         }
@@ -578,7 +579,30 @@ var LandingRunwayAnnounceClass = {
 
 };
 
-var make_betty_cb = func (betty_say, format, action=nil) {
+var runway_number_filter = func (value) {
+    var value_array = split("", value);
+
+    if (size(value_array) != 2 and size(value_array) != 3) {
+        return value;
+    }
+
+    var last_value = value_array[-1];
+    var lcr = { "L": "left", "C": "center", "R": "right" };
+
+    if (contains(lcr, last_value)) {
+        value_array[-1] = lcr[last_value];
+    }
+
+    # Why has Nasal no join()? Why!?
+    if (size(value_array) == 2) {
+        return sprintf("%s .. %s", value_array[0], value_array[1]);
+    }
+    else {
+        return sprintf("%s .. %s .. %s", value_array[0], value_array[1], value_array[2]);
+    }
+};
+
+var make_betty_cb = func (betty_say, format, action=nil, filter=nil) {
     if (format != nil and typeof(betty_say) != "func") {
         die("Error: betty_say is not a function");
     }
@@ -592,8 +616,15 @@ var make_betty_cb = func (betty_say, format, action=nil) {
                 var message_format = format;
             }
 
+            if (filter != nil and typeof(filter) == "func") {
+                var value = filter(data.getValue());
+            }
+            else {
+                var value = data.getValue();
+            }
+
             if (data != nil) {
-                var message = sprintf(message_format, data.getValue());
+                var message = sprintf(message_format, value);
             }
             else {
                 var message = message_format;
