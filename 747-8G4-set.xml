@@ -323,9 +323,6 @@ Service ceiling	43,000 ft (13,000 m)
 	        	<file>Aircraft/Generic/aar.nas</file>
 	        	<file>Aircraft/747-8i/Nasal/B747_aar.nas</file>
 		</aar>
-		<tacan>
-			<file>Aircraft/747-8i/Nasal/canvas_tacan.nas</file>
-		</tacan>
 	</nasal>
 
 	<instrumentation>
@@ -346,6 +343,9 @@ Service ceiling	43,000 ft (13,000 m)
 			<selected-frequency n="4">Y</selected-frequency>
 		    </frequencies>
 		</tacan>
+		<efis>
+			<tacan alias="/instrumentation/tacan/powered"/>
+		</efis>
 	</instrumentation>
 	
 	<limits>
