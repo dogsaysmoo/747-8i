@@ -85,34 +85,6 @@
 	</condition>
 </model>
 
-<!--model>
-	<name>ND1</name>
-	<path>Aircraft/747-8i/Models/Cockpit/Instruments/MFD/ND.xml</path>
-	<offsets>
-		<x-m> 0.6854</x-m>
-		<y-m>-0.3207</y-m>
-		<z-m> 0.65</z-m>
-		<pitch-deg>-22</pitch-deg>
-	</offsets>
-	<condition>
-		<property>/controls/electric/battery</property>
-	</condition>
-</model>
-  
-<model>
-	<name>ND2</name>
-	<path>Aircraft/747-8i/Models/Cockpit/Instruments/MFD/ND.xml</path>
-	<offsets>
-		<x-m>0.6854</x-m>
-		<y-m>0.3207</y-m>
-		<z-m>0.65</z-m>
-		<pitch-deg>-22</pitch-deg>
-	</offsets>
-	<condition>
-		<property>/controls/electric/battery</property>
-	</condition>
-</model-->
-
 <model>
 	<path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
 	<offsets>
