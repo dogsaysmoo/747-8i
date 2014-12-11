@@ -13,7 +13,7 @@
 			</nightlights>
 			<turbofans>
 				<name type="string">Korean Air</name>
-				<texture>Liveries/748I/Lufthansa_turbofan.png</texture>
+				<texture>Liveries/748I/Korean_turbofan.png</texture>
 			</turbofans>
 			<wings>
 				<name type="string">Korean Air</name>
@@ -25,7 +25,7 @@
 			</nightwings>
 			<nightengines>
 				<name type="string">Korean Air</name>
-				<texture>Liveries/748I/turbofan-lts.png</texture>
+				<texture>Liveries/748I/Korean_turbofan-lts.png</texture>
 			</nightengines>
     </model>
 </sim>
