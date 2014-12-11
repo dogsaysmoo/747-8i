@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+<sim>
+    <model>
+			<livery>
+				<name type="string">Atlas Air</name>
+				<texture>Liveries/748F/GTI.png</texture>
+			</livery>
+			<nightlights>
+				<name type="string">Atlas Air</name>
+				<texture>Liveries/748F/GTI-lights.png</texture>
+			</nightlights>
+			<turbofans>
+				<name type="string">Atlas Air</name>
+				<texture>Liveries/748F/GTI_turbofan.png</texture>
+			</turbofans>
+			<wings>
+				<name type="string">Atlas Air</name>
+				<texture>Liveries/748F/wings.png</texture>
+			</wings>
+			<nightwings>
+				<name type="string">Atlas Air</name>
+				<texture>Liveries/748F/wings-lts.png</texture>
+			</nightwings>
+			<nightengines>
+				<name type="string">Atlas Air</name>
+				<texture>Liveries/748F/GTI_turbofan-lts.png</texture>
+			</nightengines>
+    </model>
+</sim>
+</PropertyList>
