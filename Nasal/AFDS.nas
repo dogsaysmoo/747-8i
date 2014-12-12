@@ -101,6 +101,7 @@ var AFDS = {
         m.Lbank = setlistener(m.bank_switch, func m.setbank(),0,0);
         m.LTMode = setlistener(m.autothrottle_mode, func m.updateATMode(),0,0);
 	m.Lreset = setlistener(m.reset, func m.afds_reset(),0,0);
+	m.Lrefsw = setlistener("instrumentation/efis/mfd/true-north", func m.hdg_ref_sw(),0,0);
 
 	m.e_time = 0;
 	m.status_light = m.AFDS_inputs.initNode("status-light",0,"BOOL");
@@ -116,7 +117,11 @@ var AFDS = {
             # horizontal AP controls
             if(me.lateral_mode.getValue() ==btn) btn=0;
 	    if (btn == 2) {
-		var hdg_now = int(getprop("orientation/heading-magnetic-deg")+0.5);
+		if (getprop("instrumentation/efis/mfd/true-north")) {
+		    var hdg_now = int(getprop("orientation/heading-deg")+0.5);
+		} else {
+		    var hdg_now = int(getprop("orientation/heading-magnetic-deg")+0.5);
+		}
                 me.hdg_setting.setValue(hdg_now);
             }
             me.lateral_mode.setValue(btn);
@@ -235,6 +240,13 @@ var AFDS = {
 		update_afds();
 	    },5);
 	}
+    },
+###################
+    hdg_ref_sw : func {
+        if (me.lateral_mode.getValue() == 2) {
+            me.input(0,2);
+            me.input(0,2);
+        }
     },
 ###################
 
