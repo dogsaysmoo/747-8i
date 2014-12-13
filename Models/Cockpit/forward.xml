@@ -488,4 +488,34 @@
 	</axis>
 </animation>
 
+<!-- Hdg Ref Switch -->
+<animation>
+	<type>rotate</type>
+	<object-name>hdg_ref.sw</object-name>
+	<property>instrumentation/efis/mfd/true-north</property>
+	<factor>-40</factor>
+        <center>
+                <x-m>0.640</x-m>
+                <y-m>0.041</y-m>
+                <z-m>0.762</z-m>
+        </center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+<animation>
+	<type>pick</type>
+	<object-name>hdg_ref.sw</object-name>
+	<action>
+	    <button>0</button>
+	    <repeatable>false</repeatable>
+	    <binding>
+		<command>property-toggle</command>
+		<property>instrumentation/efis/mfd/true-north</property>
+	    </binding>
+	</action>
+</animation>
+
 </PropertyList>
