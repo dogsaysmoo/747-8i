@@ -507,7 +507,7 @@
 			<file>Aircraft/747-8i/Nasal/doors.nas</file>
 			<file>Aircraft/747-8i/Nasal/eicas.nas</file>
 			<file>Aircraft/747-8i/Nasal/efis.nas</file>
-			<file>Aircraft/747-8i/Models/Cockpit/ND.nas</file>
+			<!--file>Aircraft/747-8i/Models/Cockpit/ND.nas</file-->
 			<file>Aircraft/747-8i/Nasal/vspeeds.nas</file>
 			<file>Aircraft/747-8i/Nasal/wipers.nas</file>
 			<file>Aircraft/Generic/limits.nas</file>
