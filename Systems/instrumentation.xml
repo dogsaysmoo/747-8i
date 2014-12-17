@@ -117,6 +117,8 @@
     <number>0</number>
   </magnetic-compass>
 
+<!-- uncomment below for comm radios in FG 3.2 and later -->
+<!--
   <comm-radio>
     <name>comm</name>
     <number>0</number>
@@ -126,6 +128,7 @@
     <name>comm</name>
     <number>1</number>
   </comm-radio>
+-->
 
   <nav-radio>
     <name>nav</name>
