@@ -138,9 +138,37 @@
 	</offsets>
 </model>
 
+<model>
+	<name>ND1</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/MFD/ND.xml</path>
+	<offsets>
+		<x-m> 0.6854</x-m>
+		<y-m>-0.3207</y-m>
+		<z-m> 0.65</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
+</model>
+  
+<model>
+	<name>ND2</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/MFD/ND.xml</path>
+	<offsets>
+		<x-m>0.6854</x-m>
+		<y-m>0.3207</y-m>
+		<z-m>0.65</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
+</model>
+
 
 <!-- canvas nav displays -->
-<animation>
+<!--animation>
 	<type>select</type>
 	<object-name>ND.screenL</object-name>
 	<condition>
@@ -154,7 +182,7 @@
 	<condition>
 		<property>/controls/electric/battery</property>
 	</condition>
-</animation>
+</animation-->
 
 
 
@@ -165,7 +193,7 @@
 	<type>pick</type>
 	<object-name>gear_handle</object-name>
 	<action>
-            <button>1</button>
+            <button>0</button>
             <binding>
                 <command>nasal</command>
                 <script>
@@ -185,7 +213,7 @@
 	<type>pick</type>
 	<object-name>gear_handle</object-name>
 	<action>
-            <button>0</button>
+            <button>1</button>
             <binding>
                 <command>nasal</command>
                 <script>
@@ -489,7 +517,7 @@
 </animation>
 
 <!-- Hdg Ref Switch -->
-<animation>
+<!--animation>
 	<type>rotate</type>
 	<object-name>hdg_ref.sw</object-name>
 	<property>instrumentation/efis/mfd/true-north</property>
@@ -516,6 +544,6 @@
 		<property>instrumentation/efis/mfd/true-north</property>
 	    </binding>
 	</action>
-</animation>
+</animation-->
 
 </PropertyList>

@@ -117,8 +117,6 @@
     <number>0</number>
   </magnetic-compass>
 
-<!-- For ATIS messages in FG 3.2 and later, -->
-<!-- delete this line
   <comm-radio>
     <name>comm</name>
     <number>0</number>
@@ -128,8 +126,6 @@
     <name>comm</name>
     <number>1</number>
   </comm-radio>
-and this line -->
-<!-- (ATIS messages in FG 3.2+)  -->
 
   <nav-radio>
     <name>nav</name>
@@ -169,11 +165,11 @@ and this line -->
     <number>0</number>
   </radar>
 -->
-  <!--navigation-display>
+  <navigation-display>
     <name>nd</name>
     <number>0</number>
     <symbols include="nav-display.xml"/>
-  </navigation-display-->
+  </navigation-display>
 
   <mk-viii>
     <name>mk-viii</name>
