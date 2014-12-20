@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <PropertyList>
+<!--
+Air China 747-8 By E-Savageair
+
+Background:
+
+Air China, owned by China National Aviation Corporation is national airline of 
+the People's Republic of China.  The airline commenced operations on July 1, 
+1988 as a result of the government's decision to split the Civil Aviation 
+Administration of China (CAAC) into six separate airlines: Air China, China 
+Eastern, China Southern, China Northern, China Southwest, and China Northwest.  
+Air China takes over the chief responsibility of long-haul flights and aircraft 
+that once belonged to CAAC.  The operation hub is out Beijing Capital 
+International Airport.
+
+Air China has always owned 747's including the 747-100, and the 'SP' models 
+while operating as the CAAC.  In March 2011, Air China signed an agreement with 
+Boeing to order five 747-8's and to begin service in 2014.  So far they're on 
+schedule: the first 747-8i for Air China, B-2485 the livery deplicted here took 
+to the sky on July 31, 2014 with two other '8s' nearing completion down the 
+assembly line.
+
+The Phoenix logo on the tail of Air China aircraft is an artistic play on the 
+word "VIP" Air China is a member of the Star Alliance.
+-->
 <sim>
     <model>
 			<livery>
