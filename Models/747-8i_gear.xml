@@ -322,7 +322,7 @@
  <type>spin</type>
  <object-name>GearNoseWheels_0</object-name>
  <object-name>GearNoseWheels_1</object-name>
- <property>/gear/gear[0]/rollspeed-ms</property>
+ <property>gear/gear[0]/rollspeed-ms</property>
  <factor>4</factor>
  <center>
   <x-m>-26.101</x-m>
@@ -425,7 +425,8 @@
 <animation>
  <type>rotate</type>
  <object-name>GearWingLeftWheels</object-name>
- <property>position/altitude-agl-ft</property>
+ <!--property>position/altitude-agl-ft</property-->
+ <property>sim/multiplay/generic/float[7]</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
@@ -572,7 +573,7 @@
 <animation>
  <type>spin</type>
  <object-name>wlg.lf</object-name>
- <property>/gear/gear[1]/rollspeed-ms</property>
+ <property>gear/gear[1]/rollspeed-ms</property>
  <factor>4</factor>
  <center>
   <x-m> 1.284</x-m>
@@ -589,7 +590,7 @@
 <animation>
  <type>spin</type>
  <object-name>wlg.lr</object-name>
- <property>/gear/gear[1]/rollspeed-ms</property>
+ <property>gear/gear[1]/rollspeed-ms</property>
  <factor>4</factor>
  <center>
   <x-m> 2.883</x-m>
@@ -692,7 +693,8 @@
 <animation>
  <type>rotate</type>
  <object-name>GearWingRightWheels</object-name>
- <property>position/altitude-agl-ft</property>
+ <!--property>position/altitude-agl-ft</property-->
+ <property>sim/multiplay/generic/float[7]</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
@@ -836,7 +838,7 @@
 <animation>
  <type>spin</type>
  <object-name>wlg.rf</object-name>
- <property>/gear/gear[4]/rollspeed-ms</property>
+ <property>gear/gear[4]/rollspeed-ms</property>
  <factor>4</factor>
  <center>
   <x-m> 1.284</x-m>
@@ -853,7 +855,7 @@
 <animation>
  <type>spin</type>
  <object-name>wlg.rr</object-name>
- <property>/gear/gear[4]/rollspeed-ms</property>
+ <property>gear/gear[4]/rollspeed-ms</property>
  <factor>4</factor>
  <center>
   <x-m> 2.883</x-m>
@@ -937,7 +939,8 @@
  <object-name>GearBodyLeftWheels</object-name>
  <condition>
   <less-than>
-   <property>position/altitude-agl-ft</property>
+   <!--property>position/altitude-agl-ft</property-->
+   <property>sim/multiplay/generic/float[7]</property>
    <value>30.0</value>
   </less-than>
  </condition>
@@ -971,7 +974,8 @@
 <animation>
  <type>rotate</type>
  <object-name>GearBodyLeftWheels</object-name>
- <property>position/altitude-agl-ft</property>
+ <!--property>position/altitude-agl-ft</property-->
+ <property>sim/multiplay/generic/float[7]</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
@@ -1005,7 +1009,7 @@
 <animation>
  <type>spin</type>
  <object-name>blg.lr</object-name>
- <property>/gear/gear[2]/rollspeed-ms</property>
+ <property>gear/gear[2]/rollspeed-ms</property>
  <factor>4</factor>
  <center>
   <x-m> 6.261</x-m>
@@ -1021,7 +1025,7 @@
 <animation>
  <type>spin</type>
  <object-name>blg.lf</object-name>
- <property>/gear/gear[2]/rollspeed-ms</property>
+ <property>gear/gear[2]/rollspeed-ms</property>
  <factor>4</factor>
  <center>
   <x-m> 4.661</x-m>
@@ -1105,7 +1109,8 @@
  <object-name>GearBodyRightWheels</object-name>
  <condition>
   <less-than>
-   <property>position/altitude-agl-ft</property>
+  <!--property>position/altitude-agl-ft</property-->
+  <property>sim/multiplay/generic/float[7]</property>
    <value>30.0</value>
   </less-than>
  </condition>
@@ -1139,7 +1144,8 @@
 <animation>
  <type>rotate</type>
  <object-name>GearBodyRightWheels</object-name>
- <property>position/altitude-agl-ft</property>
+ <!--property>position/altitude-agl-ft</property-->
+ <property>sim/multiplay/generic/float[7]</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
@@ -1173,7 +1179,7 @@
 <animation>
  <type>spin</type>
  <object-name>blg.rr</object-name>
- <property>/gear/gear[3]/rollspeed-ms</property>
+ <property>gear/gear[3]/rollspeed-ms</property>
  <factor>4</factor>
  <center>
   <x-m> 6.261</x-m>
@@ -1189,7 +1195,7 @@
 <animation>
  <type>spin</type>
  <object-name>blg.rf</object-name>
- <property>/gear/gear[3]/rollspeed-ms</property>
+ <property>gear/gear[3]/rollspeed-ms</property>
  <factor>4</factor>
  <center>
   <x-m> 4.661</x-m>
