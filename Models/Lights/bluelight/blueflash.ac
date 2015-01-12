@@ -1,0 +1,48 @@
+AC3Db
+MATERIAL "wire" rgb 1 1 1  amb 1 1 1  emis 1 1 1  spec 0 0 0  shi 32  trans 0.089
+OBJECT world
+kids 5
+OBJECT poly
+name "FD-on.001"
+data 8
+Mesh.866
+crease 30.000000
+kids 0
+OBJECT poly
+name "Plane.011"
+data 8
+Mesh.893
+crease 30.000000
+kids 0
+OBJECT poly
+name "Pwheel.dwn"
+data 9
+Plane.181
+crease 30.000000
+kids 0
+OBJECT poly
+name "Pwheel.up"
+data 9
+Plane.182
+crease 30.000000
+kids 0
+OBJECT poly
+name "whiteflash"
+data 8
+Mesh.930
+texture "transparent.png"
+crease 30.000000
+numvert 4
+0.512143 0.512143 0
+0.512143 -0.512143 0
+-0.512143 -0.512142 0
+-0.512142 0.512143 0
+numsurf 1
+SURF 0x0
+mat 0
+refs 4
+0 0.0375 0.4625
+3 0.0375 0.0375
+2 0.4625 0.0375
+1 0.4625 0.4625
+kids 0

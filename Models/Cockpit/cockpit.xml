@@ -1,0 +1,83 @@
+<PropertyList>
+
+<model>
+	<name>yokes</name>
+	<path>Aircraft/747-8i/Models/Cockpit/yokes.xml</path>
+	<offsets> 
+		<x-m>-25.60</x-m>
+		<y-m>  0.0 </y-m>
+		<z-m>  2.65</z-m>
+	</offsets>
+	<condition>
+		<not>
+			<property>sim/model/hide-yoke</property>
+		</not>
+	</condition>
+</model>
+
+<model>
+	<path>Models/Aircraft/marker.xml</path>
+</model>
+
+<model>
+	<name>overhead</name>
+	<path>Aircraft/747-8i/Models/Cockpit/overhead.xml</path>
+	<offsets>
+		<x-m>-24.14</x-m>
+		<y-m>  0.0 </y-m>
+		<z-m>  4.02</z-m>
+		<pitch-deg>162</pitch-deg>
+	</offsets>
+</model>
+
+<model>
+	<name>seats</name>
+	<path>Aircraft/747-8i/Models/Cockpit/seats.xml</path>
+	<offsets> 
+		<x-m>-25.60</x-m>
+		<y-m>  0.0 </y-m>
+		<z-m>  2.65</z-m>
+	</offsets>
+</model>
+
+<model>
+	<name>pedestal</name>
+	<path>Aircraft/747-8i/Models/Cockpit/pedestal.xml</path>
+	<offsets> 
+		<x-m>-25.60</x-m>
+		<y-m>  0.0 </y-m>
+		<z-m>  2.65</z-m>
+	</offsets>
+</model>
+
+<model>
+	<name>forward</name>
+	<path>Aircraft/747-8i/Models/Cockpit/forward.xml</path>
+	<offsets> 
+		<x-m>-25.60</x-m>
+		<y-m>  0.0 </y-m>
+		<z-m>  2.65</z-m>
+	</offsets>
+</model>
+
+<model>
+	<name>glareshield</name>
+	<path>Aircraft/747-8i/Models/Cockpit/glareshield.xml</path>
+	<offsets> 
+		<x-m>-25.60</x-m>
+		<y-m>  0.0 </y-m>
+		<z-m>  2.65</z-m>
+	</offsets>
+</model>
+
+<model>
+	<name>Magnetic Compass</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/mag-compass.xml</path>
+	<offsets> 
+		<x-m>-24.8</x-m>
+		<y-m>  0.0 </y-m>
+		<z-m>  3.85</z-m>
+	</offsets>
+</model>
+
+</PropertyList>

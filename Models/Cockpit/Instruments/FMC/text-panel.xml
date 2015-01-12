@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<name>FMC text</name>
+<background>Aircraft/747-8i/Models/Cockpit/Instruments/FMC/transparent.png</background>
+<w>512</w>
+<h>256</h>
+
+<instruments>
+    <instrument include="fmctext.xml">
+        <name>FMCtext</name>
+        <x>256</x>
+        <y>128</y>
+        <w>512</w>
+        <h>256</h>
+    </instrument>
+</instruments>
+
+</PropertyList>

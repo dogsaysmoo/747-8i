@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <name>advanced-ctrl</name>
+  <layout>vbox</layout>
+  
+<!-- Header -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <label>Control Panel (advanced)</label>
+    </text>
+
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+
+    <button>
+      <legend/>
+      <key>Esc</key>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <border>2</border>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+  <hrule/>
+
+  <text>
+	<label>IRS Alignment Time</label>
+  </text>
+  <group>
+    <layout>hbox</layout>
+    <halign>center</halign>
+    <radio>
+      <property>systems/inertial-reference/fast</property>
+      <label>5 Sec</label>
+      <binding>
+	<command>nasal</command>
+	<script>
+	    setprop("systems/inertial-reference/fast",1);
+	    setprop("systems/inertial-reference/slow",0);
+	    setprop("systems/inertial-reference/real",0);
+	</script>
+      </binding>
+      <live>1</live>
+    </radio>
+    <radio>
+      <property>systems/inertial-reference/slow</property>
+      <label>5 Min</label>
+      <binding>
+	<command>nasal</command>
+	<script>
+	    setprop("systems/inertial-reference/fast",0);
+	    setprop("systems/inertial-reference/slow",1);
+	    setprop("systems/inertial-reference/real",0);
+	</script>
+      </binding>
+      <live>1</live>
+    </radio>
+    <radio>
+      <property>systems/inertial-reference/real</property>
+      <label>13 Min (realistic)</label>
+      <binding>
+	<command>nasal</command>
+	<script>
+	    setprop("systems/inertial-reference/fast",0);
+	    setprop("systems/inertial-reference/slow",0);
+	    setprop("systems/inertial-reference/real",1);
+	</script>
+      </binding>
+      <live>1</live>
+    </radio>
+  </group>
+
+  <hrule/>
+
+    <group>
+      <layout>hbox</layout>
+      <halign>center</halign>
+      <button>
+	<one-shot>false</one-shot>
+	<property>instrumentation/afds/inputs/reset</property>
+	<live>1</live>
+	<enable>
+	    <not>
+		<property>instrumentation/afds/inputs/reset</property>
+	    </not>
+	</enable>
+	<legend>Reset AFDS</legend>
+	<binding>
+	    <command>property-toggle</command>
+	    <property>instrumentation/afds/inputs/reset</property>
+	</binding>
+      </button>
+    </group>
+  
+  <hrule/>
+
+    <text>
+	<label>Hour Meters</label>
+    </text>
+
+    <group>
+      <layout>hbox</layout>
+      <text>
+	<halign>left</halign>
+	<label>MMM</label>
+	<format>%7.1f hrs - Electrical System</format>
+	<property>systems/hour-meters/electrical-hours</property>
+	<live>1</live>
+      </text>
+    </group>
+
+    <group>
+      <layout>hbox</layout>
+      <text>
+	<halign>left</halign>
+	<label>MMM</label>
+	<format>%7.1f hrs - Airborne</format>
+	<property>systems/hour-meters/flight-hours</property>
+	<live>1</live>
+      </text>
+    </group>
+
+    <group>
+      <layout>hbox</layout>
+      <text>
+	<halign>left</halign>
+	<label>MMM</label>
+	<format>%7.1f hrs - Engine 1</format>
+	<property>systems/hour-meters/engine-hours[0]</property>
+	<live>1</live>
+      </text>
+    </group>
+
+    <group>
+      <layout>hbox</layout>
+      <text>
+	<halign>left</halign>
+	<label>MMM</label>
+	<format>%7.1f hrs - Engine 2</format>
+	<property>systems/hour-meters/engine-hours[1]</property>
+	<live>1</live>
+      </text>
+    </group>
+
+    <group>
+      <layout>hbox</layout>
+      <text>
+	<halign>left</halign>
+	<label>MMM</label>
+	<format>%7.1f hrs - Engine 3</format>
+	<property>systems/hour-meters/engine-hours[2]</property>
+	<live>1</live>
+      </text>
+    </group>
+
+    <group>
+      <layout>hbox</layout>
+      <text>
+	<halign>left</halign>
+	<label>MMM</label>
+	<format>%7.1f hrs - Engine 4</format>
+	<property>systems/hour-meters/engine-hours[3]</property>
+	<live>1</live>
+      </text>
+    </group>
+
+  <hrule/>
+
+    <group>
+      <layout>hbox</layout>
+      <button>
+	<halign>center</halign>
+	<legend>Back</legend>
+	<binding>
+	    <command>nasal</command>
+	    <script>
+		var dlg = gui.Dialog.new("/sim/gui/dialogs/fuel-automanage/dialog", "Aircraft/747-8i/Dialogs/control-panel.xml");
+	    </script>
+	</binding>
+	<binding>
+	    <command>dialog-show</command>
+	    <dialog-name>controlpanel</dialog-name>
+	</binding>
+	<binding>
+	    <command>dialog-close</command>
+	</binding>
+      </button>
+      <button>
+	<halign>center</halign>
+	<legend>Close</legend>
+	<default>true</default>
+	<key>Esc</key>
+	<binding>
+	  <command>dialog-close</command>
+	</binding>
+      </button>
+    </group>
+    
+</PropertyList> 

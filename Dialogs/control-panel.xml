@@ -1,0 +1,404 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <name>controlpanel</name>
+  <layout>vbox</layout>
+  
+<!-- Header -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <label>Control Panel</label>
+    </text>
+
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+
+    <button>
+      <legend/>
+      <key>Esc</key>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <border>2</border>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+  <hrule/>
+
+<!-- Fuel Order -->
+  <text>
+	<label>Fuel Management</label>
+  </text>
+  <group>
+    <layout>hbox</layout>
+      <text>
+	<label>Target (lbs)</label>
+      </text>
+      <!--empty>
+        <stretch>true</stretch>
+      </empty>
+      <text>
+	<label>Target (US gal)</label>
+      </text>
+  </group>
+    <group>
+      <layout>hbox</layout>
+      <halign>center</halign-->
+      <input>
+	<halign>left</halign>
+	<pref-width>150</pref-width>
+	<pref-height>25</pref-height>
+	<enable>
+	    <and>
+		<property>gear/gear/wow</property>
+		<property>controls/gear/brake-parking</property>
+		<not>
+		   <property>controls/groundservice/fueling/loading</property>
+		</not>
+	    </and>
+	</enable>
+	<property>controls/groundservice/fueling/target-lbs</property>
+	<binding>
+	    <command>dialog-apply</command>
+	</binding>
+	<live>1</live>
+      </input>
+      <!--input>
+	<halign>right</halign>
+	<pref-width>150</pref-width>
+	<pref-height>25</pref-height>
+	<enable>
+	    <and>
+		<property>gear/gear/wow</property>
+		<property>controls/gear/brake-parking</property>
+		<not>
+		   <property>controls/groundservice/fueling/loading</property>
+		</not>
+	    </and>
+	</enable>
+	<property>controls/groundservice/fueling/target-gal_us-set</property>
+	<binding>
+	    <command>dialog-apply</command>
+	</binding>
+	<live>1</live>
+      </input-->
+    </group>
+    <group>
+      <layout>hbox</layout>
+      <halign>left</halign>
+      <text>
+	<label>Remaining order (lbs): </label>
+	<halign>left</halign>
+      </text>
+      <text>
+	<halign>right</halign>
+	<visible>
+	  <or>
+	    <less-than>
+		<property>controls/groundservice/fueling/remain-lbs</property>
+		<value>-0.1</value>
+	    </less-than>
+	    <greater-than>
+		<property>controls/groundservice/fueling/remain-lbs</property>
+		<value>0.1</value>
+	    </greater-than>
+	  </or>
+	</visible>
+	<label>999999.9</label>
+	<property>controls/groundservice/fueling/remain-lbs</property>
+	<live>1</live>
+      </text>
+    </group>
+
+  <!--hrule/-->
+
+<!-- Fuel Tender -->
+
+    <group>
+      <layout>hbox</layout>
+      <halign>center</halign>
+      <checkbox>
+	<halign>left</halign>
+	<label>Show Fuel Trucks</label>
+	<enable>
+	    <and>
+		<property>gear/gear/wow</property>
+		<property>controls/gear/brake-parking</property>
+	    </and>
+	</enable>
+	<property>controls/groundservice/fueling/truck</property>
+	<binding>
+	    <command>nasal</command>
+	    <script>
+		if (getprop("controls/groundservice/fueling/truck")) {
+		    setprop("controls/groundservice/fueling/truck",0);
+		} else {
+		    setprop("controls/groundservice/fueling/truck",1);
+		    setprop("controls/groundservice/fueling/pumper",0);
+		}
+	    </script>
+	</binding>
+	<live>1</live>
+      </checkbox>
+      <!--checkbox>
+	<halign>right</halign>
+	<label>Show Fuel Pumper</label>
+	<enable>
+	    <and>
+		<property>gear/gear/wow</property>
+		<property>controls/gear/brake-parking</property>
+	    </and>
+	</enable>
+	<property>controls/groundservice/fueling/pumper</property>
+	<binding>
+	    <command>nasal</command>
+	    <script>
+		if (getprop("controls/groundservice/fueling/pumper")) {
+		    setprop("controls/groundservice/fueling/pumper",0);
+		} else {
+		    setprop("controls/groundservice/fueling/pumper",1);
+		    setprop("controls/groundservice/fueling/truck",0);
+		}
+	    </script>
+	</binding>
+	<live>1</live>
+      </checkbox-->
+    </group>
+
+<!-- Execute Fuel Order -->
+
+    <group>
+      <layout>hbox</layout>
+      <halign>center</halign>
+      <button>
+	<pref-width>120</pref-width>
+	<pref-height>30</pref-height>
+	<halign>center</halign>
+	<legend>Transfer Fuel</legend>
+	<enable>
+	    <and>
+		<property>gear/gear/wow</property>
+		<property>controls/gear/brake-parking</property>
+	    </and>
+	</enable>
+	<binding>
+	    <command>nasal</command>
+	    <script>Boeing747.tanks_refuel();</script>
+	</binding>
+      </button>
+    </group>
+    <group>
+      <layout>hbox</layout>
+      <halign>center</halign>
+      <text>
+	<visible>
+	  <property>controls/groundservice/fueling/loading</property>
+	</visible>
+	<label>Loading!</label>
+	<live>1</live>
+      </text>
+    </group>
+
+  <!--hrule/-->
+
+<!-- "Co Pilot" management -->
+
+  <!--group>
+    <layout>hbox</layout>
+    <text>
+	<halign>left</halign>
+	<label>Co-Pilot</label>
+    </text>
+    <empty>
+	<stretch>true</stretch>
+    </empty>
+  </group-->
+
+  <group>
+    <layout>hbox</layout>
+    <halign>center</halign>
+
+    <checkbox>
+      <halign>center</halign>
+      <label>In-Flight Tank Management</label>
+      <property>controls/fuel/auto-manage</property>
+      <binding>
+	<!--command>nasal</command>
+	<script>
+	if (getprop("controls/fuel/auto-manage")) {
+		setprop("controls/fuel/tank/auto-manage",0);
+		setprop("controls/fuel/tank[1]/auto-manage",0);
+		setprop("controls/fuel/tank[2]/auto-manage",0);
+	} else {
+		setprop("controls/fuel/tank/auto-manage",1);
+		setprop("controls/fuel/tank[1]/auto-manage",1);
+		setprop("controls/fuel/tank[2]/auto-manage",1);
+		Boeing747.tanks_auto(1,3);
+		Boeing747.tanks_auto(2,4);
+	}
+	</script-->
+	<command>property-toggle</command>
+	<property>controls/fuel/auto-manage</property>
+      </binding>
+      <live>1</live>
+    </checkbox>
+  </group>
+  <group>
+    <layout>hbox</layout>
+    <halign>center</halign>
+    <button>
+      <halign>center</halign>
+      <legend>Quick Balance</legend>
+      <enable>
+	<greater-than>
+	    <property>consumables/fuel/total-fuel-lbs</property>
+	    <value>4500</value>
+	</greater-than>
+      </enable>
+      <binding>
+	<command>nasal</command>
+	<script>Boeing747.startup_dist();</script>
+      </binding>
+    </button>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <halign>center</halign>
+
+    <text>
+	<label>See $FG_ROOT/Aircraft/747-8i/about_fuelsystem.txt</label>
+    </text>
+  </group>
+
+  <hrule/>
+
+  <text>
+	<label>Pneumatic System</label>
+  </text>
+  <group>
+    <layout>hbox</layout>
+    <halign>center</halign>
+
+    <checkbox>
+      <halign>center</halign>
+      <label>Ground Air Service</label>
+      <enable>
+	<greater-than>
+	  <property>systems/electrical/external-power</property>
+	  <value>0</value>
+	</greater-than>
+      </enable>
+      <property>systems/pneumatic/air-service</property>
+      <binding>
+        <command>property-toggle</command>
+        <property>systems/pneumatic/air-service</property>
+      </binding>
+      <live>1</live>
+    </checkbox>
+  </group>
+
+  <hrule/>
+
+  <!--text>
+	<label>IRS Alignment Time</label>
+  </text>
+  <group>
+    <layout>hbox</layout>
+    <halign>center</halign>
+    <radio>
+      <property>systems/inertial-reference/fast</property>
+      <label>5 Sec</label>
+      <binding>
+	<command>nasal</command>
+	<script>
+	    setprop("systems/inertial-reference/fast",1);
+	    setprop("systems/inertial-reference/slow",0);
+	    setprop("systems/inertial-reference/real",0);
+	</script>
+      </binding>
+      <live>1</live>
+    </radio>
+    <radio>
+      <property>systems/inertial-reference/slow</property>
+      <label>5 Min</label>
+      <binding>
+	<command>nasal</command>
+	<script>
+	    setprop("systems/inertial-reference/fast",0);
+	    setprop("systems/inertial-reference/slow",1);
+	    setprop("systems/inertial-reference/real",0);
+	</script>
+      </binding>
+      <live>1</live>
+    </radio>
+    <radio>
+      <property>systems/inertial-reference/real</property>
+      <label>13 Min (realistic)</label>
+      <binding>
+	<command>nasal</command>
+	<script>
+	    setprop("systems/inertial-reference/fast",0);
+	    setprop("systems/inertial-reference/slow",0);
+	    setprop("systems/inertial-reference/real",1);
+	</script>
+      </binding>
+      <live>1</live>
+    </radio>
+  </group>
+
+  <hrule/-->
+
+  <!--group>
+    <layout>hbox</layout>
+    <halign>right</halign>
+    <empty>
+	<stretch>true</stretch>
+    </empty>
+    <text>
+	<halign>center</halign>
+	<label>(realistic)</label>
+    </text>
+  </group-->
+
+    <group>
+      <layout>hbox</layout>
+      <button>
+	<halign>center</halign>
+	<legend>Advanced...</legend>
+	<binding>
+	    <command>nasal</command>
+	    <script>
+		var dlg = gui.Dialog.new("/sim/gui/dialogs/fuel-automanage/dialog", "Aircraft/747-8i/Dialogs/advanced-ctrl.xml");
+	    </script>
+	</binding>
+	<binding>
+	    <command>dialog-show</command>
+	    <dialog-name>advanced-ctrl</dialog-name>
+	</binding>
+	<binding>
+	    <command>dialog-close</command>
+	</binding>
+      </button>
+    </group>
+
+  <hrule/>
+
+    <group>
+      <layout>hbox</layout>
+      <button>
+	<halign>center</halign>
+	<legend>Close</legend>
+	<default>true</default>
+	<key>Esc</key>
+	<binding>
+	  <command>dialog-close</command>
+	</binding>
+      </button>
+    </group>
+    
+</PropertyList> 

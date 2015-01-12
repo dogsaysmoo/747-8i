@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>rednav.ac</path>
+  
+  <animation>
+    <type>noshadow</type>
+    <object-name>rednav</object-name>
+    <object-name>navlights</object-name>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>rednav</object-name>
+    <condition>
+		<!--or>
+			<and>
+				<property>controls/lighting/nav-lights</property>
+	    			<not>
+					<property>sim/crashed</property>
+	    			</not>
+				<greater-than>
+					<property>systems/electrical/bus-volts</property>
+					<value>24.0</value>
+				</greater-than>
+			</and-->
+			<greater-than>
+				<property>sim/multiplay/generic/int[7]</property>
+				<value>0</value>
+			</greater-than>
+		<!--/or-->
+    </condition>
+  </animation>
+
+</PropertyList>

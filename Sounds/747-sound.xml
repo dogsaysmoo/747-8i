@@ -1,0 +1,776 @@
+<?xml version="1.0"?>
+ 
+<PropertyList>
+
+<fx>
+
+	<!-- Avionics Hum -->
+	
+	<avhum>
+		<path>Aircraft/747-8i/Sounds/FGOS_Avionics.wav</path>
+		<mode>looped</mode>
+		<type>avionics</type>
+	</avhum>
+
+	<!-- Engine #1	-->
+	
+	<engine>
+		<name>engine1</name>
+		<path>Aircraft/747-8i/Sounds/jet-trent2.wav</path>
+		<mode>looped</mode>
+		<condition>
+			<property>engines/engine/running</property>
+		</condition>
+		<position>
+			<x>-30.0</x>
+			<y>40.0</y>
+			<z>0.0</z>
+		</position>
+		<volume>
+			<!--property>/engines/engine/n1-ind</property>
+			<factor type="double">0.005</factor>
+			<offset type="double">0.025</offset-->
+			<property>/engines/engine/rpm</property>
+			<factor type="double">0.0125</factor>
+			<offset type="double">-0.75</offset>
+			<min>0.0</min>
+			<max>5.0</max>
+		</volume>
+		<reference-dist>600.0</reference-dist>
+		<max-dist>6000.0</max-dist>
+		<!--pitch>
+			<property>/engines/engine/n1-ind</property>
+			<type>log</type>
+			<factor>0.5</factor>
+			<offset>0.65</offset>
+		</pitch-->
+	</engine>
+	<engine>
+		<name>engine1 n1</name>
+		<path>Aircraft/747-8i/Sounds/jet-trent1.wav</path>
+		<mode>looped</mode>
+		<property>engines/engine/rpm</property>
+		<position>
+			<x>-30.0</x>
+			<y>40.0</y>
+			<z>0.0</z>
+		</position>
+		<pitch>
+			<property>/engines/engine/rpm</property>
+			<factor>0.01</factor>
+			<offset>0.8</offset>
+			<min>0.0</min>
+			<max>100.0</max>
+		</pitch>
+		<volume>
+			<property>/engines/engine/rpm</property>
+			<factor type="double">0.1</factor>
+			<min>0.0</min>
+			<max>0.5</max>
+		</volume>
+		<volume>
+			<property>sim/sound/Ovolume</property>
+		</volume>
+		<reference-dist>600.0</reference-dist>
+		<max-dist>6000.0</max-dist>
+	</engine>
+	<reverser>
+		<name>engine1rev</name>
+		<path>Aircraft/747-8i/Sounds/reverser.wav</path>
+		<mode>looped</mode>
+		<condition>
+			<property>engines/engine[0]/running</property>
+		</condition>
+		<position>
+                        <x>-30.0</x>
+                        <y>40.0</y>
+                        <z>0.0</z>
+                </position>
+                <volume>
+                        <property>/engines/engine/n1-ind</property>
+                        <factor type="double">0.005</factor>
+                        <offset type="double">-0.025</offset>
+                </volume>
+		<volume>
+			<property>sim/multiplay/generic/float[6]</property>
+		</volume>
+		<reference-dist>600.0</reference-dist>
+		<max-dist>6000.0</max-dist>
+	</reverser>
+
+	<!-- Engine #2	-->
+	
+	<engine>
+		<name>engine2</name>
+		<path>Aircraft/747-8i/Sounds/jet-trent2.wav</path>
+		<mode>looped</mode>
+		<condition>
+			<property>engines/engine[1]/running</property>
+		</condition>
+		<position>
+			<x>-30.0</x>
+			<y>20.0</y>
+			<z>0.0</z>
+		</position>
+		<volume>
+			<!--property>/engines/engine[1]/n1-ind</property>
+			<factor type="double">0.005</factor>
+			<offset type="double">0.025</offset-->
+			<property>/engines/engine[1]/rpm</property>
+			<factor type="double">0.0125</factor>
+			<offset type="double">-0.75</offset>
+			<min>0.0</min>
+			<max>5.0</max>
+		</volume>
+		<!--pitch>
+			<property>/engines/engine[1]/n1-ind</property>
+			<type>log</type>
+			<factor>0.5</factor>
+			<offset>0.65</offset>
+		</pitch-->
+	</engine>
+	<engine>
+		<name>engine2 n1</name>
+		<path>Aircraft/747-8i/Sounds/jet-trent1.wav</path>
+		<mode>looped</mode>
+		<property>engines/engine[1]/rpm</property>
+		<position>
+			<x>-30.0</x>
+			<y>20.0</y>
+			<z>0.0</z>
+		</position>
+		<pitch>
+			<property>/engines/engine[1]/rpm</property>
+			<factor>0.01</factor>
+			<offset>0.8</offset>
+			<min>0.0</min>
+			<max>100.0</max>
+		</pitch>
+		<volume>
+			<property>/engines/engine[1]/rpm</property>
+			<factor type="double">0.1</factor>
+			<min>0.0</min>
+			<max>0.5</max>
+		</volume>
+		<volume>
+			<property>sim/sound/Ovolume</property>
+		</volume>
+		<reference-dist>600.0</reference-dist>
+		<max-dist>6000.0</max-dist>
+	</engine>
+	<reverser>
+		<name>engine2rev</name>
+		<path>Aircraft/747-8i/Sounds/reverser.wav</path>
+		<mode>looped</mode>
+		<condition>
+			<property>engines/engine[1]/running</property>
+		</condition>
+		<position>
+                        <x>-30.0</x>
+                        <y>20.0</y>
+                        <z>0.0</z>
+                </position>
+                <volume>
+                        <property>/engines/engine[1]/n1-ind</property>
+                        <factor type="double">0.005</factor>
+                        <offset type="double">-0.025</offset>
+                </volume>
+		<volume>
+			<property>sim/multiplay/generic/float[6]</property>
+		</volume>
+		<reference-dist>600.0</reference-dist>
+		<max-dist>6000.0</max-dist>
+	</reverser>
+
+	<!-- Engine #3	-->
+
+	<engine>
+		<name>engine3</name>
+		<path>Aircraft/747-8i/Sounds/jet-trent2.wav</path>
+		<mode>looped</mode>
+		<condition>
+			<property>engines/engine[2]/running</property>
+		</condition>
+		<position>
+			<x>-30.0</x>
+			<y>-20.0</y>
+			<z>0.0</z>
+		</position>
+		<volume>
+			<!--property>/engines/engine[2]/n1-ind</property>
+			<factor type="double">0.005</factor>
+			<offset type="double">0.025</offset>
+			<factor type="double">0.005</factor>
+			<offset type="double">0.025</offset-->
+			<property>/engines/engine[2]/rpm</property>
+			<factor type="double">0.0125</factor>
+			<offset type="double">-0.75</offset>
+			<min>0.0</min>
+			<max>5.0</max>
+		</volume>
+		<!--pitch>
+			<property>/engines/engine[2]/n1-ind</property>
+			<type>log</type>
+			<factor>0.5</factor>
+			<offset>0.65</offset>
+		</pitch-->
+	</engine>
+	<engine>
+		<name>engine3 n1</name>
+		<path>Aircraft/747-8i/Sounds/jet-trent1.wav</path>
+		<mode>looped</mode>
+		<property>engines/engine[2]/rpm</property>
+		<position>
+			<x>-30.0</x>
+			<y>-20.0</y>
+			<z>0.0</z>
+		</position>
+		<pitch>
+			<property>/engines/engine[2]/rpm</property>
+			<factor>0.01</factor>
+			<offset>0.8</offset>
+			<min>0.0</min>
+			<max>100.0</max>
+		</pitch>
+		<volume>
+			<property>/engines/engine[2]/rpm</property>
+			<factor type="double">0.1</factor>
+			<min>0.0</min>
+			<max>0.5</max>
+		</volume>
+		<volume>
+			<property>sim/sound/Ovolume</property>
+		</volume>
+		<reference-dist>600.0</reference-dist>
+		<max-dist>6000.0</max-dist>
+	</engine>
+	<reverser>
+		<name>engine3rev</name>
+		<path>Aircraft/747-8i/Sounds/reverser.wav</path>
+		<mode>looped</mode>
+		<condition>
+			<property>engines/engine[2]/running</property>
+		</condition>
+		<position>
+                        <x>-30.0</x>
+                        <y>-20.0</y>
+                        <z>0.0</z>
+                </position>
+                <volume>
+                        <property>/engines/engine[2]/n1-ind</property>
+                        <factor type="double">0.005</factor>
+                        <offset type="double">-0.025</offset>
+                </volume>
+		<volume>
+			<property>sim/multiplay/generic/float[6]</property>
+		</volume>
+		<reference-dist>600.0</reference-dist>
+		<max-dist>6000.0</max-dist>
+	</reverser>
+
+	<!-- Engine #4	-->
+	
+	<engine>
+		<name>engine4</name>
+		<path>Aircraft/747-8i/Sounds/jet-trent2.wav</path>
+		<mode>looped</mode>
+		<condition>
+			<property>engines/engine[3]/running</property>
+		</condition>
+		<position>
+			<x>-30.0</x>
+			<y>-40.0</y>
+			<z>0.0</z>
+		</position>
+		<volume>
+			<!--property>/engines/engine[3]/n1-ind</property>
+			<factor type="double">0.005</factor>
+			<offset type="double">0.025</offset-->
+			<property>/engines/engine[3]/rpm</property>
+			<factor type="double">0.0125</factor>
+			<offset type="double">-0.75</offset>
+			<min>0.0</min>
+			<max>5.0</max>
+		</volume>
+		<!--pitch>
+			<property>/engines/engine[3]/n1-ind</property>
+			<type>log</type>
+			<factor>0.5</factor>
+			<offset>0.65</offset>
+		</pitch-->
+	</engine>
+	<engine>
+		<name>engine4 n1</name>
+		<path>Aircraft/747-8i/Sounds/jet-trent1.wav</path>
+		<mode>looped</mode>
+		<property>engines/engine[3]/rpm</property>
+		<position>
+			<x>-30.0</x>
+			<y>-40.0</y>
+			<z>0.0</z>
+		</position>
+		<pitch>
+			<property>/engines/engine[3]/rpm</property>
+			<factor>0.01</factor>
+			<offset>0.8</offset>
+			<min>0.0</min>
+			<max>100.0</max>
+		</pitch>
+		<volume>
+			<property>/engines/engine[3]/rpm</property>
+			<factor type="double">0.1</factor>
+			<min>0.0</min>
+			<max>0.5</max>
+		</volume>
+		<volume>
+			<property>sim/sound/Ovolume</property>
+		</volume>
+		<reference-dist>600.0</reference-dist>
+		<max-dist>6000.0</max-dist>
+	</engine>
+	<reverser>
+		<name>engine4rev</name>
+		<path>Aircraft/747-8i/Sounds/reverser.wav</path>
+		<mode>looped</mode>
+		<condition>
+			<property>engines/engine[3]/running</property>
+		</condition>
+		<position>
+                        <x>-30.0</x>
+                        <y>-40.0</y>
+                        <z>0.0</z>
+                </position>
+                <volume>
+                        <property>/engines/engine[3]/n1-ind</property>
+                        <factor type="double">0.005</factor>
+                        <offset type="double">-0.025</offset>
+                </volume>
+		<volume>
+			<property>sim/multiplay/generic/float[6]</property>
+		</volume>
+		<reference-dist>600.0</reference-dist>
+		<max-dist>6000.0</max-dist>
+	</reverser>
+	
+	<!-- Flaps -->
+	
+	<flap>
+		<name>flaps</name>
+		<mode>in-transit</mode>
+		<path>Aircraft/747-8i/Sounds/FGOS_FlapXtndWClick.wav</path>
+		<!--path>Aircraft/747-8i/Sounds/Flaps.wav</path-->
+		<property>/surface-positions/flap-pos-norm</property>
+		<volume>
+			<factor>0.7</factor>
+		</volume>
+		<pitch>
+			<!--factor>1.0</factor-->
+			<offset>3</offset>
+		</pitch>
+	</flap>
+
+	<stall>
+		<name>stall</name>
+		<path>Sounds/stall.wav</path>
+		<condition>
+			<property>/sim/alarms/stall-warning</property>
+		</condition>
+		<volume>
+			<property>/velocities/airspeed-kt</property>
+			<min>30.0</min>
+		</volume>
+	</stall>
+
+	<!-- Warnings -->
+	
+	<config-flaps>
+		<name>config-flaps</name>
+		<mode>looped</mode>
+		<path>Aircraft/747-8i/Sounds/FGOS_Configuration_Warn.wav</path>
+		<condition>
+			<and>
+				<equals>
+					<property>/gear/gear[0]/wow</property>
+					<value>1</value>
+				</equals>
+				<less-than>
+					<property>/surface-positions/flap-pos-norm</property>
+					<value>0.33</value>
+				</less-than>
+				<greater-than>
+					<property>/controls/engines/engine[1]/throttle</property>
+					<value>0.5</value>
+				</greater-than>
+				<greater-than>
+					<property>/controls/engines/engine[2]/throttle</property>
+					<value>0.5</value>
+				</greater-than>
+			</and>
+		</condition>
+	</config-flaps>
+	
+	<config-park-brk>
+		<name>config-park-brk</name>
+		<mode>looped</mode>
+		<path>Aircraft/747-8i/Sounds/FGOS_Configuration_Warn.wav</path>
+		<condition>
+			<and>
+				<equals>
+					<property>/controls/gear/brake-parking</property>
+					<value>1</value>
+				</equals>
+				<greater-than>
+					<property>/controls/engines/engine[1]/throttle</property>
+					<value>0.5</value>
+				</greater-than>
+				<greater-than>
+					<property>/controls/engines/engine[2]/throttle</property>
+					<value>0.5</value>
+				</greater-than>
+			</and>
+		</condition>
+	</config-park-brk>
+	
+	<overspeed>
+		<name>overspeed</name>
+		<mode>looped</mode>
+		<path>Sounds/gear-hrn.wav</path>
+		<condition>
+		    <or>
+			<greater-than>
+				<property>/velocities/mach</property>
+				<value>0.905</value>
+			</greater-than>
+			<greater-than>
+				<property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+				<value>365</value>
+			</greater-than>
+		    </or>
+		</condition>
+	</overspeed>
+	
+	<!-- Additions -->
+	<switch>
+		<name>seatbelt-sign</name>
+		<mode>once</mode>
+		<path>Aircraft/747-8i/Sounds/FastenSeatbelt.wav</path>
+		<condition>
+			<!--property>controls/switches/seatbelt-sign</property-->
+			<property>controls/cabin/seatbelt-sign</property>
+		</condition>
+		<volume>
+			<factor>0.6</factor>
+		</volume>
+	</switch>
+	
+	<switch>
+		<name>seatbelt-sign-off</name>
+		<mode>once</mode>
+		<path>Aircraft/747-8i/Sounds/FastenSeatbelt.wav</path>
+		<condition>
+			<not>
+			<!--property>controls/switches/seatbelt-sign</property-->
+			<property>controls/cabin/seatbelt-sign</property>
+			</not>
+		</condition>
+		<volume>
+			<factor>0.6</factor>
+		</volume>
+	</switch>
+	
+	<switch>
+		<name>switch</name>
+		<mode>once</mode>
+		<path>Sounds/click.wav</path>
+		<condition>
+			<property>sim/sound/click</property>
+		</condition>
+		<volume>
+			<factor>1</factor>
+		</volume>
+	</switch>
+
+	<!-- Gear touchdown -->
+                <gear>
+                        <name>Left main gear touchdown</name>
+                        <path>Aircraft/747-8i/Sounds/touchdown.wav</path>
+                        <mode>once</mode>
+                        <condition>
+                                <property>gear/gear[2]/wow</property>
+                        </condition>
+                        <volume>
+                                <offset>-0.75</offset>
+                        </volume>
+                </gear>
+                <gear>
+                        <name>Right main gear touchdown</name>
+                        <path>Aircraft/747-8i/Sounds/touchdown.wav</path>
+                        <mode>once</mode>
+                        <condition>
+                                <property>gear/gear[3]/wow</property>
+                        </condition>
+                        <volume>
+                                <offset>-0.75</offset>
+                        </volume>
+                </gear>
+
+    <apdisengage>
+        <name>autopilot disengage</name>
+        <mode>once</mode>
+        <type>avionics</type>
+        <path>Aircraft/747-8i/Sounds/autopilot-disengage.wav</path>
+        <condition>
+            <!--property>instrumentation/weu/sound/autopilot-warning</property-->
+            <property>instrumentation/afds/settings/alarm</property>
+        </condition>
+        <volume>
+            <factor>1</factor>
+        </volume>
+    </apdisengage>
+
+<gear1>
+        <name>gear</name>
+        <mode>in-transit</mode>
+        <!--mode>once</mode-->
+        <!--path>Sounds/gear.wav</path-->
+	<path>Aircraft/747-8i/Sounds/gear.wav</path>
+        <property>gear/gear[0]/position-norm</property>
+        <volume>0.30</volume>
+        <pitch>
+            <internal>dt_play</internal>
+            <offset>0.7</offset>
+            <factor>-0.001</factor>
+        </pitch>
+        <position>
+            <x>-22</x>
+            <y>0</y>
+            <z>-2</z>
+        </position>
+    </gear1>
+
+    <gearlock>
+        <name>gear-lock</name>
+        <path>Sounds/gear-lck.wav</path>
+        <condition>
+            <equals>
+                <property>gear/gear[0]/position-norm</property>
+                <value>0</value>
+            </equals>
+        </condition>
+        <volume>0.2</volume>
+        <position>
+            <x>-22</x>
+            <y>0</y>
+            <z>-2</z>
+        </position>
+    </gearlock>
+    
+    
+    <!-- APU sounds -->
+                <apu-start>
+                        <name>apu-strt</name>
+                        <mode>once</mode>
+                        <path>Aircraft/747-8i/Sounds/apu_strt.wav</path>
+                        <condition>
+			    <and>
+                                <equals>
+                                        <property>/controls/electric/apu</property>
+                                        <value>2</value>
+                                </equals>
+                                <equals>
+                                        <property>/engines/apu/running</property>
+                                        <value>0</value>
+                                </equals>
+			    </and>
+                        </condition>
+                        <position>
+                                <x>42.218</x>
+                                <y>0</y>
+                                <z>1.256</z>
+                        </position>
+                        <volume>0.7</volume>
+                </apu-start>
+                
+                <apu-running>
+                        <name>apu-run</name>
+                        <mode>looped</mode>
+                        <path>Aircraft/747-8i/Sounds/apu_run.wav</path>
+                        <condition>
+                                <greater-than>
+                                	<property>/engines/apu/rpm</property>
+                                	<value>2000.0</value>
+                                </greater-than>
+                        </condition>
+                        <position>
+                                <x>42.218</x>
+                                <y>0</y>
+                                <z>1.256</z>
+                        </position>
+                        <volume>0.5</volume>
+                </apu-running>
+                
+                <apu-shutdown>
+                        <name>apu-stop</name>
+                        <mode>once</mode>
+                        <path>Aircraft/747-8i/Sounds/apu_stop.wav</path>
+                        <condition>
+			   <and>
+                        	<greater-than>
+                                        <property>/engines/apu/rpm</property>
+                                        <value>5000.0</value>
+                                </greater-than>
+                                <equals>
+                                        <property>/controls/electric/apu</property>
+                                        <value>0</value>
+                                </equals>
+                                <!--equals>
+                                	<property>/engines/apu/running</property>
+                                	<value>0</value>
+                                </equals-->
+			   </and>
+                        </condition>
+                        <position>
+                                <x>42.218</x>
+                                <y>0</y>
+                                <z>1.256</z>
+                        </position>
+                        <volume>0.5</volume>
+                </apu-shutdown>
+
+<!-- Packs -->
+    <pack0>
+	<name>pack-0</name>
+	<mode>looped</mode>
+	<path>Aircraft/747-8i/Sounds/FGOS_744Run.wav</path>
+	<condition>
+	    <and>
+		<property>systems/pneumatic/pack[0]</property>
+		<not>
+		<property>sim/current-view/internal</property>
+		</not>
+	    </and>
+	</condition>
+	<position>
+		<x>-28.0</x>
+		<y>  8.0</y>
+		<z> -2.0</z>
+	</position>
+	<volume>
+	    <factor>0.2</factor>
+	</volume>
+	<pitch>
+	    <property>controls/pneumatic/pack-high-flow</property>
+	    <factor>0.05</factor>
+	</pitch>
+    </pack0>
+    <pack1>
+	<name>pack-1</name>
+	<mode>looped</mode>
+	<path>Aircraft/747-8i/Sounds/FGOS_744Run.wav</path>
+	<condition>
+	    <and>
+		<property>systems/pneumatic/pack[1]</property>
+		<not>
+		<property>sim/current-view/internal</property>
+		</not>
+	    </and>
+	</condition>
+	<position>
+		<x>-28.0</x>
+		<y>  0.0</y>
+		<z> -2.0</z>
+	</position>
+	<volume>
+	    <factor>0.2</factor>
+	</volume>
+	<pitch>
+	    <property>controls/pneumatic/pack-high-flow</property>
+	    <factor>0.05</factor>
+	</pitch>
+    </pack1>
+    <pack2>
+	<name>pack-2</name>
+	<mode>looped</mode>
+	<path>Aircraft/747-8i/Sounds/FGOS_744Run.wav</path>
+	<condition>
+	    <and>
+		<property>systems/pneumatic/pack[2]</property>
+		<not>
+		<property>sim/current-view/internal</property>
+		</not>
+	    </and>
+	</condition>
+	<position>
+		<x>-28.0</x>
+		<y> -8.0</y>
+		<z> -2.0</z>
+	</position>
+	<volume>
+	    <factor>0.2</factor>
+	</volume>
+	<pitch>
+	    <property>controls/pneumatic/pack-high-flow</property>
+	    <factor>0.05</factor>
+	</pitch>
+    </pack2>
+
+<!-- Hydraulic demand pumps -->
+
+    <hydro0>
+	<name>hydro-0</name>
+	<mode>looped</mode>
+	<path>Aircraft/747-8i/Sounds/FGOS_744Run.wav</path>
+	<condition>
+	    <and>
+		<greater-than>
+		    <property>controls/hydraulic/demand-pump[0]</property>
+		    <value>0</value>
+		</greater-than>
+		<not>
+		<property>sim/current-view/internal</property>
+		</not>
+	    </and>
+	</condition>
+	<position>
+		<x>-30.0</x>
+		<y> 40.0</y>
+		<z>  0.0</z>
+	</position>
+	<volume>
+	    <factor>0.4</factor>
+	</volume>
+	<pitch>
+	    <offset>-0.2</offset>
+	</pitch>
+    </hydro0>
+    <hydro3>
+	<name>hydro-3</name>
+	<mode>looped</mode>
+	<path>Aircraft/747-8i/Sounds/FGOS_744Run.wav</path>
+	<condition>
+	    <and>
+		<greater-than>
+		    <property>controls/hydraulic/demand-pump[3]</property>
+		    <value>0</value>
+		</greater-than>
+		<not>
+		<property>sim/current-view/internal</property>
+		</not>
+	    </and>
+	</condition>
+	<position>
+		<x>-30.0</x>
+		<y>-40.0</y>
+		<z>  0.0</z>
+	</position>
+	<volume>
+	    <factor>0.4</factor>
+	</volume>
+	<pitch>
+	    <offset>-0.2</offset>
+	</pitch>
+    </hydro3>
+
+</fx>
+ 
+</PropertyList>

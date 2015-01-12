@@ -1,0 +1,811 @@
+<!--
+Syd Adams
+777-200 EICAS 
+-->
+
+<PropertyList>
+
+ <path>eicas_eng.ac</path>
+
+<!-- LH Engine -->
+
+
+ <animation>
+   <type>select</type>
+   <object-name>EICASscreen</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>L-N1.needle</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>rotate</type>
+   <object-name>L-N1.needle</object-name>
+<property>/engines/engine/fuel-flow_pph</property>
+   <interpolation>
+     <entry>
+       <ind> 0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>110.0</ind>
+       <dep>214.0</dep>
+     </entry>
+   </interpolation>
+<axis>
+     <x>-1.0</x>
+     <y>0.0</y>
+     <z>0.0</z>
+   </axis>
+   <center>
+     <x-m>0.008</x-m>
+     <y-m>-0.072</y-m>
+     <z-m>0.065</z-m>
+   </center>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>N1.001</object-name>
+<condition>
+   <and>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>0</value>
+      </equals>
+<greater-than>
+<property>/engines/engine/fuel-flow_pph</property>
+<value>99.99</value>
+</greater-than>
+   </and>
+</condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>N1.001</object-name>
+<property>/engines/engine/fuel-flow_pph</property>
+   <factor>1</factor>
+   <step>100</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>N1.002</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>N1.002</object-name>
+<property>/engines/engine/fuel-flow_pph</property>
+   <factor>0.01</factor>
+   <step>10</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>N1.003</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>N1.003</object-name>
+<property>/engines/engine/fuel-flow_pph</property>
+   <factor>0.1</factor>
+   <step>1</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>N1.004</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>N1.004</object-name>
+<property>/engines/engine/fuel-flow_pph</property>
+   <factor>1.0</factor>
+   <step>0.1</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>L-EGT.needle</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>rotate</type>
+   <object-name>L-EGT.needle</object-name>
+<property>/engines/engine/egt-degf</property>
+   <interpolation>
+     <entry>
+       <ind> 0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>1200.0</ind>
+       <dep>212.0</dep>
+     </entry>
+   </interpolation>
+<axis>
+     <x>-1.0</x>
+     <y>0.0</y>
+     <z>0.0</z>
+   </axis>
+   <center>
+     <x-m>0.008</x-m>
+     <y-m>-0.072</y-m>
+     <z-m>0.023</z-m>
+   </center>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>EGT.001</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>EGT.001</object-name>
+<property>/engines/engine/egt-degf</property>
+   <factor>0.001</factor>
+   <step>100</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>EGT.002</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>EGT.002</object-name>
+<property>/engines/engine/egt-degf</property>
+   <factor>0.01</factor>
+   <step>10</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>EGT.003</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>EGT.003</object-name>
+<property>/engines/engine/egt-degf</property>
+   <factor>0.1</factor>
+   <step>1</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>EGT.004</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>EGT.004</object-name>
+<property>/engines/engine/egt-degf</property>
+   <factor>1.0</factor>
+   <step>0.1</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+
+<!-- RH Engine -->
+
+
+ <animation>
+   <type>select</type>
+   <object-name>R-fuel-flow_pph.needle</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>rotate</type>
+   <object-name>R-fuel-flow_pph.needle</object-name>
+<property>/engines/engine[1]/fuel-flow_pph</property>
+   <interpolation>
+     <entry>
+       <ind> 0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>110.0</ind>
+       <dep>214.0</dep>
+     </entry>
+   </interpolation>
+<axis>
+     <x>-1.0</x>
+     <y>0.0</y>
+     <z>0.0</z>
+   </axis>
+   <center>
+     <x-m>0.008</x-m>
+     <y-m>-0.024</y-m>
+     <z-m>0.065</z-m>
+   </center>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>N1.101</object-name>
+<condition>
+   <and>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>0</value>
+      </equals>
+<greater-than>
+<property>/engines/engine[1]/fuel-flow_pph</property>
+<value>99.99</value>
+</greater-than>
+   </and>
+</condition>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>N1.102</object-name>
+   <condition>
+   <and>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+<greater-than>
+<property>/engines/engine[1]/fuel-flow_pph</property>
+<value>9999.99</value>
+</greater-than>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>N1.102</object-name>
+<property>/engines/engine[1]/fuel-flow_pph</property>
+   <factor>0.00001</factor>
+   <step>10000</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>N1.103</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>N1.103</object-name>
+<property>/engines/engine[1]/fuel-flow_pph</property>
+   <factor>0.0001</factor>
+   <step>1000</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>N1.104</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>N1.104</object-name>
+<property>/engines/engine[1]/fuel-flow_pph</property>
+   <factor>0.001</factor>
+   <step>100</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>R-EGT.needle</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>rotate</type>
+   <object-name>R-EGT.needle</object-name>
+<property>/engines/engine[1]/egt-degf</property>
+   <interpolation>
+     <entry>
+       <ind> 0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>1200.0</ind>
+       <dep>212.0</dep>
+     </entry>
+   </interpolation>
+<axis>
+     <x>-1.0</x>
+     <y>0.0</y>
+     <z>0.0</z>
+   </axis>
+   <center>
+     <x-m>0.008</x-m>
+     <y-m>-0.025</y-m>
+     <z-m>0.023</z-m>
+   </center>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>EGT.101</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>EGT.101</object-name>
+<property>/engines/engine[1]/egt-degf</property>
+   <factor>0.001</factor>
+   <step>100</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>EGT.102</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>EGT.102</object-name>
+<property>/engines/engine[1]/egt-degf</property>
+   <factor>0.01</factor>
+   <step>10</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>EGT.103</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>EGT.103</object-name>
+<property>/engines/engine[1]/egt-degf</property>
+   <factor>0.1</factor>
+   <step>1</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>EGT.104</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>EGT.104</object-name>
+<property>/engines/engine[1]/egt-degf</property>
+   <factor>1.0</factor>
+   <step>0.1</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+  
+
+
+<!-- Total Fuel-->
+
+ <animation>
+   <type>select</type>
+   <object-name>TFuel.001</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>TFuel.001</object-name>
+<property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
+   <factor>1.0</factor>
+   <step>0.1</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>TFuel.002</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>TFuel.002</object-name>
+<property>/consumables/fuel/total-fuel-norm</property>
+   <factor>10.0</factor>
+   <step>0.01</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>TFuel.003</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>TFuel.003</object-name>
+<property>/consumables/fuel/total-fuel-norm</property>
+   <factor>100.0</factor>
+   <step>0.001</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!--  TAT   -->
+
+ <animation>
+   <type>select</type>
+   <object-name>Temp.sign</object-name>
+<condition>
+   <and>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>0</value>
+      </equals>
+<less-than>
+ <property>/environment/temperature-degc</property>
+<value>0.0</value>
+</less-than>
+   </and>
+</condition>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>Temp.001</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Temp.001</object-name>
+ <property>/instrumentation/efis/fixed-temp</property>
+  <factor>0.01</factor>
+   <step>10.0</step>
+     <axis>
+       <x>0</x>
+       <y>1</y>
+       <z>0</z>
+     </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>Temp.002</object-name>
+   <condition>
+   <equals>
+    <property>sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Temp.002</object-name>
+ <property>/instrumentation/efis/fixed-temp</property>
+   <factor>0.1</factor>
+   <step>1.0</step>
+     <axis>
+       <x>0</x>
+       <y>1</y>
+       <z>0</z>
+     </axis>
+ </animation>
+
+<!-- Gear Down-->
+
+ <animation>
+   <type>select</type>
+   <object-name>Gear.Annun</object-name>
+<condition>
+   <and>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>0</value>
+      </equals>
+<greater-than>
+ <property>/gear/gear[0]/position-norm</property>
+<value>0.0</value>
+</greater-than>
+   </and>
+</condition>
+ </animation>
+
+<animation>
+<type>select</type>
+<object-name>GearAnnun.ptr1</object-name>
+<condition>
+<and>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>0</value>
+      </equals>
+<greater-than>
+ <property>/gear/gear[0]/position-norm</property>
+<value>0.0</value>
+</greater-than>
+<less-than>
+ <property>/gear/gear[0]/position-norm</property>
+<value>1.0</value>
+</less-than>
+</and>
+</condition>
+ </animation>
+
+<animation>
+<type>select</type>
+<object-name>GearAnnun.ptr2</object-name>
+<condition>
+<and>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>0</value>
+      </equals>
+<equals>
+ <property>/gear/gear[0]/position-norm</property>
+<value>1.0</value>
+</equals>
+</and>
+</condition>
+ </animation>
+
+<animation>
+<type>select</type>
+<object-name>Flap.Annun</object-name>
+<condition>
+<and>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>0</value>
+      </equals>
+<greater-than>
+ <property>/surface-positions/flap-pos-norm</property>
+<value>0.0</value>
+</greater-than>
+</and>
+</condition>
+ </animation>
+
+<animation>
+<type>select</type>
+<object-name>FlapAnnun.ptr</object-name>
+<condition>
+<and>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>0</value>
+      </equals>
+<greater-than>
+ <property>/surface-positions/flap-pos-norm</property>
+<value>0.0</value>
+</greater-than>
+</and>
+</condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>FlapAnnun.ptr</object-name>
+ <property>/surface-positions/flap-pos-norm</property>
+   <factor>0.1475</factor>
+     <axis>
+       <x>0</x>
+       <y>1</y>
+       <z>0</z>
+     </axis>
+ </animation>
+
+</PropertyList>

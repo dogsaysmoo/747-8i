@@ -1,0 +1,692 @@
+<PropertyList>
+
+<!-- # # # # # # # # # # # # # # # # # # # # # -->
+<!-- # Boeing 747-400 EICAS by Gijs de Rooy  # -->
+<!-- # # # # # # # # # # # # # # # # # # # # # -->
+
+<path>eicas_fuel.ac</path>
+
+<!-- Total Fuel-->
+ <model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0</y-m>
+		<z-m> 0.084</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/total-fuel-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- Center-->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0</y-m>
+		<z-m> 0.028</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[0]/level-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- Main #1-->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.071</y-m>
+		<z-m>-0.031</z-m>
+	</offsets>
+	<condition>
+		<greater-than-equals>
+			<property>/consumables/fuel/tank[3]/level-lbs</property>
+			<value>1985</value>
+		</greater-than-equals>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[3]/level-lbs</property>
+			<format type="string">%02.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.071</y-m>
+		<z-m>-0.031</z-m>
+	</offsets>
+	<condition>
+		<less-than>
+			<property>/consumables/fuel/tank[3]/level-lbs</property>
+			<value>1985</value>
+		</less-than>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[3]/level-lbs</property>
+			<format type="string">%02.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- Main #2-->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.037</y-m>
+		<z-m>-0.017</z-m>
+	</offsets>
+	<condition>
+		<greater-than-equals>
+			<property>/consumables/fuel/tank[1]/level-lbs</property>
+			<value>1985</value>
+		</greater-than-equals>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[1]/level-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.037</y-m>
+		<z-m>-0.017</z-m>
+	</offsets>
+	<condition>
+		<less-than>
+			<property>/consumables/fuel/tank[1]/level-lbs</property>
+			<value>1985</value>
+		</less-than>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[1]/level-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- Main #3-->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.037</y-m>
+		<z-m>-0.017</z-m>
+	</offsets>
+	<condition>
+		<greater-than-equals>
+			<property>/consumables/fuel/tank[2]/level-lbs</property>
+			<value>1985</value>
+		</greater-than-equals>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[2]/level-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.037</y-m>
+		<z-m>-0.017</z-m>
+	</offsets>
+	<condition>
+		<less-than>
+			<property>/consumables/fuel/tank[2]/level-lbs</property>
+			<value>1985</value>
+		</less-than>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[2]/level-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- Main #4-->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.071</y-m>
+		<z-m>-0.031</z-m>
+	</offsets>
+	<condition>
+		<greater-than-equals>
+			<property>/consumables/fuel/tank[4]/level-lbs</property>
+			<value>1985</value>
+		</greater-than-equals>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[4]/level-lbs</property>
+			<format type="string">%02.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.071</y-m>
+		<z-m>-0.031</z-m>
+	</offsets>
+	<condition>
+		<less-than>
+			<property>/consumables/fuel/tank[4]/level-lbs</property>
+			<value>1985</value>
+		</less-than>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[4]/level-lbs</property>
+			<format type="string">%02.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- Res #1-->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<!--x-m> 0.007</x-m>
+		<y-m>-0.037</y-m>
+		<z-m>-0.045</z-m-->
+		<x-m> 0.007</x-m>
+		<y-m>-0.071</y-m>
+		<z-m>-0.058</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[5]/level-lbs</property>
+			<format type="string">%01.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- Res #4-->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.071</y-m>
+		<z-m>-0.058</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[6]/level-lbs</property>
+			<format type="string">%01.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- Stab -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<condition>
+	    <equals>
+		<property>/sim/variant</property>
+		<value>8i</value>
+	    </equals>
+	</condition>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0</y-m>
+		<z-m>-0.073</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[7]/level-lbs</property>
+			<format type="string">%02.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<animation>
+	<type>select</type>
+	<object-name>Stab_tank.8i</object-name>
+	<condition>
+	   <equals>
+		<property>/sim/variant</property>
+		<value>8i</value>
+	   </equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>Stab_tank.8F</object-name>
+	<condition>
+	   <equals>
+		<property>/sim/variant</property>
+		<value>8f</value>
+	   </equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.7</object-name>
+	<condition>
+	    <and>
+	      <equals>
+		<property>/sim/variant</property>
+		<value>8i</value>
+	      </equals>
+		<property>consumables/fuel/tank[7]/selected</property>
+		<!--property>controls/fuel/tank[7]/pump</property-->
+	    </and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>xfeedvalve.1</object-name>
+	<condition>
+		<not>
+			<property>controls/fuel/tank[3]/x-feed</property>
+		</not>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>xfeedvalve.2</object-name>
+	<condition>
+		<not>
+			<property>controls/fuel/tank[1]/xfeed-active</property>
+		</not>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>xfeedvalve.3</object-name>
+	<condition>
+		<not>
+			<property>controls/fuel/tank[2]/xfeed-active</property>
+		</not>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>xfeedvalve.4</object-name>
+	<condition>
+		<not>
+			<property>controls/fuel/tank[4]/x-feed</property>
+		</not>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.0</object-name>
+	<condition>
+		<property>/controls/fuel/tank[0]/pump</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.1.fwd</object-name>
+	<condition>
+		<property>/controls/fuel/tank[3]/pump-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.1.aft</object-name>
+	<condition>
+		<property>/controls/fuel/tank[3]/pump-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.2.fwd</object-name>
+	<condition>
+		<property>/controls/fuel/tank[1]/pump-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.2.aft</object-name>
+	<condition>
+		<property>/controls/fuel/tank[1]/pump-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.3.fwd</object-name>
+	<condition>
+		<property>/controls/fuel/tank[2]/pump-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.3.aft</object-name>
+	<condition>
+		<property>/controls/fuel/tank[2]/pump-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.4.fwd</object-name>
+	<condition>
+		<property>/controls/fuel/tank[4]/pump-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.4.aft</object-name>
+	<condition>
+		<property>/controls/fuel/tank[4]/pump-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ovrd1-fwd</object-name>
+	<condition>
+		<property>/controls/fuel/tank[1]/ovrd-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ovrd1-aft</object-name>
+	<condition>
+		<property>/controls/fuel/tank[1]/ovrd-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ovrd2-fwd</object-name>
+	<condition>
+		<property>/controls/fuel/tank[2]/ovrd-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ovrd2-aft</object-name>
+	<condition>
+		<property>/controls/fuel/tank[2]/ovrd-aft</property>
+	</condition>
+</animation>
+
+<!-- flowbars -->
+<animation>
+	<type>select</type>
+	<object-name>flowbar.res2</object-name>
+	<condition>
+		<property>fdm/jsbsim/propulsion/tank[5]/external-flow-rate/tank[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.res3</object-name>
+	<condition>
+		<property>fdm/jsbsim/propulsion/tank[6]/external-flow-rate/tank[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.stab</object-name>
+	<condition>
+	    <and>
+	      <equals>
+		<property>/sim/variant</property>
+		<value>8i</value>
+	      </equals>
+		<property>fdm/jsbsim/propulsion/tank[7]/external-flow-rate/tank[0]</property>
+	    </and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.xfeed</object-name>
+	<condition>
+		<or>
+			<property>fdm/jsbsim/propulsion/tank[0]/external-flow-rate/tank[2]</property>
+			<property>fdm/jsbsim/propulsion/tank[0]/external-flow-rate/tank[3]</property>
+		</or>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.xfeed.1</object-name>
+	<condition>
+		<and>
+			<or>
+				<property>fdm/jsbsim/propulsion/tank[1]/external-flow-rate/tank[2]</property>
+				<property>fdm/jsbsim/propulsion/tank[2]/external-flow-rate/tank[1]</property>
+			</or>
+			<property>/controls/fuel/tank[1]/x-feed</property>
+		</and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.xfeed.2</object-name>
+	<condition>
+		<and>
+			<or>
+				<property>fdm/jsbsim/propulsion/tank[1]/external-flow-rate/tank[2]</property>
+				<property>fdm/jsbsim/propulsion/tank[2]/external-flow-rate/tank[1]</property>
+			</or>
+			<property>/controls/fuel/tank[2]/x-feed</property>
+		</and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.xfeed.3</object-name>
+	<condition>
+		<and>
+			<or>
+				<property>fdm/jsbsim/propulsion/tank[4]/external-flow-rate/tank[3]</property>
+				<property>fdm/jsbsim/propulsion/tank[3]/external-flow-rate/tank[4]</property>
+			</or>
+			<property>/controls/fuel/tank[3]/x-feed</property>
+		</and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.xfeed.4</object-name>
+	<condition>
+		<and>
+			<or>
+				<property>fdm/jsbsim/propulsion/tank[4]/external-flow-rate/tank[3]</property>
+				<property>fdm/jsbsim/propulsion/tank[3]/external-flow-rate/tank[4]</property>
+			</or>
+			<property>/controls/fuel/tank[4]/x-feed</property>
+		</and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.pump.1</object-name>
+	<condition>
+		<or>
+			<property>/controls/fuel/tank[3]/pump-aft</property>
+			<property>/controls/fuel/tank[3]/pump-fwd</property>
+		</or>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.pump.2</object-name>
+	<condition>
+		<or>
+			<property>/controls/fuel/tank[1]/pump-aft</property>
+			<property>/controls/fuel/tank[1]/pump-fwd</property>
+		</or>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.pump.3</object-name>
+	<condition>
+		<or>
+			<property>/controls/fuel/tank[2]/pump-aft</property>
+			<property>/controls/fuel/tank[2]/pump-fwd</property>
+		</or>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.pump.4</object-name>
+	<condition>
+		<or>
+			<property>/controls/fuel/tank[4]/pump-aft</property>
+			<property>/controls/fuel/tank[4]/pump-fwd</property>
+		</or>
+	</condition>
+</animation>
+
+</PropertyList>

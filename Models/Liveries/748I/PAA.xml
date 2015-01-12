@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+<sim>
+    <model>
+			<livery>
+				<name type="string">Pan Am</name>
+				<texture>Liveries/748I/pan-am.png</texture>
+			</livery>
+			<nightlights>
+				<name type="string">Pan Am</name>
+				<texture>Liveries/748I/pan-am_lights.png</texture>
+			</nightlights>
+			<turbofans>
+				<name type="string">Pan Am</name>
+				<texture>Liveries/748I/pan-am_eng.png</texture>
+			</turbofans>
+			<wings>
+				<name type="string">Pan Am</name>
+				<texture>Liveries/748I/wings.png</texture>
+			</wings>
+			<nightwings>
+				<name type="string">Pan Am</name>
+				<texture>Liveries/748I/wings-lts.png</texture>
+			</nightwings>
+			<nightengines>
+				<name type="string">Pan Am</name>
+				<texture>Liveries/748I/pan-am_eng-lts.png</texture>
+			</nightengines>
+    </model>
+</sim>
+</PropertyList>

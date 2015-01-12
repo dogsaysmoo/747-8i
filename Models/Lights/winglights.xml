@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>strobewhite/whitelight.ac</path>
+  
+  <animation>
+    <type>noshadow</type>
+    <object-name>whitelight</object-name>
+  </animation>
+
+  <animation>
+    <type>alpha-test</type>
+    <alpha-factor>0.01</alpha-factor>
+  </animation>
+
+  <animation>
+    <type>billboard</type>
+    <object-name>whitelight</object-name>
+    <spherical type="bool">true</spherical>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>whitelight</object-name>
+    <condition>
+		<!--or>
+			<and>
+				<property>controls/lighting/wing-lights</property>
+	    			<not>
+					<property>sim/crashed</property>
+	    			</not>
+				<greater-than>
+					<property>systems/electrical/bus-volts</property>
+					<value>24.0</value>
+				</greater-than>
+			</and-->
+			<greater-than>
+				<property>sim/multiplay/generic/int[8]</property>
+				<value>0</value>
+			</greater-than>
+		<!--/or-->
+    </condition>
+  </animation>
+
+</PropertyList>

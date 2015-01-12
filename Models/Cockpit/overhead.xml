@@ -1,0 +1,4389 @@
+<PropertyList>
+
+<path>overhead.ac</path>
+
+
+<animation>
+        <type>material</type>
+        <object-name>panel.overhead</object-name>
+        <object-name>panel.elec_eng</object-name>
+        <object-name>panel.irs</object-name>
+        <object-name>panel.electric</object-name>
+        <object-name>panel.hydraulic</object-name>
+        <object-name>panel.cockpitlights</object-name>
+        <object-name>panel.engine_star</object-name>
+        <object-name>panel.fire</object-name>
+        <object-name>panel.engine_start</object-name>
+        <object-name>panel.anti_ice</object-name>
+        <object-name>panel.extlights</object-name>
+        <object-name>panel.pressurization</object-name>
+        <object-name>panel.air</object-name>
+        <object-name>panel.pneumatic</object-name>
+        <object-name>panel.beacons</object-name>
+        <emission>
+                <red>0.5</red>
+                <green>0.4</green>
+                <blue>0.2</blue>
+                <factor-prop>controls/lighting/panel-norm</factor-prop>
+        </emission>
+</animation>
+
+<!-- Intercontinental or Freighter -->
+<animation>
+	<type>select</type>
+	<object-name>fuel_stab.r</object-name>
+	<object-name>fuel_stab.l</object-name>
+	<object-name>panel.fuel</object-name>
+	<condition>
+	    <equals>
+		<property>/sim/variant</property>
+		<value>8i</value>
+	    </equals>
+	</condition>
+</animation>
+<animation>
+        <type>material</type>
+        <object-name>panel.fuel</object-name>
+	<condition>
+	    <equals>
+		<property>/sim/variant</property>
+		<value>8i</value>
+	    </equals>
+	</condition>
+        <emission>
+                <red>0.5</red>
+                <green>0.4</green>
+                <blue>0.2</blue>
+                <factor-prop>controls/lighting/panel-norm</factor-prop>
+        </emission>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>panel.fuel.748F</object-name>
+	<condition>
+	    <equals>
+		<property>/sim/variant</property>
+		<value>8f</value>
+	    </equals>
+	</condition>
+</animation>
+<animation>
+        <type>material</type>
+        <object-name>panel.fuel.748F</object-name>
+	<condition>
+	    <equals>
+		<property>/sim/variant</property>
+		<value>8f</value>
+	    </equals>
+	</condition>
+        <emission>
+                <red>0.5</red>
+                <green>0.4</green>
+                <blue>0.2</blue>
+                <factor-prop>controls/lighting/panel-norm</factor-prop>
+        </emission>
+</animation>
+
+<!--effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/747-8i/Models/Effects/lightmap_overhead.png</image>
+		</texture>
+		<factor><use>/controls/lighting/panel-overhead-norm</use></factor>
+	</parameters>
+	<object-name>panel.air</object-name>
+	<object-name>panel.anti_ice</object-name>
+	<object-name>panel.beacons</object-name>
+	<object-name>panel.cockpitlights</object-name>
+	<object-name>panel.elec_engine</object-name>
+	<object-name>panel.electric</object-name>
+	<object-name>panel.engine_start</object-name>
+	<object-name>panel.extlights</object-name>
+	<object-name>panel.fire</object-name>
+	<object-name>panel.fuel</object-name>
+	<object-name>panel.hydraulic</object-name>
+	<object-name>panel.irs</object-name>
+	<object-name>panel.pressurization</object-name>
+</effect>
+
+<effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/747-8i/Models/Effects/lightmap_overhead_switches.png</image>
+		</texture>
+		<factor><use>/controls/lighting/panel-overhead-norm</use></factor>
+	</parameters>
+	<object-name>apu</object-name>
+	<object-name>auto-ignition</object-name>
+	<object-name>dem_pump_sw.1</object-name>
+	<object-name>dem_pump_sw.2</object-name>
+	<object-name>dem_pump_sw.3</object-name>
+	<object-name>dem_pump_sw.4</object-name>
+	<object-name>equip_cooling</object-name>
+	<object-name>irsc</object-name>
+	<object-name>irsl</object-name>
+	<object-name>irsr</object-name>
+	<object-name>pack.1</object-name>
+	<object-name>pack.2</object-name>
+	<object-name>pack.3</object-name>
+	<object-name>stbypwr</object-name>
+	<object-name>sw.light.dome</object-name>
+	<object-name>sw.light.glare.flood</object-name>
+	<object-name>sw.light.glare.panel</object-name>
+	<object-name>sw.light.ovhd</object-name>
+	<object-name>wiperl</object-name>
+	<object-name>wiperr</object-name>
+</effect-->
+
+<!-- Electrical -->
+<animation>
+	<type>pick</type>
+	<object-name>stbypwr</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.turn_stby_pwr_sw(1)</script>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.turn_stby_pwr_sw(-1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>stbypwr</object-name>
+	<property>/controls/electric/standby-power</property>
+	<factor>-40</factor>
+	<center>
+		<x-m>-0.063</x-m>
+		<y-m>-0.333</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>apu</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.turn_apu_sw(1)</script>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.turn_apu_sw(-1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>apu</object-name>
+	<property>/controls/electric/apu</property>
+	<factor>-40</factor>
+	<center>
+		<x-m>-0.063</x-m>
+		<y-m>-0.187</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<!-- U T I L -->
+<animation>
+	<type>pick</type>
+	<object-name>utility.l</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_utility(0)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation> 
+	<type>select</type>
+		<object-name>utility.l.ON</object-name>
+	<condition>
+		<property>/controls/electric/utility[0]</property>
+	</condition>
+</animation>
+ 
+<animation>
+	<type>select</type>
+		<object-name>utility.l.OFF</object-name>
+	<condition>
+		<property>/systems/electrical/utility-off[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>utility.l</object-name>
+		<object-name>utility.l.ON</object-name>
+		<object-name>utility.l.OFF</object-name>
+	<property>/controls/electric/utility[0]</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>utility.r</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_utility(1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation> 
+	<type>select</type>
+		<object-name>utility.r.ON</object-name>
+	<condition>
+		<property>/controls/electric/utility[1]</property>
+	</condition>
+</animation>
+ 
+<animation>
+	<type>select</type>
+		<object-name>utility.r.OFF</object-name>
+	<condition>
+		<property>/systems/electrical/utility-off[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>utility.r</object-name>
+		<object-name>utility.r.ON</object-name>
+		<object-name>utility.r.OFF</object-name>
+	<property>/controls/electric/utility[1]</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>ext_pwr.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_ext_apu('ext', 0)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>ext_pwr.1.AVAIL</object-name>
+	<condition>
+		<equals>
+			<property>/systems/electrical/external-power[0]</property>
+			<value>1</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>ext_pwr.1.ON</object-name>
+	<condition>
+		<equals>
+			<property>/systems/electrical/external-power[0]</property>
+			<value>2</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>apu_gen.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_ext_apu('apu', 0)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>apu_gen.1.AVAIL</object-name>
+	<condition>
+		<equals>
+			<property>/systems/electrical/apu-generator[0]</property>
+			<value>1</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>apu_gen.1.ON</object-name>
+	<condition>
+		<equals>
+			<property>/systems/electrical/apu-generator[0]</property>
+			<value>2</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>apu_gen.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_ext_apu('apu', 1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>apu_gen.2.AVAIL</object-name>
+	<condition>
+		<equals>
+			<property>/systems/electrical/apu-generator[1]</property>
+			<value>1</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>apu_gen.2.ON</object-name>
+	<condition>
+		<equals>
+			<property>/systems/electrical/apu-generator[1]</property>
+			<value>2</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>ext_pwr.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_ext_apu('ext', 1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>ext_pwr.2.AVAIL</object-name>
+	<condition>
+		<equals>
+			<property>/systems/electrical/external-power[1]</property>
+			<value>1</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>ext_pwr.2.ON</object-name>
+	<condition>
+		<equals>
+			<property>/systems/electrical/external-power[1]</property>
+			<value>2</value>
+		</equals>
+	</condition>
+</animation>
+
+<!-- B A T T -->
+<animation>
+	<type>pick</type>
+	<object-name>battery</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<condition>
+				<property>/controls/switches/covers/battery-switch</property>
+			</condition>
+			<command>nasal</command>
+			<script>electrical.push_batt_sw()</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>battery.cover</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/switches/covers/battery-switch</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>battery.ON</object-name>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>battery.OFF</object-name>
+	<condition>
+		<property>/systems/electrical/battery-off</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>battery</object-name>
+	<object-name>battery.cover</object-name>
+	<object-name>battery.ON</object-name>
+	<object-name>battery.OFF</object-name>
+	<property>/controls/electric/battery</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>battery.cover</object-name>
+	<property>/controls/switches/covers/battery-switch</property>
+	<factor>-120</factor>
+	<axis>
+		<x1-m>-0.035</x1-m>
+		<y1-m>-0.270</y1-m>
+		<z1-m>-0.009</z1-m>
+		<x2-m>-0.035</x2-m>
+		<y2-m>-0.250</y2-m>
+		<z2-m>-0.009</z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>bustie_eng.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_bus_tie(0)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>bustie_eng.1.AUTO</object-name>
+		<condition>
+		<property>/controls/electric/bus-tie[0]</property>
+		</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>bustie_eng.1.ISLN</object-name>
+		<condition>
+		<property>/systems/electrical/bus-isolation[0]</property>
+		</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>bustie_eng.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_bus_tie(1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>bustie_eng.2.AUTO</object-name>
+		<condition>
+		<property>/controls/electric/bus-tie[1]</property>
+		</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>bustie_eng.2.ISLN</object-name>
+		<condition>
+		<property>/systems/electrical/bus-isolation[1]</property>
+		</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>bustie_eng.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_bus_tie(2)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>bustie_eng.3.AUTO</object-name>
+		<condition>
+		<property>/controls/electric/bus-tie[2]</property>
+		</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>bustie_eng.3.ISLN</object-name>
+		<condition>
+		<property>/systems/electrical/bus-isolation[2]</property>
+		</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>bustie_eng.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_bus_tie(3)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>bustie_eng.4.AUTO</object-name>
+		<condition>
+		<property>/controls/electric/bus-tie[3]</property>
+		</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>bustie_eng.4.ISLN</object-name>
+		<condition>
+		<property>/systems/electrical/bus-isolation[3]</property>
+		</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>drive_eng.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_drive_disc(0)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>drive_eng.1.DRIVE</object-name>
+		<condition>
+		<property>/systems/electrical/generator-drive[0]</property>
+		</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>drive_eng.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_drive_disc(1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>drive_eng.2.DRIVE</object-name>
+		<condition>
+		<property>/systems/electrical/generator-drive[1]</property>
+		</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>drive_eng.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_drive_disc(2)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>drive_eng.3.DRIVE</object-name>
+		<condition>
+		<property>/systems/electrical/generator-drive[2]</property>
+		</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>drive_eng.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_drive_disc(3)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>drive_eng.4.DRIVE</object-name>
+		<condition>
+		<property>/systems/electrical/generator-drive[3]</property>
+		</condition>
+</animation>
+
+<!-- GEN CONT -->
+<animation>
+	<type>pick</type>
+	<object-name>gen_eng.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_gen_cont(0)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>gen_eng.1.ON</object-name>
+	<condition>
+		<property>/controls/electric/generator-control[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>gen_eng.1.OFF</object-name>
+	<condition>
+		<property>/systems/electrical/generator-off[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>gen_eng.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_gen_cont(1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>gen_eng.2.ON</object-name>
+	<condition>
+		<property>/controls/electric/generator-control[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>gen_eng.2.OFF</object-name>
+	<condition>
+		<property>/systems/electrical/generator-off[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>gen_eng.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_gen_cont(2)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>gen_eng.3.ON</object-name>
+	<condition>
+		<property>/controls/electric/generator-control[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>gen_eng.3.OFF</object-name>
+	<condition>
+		<property>/systems/electrical/generator-off[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>gen_eng.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>electrical.push_gen_cont(3)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>gen_eng.4.ON</object-name>
+	<condition>
+		<property>/controls/electric/generator-control[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+		<object-name>gen_eng.4.OFF</object-name>
+	<condition>
+		<property>/systems/electrical/generator-off[3]</property>
+	</condition>
+</animation>
+
+<!-- Engine Start & Fuel Jettison -->
+
+<!--animation>
+	<type>pick</type>
+	<object-name>auto-ignition</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/engines/auto-ignition</property>
+			<step>1</step>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>auto-ignition</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/engines/auto-ignition</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>auto-ignition</object-name>
+	<property>/controls/engines/auto-ignition</property>
+	<factor>-40</factor>
+	<center>
+		<x-m> 0.026</x-m>
+		<y-m>-0.034</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>con-ignition</object-name>
+	<object-name>con-ignition_lit</object-name>
+	<object-name>con-ignition_unlit</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/con-ignition</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+		<type>select</type>
+		<object-name>con-ignition_lit</object-name>
+		<condition>
+		<equals>
+			<property>/controls/engines/con-ignition</property>
+			<value>1</value>
+		</equals>
+		</condition>
+</animation>
+
+<animation>
+		<type>select</type>
+		<object-name>con-ignition_unlit</object-name>
+		<condition>
+		<not>
+			<equals>
+				<property>/controls/engines/con-ignition</property>
+				<value>1</value>
+			</equals>
+		</not>
+		</condition>
+</animation>
+ 
+<animation>
+	<type>translate</type>
+	<object-name>con-ignition</object-name>
+	<object-name>con-ignition_lit</object-name>
+	<object-name>con-ignition_unlit</object-name>
+	<property>/controls/engines/con-ignition</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation-->
+
+<animation>
+	<type>pick</type>
+	<object-name>starter.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[0]/starter</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>starter.sel.1</object-name>
+	<condition>
+		<property>/controls/engines/engine[0]/starter</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>starter.1</object-name>
+	<object-name>starter.sel.1</object-name>
+	<property>/controls/engines/engine[0]/starter</property>
+	<factor>0.011</factor>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>starter.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[1]/starter</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>starter.sel.2</object-name>
+	<condition>
+		<property>/controls/engines/engine[1]/starter</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>starter.2</object-name>
+	<object-name>starter.sel.2</object-name>
+	<property>/controls/engines/engine[1]/starter</property>
+	<factor>0.011</factor>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>starter.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[2]/starter</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>starter.sel.3</object-name>
+	<condition>
+		<property>/controls/engines/engine[2]/starter</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>starter.3</object-name>
+	<object-name>starter.sel.3</object-name>
+	<property>/controls/engines/engine[2]/starter</property>
+	<factor>0.011</factor>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>starter.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[3]/starter</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>starter.sel.4</object-name>
+	<condition>
+		<property>/controls/engines/engine[3]/starter</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>starter.4</object-name>
+	<object-name>starter.sel.4</object-name>
+	<property>/controls/engines/engine[3]/starter</property>
+	<factor>0.011</factor>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<!--animation>
+	<type>pick</type>
+	<object-name>fuel-to-remain</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>true</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/fuel/fuel-to-remain</property>
+			<step>1000</step>
+			<min>0</min>
+			<max>400000</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fuel-to-remain</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>true</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/fuel/fuel-to-remain</property>
+			<step>-1000</step>
+			<min>0</min>
+			<max>400000</max>
+		</binding>
+	</action>
+</animation-->
+
+<animation>
+	<type>pick</type>
+	<object-name>fuel_nozzle.l</object-name>
+	<object-name>fuel_nozzle.r</object-name>
+	<object-name>fuel_nozzle.l.ON</object-name>
+	<object-name>fuel_nozzle.r.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/fuel/dump-valve</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>fuel_nozzle.l.ON</object-name>
+	<object-name>fuel_nozzle.r.ON</object-name>
+	<condition>
+		<property>/controls/fuel/dump-valve</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>fuel_nozzle.l</object-name>
+	<object-name>fuel_nozzle.r</object-name>
+	<object-name>fuel_nozzle.l.ON</object-name>
+	<object-name>fuel_nozzle.r.ON</object-name>
+	<object-name>jettL.cover</object-name>
+	<object-name>jettR.cover</object-name>
+	<property>/controls/fuel/dump-valve</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>jettL.cover</object-name>
+	<object-name>jettR.cover</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/switches/covers/jettison</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>jettL.cover</object-name>
+	<object-name>jettR.cover</object-name>
+	<property>/controls/switches/covers/jettison</property>
+	<factor>-120</factor>
+	<axis>
+		<x1-m>0.021</x1-m>
+		<y1-m>-0.270</y1-m>
+		<z1-m>-0.009</z1-m>
+		<x2-m>0.021</x2-m>
+		<y2-m>-0.250</y2-m>
+		<z2-m>-0.009</z2-m>
+	</axis>
+</animation>
+
+<!-- Fire Protection -->
+
+<animation>
+	<type>pick</type>
+	<object-name>fire_eng.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine/cutoff</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/engine/bleed</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fire_eng.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[1]/cutoff</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/engine[1]/bleed</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fire_eng.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[2]/cutoff</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/engine[2]/bleed</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fire_eng.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[3]/cutoff</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/engine[3]/bleed</property>
+		</binding>
+	</action>
+</animation>
+
+<effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/747-8i/Models/Effects/lightmap_overhead_switches.png</image>
+		</texture>
+		<condition><use>/controls/engines/engine[0]/on-fire</use></condition>
+	</parameters>
+	<object-name>fire_eng.1</object-name>
+</effect>
+
+<effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/747-8i/Models/Effects/lightmap_overhead_switches.png</image>
+		</texture>
+		<condition><use>/controls/engines/engine[1]/on-fire</use></condition>
+	</parameters>
+	<object-name>fire_eng.2</object-name>
+</effect>
+
+<effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/747-8i/Models/Effects/lightmap_overhead_switches.png</image>
+		</texture>
+		<condition><use>/controls/engines/engine[2]/on-fire</use></condition>
+	</parameters>
+	<object-name>fire_eng.3</object-name>
+</effect>
+
+<effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/747-8i/Models/Effects/lightmap_overhead_switches.png</image>
+		</texture>
+		<condition><use>/controls/engines/engine[3]/on-fire</use></condition>
+	</parameters>
+	<object-name>fire_eng.4</object-name>
+</effect>
+
+<!-- Anti-Ice, Ice & Rain -->
+
+<!--animation>
+	<type>pick</type>
+	<object-name>anti-ice_eng.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/anti-ice/engine/carb-heat</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/anti-ice/engine/inlet-heat</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>anti-ice_eng.1</object-name>
+	<property>/controls/anti-ice/engine/inlet-heat</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.204</x-m>
+		<y-m> 0.0</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>anti-ice_eng.2</object-name>
+	<action>
+	 <button>0</button>
+	 <repeatable>false</repeatable>	
+	 <binding>
+		<command>property-toggle</command>
+		<property>/controls/anti-ice/engine[1]/carb-heat</property>
+	 </binding>
+	 <binding>
+		<command>property-toggle</command>
+		<property>/controls/anti-ice/engine[1]/inlet-heat</property>
+	 </binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>anti-ice_eng.2</object-name>
+	<property>/controls/anti-ice/engine[1]/inlet-heat</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.194</x-m>
+		<y-m> 0.0</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>anti-ice_eng.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/anti-ice/engine[2]/carb-heat</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/anti-ice/engine[2]/inlet-heat</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>anti-ice_eng.3</object-name>
+	<property>/controls/anti-ice/engine[2]/inlet-heat</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.194</x-m>
+		<y-m> 0.0</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>anti-ice_eng.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/anti-ice/engine[3]/carb-heat</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/anti-ice/engine[3]/inlet-heat</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>anti-ice_eng.4</object-name>
+	<property>/controls/anti-ice/engine[3]/inlet-heat</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.204</x-m>
+		<y-m> 0.0</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation-->
+
+<animation>
+	<type>pick</type>
+	<object-name>anti-ice_wing</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/anti-ice/wing-heat</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>anti-ice_wing</object-name>
+	<property>/controls/anti-ice/wing-heat</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.232</x-m>
+		<y-m>-0.080</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>1</x>
+		<y>0</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>wiperl</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/electric/wiperl/switch</property>
+			<step>1</step>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>wiperl</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/electric/wiperl/switch</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>wiperl</object-name>
+	<property>/controls/electric/wiperl/switch</property>
+	<factor>-45</factor>
+	<center>
+		<x-m> 0.231</x-m>
+		<y-m> 0.005</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>wiperr</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/electric/wiperr/switch</property>
+			<step>1</step>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>wiperr</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/electric/wiperr/switch</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>wiperr</object-name>
+	<property>/controls/electric/wiperr/switch</property>
+	<factor>-45</factor>
+	<center>
+		<x-m> 0.231</x-m>
+		<y-m> 0.105</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<!-- Fuel -->
+
+<animation>
+	<type>pick</type>
+	<object-name>x-feed.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[3]/x-feed</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(3);</script>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>x-feed.1.BAR</object-name>
+	<condition>
+		<property>controls/fuel/tank[3]/x-feed</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>x-feed.1</object-name>
+	<object-name>x-feed.1.BAR</object-name>
+	<property>/controls/fuel/tank[3]/x-feed</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>x-feed.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[1]/x-feed</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(1);</script>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>x-feed.2.BAR</object-name>
+	<condition>
+		<property>controls/fuel/tank[1]/x-feed</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>x-feed.2</object-name>
+	<object-name>x-feed.2.BAR</object-name>
+	<object-name>xfeed2.cover</object-name>
+	<property>/controls/fuel/tank[1]/x-feed</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xfeed2.cover</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/switches/covers/xfeed1</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>xfeed2.cover</object-name>
+	<property>/controls/switches/covers/xfeed1</property>
+	<factor>-120</factor>
+	<axis>
+		<x1-m>0.075</x1-m>
+		<y1-m>-0.270</y1-m>
+		<z1-m>-0.009</z1-m>
+		<x2-m>0.075</x2-m>
+		<y2-m>-0.250</y2-m>
+		<z2-m>-0.009</z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>x-feed.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+				<property>controls/fuel/tank[2]/x-feed</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(2);</script>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>x-feed.3.BAR</object-name>
+	<condition>
+		<property>controls/fuel/tank[2]/x-feed</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>x-feed.3</object-name>
+	<object-name>x-feed.3.BAR</object-name>
+	<object-name>xfeed3.cover</object-name>
+	<property>/controls/fuel/tank[2]/x-feed</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>xfeed3.cover</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/switches/covers/xfeed2</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>xfeed3.cover</object-name>
+	<property>/controls/switches/covers/xfeed2</property>
+	<factor>-120</factor>
+	<axis>
+		<x1-m>0.075</x1-m>
+		<y1-m>-0.270</y1-m>
+		<z1-m>-0.009</z1-m>
+		<x2-m>0.075</x2-m>
+		<y2-m>-0.250</y2-m>
+		<z2-m>-0.009</z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>x-feed.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[4]/x-feed</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(4);</script>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>x-feed.4.BAR</object-name>
+	<condition>
+		<property>controls/fuel/tank[4]/x-feed</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>x-feed.4</object-name>
+	<object-name>x-feed.4.BAR</object-name>
+	<property>/controls/fuel/tank[4]/x-feed</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>pump.1.fwd</object-name>
+	<object-name>pump.1.fwd.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[3]/pump-fwd</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(3);</script>
+		</binding-->
+		<!--binding>
+			<command>nasal</command>
+			<script>
+			   var pump1fpwr = func {
+			      if (getprop("consumables/fuel/tank[3]/selected")) {
+				setprop("consumables/fuel/tank[3]/selected",0);
+			      }else{
+				if (getprop("controls/fuel/tank[3]/pump-aft")) {
+				   setprop("consumables/fuel/tank[3]/selected",1);
+				}
+			      }
+			   }
+			   pump1fpwr();
+			</script>
+		</binding-->
+		<!--binding>
+			<condition>
+				<property>controls/fuel/tank[3]/pump-aft</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[3]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>controls/fuel/tank[3]/pump-aft</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[3]/selected</property>
+			<value>false</value>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>pump.1.fwd</object-name>
+	<object-name>pump.1.fwd.ON</object-name>
+	<property>/controls/fuel/tank[3]/pump-fwd</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.1.fwd.ON</object-name>
+	<condition>
+		<property>/controls/fuel/tank[3]/pump-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>pump.1.aft</object-name>
+	<object-name>pump.1.aft.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[3]/pump-aft</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(3);</script>
+		</binding-->
+		<!--binding>
+			<command>nasal</command>
+			<script>
+			   var pump1apwr = func {
+			      if (getprop("consumables/fuel/tank[3]/selected")) {
+				setprop("consumables/fuel/tank[3]/selected",0);
+			      }else{
+				if (getprop("controls/fuel/tank[3]/pump-fwd")) {
+				   setprop("consumables/fuel/tank[3]/selected",1);
+				}
+			      }
+			   }
+			   pump1apwr();
+			</script>
+		</binding-->
+		<!--binding>
+			<condition>
+				<property>controls/fuel/tank[3]/pump-fwd</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[3]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>controls/fuel/tank[3]/pump-fwd</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[3]/selected</property>
+			<value>false</value>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>pump.1.aft</object-name>
+	<object-name>pump.1.aft.ON</object-name>
+	<property>/controls/fuel/tank[3]/pump-aft</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.1.aft.ON</object-name>
+	<condition>
+		<property>/controls/fuel/tank[3]/pump-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>pump.2.fwd</object-name>
+	<object-name>pump.2.fwd.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[1]/pump-fwd</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(1);</script>
+		</binding-->
+		<!--binding>
+			<command>nasal</command>
+			<script>
+			   var pump2fpwr = func {
+			      if (getprop("consumables/fuel/tank[1]/selected")) {
+				setprop("consumables/fuel/tank[1]/selected",0);
+				setprop("consumables/fuel/tank[5]/selected",0);
+			      }else{
+				if (getprop("controls/fuel/tank[1]/pump-aft")) {
+				   setprop("consumables/fuel/tank[1]/selected",1);
+				   setprop("consumables/fuel/tank[5]/selected",1);
+				}
+			      }
+			   }
+			   pump2fpwr();
+			</script>
+		</binding-->
+		<!--binding>
+			<condition>
+				<property>controls/fuel/tank[1]/pump-aft</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[1]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>controls/fuel/tank[1]/pump-aft</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[1]/selected</property>
+			<value>false</value>
+		</binding>
+		<binding>
+			<condition>
+				<property>consumables/fuel/tank[1]/selected</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[5]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>consumables/fuel/tank[1]/selected</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[5]/selected</property>
+			<value>false</value>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>pump.2.fwd</object-name>
+	<object-name>pump.2.fwd.ON</object-name>
+	<property>/controls/fuel/tank[1]/pump-fwd</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.2.fwd.ON</object-name>
+	<condition>
+		<property>/controls/fuel/tank[1]/pump-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>pump.2.aft</object-name>
+	<object-name>pump.2.aft.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[1]/pump-aft</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(1);</script>
+		</binding-->
+		<!--binding>
+			<command>nasal</command>
+			<script>
+			   var pump2apwr = func {
+			      if (getprop("consumables/fuel/tank[1]/selected")) {
+				setprop("consumables/fuel/tank[1]/selected",0);
+				setprop("consumables/fuel/tank[5]/selected",0);
+			      }else{
+				if (getprop("controls/fuel/tank[1]/pump-fwd")) {
+				   setprop("consumables/fuel/tank[1]/selected",1);
+				   setprop("consumables/fuel/tank[5]/selected",1);
+				}
+			      }
+			   }
+			   pump2apwr();
+			</script>
+		</binding-->
+		<!--binding>
+			<condition>
+				<property>controls/fuel/tank[1]/pump-fwd</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[1]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>controls/fuel/tank[1]/pump-fwd</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[1]/selected</property>
+			<value>false</value>
+		</binding>
+		<binding>
+			<condition>
+				<property>consumables/fuel/tank[1]/selected</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[5]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>consumables/fuel/tank[1]/selected</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[5]/selected</property>
+			<value>false</value>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>pump.2.aft</object-name>
+	<object-name>pump.2.aft.ON</object-name>
+	<property>/controls/fuel/tank[1]/pump-aft</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.2.aft.ON</object-name>
+	<condition>
+		<property>/controls/fuel/tank[1]/pump-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>ovrd.2.aft</object-name>
+	<object-name>ovrd.2.aft.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[1]/ovrd-aft</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(1);</script>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>ovrd.2.aft</object-name>
+	<object-name>ovrd.2.aft.ON</object-name>
+	<property>/controls/fuel/tank[1]/ovrd-aft</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ovrd.2.aft.ON</object-name>
+	<condition>
+ 	    <and>
+		<property>/controls/fuel/tank[1]/ovrd-aft</property>
+		<property>/controls/fuel/tank[1]/ovrd-active</property>
+	    </and>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>ovrd.2.fwd</object-name>
+	<object-name>ovrd.2.fwd.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[1]/ovrd-fwd</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(1);</script>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>ovrd.2.fwd</object-name>
+	<object-name>ovrd.2.fwd.ON</object-name>
+	<property>/controls/fuel/tank[1]/ovrd-fwd</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ovrd.2.fwd.ON</object-name>
+	<condition>
+	    <and>
+		<property>/controls/fuel/tank[1]/ovrd-fwd</property>
+		<property>/controls/fuel/tank[1]/ovrd-active</property>
+	    </and>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>cwt.l</object-name>
+	<object-name>cwt.l.ON</object-name>
+	<object-name>cwt.r</object-name>
+	<object-name>cwt.r.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank/pump</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(0);</script>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>cwt.l</object-name>
+	<object-name>cwt.l.ON</object-name>
+	<object-name>cwt.r</object-name>
+	<object-name>cwt.r.ON</object-name>
+	<property>/controls/fuel/tank/pump</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>cwt.l.ON</object-name>
+	<object-name>cwt.r.ON</object-name>
+	<condition>
+		<property>/controls/fuel/tank/pump</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fuel_stab.l</object-name>
+	<object-name>fuel_stab.l.ON</object-name>
+	<object-name>fuel_stab.r</object-name>
+	<object-name>fuel_stab.r.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[7]/pump</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(7);</script>
+		</binding-->
+		<!--binding>
+			<condition>
+				<property>systems/electrical/ac-bus</property>
+			</condition>
+			<command>property-toggle</command>
+			<property>consumables/fuel/tank/selected</property>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>fuel_stab.l</object-name>
+	<object-name>fuel_stab.l.ON</object-name>
+	<object-name>fuel_stab.r</object-name>
+	<object-name>fuel_stab.r.ON</object-name>
+	<!--property>consumables/fuel/tank[7]/selected</property-->
+	<property>controls/fuel/tank[7]/pump</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>fuel_stab.l.ON</object-name>
+	<object-name>fuel_stab.r.ON</object-name>
+	<condition>
+		<property>consumables/fuel/tank[7]/selected</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>pump.3.fwd</object-name>
+	<object-name>pump.3.fwd.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[2]/pump-fwd</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(2);</script>
+		</binding-->
+		<!--binding>
+			<command>nasal</command>
+			<script>
+			   var pump3fpwr = func {
+			      if (getprop("consumables/fuel/tank[2]/selected")) {
+				setprop("consumables/fuel/tank[2]/selected",0);
+				setprop("consumables/fuel/tank[6]/selected",0);
+			      }else{
+				if (getprop("controls/fuel/tank[2]/pump-aft")) {
+				   setprop("consumables/fuel/tank[2]/selected",1);
+				   setprop("consumables/fuel/tank[6]/selected",1);
+				}
+			      }
+			   }
+			   pump3fpwr();
+			</script>
+		</binding-->
+		<!--binding>
+			<condition>
+				<property>controls/fuel/tank[2]/pump-aft</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[2]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>controls/fuel/tank[2]/pump-aft</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[2]/selected</property>
+			<value>false</value>
+		</binding>
+		<binding>
+			<condition>
+				<property>consumables/fuel/tank[2]/selected</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[6]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>consumables/fuel/tank[2]/selected</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[6]/selected</property>
+			<value>false</value>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>pump.3.fwd</object-name>
+	<object-name>pump.3.fwd.ON</object-name>
+	<property>/controls/fuel/tank[2]/pump-fwd</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.3.fwd.ON</object-name>
+	<condition>
+		<property>/controls/fuel/tank[2]/pump-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>pump.3.aft</object-name>
+	<object-name>pump.3.aft.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[2]/pump-aft</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(2);</script>
+		</binding-->
+		<!--binding>
+			<command>nasal</command>
+			<script>
+			   var pump3apwr = func {
+			      if (getprop("consumables/fuel/tank[2]/selected")) {
+				setprop("consumables/fuel/tank[2]/selected",0);
+				setprop("consumables/fuel/tank[6]/selected",0);
+			      }else{
+				if (getprop("controls/fuel/tank[2]/pump-fwd")) {
+				   setprop("consumables/fuel/tank[2]/selected",1);
+				   setprop("consumables/fuel/tank[6]/selected",1);
+				}
+			      }
+			   }
+			   pump3apwr();
+			</script>
+		</binding-->
+		<!--binding>
+			<condition>
+				<property>controls/fuel/tank[2]/pump-fwd</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[2]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>controls/fuel/tank[2]/pump-fwd</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[2]/selected</property>
+			<value>false</value>
+		</binding>
+		<binding>
+			<condition>
+				<property>consumables/fuel/tank[2]/selected</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[6]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>consumables/fuel/tank[2]/selected</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[6]/selected</property>
+			<value>false</value>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>pump.3.aft</object-name>
+	<object-name>pump.3.aft.ON</object-name>
+	<property>/controls/fuel/tank[2]/pump-aft</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.3.aft.ON</object-name>
+	<condition>
+		<property>/controls/fuel/tank[2]/pump-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>ovrd.3.aft</object-name>
+	<object-name>ovrd.3.aft.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[2]/ovrd-aft</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(2);</script>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>ovrd.3.aft</object-name>
+	<object-name>ovrd.3.aft.ON</object-name>
+	<property>/controls/fuel/tank[2]/ovrd-aft</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ovrd.3.aft.ON</object-name>
+	<condition>
+	    <and>
+		<property>/controls/fuel/tank[2]/ovrd-aft</property>
+		<property>/controls/fuel/tank[2]/ovrd-active</property>
+	    </and>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>ovrd.3.fwd</object-name>
+	<object-name>ovrd.3.fwd.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[2]/ovrd-fwd</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(2);</script>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>ovrd.3.fwd</object-name>
+	<object-name>ovrd.3.fwd.ON</object-name>
+	<property>/controls/fuel/tank[2]/ovrd-fwd</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ovrd.3.fwd.ON</object-name>
+	<condition>
+	    <and>
+		<property>/controls/fuel/tank[2]/ovrd-fwd</property>
+		<property>/controls/fuel/tank[2]/ovrd-active</property>
+	    </and>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>pump.4.fwd</object-name>
+	<object-name>pump.4.fwd.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[4]/pump-fwd</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(4);</script>
+		</binding-->
+		<!--binding>
+			<command>nasal</command>
+			<script>
+			   var pump4fpwr = func {
+			      if (getprop("consumables/fuel/tank[4]/selected")) {
+				setprop("consumables/fuel/tank[4]/selected",0);
+			      }else{
+				if (getprop("controls/fuel/tank[4]/pump-aft")) {
+				   setprop("consumables/fuel/tank[4]/selected",1);
+				}
+			      }
+			   }
+			   pump4fpwr();
+			</script>
+		</binding-->
+		<!--binding>
+			<condition>
+				<property>controls/fuel/tank[4]/pump-aft</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[4]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>controls/fuel/tank[4]/pump-aft</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[4]/selected</property>
+			<value>false</value>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>pump.4.fwd</object-name>
+	<object-name>pump.4.fwd.ON</object-name>
+	<property>/controls/fuel/tank[4]/pump-fwd</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.4.fwd.ON</object-name>
+	<condition>
+		<property>/controls/fuel/tank[4]/pump-fwd</property>
+	</condition>		
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>pump.4.aft</object-name>
+	<object-name>pump.4.aft.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/tank[4]/pump-aft</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_toggle(4);</script>
+		</binding-->
+		<!--binding>
+			<command>nasal</command>
+			<script>
+			   var pump4apwr = func {
+			      if (getprop("consumables/fuel/tank[4]/selected")) {
+				setprop("consumables/fuel/tank[4]/selected",0);
+			      }else{
+				if (getprop("controls/fuel/tank[4]/pump-fwd")) {
+				   setprop("consumables/fuel/tank[4]/selected",1);
+				}
+			      }
+			   }
+			   pump4apwr();
+			</script>
+		</binding-->
+		<!--binding>
+			<condition>
+				<property>controls/fuel/tank[4]/pump-fwd</property>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[4]/selected</property>
+			<value>true</value>
+		</binding>
+		<binding>
+			<condition>
+				<not>
+				<property>controls/fuel/tank[4]/pump-fwd</property>
+				</not>
+			</condition>
+			<command>property-assign</command>
+			<property>consumables/fuel/tank[4]/selected</property>
+			<value>false</value>
+		</binding-->
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>pump.4.aft</object-name>
+	<object-name>pump.4.aft.ON</object-name>
+	<property>/controls/fuel/tank[4]/pump-aft</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.4.aft.ON</object-name>
+	<condition>
+		<property>/controls/fuel/tank[4]/pump-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fuel_xfer</object-name>
+	<object-name>fuel_xfer.lit</object-name>
+	<object-name>fuel_xfer.unlit</object-name>
+	<action>
+                <button>0</button>
+                <repeatable>false</repeatable>
+                <binding>
+			<command>property-toggle</command>
+			<property>controls/fuel/fuel-xfer</property>
+		</binding>
+		<!--binding>
+			<command>nasal</command>
+			<script>Boeing747.tanks_fuelxfer();</script>
+		</binding-->
+	</action>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>fuel_xfer.unlit</object-name>
+	<condition>
+	    <not>
+		<property>controls/fuel/fuel-xfer</property>
+	    </not>
+	</condition>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>fuel_xfer.lit</object-name>
+	<condition>
+		<property>controls/fuel/fuel-xfer</property>
+	</condition>
+</animation>
+<animation>
+	<type>translate</type>
+	<object-name>fuel_xfer</object-name>
+	<object-name>fuel_xfer.lit</object-name>
+	<object-name>fuel_xfer.unlit</object-name>
+	<property>controls/fuel/fuel-xfer</property>
+	<factor>0.0045</factor>
+        <axis>
+                <x> 0</x>
+                <y> 0</y>
+                <z>-1</z>
+        </axis>
+</animation>
+
+<!-- IRS/INS -->
+<animation>
+	<type>pick</type>
+	<object-name>irsl</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.IRSl.knob(1);</script>
+		</binding> 
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.IRSl.knob(-1);</script>
+		</binding> 
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>irsl</object-name>
+	<property>controls/inertial-reference/position</property>
+	<factor>-45</factor>
+	<center>
+		<x-m>-0.106</x-m>
+		<y-m>-0.332</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>irsc</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.IRSc.knob(1);</script>
+		</binding> 
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.IRSc.knob(-1);</script>
+		</binding> 
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>irsc</object-name>
+	<property>controls/inertial-reference/position[1]</property>
+	<factor>-45</factor>
+	<center>
+		<x-m>-0.106</x-m>
+		<y-m>-0.261</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>irsr</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.IRSr.knob(1);</script>
+		</binding> 
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.IRSr.knob(-1);</script>
+		</binding> 
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>irsr</object-name>
+	<property>controls/inertial-reference/position[2]</property>
+	<factor>-45</factor>
+	<center>
+		<x-m>-0.106</x-m>
+		<y-m>-0.190</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<!-- Pneumatics -->
+
+<animation>
+	<type>pick</type>
+	<object-name>Pack.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/pack-control[0]</property>
+			<!--step>1</step>
+			<min>0</min>
+			<max>3</max-->
+		</binding>
+	</action>
+</animation>
+<animation>
+	<type>translate</type>
+	<object-name>Pack.1</object-name>
+	<object-name>Pack.1.ON</object-name>
+	<property>/controls/pneumatic/pack-control[0]</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>Pack.1.ON</object-name>
+	<condition>
+		<property>/systems/pneumatic/pack[0]</property>
+	</condition>
+</animation>
+
+<!--animation>
+	<type>pick</type>
+	<object-name>pack.1</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/pack-control[0]</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>pack.1</object-name>
+	<property>/controls/pneumatic/pack-control[0]</property>
+	<factor>-35</factor>
+	<center>
+		<x-m> 0.153</x-m>
+		<y-m> 0.184</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation-->
+
+<animation>
+	<type>pick</type>
+	<object-name>Pack.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/pack-control[1]</property>
+			<!--step>1</step>
+			<min>0</min>
+			<max>3</max-->
+		</binding>
+	</action>
+</animation>
+<animation>
+	<type>translate</type>
+	<object-name>Pack.2</object-name>
+	<object-name>Pack.2.ON</object-name>
+	<property>/controls/pneumatic/pack-control[1]</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>Pack.2.ON</object-name>
+	<condition>
+		<property>/systems/pneumatic/pack[1]</property>
+	</condition>
+</animation>
+
+<!--animation>
+	<type>pick</type>
+	<object-name>pack.2</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/pack-control[1]</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>pack.2</object-name>
+	<property>/controls/pneumatic/pack-control[1]</property>
+	<factor>-35</factor>
+	<center>
+		<x-m> 0.153</x-m>
+		<y-m> 0.261</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation-->
+
+<animation>
+	<type>pick</type>
+	<object-name>Pack.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/pack-control[2]</property>
+			<!--step>1</step>
+			<min>0</min>
+			<max>3</max-->
+		</binding>
+	</action>
+</animation>
+<animation>
+	<type>translate</type>
+	<object-name>Pack.3</object-name>
+	<object-name>Pack.3.ON</object-name>
+	<property>/controls/pneumatic/pack-control[2]</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>Pack.3.ON</object-name>
+	<condition>
+		<property>/systems/pneumatic/pack[2]</property>
+	</condition>
+</animation>
+
+<!--animation>
+	<type>pick</type>
+	<object-name>pack.3</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/pack-control[2]</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>pack.3</object-name>
+	<property>/controls/pneumatic/pack-control[2]</property>
+	<factor>-35</factor>
+	<center>
+		<x-m> 0.153</x-m>
+		<y-m> 0.336</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation-->
+
+<animation>
+	<type>pick</type>
+	<object-name>equip_cooling</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/equip-cooling</property>
+			<step>1</step>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>equip_cooling</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/equip-cooling</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>equip_cooling</object-name>
+	<property>/controls/pneumatic/equip-cooling</property>
+	<factor>-45</factor>
+	<center>
+		<x-m> 0.104</x-m>
+		<y-m> 0.182</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>pack_hi_flow</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/pack-high-flow</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>pack_hi_flow</object-name>
+	<object-name>pack_hi_flow.ON</object-name>
+	<property>/controls/pneumatic/pack-high-flow</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pack_hi_flow.ON</object-name>
+	<condition>
+		<property>/controls/pneumatic/pack-high-flow</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pack_rst.SYSFAULT</object-name>
+	<condition>
+		<property>/systems/pneumatic/pack-sys-fault</property>
+	</condition>
+</animation>
+<animation>
+	<type>pick</type>
+	<object-name>pack_rst.SYSFAULT</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>property-assign</command>
+			<property>/systems/pneumatic/pack-sys-fault</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>bleed_eng.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/engine-bleed[0]</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>bleed_eng.1</object-name>
+	<object-name>bleed_eng.1.ON</object-name>
+	<object-name>bleed_eng.1.OFF</object-name>
+	<property>/controls/pneumatic/engine-bleed[0]</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bleed_eng.1.ON</object-name>
+	<condition>
+		<property>/controls/pneumatic/engine-bleed[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bleed_eng.1.OFF</object-name>
+	<condition>
+		<property>/systems/pneumatic/engine-bleed-off[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>bleed_eng.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/engine-bleed[1]</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>bleed_eng.2</object-name>
+	<object-name>bleed_eng.2.ON</object-name>
+	<object-name>bleed_eng.2.OFF</object-name>
+	<property>/controls/pneumatic/engine-bleed[1]</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bleed_eng.2.ON</object-name>
+	<condition>
+		<property>/controls/pneumatic/engine-bleed[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bleed_eng.2.OFF</object-name>
+	<condition>
+		<property>/systems/pneumatic/engine-bleed-off[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>bleed_eng.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/engine-bleed[2]</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>bleed_eng.3</object-name>
+	<object-name>bleed_eng.3.ON</object-name>
+	<object-name>bleed_eng.3.OFF</object-name>
+	<property>/controls/pneumatic/engine-bleed[2]</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bleed_eng.3.ON</object-name>
+	<condition>
+		<property>/controls/pneumatic/engine-bleed[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bleed_eng.3.OFF</object-name>
+	<condition>
+		<property>/systems/pneumatic/engine-bleed-off[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>bleed_eng.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/engine-bleed[3]</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>bleed_eng.4</object-name>
+	<object-name>bleed_eng.4.ON</object-name>
+	<object-name>bleed_eng.4.OFF</object-name>
+	<property>/controls/pneumatic/engine-bleed[3]</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bleed_eng.4.ON</object-name>
+	<condition>
+		<property>/controls/pneumatic/engine-bleed[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bleed_eng.4.OFF</object-name>
+	<condition>
+		<property>/systems/pneumatic/engine-bleed-off[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pack.1.sysfault</object-name>
+	<condition>
+		<property>/systems/pneumatic/system-fault[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pack.2.sysfault</object-name>
+	<condition>
+		<property>/systems/pneumatic/system-fault[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pack.3.sysfault</object-name>
+	<condition>
+		<property>/systems/pneumatic/system-fault[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pack.4.sysfault</object-name>
+	<condition>
+		<property>/systems/pneumatic/system-fault[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>bleed_apu</object-name>
+	<object-name>bleed_apu.ON</object-name>
+	<object-name>bleed_apu.VALVE</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/APU-bleed-valve</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>bleed_apu</object-name>
+	<object-name>bleed_apu.ON</object-name>
+	<object-name>bleed_apu.VALVE</object-name>
+	<property>/controls/pneumatic/APU-bleed-valve</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bleed_apu.ON</object-name>
+	<condition>
+		<property>/systems/pneumatic/APU-bleed</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>bleed_apu.VALVE</object-name>
+	<condition>
+		<property>/controls/pneumatic/APU-bleed-valve</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>isln.l</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/isolation-valve[0]</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>isln.l</object-name>
+	<object-name>isln.l.BAR</object-name>
+	<object-name>isln.l.VALVE</object-name>
+	<property>/controls/pneumatic/isolation-valve[0]</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>isln.l.VALVE</object-name>
+	<condition>
+		<property>/systems/pneumatic/isolation-valve[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>isln.l.BAR</object-name>
+	<condition>
+		<property>/controls/pneumatic/isolation-valve[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>isln.r</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/pneumatic/isolation-valve[1]</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>isln.r</object-name>
+	<object-name>isln.r.BAR</object-name>
+	<object-name>isln.r.VALVE</object-name>
+	<property>/controls/pneumatic/isolation-valve[1]</property>
+	<factor>0.0045</factor>
+	<axis>
+		<x> 0</x>
+		<y> 0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>isln.r.VALVE</object-name>
+	<condition>
+		<property>/systems/pneumatic/isolation-valve[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>isln.r.BAR</object-name>
+	<condition>
+		<property>/controls/pneumatic/isolation-valve[1]</property>
+	</condition>
+</animation>
+
+<!-- Hydraulics -->
+<!-- SYS FAULT lights -->
+<animation>
+	<type>select</type>
+	<object-name>sys_fault.1.ON</object-name>
+	<condition>
+		<property>systems/hydraulic/system-fault[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>sys_fault.2.ON</object-name>
+	<condition>
+		<property>systems/hydraulic/system-fault[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>sys_fault.3.ON</object-name>
+	<condition>
+		<property>systems/hydraulic/system-fault[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>sys_fault.4.ON</object-name>
+	<condition>
+		<property>systems/hydraulic/system-fault[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>dem_press_low.1.ON</object-name>
+	<condition>
+		<property>systems/hydraulic/demand-pump-pressure-low[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>dem_press_low.2.ON</object-name>
+	<condition>
+		<property>systems/hydraulic/demand-pump-pressure-low[1]</property>
+	</condition>
+</animation>
+<animation>
+	<type>select</type>
+	<object-name>dem_press_low.3.ON</object-name>
+	<condition>
+		<property>systems/hydraulic/demand-pump-pressure-low[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>dem_press_low.4.ON</object-name>
+	<condition>
+		<property>systems/hydraulic/demand-pump-pressure-low[3]</property>
+	</condition>
+</animation>
+
+<!-- demand pump rotaries -->
+<animation>
+	<type>pick</type>
+	<object-name>dem_pump_sw.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[0].dem_sw(1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>dem_pump_sw.1</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[0].dem_sw(-1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>dem_pump_sw.1</object-name>
+	<property>controls/hydraulic/demand-pump[0]</property>
+	<factor>-40</factor>
+	<center>
+		<x-m> 0.191</x-m>
+		<y-m>-0.334</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>dem_pump_sw.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[1].dem_sw(1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>dem_pump_sw.2</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[1].dem_sw(-1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>dem_pump_sw.2</object-name>
+	<property>controls/hydraulic/demand-pump[1]</property>
+	<factor>-40</factor>
+	<center>
+		<x-m> 0.191</x-m>
+		<y-m>-0.288</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>dem_pump_sw.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[2].dem_sw(1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>dem_pump_sw.3</object-name>
+	<action>
+	<button>1</button>
+	<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[2].dem_sw(-1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>dem_pump_sw.3</object-name>
+	<property>controls/hydraulic/demand-pump[2]</property>
+	<factor>-40</factor>
+	<center>
+		<x-m> 0.191</x-m>
+		<y-m>-0.233</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>dem_pump_sw.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[3].dem_sw(1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>dem_pump_sw.4</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[3].dem_sw(-1)</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>dem_pump_sw.4</object-name>
+	<property>controls/hydraulic/demand-pump[3]</property>
+	<factor>-40</factor>
+	<center>
+		<x-m> 0.191</x-m>
+		<y-m>-0.187</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
+
+<!-- engine driven pump switches & lights -->
+<animation>
+	<type>pick</type>
+	<object-name>eng_pump_sw.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[0].edp_sw()</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>eng_pump_sw.1</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[0].edp_sw()</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>eng_pump_sw.1.ON</object-name>
+	<condition>
+		<property>controls/hydraulic/engine-pump[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>eng_pump_sw.1.PRESS</object-name>
+	<condition>
+		<property>systems/hydraulic/engine-pump-pressure-low[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>eng_pump_sw.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[1].edp_sw()</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>eng_pump_sw.2</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[1].edp_sw()</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>eng_pump_sw.2.ON</object-name>
+	<condition>
+		<property>controls/hydraulic/engine-pump[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>eng_pump_sw.2.PRESS</object-name>
+	<condition>
+		<property>systems/hydraulic/engine-pump-pressure-low[1]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>eng_pump_sw.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[2].edp_sw()</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>eng_pump_sw.3</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[2].edp_sw()</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>eng_pump_sw.3.ON</object-name>
+	<condition>
+		<property>controls/hydraulic/engine-pump[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>eng_pump_sw.3.PRESS</object-name>
+	<condition>
+		<property>systems/hydraulic/engine-pump-pressure-low[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>eng_pump_sw.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[3].edp_sw()</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>eng_pump_sw.4</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>nasal</command>
+			<script>hydraulic.hyd_sys[3].edp_sw()</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>eng_pump_sw.4.ON</object-name>
+	<condition>
+		<property>controls/hydraulic/engine-pump[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>eng_pump_sw.4.PRESS</object-name>
+	<condition>
+		<property>systems/hydraulic/engine-pump-pressure-low[3]</property>
+	</condition>
+</animation>
+
+<!-- Exterior lights -->
+
+<animation>
+	<type>pick</type>
+	<object-name>inbdl</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<!--binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-light-inbdl</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[0]</property>
+		</binding-->
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[1]</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[2]</property>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>inbdl</object-name>
+	<property>controls/lighting/landing-lights[1]</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.285</x-m>
+		<y-m> 0.000</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>inbdr</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<!--binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-light-inbdr</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[0]</property>
+		</binding-->
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[1]</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[2]</property>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>inbdr</object-name>
+	<property>controls/lighting/landing-lights[2]</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.285</x-m>
+		<y-m> 0.000</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>outbdl</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<!--binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-light-outbdl</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[0]</property>
+		</binding-->
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[1]</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[2]</property>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>outbdl</object-name>
+	<property>controls/lighting/landing-lights[1]</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.285</x-m>
+		<y-m> 0.000</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>outbdr</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<!--binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-light-outbdr</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[0]</property>
+		</binding-->
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[1]</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[2]</property>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>outbdr</object-name>
+	<property>controls/lighting/landing-lights[2]</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.285</x-m>
+		<y-m> 0.000</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>sw.taxi.001</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/taxi-lights</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/landing-lights[0]</property>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
+	</action>
+</animation>
+<animation>
+	<type>rotate</type>
+	<object-name>sw.taxi.001</object-name>
+	<property>controls/lighting/taxi-lights</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.284</x-m>
+		<y-m> 0.174</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>sw.beacon</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/beacon</property>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>sw.beacon</object-name>
+	<property>controls/lighting/beacon</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.284</x-m>
+		<y-m> 0.174</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>sw.light.nav</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/nav-lights</property>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>sw.light.nav</object-name>
+	<property>controls/lighting/nav-lights</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.284</x-m>
+		<y-m> 0.000</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>sw.strobe</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/strobe</property>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>sw.strobe</object-name>
+	<property>controls/lighting/strobe</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.284</x-m>
+		<y-m> 0.241</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>sw.wing</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/wing-lights</property>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>sw.wing</object-name>
+	<property>controls/lighting/wing-lights</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.284</x-m>
+		<y-m> 0.274</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>sw.logo</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>controls/lighting/logo-lights</property>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>sw.logo</object-name>
+	<property>controls/lighting/logo-lights</property>
+	<factor>-25</factor>
+	<center>
+		<x-m> 0.284</x-m>
+		<y-m> 0.309</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>sw.light.glare.panel</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/lighting/panel-glareshield-norm</property>
+			<step>0.05</step>
+			<min>0</min>
+			<max>1</max>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/lighting/panel-glareshield-norm</property>
+			<step>-0.05</step>
+			<min>0</min>
+			<max>1</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>sw.light.glare.panel</object-name>
+	<property>/controls/lighting/panel-glareshield-norm</property>
+	<factor>135</factor>
+	<center>
+		<x-m> 0.281</x-m>
+		<y-m>-0.234</y-m>
+		<z-m>-0.004</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>sw.light.ovhd</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/lighting/panel-overhead-norm</property>
+			<step>0.05</step>
+			<min>0</min>
+			<max>1</max>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/lighting/panel-overhead-norm</property>
+			<step>-0.05</step>
+			<min>0</min>
+			<max>1</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>sw.light.ovhd</object-name>
+	<property>/controls/lighting/panel-overhead-norm</property>
+	<factor>135</factor>
+	<center>
+		<x-m> 0.281</x-m>
+		<y-m>-0.285</y-m>
+		<z-m>-0.004</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>-1</z>
+	</axis>
+</animation>
+
+</PropertyList>

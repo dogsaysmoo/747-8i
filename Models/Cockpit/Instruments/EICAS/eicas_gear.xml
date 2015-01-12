@@ -1,0 +1,110 @@
+<PropertyList>
+
+<!-- # # # # # # # # # # # # # # # # # # # # # -->
+<!-- # Boeing 747-400 EICAS by Gijs de Rooy  # -->
+<!-- # # # # # # # # # # # # # # # # # # # # # -->
+
+<path>eicas_gear.ac</path>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.016</y-m>
+		<z-m> 0.078</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/gear/gear[0]/tire-pressure-norm</property>
+			<format type="string">%3.0f</format>
+			<factor>200</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+			<alignment>right-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.016</y-m>
+		<z-m> 0.078</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/gear/gear[0]/tire-pressure-norm</property>
+			<format type="string">%3.0f</format>
+			<factor>200</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+			<alignment>left-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<animation>
+	<type>select</type>
+	<object-name>gear.0.door.open</object-name>
+	<condition>
+		<greater-than>
+			<property>/gear/gear[0]/position-norm</property>
+			<value>0</value>
+		</greater-than>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gear.1.door.open</object-name>
+	<condition>
+		<greater-than>
+			<property>/gear/gear[1]/position-norm</property>
+			<value>0</value>
+		</greater-than>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gear.2.door.open</object-name>
+	<condition>
+		<greater-than>
+			<property>/gear/gear[2]/position-norm</property>
+			<value>0</value>
+		</greater-than>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gear.3.door.open</object-name>
+	<condition>
+		<greater-than>
+			<property>/gear/gear[3]/position-norm</property>
+			<value>0</value>
+		</greater-than>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>gear.4.door.open</object-name>
+	<condition>
+		<greater-than>
+			<property>/gear/gear[4]/position-norm</property>
+			<value>0</value>
+		</greater-than>
+	</condition>
+</animation>
+
+</PropertyList>

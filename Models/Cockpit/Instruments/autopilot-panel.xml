@@ -1,0 +1,1524 @@
+<?xml version="1.0"?>
+
+
+<!--
+Autoflight system Mode Control Panel (MCP)
+Innis Cunningham, Dec 2003
+David Culp, davidculp2@comcast.net, Feb 2004, GPL
+
+_______________________________________________________________________________
+This is an instrument configuration file for the open-source flight
+simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
+FlightGear property list defining the instrument's layers and actions.
+
+Each instrument is composed of layers stacked on top of each other.
+A layer may be a texture (with transparent parts to show the layers
+underneath), text, or a special layer that switches between two
+others (say, to turn an indicator light on or off).  Each layer can
+move independently in proportion to a property value, and text
+can be generated from property values as well: all of the layer's
+movements are defined as transformations.
+
+Actions are hotspots on the instrument that will respond to a mouse
+click.  Actions always modify the values of properties, either by
+adjusting them, toggling them, or swaping them with other
+properties' values.
+-->
+
+
+<PropertyList>
+
+ 
+
+<name>autopilot-panel</name>
+
+ 
+<w-base>256</w-base>
+ 
+<h-base>256</h-base>
+
+ 
+<layers>
+  
+
+<layer>
+   
+<name>autopilot-pnl</name>
+   
+<type>texture</type>
+   
+<texture>
+    
+<path>Aircraft/787/Instruments/Textures/autopilot-pnl.rgb</path>
+    
+<x1>0.0</x1>
+    <y1>0.0</y1>
+    <x2>1.0</x2>
+    <y2>0.7</y2>
+   </texture>
+   <w>256</w>
+   <h>120</h>
+  </layer>
+
+  <!-- ******************************************** -->
+  <!-- start of text chunks for the display windows -->
+  <!-- ******************************************** -->
+
+  <layer>     
+   <name>course window rh</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>2.3</point-size>
+   <color>
+    <red>1.0</red> 
+    <green>1.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property>/instrumentation/nav[0]/radials/selected-deg</property>
+     <format>%6.0f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>97</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>18</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>     
+   <name>course window lh</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>2.3</point-size>
+   <color>
+    <red>1.0</red> 
+    <green>1.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property>/instrumentation/nav[0]/radials/selected-deg</property>
+     <format>%6.0f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-110</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>18</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>     
+   <name>altitude window</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>2.2</point-size>
+   <color>
+    <red>1.0</red> 
+    <green>1.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property>/autopilot/settings/target-altitude-ft</property>
+     <format>%6.0f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>8</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>18</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>     
+   <name>heading window</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>2.2</point-size>
+   <color>
+    <red>1.0</red> 
+    <green>1.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property>/autopilot/settings/heading-bug-deg</property>
+     <format>%6.0f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>      
+     <type>x-shift</type>
+     <offset>-26</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>18</offset>
+    </transformation>
+   </transformations>
+  </layer> 
+ 
+  <layer>     
+   <name>speed window - airspeed</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>2.2</point-size>
+   <color>
+    <red>1.0</red> 
+    <green>1.0</green>
+    <blue>1.0</blue>
+   </color>    
+   <condition>
+    <and>      
+     <equals>
+      <property>/controls/autoflight/autothrottle-arm</property>
+      <value type="bool">true</value>
+     </equals>
+     <equals>
+      <property>/controls/autoflight/display-mach</property>
+      <value type="bool">false</value>
+     </equals>
+    </and>      
+   </condition>        
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property>/autopilot/settings/target-speed-kt</property>
+     <format>%6.0f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>      
+     <type>x-shift</type>
+     <offset>-62</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>18</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>     
+   <name>speed window - mach</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>2.2</point-size>
+   <color>
+    <red>1.0</red> 
+    <green>1.0</green>
+    <blue>1.0</blue>
+   </color>    
+   <condition>
+    <and>     
+     <equals>
+      <property>/controls/autoflight/autothrottle-arm</property>
+      <value type="bool">true</value>
+     </equals> 
+     <not-equals>
+      <property>/controls/autoflight/display-mach</property>
+      <value type="bool">false</value>
+     </not-equals>
+    </and>
+   </condition>   
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property>/autopilot/settings/target-mach</property>
+     <format>%6.2f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>      
+     <type>x-shift</type>
+     <offset>-62</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>18</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>     
+   <name>vertical speed window</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>2.2</point-size>
+   <color>
+    <red>1.0</red> 
+    <green>1.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property>/autopilot/settings/vert-speed-fpm</property>
+     <format>%6.0f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>      
+     <type>x-shift</type>
+     <offset>34</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>18</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <!-- ******************************************************** -->
+  <!-- end of text chunks for autopilot panel                   -->
+  <!-- ******************************************************** -->
+
+  <!-- ******************************************************** -->
+  <!-- start of switch textures for autopilot panel             -->
+  <!-- ******************************************************** -->
+
+  <layer>
+   <name>autopilot select</name>
+   <type>switch</type>
+   <layer>
+    <condition>
+    <equals>
+     <property>/controls/autoflight/autopilot/engage</property>     
+     <value type="bool">false</value>
+    </equals>
+    </condition>
+    <name>autopilot select on</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path>
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.0</y1>
+     <y2>0.5</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <layer>
+    <name>autopilot select off</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path> 
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.5</y1>
+     <y2>1.0</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>62</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>20</offset>
+    </transformation>
+   </transformations>
+  </layer>
+  
+  
+  <layer>
+   <name>altitude hold</name>
+   <type>switch</type>
+   <layer>
+    <condition>
+     <equals>
+     <property>/autopilot/locks/altitude</property>     
+     <value type="string">altitude-hold</value>
+     </equals>
+    </condition>
+    <name>altitude hold on</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path>
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.0</y1>
+     <y2>0.5</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <layer>
+    <name>altitude hold off</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path> 
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.5</y1>
+     <y2>1.0</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>14</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-44</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+   <layer>
+   <name>heading select</name>
+   <type>switch</type>
+   <layer>
+    <condition>
+     <equals>
+      <property>/autopilot/locks/heading</property>     
+      <value type="string">dg-heading-hold</value>
+     </equals>
+    </condition>
+    <name>heading select on</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path>
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.0</y1>
+     <y2>0.5</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <layer>
+    <name>heading select off</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path> 
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.5</y1>
+     <y2>1.0</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-22</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-44</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>approach select</name>
+   <type>switch</type>
+   <layer>
+    <condition>
+     <equals>
+      <property>/autopilot/locks/altitude</property>     
+      <value type="string">gs1-hold</value>
+     </equals>
+    </condition>
+    <name>approach select on</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path>
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.0</y1>
+     <y2>0.5</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <layer>
+    <name>approach select off</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path> 
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.5</y1>
+     <y2>1.0</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-5</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-44</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>vor/loc select</name>
+   <type>switch</type>
+   <layer>
+    <condition>
+     <and>
+     <equals>
+      <property>/autopilot/locks/heading</property>     
+      <value type="string">nav1-hold</value>
+     </equals>
+     <not-equals>
+      <property>/autopilot/locks/altitude</property>     
+      <value type="string">gs1-hold</value>
+     </not-equals>
+     </and>
+    </condition>
+    <name>vor/loc select on</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path>
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.0</y1>
+     <y2>0.5</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <layer>
+    <name>vor/loc select off</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path> 
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.5</y1>
+     <y2>1.0</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-6</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-11</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+   <layer>
+   <name>vertical speed select</name>
+   <type>switch</type>
+   <layer>
+    <condition>
+     <equals>
+      <property>/autopilot/locks/vert-speed</property>
+      <value type="string">vert-speed-hold</value>
+     </equals>     
+    </condition>
+    <name>vertical speed select on</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path>
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.0</y1>
+     <y2>0.5</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <layer>
+    <name>vertical speed select off</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path> 
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.5</y1>
+     <y2>1.0</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>27</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-44</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>engage speed mode</name>
+   <type>switch</type>
+   <layer>
+    <condition>
+     <or>
+     <equals>
+      <property>/autopilot/locks/speed</property>     
+      <value type="string">speed-with-throttle</value>
+     </equals>
+     <equals>
+      <property>/autopilot/locks/speed</property>     
+      <value type="string">mach-with-throttle</value>
+     </equals>
+     </or>
+    </condition>
+    <name>speed mode on</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path>
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.0</y1>
+     <y2>0.5</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <layer>
+    <name>speed mode off</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path> 
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.5</y1>
+     <y2>1.0</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-75</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-44</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+   <layer>
+   <name>autothrottle arm</name>
+   <type>switch</type>
+   <layer>
+   <condition>
+     <equals>
+      <property>/controls/autoflight/autothrottle-arm</property>
+      <value type="bool">true</value>
+     </equals>
+    </condition>    
+    <name>autothrottle arm</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/auto-throttle-arm.rgb</path>
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.5</y1>
+     <y2>1.0</y2>
+    </texture>
+    <w>7</w>
+    <h>10</h>
+   </layer>
+   <layer>
+    <name>autothrottle arm off</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/auto-throttle-arm.rgb</path> 
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.0</y1>
+     <y2>0.5</y2>
+    </texture>
+    <w>7</w>
+    <h>10</h>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-81</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>23</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>level change</name>
+   <type>switch</type>
+   <layer>
+    <condition>
+     <equals>
+     <property>/autopilot/locks/speed</property>     
+     <value type="string">speed-with-pitch</value>
+     </equals>
+    </condition>
+    <name>level change on</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path>
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.0</y1>
+     <y2>0.5</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <layer>
+    <name>level change off</name>
+    <texture>
+     <path>Aircraft/787/Instruments/Textures/autopilot-sw.rgb</path> 
+     <x1>0.0</x1>
+     <x2>1.0</x2>
+     <y1>0.5</y1>
+     <y2>1.0</y2>
+    </texture>
+    <w>10</w>
+    <h>18</h>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-40</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-44</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <!-- ************************************************ -->
+  <!-- end of switch textures for autopilot panel       -->
+  <!-- ************************************************ -->
+</layers> 
+
+<actions>
+  <!-- ************************************************ -->
+  <!-- start of adjustments for autopilot panel         -->
+  <!-- ************************************************ -->
+
+ <action>
+  <name>course decrease lh</name>
+  <button>0</button>
+  <x>-120</x>
+  <y>-20</y>
+  <w>10</w>
+  <h>15</h>
+  <binding>
+   <command>property-adjust</command>
+   <property>/instrumentation/nav[0]/radials/selected-deg</property>
+   <step>-1.0</step>
+   <min>0</min>
+   <max>360</max>
+   <wrap>1</wrap>
+  </binding>
+ </action>
+
+ <action>
+  <name>course increase lh</name>
+  <button>0</button>
+  <x>-110</x>
+  <y>-20</y>
+  <w>10</w>
+  <h>15</h>
+  <binding>
+   <command>property-adjust</command>
+   <property>/instrumentation/nav[0]/radials/selected-deg</property>
+   <step>1.0</step>
+   <min>0</min>
+   <max>360</max>
+   <wrap>1</wrap>
+  </binding>
+ </action>
+
+ <action>
+  <name>course decrease rh</name>
+  <button>0</button>
+  <x>94</x>
+  <y>-20</y>
+  <w>10</w>
+  <h>15</h>
+  <binding>
+   <command>property-adjust</command>
+   <property>/instrumentation/nav[0]/radials/selected-deg</property>
+   <step>-1.0</step>
+   <min>0</min>
+   <max>360</max>
+   <wrap>1</wrap>
+  </binding>
+ </action>
+
+ <action>
+  <name>course increase rh</name>
+  <button>0</button>
+  <x>105</x>
+  <y>-20</y>
+  <w>10</w>
+  <h>15</h>
+  <binding>
+   <command>property-adjust</command>
+   <property>/instrumentation/nav[0]/radials/selected-deg</property>
+   <step>1.0</step>
+   <min>0</min>
+   <max>360</max>
+   <wrap>1</wrap>
+  </binding>
+ </action>
+
+ <action>
+  <name>altitude adjust decrease</name>
+  <button>0</button>
+  <x>5</x>
+  <y>-15</y>
+  <w>10</w>
+  <h>15</h>
+  <binding>
+   <command>property-adjust</command>
+   <property>/autopilot/settings/target-altitude-ft</property>
+   <step>-100</step>
+   <min>-2000</min>
+   <max>50000</max>    
+  </binding>
+ </action>
+
+ <action>
+  <name>altitude adjust increase</name>
+  <button>0</button>
+  <x>15</x>
+  <y>-15</y>
+  <w>10</w>
+  <h>15</h>
+  <binding>
+   <command>property-adjust</command>
+   <property>/autopilot/settings/target-altitude-ft</property>
+   <step>100</step>
+   <min>-2000</min>
+   <max>50000</max>    
+  </binding>   
+ </action> 
+
+ <action>
+  <name>vertical speed down</name>
+  <button>0</button>
+  <x>40</x>
+  <y>-10</y>
+  <w>14</w>
+  <h>20</h>
+  <binding>
+   <command>property-adjust</command>
+   <property>/autopilot/settings/vert-speed-fpm</property>
+   <step>-100</step>
+   <min>-10000</min>
+   <max>10000</max>    
+  </binding>
+ </action>
+
+ <action>
+  <name>vertical speed up</name>
+  <button>0</button>
+  <x>40</x>
+  <y>-54</y>
+  <w>14</w>
+  <h>20</h>
+  <binding>
+   <command>property-adjust</command>
+   <property>/autopilot/settings/vert-speed-fpm</property>
+   <step>100</step>
+   <min>-10000</min>
+   <max>10000</max>    
+  </binding>   
+ </action> 
+
+ <action>
+  <name>heading adjust decrease</name>
+  <button>0</button>
+  <x>-32</x>
+  <y>-15</y>
+  <w>8</w>
+  <h>15</h>
+  <binding>
+   <command>property-adjust</command>
+  <property>/autopilot/settings/heading-bug-deg</property>
+   <step>-1.0</step>
+   <min>0</min>   
+   <max>360</max>
+   <wrap>1</wrap>
+  </binding>
+ </action>
+
+ <action>
+  <name>heading adjust increase</name>
+  <button>0</button>
+  <x>-20</x>
+  <y>-15</y>
+  <w>8</w>
+  <h>15</h>
+  <binding>
+   <command>property-adjust</command>
+  <property>/autopilot/settings/heading-bug-deg</property>
+   <step>1.0</step>
+   <min>0</min>
+   <max>360</max>
+   <wrap>1</wrap>
+  </binding>
+ </action>
+
+ <action>
+  <name>airspeed adjust (decrease)</name>
+  <button>0</button>
+  <x>-66</x>
+  <y>-34</y>
+  <w>8</w>
+  <h>10</h>    
+  <binding>
+  <command>property-adjust</command>
+  <property>/autopilot/settings/target-speed-kt</property>
+   <step>-1.0</step>
+   <min>0</min>   
+   <max>360</max>    
+  </binding>
+ </action>
+
+ <action>
+  <name>airspeed adjust (increase)</name>
+  <button>0</button>
+  <x>-57</x>
+  <y>-34</y>
+  <w>8</w>
+  <h>10</h>    
+  <binding>
+  <command>property-adjust</command>
+  <property>/autopilot/settings/target-speed-kt</property>
+   <step>1.0</step>
+   <min>0</min>
+   <max>360</max>    
+  </binding>
+ </action>
+
+ <action>
+  <name>mach adjust (decrease)</name>
+  <button>0</button>
+  <x>-66</x>
+  <y>-20</y>
+  <w>8</w>
+  <h>10</h>    
+  <binding>
+  <command>property-adjust</command>
+  <property>/autopilot/settings/target-mach</property>
+   <step>-0.01</step>
+   <min>0.4</min>   
+   <max>0.9</max>    
+  </binding>
+ </action>
+
+ <action>
+  <name>mach adjust (increase)</name>
+  <button>0</button>
+  <x>-57</x>
+  <y>-20</y>
+  <w>8</w>
+  <h>10</h>    
+  <binding>
+  <command>property-adjust</command>
+  <property>/autopilot/settings/target-mach</property>
+   <step>0.01</step>
+   <min>0.0</min>
+   <max>0.9</max>    
+  </binding>
+ </action>
+
+
+ <!-- ************************************************* -->
+ <!-- end of adjustment actions for autopilot panel     -->
+ <!-- ************************************************* -->
+
+ <!-- ************************************************* -->
+ <!-- start of switching actions for autopilot panel    -->
+ <!-- ************************************************* -->
+
+ <action>
+   <name>autopilot engage</name>
+   <type>switch</type>
+   <button>0</button>
+   <x>57</x>
+   <y>13</y>
+   <w>10</w>
+   <h>15</h>
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/autoflight/autopilot/engage</property>
+     <value type="bool">true</value>   
+   </binding>
+    <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/heading</property>
+    <value type="string">off</value>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/altitude</property>
+    <value type="string">off</value>
+   </binding> 
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/vert-speed</property>
+    <value type="string">off</value>
+   </binding> 
+  </action>
+
+  <action>
+   <name>autopilot disengage</name>
+   <type>switch</type>
+   <button>0</button>
+   <x>64</x>
+   <y>-54</y>
+   <w>15</w>
+   <h>25</h>
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/autoflight/autopilot/engage</property>
+    <value type="bool">false</value>
+   </binding> 
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/heading</property>
+    <value type="string">off</value>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/altitude</property>
+    <value type="string">off</value>
+   </binding> 
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/vert-speed</property>
+    <value type="string">off</value>
+   </binding>   
+  </action>    
+
+  <action>
+   <name>engage heading select mode</name>
+   <button>0</button>
+   <x>-26</x>
+   <y>-54</y>
+   <w>10</w>
+   <h>15</h>
+   <condition>
+    <and> 
+     <equals>
+      <property>/controls/autoflight/autopilot/engage</property>
+      <value type="bool">true</value>
+     </equals>
+     <equals>
+      <property>/autopilot/locks/heading</property>
+      <value type="string">off</value>
+     </equals>
+    </and>
+   </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/heading</property>
+    <value type="string">dg-heading-hold</value>
+   </binding>
+  </action>
+
+  <action>
+   <name>disengage heading select mode</name>
+   <button>0</button>
+   <x>-26</x>
+   <y>-54</y>
+   <w>10</w>
+   <h>15</h>
+   <condition>
+    <and> 
+     <equals>
+      <property>/controls/autoflight/autopilot/engage</property>
+      <value type="bool">true</value>
+     </equals>
+     <equals>
+      <property>/autopilot/locks/heading</property>
+      <value type="string">dg-heading-hold</value>
+     </equals>
+    </and>
+   </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/heading</property>
+    <value type="string">off</value>
+   </binding>
+  </action>
+
+  <action>
+   <name>engage altitude lock</name>
+   <button>0</button>
+   <x>9</x>
+   <y>-54</y>
+   <w>10</w>
+   <h>15</h>
+   <condition>
+     <and>
+     <equals>
+      <property>/controls/autoflight/autopilot/engage</property>
+      <value type="bool">true</value>
+     </equals>
+     <equals>
+      <property>/autopilot/locks/altitude</property>
+      <value type="string">off</value>
+     </equals>
+     </and>
+    </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/altitude</property>
+    <value type="string">altitude-hold</value>
+   </binding>
+  </action>
+
+  <action>
+   <name>disengage altitude lock</name>
+   <button>0</button>
+   <x>9</x>
+   <y>-54</y>
+   <w>10</w>
+   <h>15</h>
+   <condition>
+     <equals>
+      <property>/autopilot/locks/altitude</property>
+      <value type="string">altitude-hold</value>
+     </equals>
+    </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/altitude</property>
+    <value type="string">off</value>
+   </binding>
+  </action>
+
+  <action>
+   <name>engage vertical speed mode</name>
+   <button>0</button>
+   <x>22</x>
+   <y>-54</y>
+   <w>10</w>
+   <h>15</h>
+   <condition>
+    <and>
+     <equals>
+      <property>/controls/autoflight/autopilot/engage</property>
+      <value type="bool">true</value>
+     </equals>
+     <equals>
+      <property>/autopilot/locks/vert-speed</property>
+      <value type="string">off</value>
+     </equals>
+     <equals>
+      <property>/autopilot/locks/altitude</property>
+      <value type="string">off</value>
+     </equals>
+    </and>
+   </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/vert-speed</property>
+    <value type="string">vert-speed-hold</value>
+   </binding> 
+   <!--   
+   <binding>
+    <command>nasal</command>
+    <script>
+     setprop("/autopilot/settings/vert-speed-fpm", int(0.6 * 
+       getprop("velocities/vertical-speed-fps")) * 100)
+    </script>
+   </binding> 
+   -->   
+  </action>
+
+  <action>
+   <name>disengage vertical speed mode</name>
+   <button>0</button>
+   <x>22</x>
+   <y>-54</y>
+   <w>10</w>
+   <h>15</h>
+   <condition>
+     <equals>
+      <property>/autopilot/locks/vert-speed</property>
+      <value type="string">vert-speed-hold</value>
+     </equals>
+   </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/vert-speed</property>
+    <value type="string">off</value>
+   </binding>
+  </action>
+
+
+  <action>
+   <name>engage approach mode</name>
+   <button>0</button>
+   <x>-10</x>
+   <y>-51</y>
+   <w>10</w>
+   <h>15</h>
+   <condition>
+     <and>
+     <equals>
+      <property>/controls/autoflight/autopilot/engage</property>
+      <value type="bool">true</value>
+     </equals>
+     <not-equals>
+      <property>/autopilot/locks/altitude</property>
+      <value type="string">gs1-hold</value>
+     </not-equals>
+     </and>
+    </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/altitude</property>
+    <value type="string">gs1-hold</value>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/heading</property>
+    <value type="string">nav1-hold</value>
+   </binding>
+  </action>
+
+  <action>
+   <name>disengage approach mode</name>
+   <button>0</button>
+   <x>-10</x>
+   <y>-51</y>
+   <w>10</w>
+   <h>15</h>
+   <condition>
+     <equals>
+      <property>/autopilot/locks/altitude</property>
+      <value type="string">gs1-hold</value>
+     </equals>
+    </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/altitude</property>
+    <value type="string">off</value>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/heading</property>
+    <value type="string">off</value>
+   </binding>
+  </action>
+
+
+  <action>
+   <name>engage vor/loc mode</name>
+   <button>0</button>
+   <x>-10</x>
+   <y>-16</y>
+   <w>10</w>
+   <h>15</h>
+   <condition>
+     <and>
+     <equals>
+      <property>/controls/autoflight/autopilot/engage</property>
+      <value type="bool">true</value>
+     </equals>
+     <not-equals>
+      <property>/autopilot/locks/heading</property>
+      <value type="string">nav1-hold</value>
+     </not-equals>
+     </and>
+    </condition>    
+   <binding>   
+    <command>property-assign</command>
+    <property>/autopilot/locks/heading</property>
+    <value type="string">nav1-hold</value>
+   </binding>
+  </action>
+
+  <action>
+   <name>disengage vor/loc mode</name>
+   <button>0</button>
+   <x>-10</x>
+   <y>-16</y>
+   <w>10</w>
+   <h>15</h>
+   <condition>
+     <equals>
+      <property>/autopilot/locks/heading</property>
+      <value type="string">nav1-hold</value>
+     </equals>
+   </condition>    
+   <binding>   
+    <command>property-assign</command>
+    <property>/autopilot/locks/heading</property>
+    <value type="string">off</value>
+   </binding>
+  </action>  
+ 
+  <action>
+   <name>arm autothrottle</name>
+   <button>0</button>
+   <x>-90</x>
+   <y>-1</y>
+   <w>15</w>
+   <h>40</h>     
+   <condition>
+     <equals>
+      <property>/controls/autoflight/autothrottle-arm</property>
+      <value type="bool">false</value>
+     </equals>
+   </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/autoflight/autothrottle-arm</property>
+    <value type="bool">true</value>   
+   </binding>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/speed</property>
+    <value type="string">off</value>   
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/autoflight/display-mach</property>
+    <value type="bool">false</value>   
+   </binding>         
+  </action>
+  
+  <action>
+   <name>disarm autothrottle</name>
+   <button>0</button>
+   <x>-90</x>
+   <y>-1</y>
+   <w>15</w>
+   <h>40</h>
+   <condition>
+     <equals>
+      <property>/controls/autoflight/autothrottle-arm</property>
+      <value type="bool">true</value>
+     </equals>
+   </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/autoflight/autothrottle-arm</property>
+    <value type="bool">false</value>   
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/speed</property>
+    <value type="string"></value>   
+   </binding>     
+  </action>
+   
+  <action>
+   <name>engage speed mode</name>
+   <button>0</button>
+   <x>-80</x>
+   <y>-52</y>
+   <w>10</w>
+   <h>15</h>     
+    <condition>
+     <and>
+     <equals>
+      <property>/controls/autoflight/autothrottle-arm</property>
+      <value type="bool">true</value>
+     </equals>
+     <equals>
+      <property>/autopilot/locks/speed</property>
+      <value type="string">off</value>
+     </equals>     
+     </and>      
+    </condition>         
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/speed</property>   
+    <value type="string">speed-with-throttle</value>
+   </binding>    
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/autoflight/autothrottle-engage</property>   
+    <value type="bool">true</value>
+   </binding>      
+  </action>
+
+  <action>
+   <name>disengage speed mode</name>
+   <button>0</button>
+   <x>-80</x>
+   <y>-52</y>
+   <w>10</w>
+   <h>15</h>     
+    <condition>
+     <or>
+     <equals>
+      <property>/autopilot/locks/speed</property>
+      <value type="string">speed-with-throttle</value>
+     </equals>
+     <equals>
+      <property>/autopilot/locks/speed</property>
+      <value type="string">mach-with-throttle</value>
+     </equals>
+     </or>
+    </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/speed</property>   
+    <value type="string">off</value>
+   </binding> 
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/autoflight/autothrottle-engage</property>   
+    <value type="bool">false</value>
+   </binding>         
+  </action>
+   
+  <action>
+   <name>changeover to mach</name>
+   <button>0</button>
+   <x>-72</x>
+   <y>-13</y>
+   <w>6</w>
+   <h>8</h>         
+   <condition>
+     <and>     
+     <equals>
+      <property>/controls/autoflight/display-mach</property>
+      <value type="bool">false</value>
+     </equals>
+    <equals>
+      <property>/controls/autoflight/autothrottle-engage</property>
+      <value type="bool">true</value>
+     </equals>
+     </and>          
+   </condition>   
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/autoflight/display-mach</property>
+    <value type="bool">true</value>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/speed</property>
+    <value type="string">mach-with-throttle</value>
+   </binding>
+  </action>
+   
+  <action>
+   <name>changeover to airspeed</name>
+   <button>0</button>
+   <x>-72</x>
+   <y>-5</y>
+   <w>6</w>
+   <h>8</h> 
+   <condition>
+     <and>     
+     <equals>
+      <property>/controls/autoflight/display-mach</property>
+      <value type="bool">true</value>
+     </equals>
+    <equals>
+      <property>/controls/autoflight/autothrottle-engage</property>
+      <value type="bool">true</value>
+     </equals>
+     </and>          
+   </condition>     
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/autoflight/display-mach</property>
+    <value type="bool">false</value>
+   </binding> 
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/speed</property>
+    <value type="string">speed-with-throttle</value>
+   </binding>   
+  </action>
+    
+  <action>
+   <name>level change engage</name>
+   <button>0</button>
+   <x>-45</x>
+   <y>-54</y>
+   <w>10</w>
+   <h>15</h>     
+   <condition>
+    <and>
+     <equals>
+      <property>/autopilot/locks/speed</property>
+      <value type="string">off</value>
+     </equals>
+     <equals>
+      <property>/controls/autoflight/autothrottle-engage</property>
+      <value type="bool">false</value>
+     </equals>
+     </and>
+   </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/speed</property>
+    <value type="string">speed-with-pitch</value>
+   </binding>
+  </action>
+   
+  <action>
+   <name>level change disengage</name>
+   <button>0</button>
+   <x>-45</x>
+   <y>-54</y>
+   <w>10</w>
+   <h>15</h>     
+   <condition>
+     <equals>
+      <property>/autopilot/locks/speed</property>
+      <value type="string">speed-with-pitch</value>
+     </equals>
+   </condition>    
+   <binding>
+    <command>property-assign</command>
+    <property>/autopilot/locks/speed</property>
+    <value type="string">off</value>
+   </binding>    
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/autoflight/autothrottle-engage</property>
+    <value type="bool">false</value>
+   </binding>
+    
+  </action>
+   
+  <!-- end of switching for autopilot panel -->   
+ </actions> 
+</PropertyList>
+

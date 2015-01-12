@@ -1,0 +1,1253 @@
+<PropertyList>
+
+<!-- # # # # # # # # # # # # # # # # # # # # # -->
+<!-- # Boeing 747-400 EICAS by Gijs de Rooy  # -->
+<!-- # # # # # # # # # # # # # # # # # # # # # -->
+
+<path>eicas_eng.ac</path>
+
+<!--
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.008</x-m>
+		<y-m> 0.025</y-m>
+		<z-m> 0.090</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/eicas/msg/advisory</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.8</red>
+				<green type="double">0.4</green>
+				<blue  type="double">0.0</blue>
+			</color>
+			<alignment>left-top</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.008</x-m>
+		<y-m> 0.025</y-m>
+		<z-m> 0.090</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/eicas/msg/memo</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.8</red>
+				<green type="double">0.8</green>
+				<blue  type="double">0.8</blue>
+			</color>
+			<alignment>left-top</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.008</x-m>
+		<y-m> 0.025</y-m>
+		<z-m> 0.090</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property>/instrumentation/eicas/msg/warning</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">0.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+			<alignment>left-top</alignment>
+		</params>
+	</overlay>
+</model>-->
+
+<panel>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/EICAS/eicas-text-panel.xml</path>
+	<bottom-left>
+		<x-m>0.009</x-m>
+		<y-m>0.025</y-m>
+		<z-m>0.015</z-m>
+	</bottom-left>
+	<bottom-right>
+		<x-m>0.009</x-m>
+		<y-m>0.090</y-m>
+		<z-m>0.015</z-m>
+	</bottom-right>
+	<top-left>
+		<x-m>0.009</x-m>
+		<y-m>0.025</y-m>
+		<z-m>0.090</z-m>
+	</top-left>
+</panel>
+
+<!-- GEAR -->
+
+<animation>
+ <type>select</type>
+ <object-name>Gear.Annun</object-name>
+ <condition>
+  <and>
+   <greater-than>
+      <property>/gear/gear[0]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+   <greater-than>
+      <property>/gear/gear[1]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+   <greater-than>
+      <property>/gear/gear[2]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+   <greater-than>
+      <property>/gear/gear[3]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+   <greater-than>
+      <property>/gear/gear[4]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>GearAnnun.ptr1</object-name>
+ <condition>
+  <and>
+   <greater-than>
+      <property>/gear/gear[0]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+   <greater-than>
+      <property>/gear/gear[1]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+   <greater-than>
+      <property>/gear/gear[2]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+   <greater-than>
+      <property>/gear/gear[3]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+   <greater-than>
+      <property>/gear/gear[4]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+   <less-than>
+      <property>/gear/gear[0]/position-norm</property>
+    <value>1.0</value>
+   </less-than>
+   <less-than>
+      <property>/gear/gear[1]/position-norm</property>
+    <value>1.0</value>
+   </less-than>
+   <less-than>
+      <property>/gear/gear[2]/position-norm</property>
+    <value>1.0</value>
+   </less-than>
+   <less-than>
+      <property>/gear/gear[3]/position-norm</property>
+    <value>1.0</value>
+   </less-than>
+   <less-than>
+      <property>/gear/gear[4]/position-norm</property>
+    <value>1.0</value>
+   </less-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>GearAnnun.ptr2</object-name>
+ <condition>
+  <and>
+   <equals>
+      <property>/gear/gear[0]/position-norm</property>
+    <value>1.0</value>
+   </equals>
+   <equals>
+      <property>/gear/gear[1]/position-norm</property>
+    <value>1.0</value>
+   </equals>
+   <equals>
+      <property>/gear/gear[2]/position-norm</property>
+    <value>1.0</value>
+   </equals>
+   <equals>
+      <property>/gear/gear[3]/position-norm</property>
+    <value>1.0</value>
+   </equals>
+   <equals>
+      <property>/gear/gear[4]/position-norm</property>
+    <value>1.0</value>
+   </equals>
+  </and>
+ </condition>
+</animation>
+
+<!-- FLAPS -->
+
+<!--animation>
+ <type>select</type>
+ <object-name>FlapAnnun.ptr</object-name>
+ <condition>
+  <greater-than>
+     <property>/surface-positions/flap-pos-norm</property>
+   <value>0.0</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>FlapAnnun.ptr</object-name>
+   <property>/surface-positions/flap-pos-norm</property>
+ <factor>0.2118</factor>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation-->
+<model>
+        <name>FlapGear</name>
+        <path>Aircraft/747-8i/Models/Cockpit/Instruments/EICAS/flap-gear.xml</path>
+        <offsets>
+            <x-m>0.007</x-m>
+            <y-m>0.054</y-m>
+            <z-m>-0.010</z-m>
+        </offsets>
+    </model>
+
+<!-- Stabilizer Trim Indicator -->
+    <animation>
+	<type>select</type>
+	<object-name>StabTrim</object-name>
+	<object-name>StabTrimNeedle</object-name>
+	<condition>
+	    <not>
+		<property>instrumentation/afds/inputs/AP</property>
+	    </not>
+	</condition>
+    </animation>
+    <animation>
+	<type>translate</type>
+	<object-name>StabTrimNeedle</object-name>
+	<property>controls/flight/elevator-trim</property>
+	<factor>0.022</factor>
+	<axis>
+	    <x>0</x>
+	    <y>0</y>
+	    <z>1</z>
+	</axis>
+    </animation>
+		
+		
+
+<!-- EPR -->
+<!-- ENGINE 1 -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.064</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/autopilot/internal/throttle-servo</property>
+			<factor>1.92</factor>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<not>
+			<property>/engines/engine[0]/reverser-pos-norm</property>
+		</not>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.064</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text>REV</text>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">0.5</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<and>
+			<less-than>
+				<property>/engines/engine[0]/reverser-pos-norm</property>
+				<value>1</value>
+			</less-than>
+			<greater-than>
+				<property>/engines/engine[0]/reverser-pos-norm</property>
+				<value>0</value>
+			</greater-than>
+		</and>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.064</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text>REV</text>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<equals>
+			<property>/engines/engine[0]/reverser-pos-norm</property>
+			<value>1</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.064</y-m>
+		<z-m> 0.066</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[0]/epr</property>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- ENGINE 2 -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.039</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/autopilot/internal/throttle-servo</property>
+			<factor>1.92</factor>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<not>
+			<property>/engines/engine[1]/reverser-pos-norm</property>
+		</not>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.039</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text>REV</text>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">0.5</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<and>
+			<less-than>
+				<property>/engines/engine[1]/reverser-pos-norm</property>
+				<value>1</value>
+			</less-than>
+			<greater-than>
+				<property>/engines/engine[1]/reverser-pos-norm</property>
+				<value>0</value>
+			</greater-than>
+		</and>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.039</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text>REV</text>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<equals>
+			<property>/engines/engine[1]/reverser-pos-norm</property>
+			<value>1</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.039</y-m>
+		<z-m> 0.066</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[1]/epr</property>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- ENGINE 3 -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.014</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/autopilot/internal/throttle-servo</property>
+			<factor>1.92</factor>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<not>
+			<property>/engines/engine[2]/reverser-pos-norm</property>
+		</not>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.014</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text>REV</text>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">0.5</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<and>
+			<less-than>
+				<property>/engines/engine[2]/reverser-pos-norm</property>
+				<value>1</value>
+			</less-than>
+			<greater-than>
+				<property>/engines/engine[2]/reverser-pos-norm</property>
+				<value>0</value>
+			</greater-than>
+		</and>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.014</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text>REV</text>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<equals>
+			<property>/engines/engine[2]/reverser-pos-norm</property>
+			<value>1</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.014</y-m>
+		<z-m> 0.066</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[2]/epr</property>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- ENGINE 4 --> 
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.011</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/autopilot/internal/throttle-servo</property>
+			<factor>1.92</factor>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<not>
+			<property>/engines/engine[3]/reverser-pos-norm</property>
+		</not>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.011</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text>REV</text>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">0.5</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<and>
+			<less-than>
+				<property>/engines/engine[3]/reverser-pos-norm</property>
+				<value>1</value>
+			</less-than>
+			<greater-than>
+				<property>/engines/engine[3]/reverser-pos-norm</property>
+				<value>0</value>
+			</greater-than>
+		</and>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.011</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text>REV</text>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<equals>
+			<property>/engines/engine[3]/reverser-pos-norm</property>
+			<value>1</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.011</y-m>
+		<z-m> 0.066</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[3]/epr</property>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- N1 -->
+
+<!-- ENGINE 1 -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.064</y-m>
+		<z-m> 0.018</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[0]/n1-ind</property>
+			<format type="string">%03.1f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- ENGINE 2 -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.039</y-m>
+		<z-m> 0.018</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[1]/n1-ind</property>
+			<format type="string">%03.1f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- ENGINE 3 -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.014</y-m>
+		<z-m> 0.018</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[2]/n1-ind</property>
+			<format type="string">%03.1f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- ENGINE 4 -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.011</y-m>
+		<z-m> 0.018</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[3]/n1-ind</property>
+			<format type="string">%03.1f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- EGT ENGINE 1 -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.064</y-m>
+		<z-m>-0.026</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[0]/egt-degf</property>
+			<format type="string">%03.0f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- ENGINE 2 -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.039</y-m>
+		<z-m>-0.026</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[1]/egt-degf</property>
+			<format type="string">%03.0f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- ENGINE 3 -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.014</y-m>
+		<z-m>-0.026</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[2]/egt-degf</property>
+			<format type="string">%03.0f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- ENGINE 4 -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.011</y-m>
+		<z-m>-0.026</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[3]/egt-degf</property>
+			<format type="string">%03.0f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- Total Fuel-->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.054</y-m>
+		<z-m>-0.070</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/total-fuel-lbs</property>
+			<format type="string">%3.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!--  Total Air Temperature (TAT)  -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.057</y-m>
+		<z-m> 0.091</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/environment/temperature-degc</property>
+			<format type="string">%+02.0f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- L Pneumatic Duct Pressure -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.062</y-m>
+		<z-m>-0.062</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">systems/pneumatic/pressure-norm</property>
+			<format type="string">%3.0f</format>
+			<!--factor>100</factor-->
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- R Pneumatic Duct Pressure -->
+
+<model>
+	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.001</y-m>
+		<z-m>-0.062</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">systems/pneumatic/pressure-norm[1]</property>
+			<format type="string">%3.0f</format>
+			<!--factor>100</factor-->
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<!-- EPR --> 
+<!-- ENGINE 1 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>EPR.001</object-name>
+   <property>/engines/engine[0]/epr</property>
+     <interpolation>
+    <entry>
+      <ind>1</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>2</ind>
+      <dep>-0.34</dep>
+    </entry>
+  </interpolation>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+</animation>
+
+<!-- ENGINE 2 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>EPR.002</object-name>
+   <property>/engines/engine[1]/epr</property>
+     <interpolation>
+    <entry>
+      <ind>1</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>2</ind>
+      <dep>-0.34</dep>
+    </entry>
+  </interpolation>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+</animation>
+
+<!-- ENGINE 3 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>EPR.003</object-name>
+   <property>/engines/engine[2]/epr</property>
+     <interpolation>
+    <entry>
+      <ind>1</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>2</ind>
+      <dep>-0.34</dep>
+    </entry>
+  </interpolation>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+</animation>
+
+<!-- ENGINE 4 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>EPR.004</object-name>
+   <property>/engines/engine[3]/epr</property>
+     <interpolation>
+    <entry>
+      <ind>1</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>2</ind>
+      <dep>-0.34</dep>
+    </entry>
+  </interpolation>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+</animation>
+
+<!-- N1 --> 
+<!-- ENGINE 1 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>N1.001</object-name>
+     <property>/engines/engine[0]/n1-ind</property>
+   <interpolation>
+    <entry>
+      <ind>0</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>100</ind>
+      <dep>-0.24</dep>
+    </entry>
+   </interpolation>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<!-- ENGINE 2 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>N1.002</object-name>
+  <property>/engines/engine[1]/n1-ind</property>
+     <interpolation>
+    <entry>
+      <ind>0</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>100</ind>
+      <dep>-0.24</dep>
+    </entry>
+  </interpolation>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+</animation>
+
+<!-- ENGINE 3 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>N1.003</object-name>
+  <property>/engines/engine[2]/n1-ind</property>
+     <interpolation>
+    <entry>
+      <ind>0</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>100</ind>
+      <dep>-0.24</dep>
+    </entry>
+  </interpolation>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+</animation>
+
+<!-- ENGINE 4 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>N1.004</object-name>
+     <property>/engines/engine[3]/n1-ind</property>
+   <interpolation>
+    <entry>
+      <ind>0</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>100</ind>
+      <dep>-0.24</dep>
+    </entry>
+  </interpolation>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+</animation>
+
+<!-- EGT -->
+<!-- ENGINE 1 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>EGT.001</object-name>
+     <property>/engines/engine[0]/egt-degf</property>
+   <interpolation>
+    <entry>
+      <ind>0</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>15000</ind>
+      <dep>-1.9</dep>
+    </entry>
+   </interpolation>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<!-- ENGINE 2 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>EGT.002</object-name>
+     <property>/engines/engine[1]/egt-degf</property>
+   <interpolation>
+    <entry>
+      <ind>0</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>15000</ind>
+      <dep>-1.9</dep>
+    </entry>
+   </interpolation>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<!-- ENGINE 3 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>EGT.003</object-name>
+     <property>/engines/engine[2]/egt-degf</property>
+   <interpolation>
+    <entry>
+      <ind>0</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>15000</ind>
+      <dep>-1.9</dep>
+    </entry>
+   </interpolation>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<!-- ENGINE 4 -->
+
+ <animation>
+ <type>textranslate</type>
+ <object-name>EGT.004</object-name>
+     <property>/engines/engine[3]/egt-degf</property>
+   <interpolation>
+    <entry>
+      <ind>0</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>15000</ind>
+      <dep>-1.9</dep>
+    </entry>
+   </interpolation>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+</PropertyList>

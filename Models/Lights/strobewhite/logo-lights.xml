@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>whitelight.ac</path>
+  
+ <animation>
+  <type>scale</type>
+  <x-offset>0.5</x-offset>
+  <y-offset>0.5</y-offset>
+  <z-offset>0.5</z-offset>
+ </animation>
+  
+  <animation>
+    <type>noshadow</type>
+    <object-name>whitelight</object-name>
+  </animation>
+
+  <animation>
+    <type>alpha-test</type>
+    <alpha-factor>0.01</alpha-factor>
+  </animation>
+
+  <animation>
+    <type>billboard</type>
+    <object-name>whitelight</object-name>
+    <spherical type="bool">true</spherical>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>whitelight</object-name>
+    <condition>
+		<!--or>
+			<and>
+				<property>controls/lighting/logo-lights</property>
+	    			<not>
+					<property>sim/crashed</property>
+	    			</not>
+				<greater-than>
+					<property>systems/electrical/bus-volts</property>
+					<value>24.0</value>
+				</greater-than>
+			</and-->
+			<greater-than>
+				<property>sim/multiplay/generic/int[3]</property>
+				<value>0</value>
+			</greater-than>
+		<!--/or-->
+    </condition>
+  </animation>
+
+
+</PropertyList>

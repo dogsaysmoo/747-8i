@@ -1,0 +1,105 @@
+<PropertyList>
+
+<path>seats.ac</path>
+
+	<!--animation>
+		<type>pick</type>
+		<object-name>captainseat</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing747.captain_seat.toggle();</script>
+			</binding>
+		</action>
+	</animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>captainseat</object-name>
+        <property>controls/seat/captain/position-norm</property>
+		<factor>0.5</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+	
+	<animation>
+        <type>translate</type>
+        <object-name>captainseat</object-name>
+        <property>controls/seat/captain/position-norm</property>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>0.8</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>1</ind>
+				<dep>0.2</dep>
+			</entry>
+		</interpolation>
+        <axis>
+            <x> 0</x>
+            <y>-1</y>
+            <z> 0</z>
+        </axis>
+    </animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>firstofficerseat</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing747.firstofficer_seat.toggle();</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+        <type>translate</type>
+        <object-name>firstofficerseat</object-name>
+        <property>controls/seat/firstofficer/position-norm</property>
+		<factor>0.5</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+	
+	<animation>
+        <type>translate</type>
+        <object-name>firstofficerseat</object-name>
+        <property>controls/seat/firstofficer/position-norm</property>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>0.8</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>1</ind>
+				<dep>0.2</dep>
+			</entry>
+		</interpolation>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation-->
+
+</PropertyList>

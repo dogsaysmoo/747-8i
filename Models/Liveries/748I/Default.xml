@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+<sim>
+    <model>
+			<livery>
+				<name type="string">Bare White</name>
+				<texture>Liveries/748I/fuselage.png</texture>
+			</livery>
+			<nightlights>
+				<name type="string">Bare White</name>
+				<texture>Liveries/748I/fuselage_light.png</texture>
+			</nightlights>
+			<turbofans>
+				<name type="string">Bare White</name>
+				<texture>Liveries/748I/turbofan.png</texture>
+			</turbofans>
+			<wings>
+				<name type="string">Bare White</name>
+				<texture>Liveries/748I/wings.png</texture>
+			</wings>
+			<nightwings>
+				<name type="string">Bare White</name>
+				<texture>Liveries/748I/wings-lts.png</texture>
+			</nightwings>
+			<nightengines>
+				<name type="string">Bare White</name>
+				<texture>Liveries/748I/turbofan-lts.png</texture>
+			</nightengines>
+    </model>
+</sim>
+</PropertyList>

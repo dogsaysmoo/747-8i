@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>beacon.ac</path>
+  
+  <animation>
+    <type>noshadow</type>
+    <object-name>Beacon02</object-name>
+  </animation>
+
+  <animation>
+    <type>alpha-test</type>
+    <alpha-factor>0.01</alpha-factor>
+  </animation>
+
+  <animation>
+    <type>billboard</type>
+    <object-name>Beacon02</object-name>
+    <spherical type="bool">true</spherical>
+  </animation>
+  <animation>
+    <type>select</type>
+    <object-name>Beacon02</object-name>
+    <condition>
+		<!--or>
+			<and>
+				<property>sim/model/lights/beacon/state</property>
+				<property>controls/lighting/beacon</property>
+	    			<not>
+					<property>sim/crashed</property>
+	    			</not>
+				<greater-than>
+					<property>systems/electrical/bus-volts</property>
+					<value>24.0</value>
+				</greater-than>
+			</and-->
+			<greater-than>
+				<property>sim/multiplay/generic/int[1]</property>
+				<value>0</value>
+			</greater-than>
+		<!--/or-->
+    </condition>
+  </animation>
+<!--
+  <animation>
+    <type>dist-scale</type>
+    <object-name>Beacon02</object-name>
+    <interpolation>
+      <entry>
+        <ind>0</ind>
+        <dep>2</dep>
+      </entry>
+      <entry>
+        <ind>1500</ind>
+        <dep>20</dep>
+      </entry>
+      <entry>
+        <ind>3500</ind>
+        <dep>25</dep>
+      </entry>
+      <entry>
+        <ind>20500</ind>
+        <dep>25</dep>
+      </entry>
+    </interpolation>
+  </animation>
+-->
+
+    <animation>
+        <type>dist-scale</type>
+        <object-name>Beacon02</object-name>
+        <factor>0.01</factor>
+        <offset>1.0</offset>
+        <min>1</min>
+        <max>500.0</max>
+    </animation>
+
+</PropertyList>

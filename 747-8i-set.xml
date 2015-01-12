@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	This is a second generation model of the 747-8i.  The first generation
+	by Grupo FGBr was based on the 747-400 model by Gijs de Rooy.  This 
+	version is derived from the FGBr version with modifications to the 3D
+	models and FDM, and the addition of many systems.
+
+	747-8i v2.0 by John Williams
+	Original cockpit model, landing gear, and many textures by Gijs de Rooy
+	Wings, engines, original fuselage model, original FDM, and additional
+          textures by Grupo FGBr (Aurino das Neves, Isaias Prestes, Rick Britto,
+	  Wagner Silva)
+	Additional systems as noted in their .nas files
+	
+	License : GPL 2.0
+    		
+ -->
+
+<PropertyList include="747-8-main.xml">
+	<sim>
+
+		<description>Boeing 747-8 Intercontinental</description>
+		<author>John Williams, Grupo FGBr</author>
+	
+		<status>beta</status>
+
+		<aero>747-8i-yasim</aero>
+		<variant type="string">8i</variant>
+
+		<startup>
+			<splash-texture>Aircraft/747-8i/splash-8i.png</splash-texture>
+		</startup>
+
+		<!-- Default livery set up - http://wiki.flightgear.org/index.php/Livery_over_MP -->
+		<model>
+			<path>Aircraft/747-8i/Models/747-8i.xml</path>
+			<livery>
+				<file type="string">Default</file>
+			</livery>
+			<nightlights>
+				<file type="string">Default</file>
+			</nightlights>
+			<nightengines>
+				<file type="string">Default</file>
+			</nightengines>
+			<turbofans>
+				<file type="string">Default</file>
+			</turbofans>		
+			<wings>
+				<file type="string">Default</file>
+			</wings>
+			<nightwings>
+				<file type="string">Default</file>
+			</nightwings>
+			 
+			<door>
+				<position-x-m type="float">-24.58</position-x-m>
+				<position-y-m type="float"> -3.29</position-y-m>
+				<position-z-m type="float"> -0.42</position-z-m>
+				<jetway-hood-deg type="float">6</jetway-hood-deg>
+			</door>
+			<door>
+				<position-x-m type="float">-11.36</position-x-m>
+				<position-y-m type="float"> -3.29</position-y-m>
+				<position-z-m type="float"> -0.42</position-z-m>
+				<jetway-hood-deg type="float">0</jetway-hood-deg>
+			</door>
+			<!--door>
+				<position-x-m type="float"> 0.55</position-x-m>
+				<position-y-m type="float">-3.21</position-y-m>
+				<position-z-m type="float">-0.24</position-z-m>
+				<jetway-hood-deg type="float">0</jetway-hood-deg>
+			</door-->
+		</model>
+
+		<!-- Help menu -->
+        	<help>
+			<title>747-8i</title>
+            		<key>
+            		    <name>Delete</name>
+            		    <desc>toggle thrust reversers</desc>
+            		</key>
+            		<key>
+            		    <name>g/G</name>
+            		    <desc>raise/lower landing gear</desc>
+            		</key>
+			<key>
+			    <name>Delete</name>
+			    <desc>Toggle Reversers</desc>
+			</key>
+			<key>
+			    <name>Ctrl+B</name>
+			    <desc>Cycle SpeedBrake (Off - Arm - 50% - Full)</desc>
+			</key>
+		   	<key>
+			    <name>b </name>
+			    <desc>Brakes</desc>
+		   	</key>
+		   	<key>
+			    <name>Shift+b </name>
+			    <desc>Parking brakes</desc>
+		   	</key>
+            		<key>
+            		    <name>pgup/pgdn</name>
+            		    <desc>throttle increase/decrease</desc>
+            		</key>
+            		<key>
+            		    <name>[/]</name>
+            		    <desc>raise/lower flaps</desc>
+            		</key>
+	    		<key>
+			    <name>l</name>
+			    <desc>toggle landing lights</desc>
+	    		</key>
+            		<text>
+=== Start Up Procedure ===
+1.  Battery ON.
+2.  External Power (L and R) on, if parked in a suitable location.
+3.  Start APU (takes about 60 seconds to start; APU generator buttons will
+    display "AVAIL" when ready)
+4.  APU Generators ON.
+5.  APU Bleed ON
+6.  Fuel Pumps ON
+7.  Pull 2 starters at a time, wait till N1 > 30, then pull other 2 starters.
+
+When all 4 engines are running:
+8. Engine Bleeds ON
+9. APU OFF
+10. Demand Hydraulic pumps AUTO (knob in middle position)
+11. Engine Driven Hydraulic Pumps ON
+12. Left and Right fuel X-Feeds ON
+
+-or-
+Use the autostart in the 747-8i menu, if you must.
+
+=== Takeoff Procedure ===
+Pre-departure:
+1. - Allocate your fuel, passengers and weight under Equipment/fuel and payload
+   - Once passengers and baggage are loaded and weights defined, close the exit doors
+     and ensure stairways are disconnected
+   - Ensure a complete systems checklist is carried out
+   - Airport operations vehicles should be disconnected from around the aircraft
+   - Taxi away from the terminal with a Pushback truck
+   - In poor weather conditions, or crowded airport aprons, A Followme truck should be used if required
+
+Departure:
+2. Select 747-8i/Autostart to get the engines running
+3. set your flaps suitably for the conditions and runway length (minimum 15)
+4. Release the parking brakes
+5. Apply throttle gently, until at 90% throttle
+6. Rotate at Vr
+7. Raise landing gear at positive climb
+8. Maintain positive climb
+
+
+Captain Notes:
+- Never reverse from terminal without aid from a pushback. It should be used until the aircraft is on the taxiway.
+- Ensure you allow enough room to manoeuvre around the airport, given that it is a long aircraft.
+- On a short or wet runway, flaps should be set lower on both landing and takeoff, and throttle set to full on takeoff.
+- There are risks of overrunning the runway apron upon landing and takeoff, as well as overrunning the taxiway corners in the 747-8i In wet conditions especially; take care and ensure that the correct speed guidelines and height are maintained.
+- During turbulant conditions, The seatbelt warning sound should be initiated by the captain.
+
+=== Cruising ===
+Cruising Speed: Mach 0.855 (570 mph, 495 kn, 917 km/h)	
+Service Ceiling: 43,000ft
+
+=== Landing ===
+1. Decend through 200kt, reaching roughly 160kt 1mile before reaching the apron
+2. set flaps accordingly
+3. Land at roughly 150kt, touch down carefully and smoothly at 135kt.
+4. Apply Speedbrakes
+5. Apply thrust reversal and apply throttle
+6. Lower throttle and deactivate thrust reversers
+7. If necessary, Emergency brakes should be used
+
+=== CHARACTERISTICS ===
+Maximum take-off weight      987,000 lb (448,600 kg)
+Maximum landing weight       688,000 lb (312,700 kg)
+Maximum zero fuel weight         651,000 lb (295,900 kg)
+Maximum structural payload       169,100 lb (76,900 kg)
+Maximum fuel capacity	     64,055 US gallons (242,470 l)
+Cruising speed at 35,000 ft  Mach 0.855 (570 mph, 495 kn, 917 km/h)	
+Maximum speed at 35,000 ft	 Mach 0.92 (614 mph, 533 kn, 988 km/h)
+Range	(at MTOW) 8,000 nmi (14,800 km) with 467 passengers and baggage	(full load)
+Cargo capacity	5,705 cu ft (161.5 m3)
+Service ceiling	43,000 ft (13,000 m)
+
+
+			</text>
+		</help>
+
+		<!-- Aircraft-specific menu entries -->
+		<menubar>
+		    <default>
+
+		    <menu n="10">
+			<label>747-8i</label>
+			<enabled type="bool">true</enabled>
+
+                	<item>
+                            <label>Autostart</label>
+			    <binding>
+			    	<command>nasal</command>
+			    	<script>Boeing747.magic_autostart();</script>
+			    </binding>
+                    	</item>
+
+			<item>
+			    <label>Lights</label>
+			    <binding>
+				<command>nasal</command>
+				<script>
+				var dlg = gui.Dialog.new("/sim/gui/dialogs/lights-config/dialog", "Aircraft/747-8i/Dialogs/lights-dialog.xml");
+				</script>
+			    </binding>
+			    <binding>
+				<command>dialog-show</command>
+				<dialog-name>lightcontrol</dialog-name>
+			    </binding>
+			</item>
+
+			<item>
+			    <label>Control Panel</label>
+			    <binding>
+				<command>nasal</command>
+				<script>
+                                var dlg = gui.Dialog.new("/sim/gui/dialogs/fuel-automanage/dialog", "Aircraft/747-8i/Dialogs/control-panel.xml");
+				</script>
+			    </binding>
+			    <binding>
+			    	<command>dialog-show</command>
+			    	<dialog-name>controlpanel</dialog-name>
+			    </binding>
+			</item>
+
+			<item>
+			    <label>Pushback</label>
+			    <name>pushback</name>
+			    <binding>
+				<command>dialog-show</command>
+				<dialog-name>pushback</dialog-name>
+			    </binding>
+			</item>
+
+			<item>
+			    <label>Select livery</label>
+			    <binding>
+				<command>nasal</command>
+				<script>aircraft.livery.dialog.open()</script>
+			    	</binding>
+			</item>
+
+			<!--item>
+			    <label>Select MP-copilot</label>
+			    <binding>
+				<command>nasal</command>
+				<script>
+				dual_control_tools.
+				copilot_dialog.show(aircraft_dual_control.copilot_type);
+				</script>
+			    </binding>
+			</item-->
+				
+			<item>
+			    <label>Show/hide yokes</label>
+			    <binding>
+				<command>property-toggle</command>
+				<property>sim/model/hide-yoke</property>
+			    </binding>
+			</item>
+				 
+			<item>
+			    <label>Yoke charts</label>
+			    <binding>
+				<command>nasal</command>
+				<script>
+				var mal = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-8i/Dialogs/yokechart-dialog.xml");
+				mal.open();
+				</script>
+			    </binding>
+			</item>
+
+		        </menu>
+		    </default>
+		</menubar>		
+
+		<weight n="0">
+        	    <name>Crew</name>
+        	    <weight-lb type="double">400</weight-lb>
+        	    <max-lb type="double">600</max-lb>
+        	    <min-lb type="double">300</min-lb>
+        	</weight>
+		<weight n="1">
+		    <name>Passengers/Baggage/Cargo</name>
+		    <weight-lb type="double">90000.0</weight-lb>
+		    <max-lb type="double">165100.0</max-lb>
+		    <min-lb type="double">0.0</min-lb>
+		</weight>
+
+	</sim>
+<!-- END OF SIM SECTION -->
+ 
+	<controls>
+		<fuel>
+			<tank n="7">
+				<pump type="bool">0</pump>
+			</tank>
+		</fuel>
+	</controls>
+
+	<!-- The NASAL scripts -->
+	<nasal>
+		<livery>
+	        	<file>Aircraft/747-8i/Nasal/livery.nas</file>
+	    	</livery>
+	</nasal>
+
+	<instrumentation>
+		<cdu>
+		    <display>IDENT</display>
+		    <ident>
+			<model>747-8i</model>
+			<engines>GEnx-2B67</engines>
+		    </ident>
+		    <input type="string"/>
+		    <serviceable type="bool">1</serviceable>
+		</cdu>
+	</instrumentation>
+	
+	<limits>
+	    <mass-and-balance>
+		<maximum-ramp-mass-lbs>999000</maximum-ramp-mass-lbs>
+		<maximum-takeoff-mass-lbs>987000</maximum-takeoff-mass-lbs>
+		<maximum-landing-mass-lbs>688000</maximum-landing-mass-lbs>
+		<maximum-zero-fuel-mass-lbs>651000</maximum-zero-fuel-mass-lbs>
+	    </mass-and-balance>
+	</limits>
+
+	<aircraft>
+	    <jetway-pos>
+	 	<x-tra>0.63298</x-tra>
+		<y-rot>9.00955</y-rot>
+		<z-rot>27.529</z-rot>
+		<hood-rot>15</hood-rot>
+	    </jetway-pos>
+	</aircraft>
+
+</PropertyList>
