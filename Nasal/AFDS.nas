@@ -292,6 +292,7 @@ var AFDS = {
                     if(gsrange){
                         me.vertical_mode.setValue(6);
                         me.gs_armed.setBoolValue(0);
+			me.flch_mode.setBoolValue(0);
                     }
                 }
             }
@@ -417,27 +418,37 @@ var AFDS = {
 
 		var groundspeed = getprop("/velocities/groundspeed-kt");
 		var f = flightplan();
-		var targetCourse = f.pathGeod(-1, -me.remaining_distance.getValue());
-		var leg = f.currentWP();
-		var enroute = leg.courseAndDistanceFrom(targetCourse);
-		setprop("autopilot/internal/course-deg", enroute[0]);
-
-		var courseCoord = geo.Coord.new().set_latlon(targetCourse.lat, targetCourse.lon);
 		var geocoord = geo.aircraft_position();
-		var CourseError = (geocoord.course_to(courseCoord) - getprop("orientation/heading-deg"));
+
+#		var referenceCourse = f.pathGeod(f.indexOfWP(f.destination_runway), -getprop("autopilot/route-manager/distance-remaining-nm"));
+		var referenceCourse = f.pathGeod((max_wpt - 1), -getprop("autopilot/route-manager/distance-remaining-nm"));
+		var courseCoord = geo.Coord.new().set_latlon(referenceCourse.lat, referenceCourse.lon);
+		var CourseError = (geocoord.distance_to(courseCoord) / 1852) + 1;
+		var change_wp = abs(getprop("/autopilot/route-manager/wp/bearing-deg") - getprop("orientation/heading-deg"));
+		if(change_wp > 180) change_wp = (360 - change_wp);
+		CourseError += (change_wp / 20);
+
+#		var targetCourse = f.pathGeod(f.indexOfWP(f.destination_runway), (-getprop("autopilot/route-manager/distance-remaining-nm") + CourseError));
+		var targetCourse = f.pathGeod((max_wpt - 1), (-getprop("autopilot/route-manager/distance-remaining-nm") + CourseError));
+
+		courseCoord = geo.Coord.new().set_latlon(targetCourse.lat, targetCourse.lon);
+		CourseError = (geocoord.course_to(courseCoord) - getprop("orientation/heading-deg"));
 		if(CourseError < -180) CourseError += 360;
 		elsif(CourseError > 180) CourseError -= 360;
-		if(CourseError > 0) {
-		    CourseError = geocoord.distance_to(courseCoord);
-		} else {
-		    CourseError = (geocoord.distance_to(courseCoord) * -1);
-		}
-		var cCourseError = CourseError * 0.01;
-		if(cCourseError > 8.0) cCourseError = 8.0;
-		elsif(cCourseError < -8.0) cCourseError = -8.0;
-		setprop("autopilot/internal/course-error", cCourseError);
+#		if(CourseError > 0) {
+#		    CourseError = geocoord.distance_to(courseCoord);
+#		} else {
+#		    CourseError = (geocoord.distance_to(courseCoord) * -1);
+#		}
+#		CourseError = CourseError * 0.01;
+#		if(CourseError > 8.0) CourseError = 8.0;
+#		elsif(CourseError < -8.0) CourseError = -8.0;
+		setprop("autopilot/internal/course-error", CourseError);
 
-		if(enroute[1] != nil)   # Course deg
+		var leg = f.currentWP();
+		var enroute = leg.courseAndDistanceFrom(targetCourse);
+#		setprop("autopilot/internal/course-deg", enroute[0]);
+		if(enroute[1] != nil)
 		{
 		    var wpt_eta = (enroute[1] / groundspeed * 3600);
 		    var brg_err = getprop("/autopilot/route-manager/wp/true-bearing-deg") - getprop("/orientation/heading-deg");
@@ -445,9 +456,11 @@ var AFDS = {
 			brg_err = brg_err + 360;
 		    }
 		    var wp_lead = 30;
+		    change_wp = abs(getprop("/autopilot/route-manager/wp[1]/bearing-deg") - getprop("orientation/heading-deg"));
 		    if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 240 and getprop("position/altitude-ft") < 10000) {
 			wp_lead = 8;
 			brg_err = 0;
+			change_wp = 0;
 		    }
 		    brg_err = math.pi * (brg_err / 180);
 		    if (enroute[1] < 16) {
@@ -455,7 +468,6 @@ var AFDS = {
 		    }
 
 		    if((getprop("gear/gear[1]/wow") == 0) and (getprop("gear/gear[2]/wow") == 0)) {
-			var change_wp = abs(getprop("/autopilot/route-manager/wp[1]/bearing-deg") - getprop("orientation/heading-magnetic-deg"));
 		    	if(change_wp > 180) change_wp = (360 - change_wp);
 		    	if (((me.heading_change_rate * change_wp) > wpt_eta) or (wpt_eta < wp_lead)) {
 			    if(atm_wpt < (max_wpt - 1)) {
@@ -468,33 +480,33 @@ var AFDS = {
 	    }
 
 	}elsif(me.step==6){
-			ma_spd=getprop("/velocities/mach");
-			banklimit=getprop("/instrumentation/afds/inputs/bank-limit-switch");
-			if (banklimit==0 and ma_spd>0.86) {
-			    lim=0;
-			    me.heading_change_rate = 0.0;
-			}
-			if (banklimit==0 and ma_spd<=0.86 and ma_spd>0.6666) {
-			    lim=10;
-			    me.heading_change_rate = 2.45 * 0.7;
-			}
-			if (banklimit==0 and ma_spd<=0.6666 and ma_spd>0.5) {
-			    lim=20;	
-			    me.heading_change_rate = 1.125 * 0.7;
-			}
-			if (banklimit==0 and ma_spd<=0.5 and ma_spd>0.3333) {
-			    lim=25;
-			    me.heading_change_rate = 0.625 * 0.7;
-			}
-			if (banklimit==0 and ma_spd<=0.333) {
-			    lim=30;
-			    me.heading_change_rate = 0.55 * 0.7;
-			}
-			if (banklimit==0){
-	        props.globals.getNode("/instrumentation/afds/settings/bank-max").setValue(lim);
-			lim = -1 * lim;
-			props.globals.getNode("/instrumentation/afds/settings/bank-min").setValue(lim);
-			}
+	    ma_spd=getprop("/velocities/mach");
+	    banklimit=getprop("/instrumentation/afds/inputs/bank-limit-switch");
+	    if (banklimit==0 and ma_spd>0.86) {
+		lim=0;
+		me.heading_change_rate = 0.0;
+	    }
+	    if (banklimit==0 and ma_spd<=0.86 and ma_spd>0.6666) {
+	    	lim=10;
+	    	me.heading_change_rate = 2.45 * 0.7;
+	    }
+	    if (banklimit==0 and ma_spd<=0.6666 and ma_spd>0.5) {
+	    	lim=20;	
+	    	me.heading_change_rate = 1.125 * 0.7;
+	    }
+	    if (banklimit==0 and ma_spd<=0.5 and ma_spd>0.3333) {
+	    	lim=25;
+	    	me.heading_change_rate = 0.625 * 0.7;
+	    }
+	    if (banklimit==0 and ma_spd<=0.333) {
+	    	lim=30;
+	    	me.heading_change_rate = 0.55 * 0.7;
+	    }
+	    if (banklimit==0){
+        	props.globals.getNode("/instrumentation/afds/settings/bank-max").setValue(lim);
+		lim = -1 * lim;
+		props.globals.getNode("/instrumentation/afds/settings/bank-min").setValue(lim);
+	    }
 	}
 
         me.step+=1;
@@ -513,7 +525,6 @@ var AFDS = {
 };
 #####################
 
-
 var afds = AFDS.new();
 
 setlistener("/sim/signals/fdm-initialized", func {
@@ -531,3 +542,4 @@ var update_afds = func {
 	settimer(update_afds, 0);
     }
 }
+
