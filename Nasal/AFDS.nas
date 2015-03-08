@@ -411,16 +411,13 @@ var AFDS = {
 
 	    	if(atm_wpt < (max_wpt - 1)) {
 		    me.remaining_distance.setValue(getprop("/autopilot/route-manager/wp/remaining-distance-nm") + getprop("autopilot/route-manager/wp/dist"));
-#		    var next_course = getprop("/autopilot/route-manager/wp[1]/bearing-deg");
 	    	} else {
 		    me.remaining_distance.setValue(getprop("autopilot/route-manager/wp/dist"));
 	    	}
 
-		var groundspeed = getprop("/velocities/groundspeed-kt");
 		var f = flightplan();
 		var geocoord = geo.aircraft_position();
 
-#		var referenceCourse = f.pathGeod(f.indexOfWP(f.destination_runway), -getprop("autopilot/route-manager/distance-remaining-nm"));
 		var referenceCourse = f.pathGeod((max_wpt - 1), -getprop("autopilot/route-manager/distance-remaining-nm"));
 		var courseCoord = geo.Coord.new().set_latlon(referenceCourse.lat, referenceCourse.lon);
 		var CourseError = (geocoord.distance_to(courseCoord) / 1852) + 1;
@@ -428,29 +425,22 @@ var AFDS = {
 		if(change_wp > 180) change_wp = (360 - change_wp);
 		CourseError += (change_wp / 20);
 
-#		var targetCourse = f.pathGeod(f.indexOfWP(f.destination_runway), (-getprop("autopilot/route-manager/distance-remaining-nm") + CourseError));
 		var targetCourse = f.pathGeod((max_wpt - 1), (-getprop("autopilot/route-manager/distance-remaining-nm") + CourseError));
 
 		courseCoord = geo.Coord.new().set_latlon(targetCourse.lat, targetCourse.lon);
 		CourseError = (geocoord.course_to(courseCoord) - getprop("orientation/heading-deg"));
 		if(CourseError < -180) CourseError += 360;
 		elsif(CourseError > 180) CourseError -= 360;
-#		if(CourseError > 0) {
-#		    CourseError = geocoord.distance_to(courseCoord);
-#		} else {
-#		    CourseError = (geocoord.distance_to(courseCoord) * -1);
-#		}
-#		CourseError = CourseError * 0.01;
-#		if(CourseError > 8.0) CourseError = 8.0;
-#		elsif(CourseError < -8.0) CourseError = -8.0;
 		setprop("autopilot/internal/course-error", CourseError);
 
 		var leg = f.currentWP();
 		var enroute = leg.courseAndDistanceFrom(targetCourse);
 #		setprop("autopilot/internal/course-deg", enroute[0]);
+		var groundspeed = getprop("/velocities/groundspeed-kt");
 		if(enroute[1] != nil)
 		{
-		    var wpt_eta = (enroute[1] / groundspeed * 3600);
+		    var wpt_dist = getprop("autopilot/route-manager/wp/dist");
+		    var wpt_eta = (wpt_dist / groundspeed * 3600);
 		    var brg_err = getprop("/autopilot/route-manager/wp/true-bearing-deg") - getprop("/orientation/heading-deg");
 		    if (brg_err < 0) {
 			brg_err = brg_err + 360;
@@ -459,11 +449,11 @@ var AFDS = {
 		    change_wp = abs(getprop("/autopilot/route-manager/wp[1]/bearing-deg") - getprop("orientation/heading-deg"));
 		    if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 240 and getprop("position/altitude-ft") < 10000) {
 			wp_lead = 8;
-			brg_err = 0;
+#			brg_err = 0;
 			change_wp = 0;
 		    }
 		    brg_err = math.pi * (brg_err / 180);
-		    if (enroute[1] < 16) {
+		    if (wpt_dist < 16) {
 			wpt_eta = abs(wpt_eta * math.cos(brg_err));
 		    }
 
