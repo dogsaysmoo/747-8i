@@ -365,7 +365,7 @@
 	<object-name>AFDS</object-name>
 	<object-name>EFIS.panel</object-name>
 	<object-name>EFIS.panel.001</object-name>
-        <object-name>rng.dec</object-name>
+        <!--object-name>rng.dec</object-name>
         <object-name>rng2.dec</object-name>
         <object-name>rng.inc</object-name>
         <object-name>rng2.inc</object-name>
@@ -380,7 +380,7 @@
         <object-name>Mode.inc</object-name>
         <object-name>Mode2.inc</object-name>
         <object-name>Mode.dec</object-name>
-        <object-name>Mode2.dec</object-name>
+        <object-name>Mode2.dec</object-name-->
 	<emission>
 		<red>0.5</red>
 		<green>0.4</green>
@@ -1441,10 +1441,9 @@
 
 <!-- efis-ctl 22/12/11 BR-NVS-->
 
-<animation>
+    <animation>
         <type>rotate</type>
-        <object-name>BARO.knob</object-name>
-        <object-name>BARO.knob.001</object-name>
+        <object-name>BARO.knob.R</object-name>
         <property>instrumentation/efis/inputs/kpa-mode</property>
         <factor>80</factor>
         <center>
@@ -1458,10 +1457,9 @@
             <z>-1.0</z>
         </axis>
     </animation>
-<animation>
+    <animation>
         <type>rotate</type>
-        <object-name>BARO.knob.002</object-name>
-        <object-name>BARO.knob.003</object-name>
+        <object-name>BARO.knob.L</object-name>
         <property>instrumentation/efis/inputs/kpa-mode</property>
         <factor>80</factor>
         <center>
@@ -1475,12 +1473,63 @@
             <z>-1.0</z>
         </axis>
     </animation>
+    <animation>
+	<type>pick</type>
+	<object-name>BARO.knob.L</object-name>
+	<object-name>BARO.knob.R</object-name>
+	<action>
+	    <button>0</button>
+	    <repeatable>false</repeatable>
+	    <binding>
+		<command>property-toggle</command>
+		<property>instrumentation/efis/inputs/kpa-mode</property>
+	    </binding>
+	</action>
+    </animation>
+    <animation>
+	<type>pick</type>
+	<object-name>BARO.knob2.L</object-name>
+	<object-name>BARO.knob2.R</object-name>
+	<action>
+	    <button>0</button>
+	    <button>3</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                <property>instrumentation/altimeter/setting-inhg</property>
+                <step>0.01</step>
+                <min>26.0</min>
+                <max>33.0</max>
+                <wrap>false</wrap>
+            </binding>
+            <binding>
+                <command>nasal</command>
+                <script>controls.click(4);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <button>4</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                <property>instrumentation/altimeter/setting-inhg</property>
+                <step>-0.01</step>
+                <min>26.0</min>
+                <max>33.0</max>
+                <wrap>false</wrap>
+            </binding>
+            <binding>
+                <command>nasal</command>
+                <script>controls.click(4);</script>
+            </binding>
+	</action>
+    </animation>
 
     <animation>
         <type>rotate</type>
-        <object-name>Range.knob</object-name>
-        <object-name>Range.knob.001</object-name>
-        <property>instrumentation/efis/inputs/range</property>
+        <object-name>Range.knob.R</object-name>
+        <property>instrumentation/efis[1]/inputs/range</property>
         <interpolation>
             <entry><ind>10</ind><dep>0</dep></entry>
             <entry><ind>20</ind><dep>30</dep></entry>
@@ -1502,9 +1551,31 @@
         </axis>
     </animation>
     <animation>
+	<type>pick</type>
+	<object-name>Range.knob.R</object-name>
+	<action>
+	    <button>0</button>
+	    <button>3</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("range",1);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <button>4</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("range",-1);</script>
+            </binding>
+	</action>
+    </animation>
+
+    <animation>
         <type>rotate</type>
-        <object-name>Range.knob.002</object-name>
-        <object-name>Range.knob.003</object-name>
+        <object-name>Range.knob.L</object-name>
         <property>instrumentation/efis/inputs/range</property>
         <interpolation>
             <entry><ind>10</ind><dep>0</dep></entry>
@@ -1526,11 +1597,32 @@
             <z>-1.0</z>
         </axis>
     </animation>
+    <animation>
+	<type>pick</type>
+	<object-name>Range.knob.L</object-name>
+	<action>
+	    <button>0</button>
+	    <button>3</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("range",1);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <button>4</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("range",-1);</script>
+            </binding>
+	</action>
+    </animation>
 
     <animation>
         <type>rotate</type>
-        <object-name>MINS.knob</object-name>
-        <object-name>MINS.knob.001</object-name>
+        <object-name>MINS.knob.R</object-name>
         <property>instrumentation/efis/inputs/minimums-mode</property>
         <factor>80</factor>
         <center>
@@ -1546,8 +1638,7 @@
     </animation>
     <animation>
         <type>rotate</type>
-        <object-name>MINS.knob.002</object-name>
-        <object-name>MINS.knob.003</object-name>
+	<object-name>MINS.knob.L</object-name>
         <property>instrumentation/efis/inputs/minimums-mode</property>
         <factor>80</factor>
         <center>
@@ -1561,11 +1652,46 @@
             <z>-1.0</z>
         </axis>
     </animation>
+    <animation>
+	<type>pick</type>
+	<object-name>MINS.knob.L</object-name>
+	<object-name>MINS.knob.R</object-name>
+	<action>
+	    <button>0</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("mins",0);</script>
+            </binding>
+	</action>
+    </animation>
+    <animation>
+	<type>pick</type>
+	<object-name>MINS.knob2.L</object-name>
+	<object-name>MINS.knob2.R</object-name>
+	<action>
+	    <button>0</button>
+	    <button>3</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("dh",10);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <button>4</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("dh",-10);</script>
+            </binding>
+	</action>
+    </animation>
 
     <animation>
         <type>rotate</type>
-        <object-name>MODE.knob.002</object-name>
-        <object-name>MODE.knob.003</object-name>
+        <object-name>MODE.knob.L</object-name>
         <property>instrumentation/efis/mfd/mode-num</property>
         <interpolation>
             <entry><ind>0</ind><dep>0</dep></entry>
@@ -1585,10 +1711,30 @@
         </axis>
     </animation>
     <animation>
+	<type>pick</type>
+        <object-name>MODE.knob.L</object-name>
+	<action>
+	    <button>0</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("display",1);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("display",-1);</script>
+            </binding>
+	</action>
+    </animation>
+
+    <animation>
         <type>rotate</type>
-        <object-name>MODE.knob</object-name>
-        <object-name>MODE.knob.001</object-name>
-        <property>instrumentation/efis/mfd/mode-num</property>
+        <object-name>MODE.knob.R</object-name>
+        <property>instrumentation/efis[1]/mfd/mode-num</property>
         <interpolation>
             <entry><ind>0</ind><dep>0</dep></entry>
             <entry><ind>1</ind><dep>30</dep></entry>
@@ -1606,11 +1752,30 @@
             <z>-1.0</z>
         </axis>
     </animation>
+    <animation>
+	<type>pick</type>
+        <object-name>MODE.knob.R</object-name>
+	<action>
+	    <button>0</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("display",1);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("display",-1);</script>
+            </binding>
+	</action>
+    </animation>
 
     <animation>
         <type>translate</type>
-        <object-name>LVOR.toggle</object-name>
-        <object-name>LVOR.toggle.001</object-name>
+        <object-name>LVOR.toggle.L</object-name>
         <property>instrumentation/efis/inputs/lh-vor-adf</property>
         <factor>0.003</factor>
         <center>
@@ -1624,11 +1789,30 @@
             <z>1</z>
         </axis>
     </animation>
+    <animation>
+	<type>pick</type>
+        <object-name>LVOR.toggle.L</object-name>
+	<action>
+	    <button>0</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("lhvor",1);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("lhvor",-1);</script>
+            </binding>
+	</action>
+    </animation>
 
     <animation>
         <type>translate</type>
-        <object-name>RVOR.toggle</object-name>
-        <object-name>RVOR.toggle.001</object-name>
+        <object-name>RVOR.toggle.L</object-name>
         <property>instrumentation/efis/inputs/rh-vor-adf</property>
         <factor>0.003</factor>
         <center>
@@ -1642,13 +1826,106 @@
             <z>1</z>
         </axis>
     </animation>
+    <animation>
+	<type>pick</type>
+        <object-name>RVOR.toggle.L</object-name>
+	<action>
+	    <button>0</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("rhvor",1);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("rhvor",-1);</script>
+            </binding>
+	</action>
+    </animation>
 
+    <animation>
+        <type>translate</type>
+        <object-name>LVOR.toggle.R</object-name>
+        <property>instrumentation/efis[1]/inputs/lh-vor-adf</property>
+        <factor>0.003</factor>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>-0.048</y-m>
+            <z-m>-0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    <animation>
+	<type>pick</type>
+        <object-name>LVOR.toggle.R</object-name>
+	<action>
+	    <button>0</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("lhvor",1);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("lhvor",-1);</script>
+            </binding>
+	</action>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>RVOR.toggle.R</object-name>
+        <property>instrumentation/efis[1]/inputs/rh-vor-adf</property>
+        <factor>0.003</factor>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>-0.048</y-m>
+            <z-m>-0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    <animation>
+	<type>pick</type>
+        <object-name>RVOR.toggle.R</object-name>
+	<action>
+	    <button>0</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("rhvor",1);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>1</button>
+	    <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("rhvor",-1);</script>
+            </binding>
+	</action>
+    </animation>
 <!-- 
 #############   hotspots   ############## -->
 
     <animation>
         <type>pick</type>
-        <object-name>ND.center</object-name>
+        <object-name>ND.center.L</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -1658,10 +1935,23 @@
             </binding>
         </action>
     </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>ND.center.R</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("center",0);</script>
+            </binding>
+        </action>
+    </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>Mtrs.btn</object-name>
+        <object-name>Mtrs.btn.L</object-name>
+        <object-name>Mtrs.btn.R</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -1678,7 +1968,8 @@
 
     <animation>
         <type>pick</type>
-        <object-name>FPV.btn</object-name>
+        <object-name>FPV.btn.L</object-name>
+        <object-name>FPV.btn.R</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -1695,7 +1986,8 @@
 
     <animation>
         <type>pick</type>
-        <object-name>RDR.pos</object-name>
+        <object-name>RDR.pos.L</object-name>
+        <object-name>RDR.pos.R</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -1712,7 +2004,8 @@
 
     <animation>
         <type>pick</type>
-        <object-name>RDR.data</object-name>
+        <object-name>RDR.data.L</object-name>
+        <object-name>RDR.data.R</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -1729,7 +2022,7 @@
 
     <animation>
         <type>pick</type>
-        <object-name>RDR.terr</object-name>
+        <object-name>RDR.terr.L</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -1739,10 +2032,22 @@
             </binding>
         </action>
     </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>RDR.terr.R</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("terr",0);</script>
+            </binding>
+        </action>
+    </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>RDR.arpt</object-name>
+        <object-name>RDR.arpt.L</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -1752,10 +2057,22 @@
             </binding>
         </action>
     </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>RDR.arpt.R</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("arpt",0);</script>
+            </binding>
+        </action>
+    </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>RDR.wpt</object-name>
+        <object-name>RDR.wpt.L</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -1765,10 +2082,22 @@
             </binding>
         </action>
     </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>RDR.wpt.R</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("wpt",0);</script>
+            </binding>
+        </action>
+    </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>RDR.sta</object-name>
+        <object-name>RDR.sta.L</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -1778,10 +2107,22 @@
             </binding>
         </action>
     </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>RDR.sta.R</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("sta",0);</script>
+            </binding>
+        </action>
+    </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>RDR.wxr</object-name>
+        <object-name>RDR.wxr.L</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -1791,154 +2132,22 @@
             </binding>
         </action>
     </animation>
-
     <animation>
         <type>pick</type>
-        <object-name>Rvor.toggle</object-name>
+        <object-name>RDR.wxr.R</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
             <binding>
                 <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("rhvor",1);</script>
-            </binding>
-        </action>
-    </animation>
-    <animation>
-        <type>pick</type>
-        <object-name>Rvor.toggle.001</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("rhvor",1);</script>
+                <script>Boeing747.EfisR.ctl_func("wxr",0);</script>
             </binding>
         </action>
     </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>Radf.toggle</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("rhvor",-1);</script>
-            </binding>
-        </action>
-    </animation>
-    <animation>
-        <type>pick</type>
-        <object-name>Radf.toggle.001</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("rhvor",-1);</script>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>Lvor.toggle</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("lhvor",1);</script>
-            </binding>
-        </action>
-    </animation>
-    <animation>
-        <type>pick</type>
-        <object-name>Lvor.toggle.001</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("lhvor",1);</script>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>Ladf.toggle</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("lhvor",-1);</script>
-            </binding>
-        </action>
-    </animation>
-    <animation>
-        <type>pick</type>
-        <object-name>Ladf.toggle.001</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("lhvor",-1);</script>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>rng.dec</object-name>
-        <object-name>rng2.dec</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("range",-1);</script>
-            </binding>
-        </action>
-        <action>
-            <button>1</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("range",1);</script>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>rng.inc</object-name>
-        <object-name>rng2.inc</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("range",1);</script>
-            </binding>
-        </action>
-        <action>
-            <button>1</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("range",-1);</script>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>TFC</object-name>
+        <object-name>TFC.L</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -1947,121 +2156,56 @@
                 <script>Boeing747.Efis.ctl_func("tfc",1);</script>
             </binding>
         </action>
+	<action>
+	    <button>3</button>
+            <repeatable>false</repeatable>
+	    <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("range",1);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>4</button>
+            <repeatable>false</repeatable>
+	    <binding>
+                <command>nasal</command>
+                <script>Boeing747.Efis.ctl_func("range",-1);</script>
+            </binding>
+	</action>
     </animation>
-
     <animation>
         <type>pick</type>
-        <object-name>baro.dec</object-name>
+        <object-name>TFC.R</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
             <binding>
-                <command>property-assign</command>
-                <property>instrumentation/efis/inputs/kpa-mode</property>
-                <value>0</value>
-            </binding>
-            <binding>
                 <command>nasal</command>
-                <script>controls.click(4);</script>
+                <script>Boeing747.EfisR.ctl_func("tfc",1);</script>
             </binding>
         </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>baro.inc</object-name>
-        <action>
-            <button>0</button>
+	<action>
+	    <button>3</button>
             <repeatable>false</repeatable>
-            <binding>
-                <command>property-assign</command>
-                <property>instrumentation/efis/inputs/kpa-mode</property>
-                <value>1</value>
-            </binding>
-            <binding>
+	    <binding>
                 <command>nasal</command>
-                <script>controls.click(3);</script>
+                <script>Boeing747.EfisR.ctl_func("range",1);</script>
             </binding>
-        </action>
+	</action>
+	<action>
+	    <button>4</button>
+            <repeatable>false</repeatable>
+	    <binding>
+                <command>nasal</command>
+                <script>Boeing747.EfisR.ctl_func("range",-1);</script>
+            </binding>
+	</action>
     </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>inhg.inc</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>true</repeatable>
-            <binding>
-                <command>property-adjust</command>
-                <property>instrumentation/altimeter/setting-inhg</property>
-                <step>0.01</step>
-                <min>26.0</min>
-                <max>33.0</max>
-                <wrap>false</wrap>
-            </binding>
-            <binding>
-                <command>nasal</command>
-                <script>controls.click(4);</script>
-            </binding>
-        </action>
-        <action>
-            <button>1</button>
-            <repeatable>true</repeatable>
-            <binding>
-                <command>property-adjust</command>
-                <property>instrumentation/altimeter/setting-inhg</property>
-                <step>-0.01</step>
-                <min>26.0</min>
-                <max>33.0</max>
-                <wrap>false</wrap>
-            </binding>
-            <binding>
-                <command>nasal</command>
-                <script>controls.click(3);</script>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>inhg.dec</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>true</repeatable>
-            <binding>
-                <command>property-adjust</command>
-                <property>instrumentation/altimeter/setting-inhg</property>
-                <step>-0.01</step>
-                <min>26.0</min>
-                <max>33.0</max>
-                <wrap>false</wrap>
-            </binding>
-            <binding>
-                <command>nasal</command>
-                <script>controls.click(3);</script>
-            </binding>
-        </action>
-        <action>
-            <button>1</button>
-            <repeatable>true</repeatable>
-            <binding>
-                <command>property-adjust</command>
-                <property>instrumentation/altimeter/setting-inhg</property>
-                <step>0.01</step>
-                <min>26.0</min>
-                <max>33.0</max>
-                <wrap>false</wrap>
-            </binding>
-            <binding>
-                <command>nasal</command>
-                <script>controls.click(4);</script>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>inhg.reset</object-name>
+        <object-name>inhg.reset.L</object-name>
+        <object-name>inhg.reset.R</object-name>
         <visible>true</visible>
         <action>
             <button>0</button>
@@ -2076,95 +2220,44 @@
                 <script>controls.click(3);</script>
             </binding>
         </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>Mins.dec</object-name>
-        <action>
-            <button>0</button>
+	<action>
+	    <button>3</button>
             <repeatable>false</repeatable>
             <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("mins",0);</script>
+                <command>property-adjust</command>
+                <property>instrumentation/altimeter/setting-inhg</property>
+                <step>0.01</step>
+                <min>26.0</min>
+                <max>33.0</max>
+                <wrap>false</wrap>
             </binding>
-        </action>
-        <action>
-            <button>1</button>
+            <binding>
+                <command>nasal</command>
+                <script>controls.click(3);</script>
+            </binding>
+	</action>
+	<action>
+	    <button>4</button>
             <repeatable>false</repeatable>
             <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("mins",1);</script>
+                <command>property-adjust</command>
+                <property>instrumentation/altimeter/setting-inhg</property>
+                <step>-0.01</step>
+                <min>26.0</min>
+                <max>33.0</max>
+                <wrap>false</wrap>
             </binding>
-        </action>
+            <binding>
+                <command>nasal</command>
+                <script>controls.click(3);</script>
+            </binding>
+	</action>
     </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>Mins.inc</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("mins",1);</script>
-            </binding>
-        </action>
-        <action>
-            <button>1</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("mins",0);</script>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>minset.inc</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>true</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("dh",10);</script>
-            </binding>
-        </action>
-        <action>
-            <button>1</button>
-            <repeatable>true</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("dh",-10);</script>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>minset.dec</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>true</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("dh",-10);</script>
-            </binding>
-        </action>
-        <action>
-            <button>1</button>
-            <repeatable>true</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("dh",10);</script>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>DH.reset</object-name>
+        <object-name>DH.reset.L</object-name>
+        <object-name>DH.reset.R</object-name>
         <visible>true</visible>
         <action>
             <button>0</button>
@@ -2174,48 +2267,20 @@
                 <script>Boeing747.Efis.ctl_func("dh",0);</script>
             </binding>
         </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>Mode.inc</object-name>
-        <object-name>Mode2.inc</object-name>
         <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
+            <button>3</button>
+            <repeatable>true</repeatable>
             <binding>
                 <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("display",1);</script>
+                <script>Boeing747.Efis.ctl_func("dh",10);</script>
             </binding>
         </action>
         <action>
-            <button>1</button>
-            <repeatable>false</repeatable>
+            <button>4</button>
+            <repeatable>true</repeatable>
             <binding>
                 <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("display",-1);</script>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>Mode.dec</object-name>
-        <object-name>Mode2.dec</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("display",-1);</script>
-            </binding>
-        </action>
-        <action>
-            <button>1</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>Boeing747.Efis.ctl_func("display",1);</script>
+                <script>Boeing747.Efis.ctl_func("dh",-10);</script>
             </binding>
         </action>
     </animation>
