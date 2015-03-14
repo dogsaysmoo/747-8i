@@ -5,27 +5,27 @@
     <model>
 			<livery>
 				<name type="string">Bare White</name>
-				<texture>Liveries/7488G4/fuselage.png</texture>
+				<texture>Liveries/748G4/fuselage.png</texture>
 			</livery>
 			<nightlights>
 				<name type="string">Bare White</name>
-				<texture>Liveries/7488G4/fuselage_light.png</texture>
+				<texture>Liveries/748G4/fuselage_light.png</texture>
 			</nightlights>
 			<turbofans>
 				<name type="string">Bare White</name>
-				<texture>Liveries/7488G4/turbofan.png</texture>
+				<texture>Liveries/748G4/turbofan.png</texture>
 			</turbofans>
 			<wings>
 				<name type="string">Bare White</name>
-				<texture>Liveries/7488G4/wings.png</texture>
+				<texture>Liveries/748G4/wings.png</texture>
 			</wings>
 			<nightwings>
 				<name type="string">Bare White</name>
-				<texture>Liveries/7488G4/wings-lts.png</texture>
+				<texture>Liveries/748G4/wings-lts.png</texture>
 			</nightwings>
 			<nightengines>
 				<name type="string">Bare White</name>
-				<texture>Liveries/7488G4/turbofan-lts.png</texture>
+				<texture>Liveries/748G4/turbofan-lts.png</texture>
 			</nightengines>
     </model>
 </sim>
