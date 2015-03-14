@@ -352,6 +352,7 @@ var EFIS = {
 #####################
 
 var Efis = EFIS.new("instrumentation/efis");
+var EfisR = EFIS.new("instrumentation/efis[1]");
 #var wiper = Wiper.new("controls/electric/wipers","systems/electrical/bus-volts");
 
 setlistener("/sim/signals/fdm-initialized", func {
