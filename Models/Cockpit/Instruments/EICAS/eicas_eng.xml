@@ -1032,9 +1032,8 @@
 	</offsets>
 	<overlay>
 		<params>
-			<property type="string">/systems/pressurization/deltaP-ft</property>
-			<format type="string">%5.1f</format>
-			<factor>0.001</factor>
+			<property type="string">/systems/pressurization/deltaP-psi</property>
+			<format type="string">%3.1f</format>
 			<character-size type="double">0.007</character-size>
 			<color>
 				<red   type="double">1.0</red>

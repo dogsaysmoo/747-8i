@@ -12,6 +12,7 @@
 # System vars
 var cabin_alt = props.globals.initNode("systems/pressurization/cabin-altitude-ft",0,"DOUBLE");
 var p_diff = props.globals.initNode("systems/pressurization/deltaP-ft",0,"DOUBLE");
+var p_diff_psi = props.globals.initNode("systems/pressurization/deltaP-psi",0,"DOUBLE");
 var cabin_rate = props.globals.initNode("systems/pressurization/cabin-rate-fpm",0,"DOUBLE");
 var mode = props.globals.initNode("systems/pressurization/mode",0,"INT");
 var relief = props.globals.initNode("systems/pressurization/relief-valve",0,"BOOL");
@@ -58,6 +59,8 @@ var update_alt = func {
 	rate = cabin_rate.getValue();
 	var cabin = cabin_alt.getValue() + (((rate + rate_last) / 2) * dt);
 	var diff = pressure_alt.getValue() - cabin;
+	if (pressure_alt.getValue() != 0)
+	    p_diff_psi.setValue(-0.4912 * ((getprop("environment/pressure-inhg") - 29.92) / pressure_alt.getValue()) * (diff));
 	rate_last = rate;
 
 	cabin_alt.setValue(cabin);
