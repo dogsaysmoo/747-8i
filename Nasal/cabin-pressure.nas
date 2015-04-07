@@ -1,4 +1,4 @@
-# A Cabin Pressure System
+# A Cabin Pressure System for the 747-8, by John Williams (tikibar) March 2015
 
 # Tasks:
 # 1. Create and initialize properties
