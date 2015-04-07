@@ -208,9 +208,11 @@ var update_mode = func {
 	    if (!manual0.getBoolValue()) valve0.setValue(1);
 	    if (!manual1.getBoolValue()) valve1.setValue(1);
 	    
-	} else {
+	} elsif (!landing_alt_man.getBoolValue()) {
 	    if (getprop("autopilot/route-manager/active") and getprop("autopilot/route-manager/destination/airport") != "") {
-		landing_alt.setValue(getprop("autopilot/route-manager/destination/field-elevation-ft"));
+		var landalt = getprop("autopilot/route-manager/destination/field-elevation-ft");
+		if (landalt > 8000) landalt = 8000;
+		landing_alt.setValue(landalt);
 	    } else {
 		landing_alt.setValue(2000);
 	    }
@@ -302,6 +304,11 @@ setlistener("/sim/signals/fdm-initialized", func (init) {
 		mode.setValue(0);
 	    } else {
 		mode.setValue(1);
+	    }
+	    if (pressure_alt.getValue() < 7750) {
+		cabin_alt.setValue(pressure_alt.getValue());
+	    } else {
+		cabin_alt.setValue(7750);
 	    }
 	    climb_desc();
 	    fast_update();

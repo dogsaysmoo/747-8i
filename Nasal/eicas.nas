@@ -109,12 +109,12 @@ var warning_messages = func {
 	if (getprop("systems/pressurization/cabin-altitude-ft") > 10000)
 		append(msgs_warning,"CABIN ALTITUDE");
 
-	if ((getprop("/consumables/fuel/tank[1]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[2]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[3]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[4]/level-lbs") < 1985))
-		append(msgs_caution," *FUEL QTY LOW");
-	if (getprop("gear/brake-thermal-energy") > 1.2)
-            	append(msgs_caution," L R BRAKE OVERHEAT");
-	if (getprop("controls/pressurization/valve-manual[0]") and getprop("controls/pressurization/valve-manual[1]"))
-		append(msgs_caution,"CABIN ALT AUTO");
+#	if ((getprop("/consumables/fuel/tank[1]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[2]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[3]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[4]/level-lbs") < 1985))
+#		append(msgs_caution," *FUEL QTY LOW");
+#	if (getprop("gear/brake-thermal-energy") > 1.2)
+ #           	append(msgs_caution," L R BRAKE OVERHEAT");
+#	if (getprop("controls/pressurization/valve-manual[0]") and getprop("controls/pressurization/valve-manual[1]"))
+#		append(msgs_caution,"CABIN ALT AUTO");
 }
 
 var caution_messages = func {
@@ -306,6 +306,7 @@ var update_system = func() {
 	
 	takeoff_config_warnings();
 	warning_messages();
+	caution_messages();
 	advisory_messages();
 	memo_messages();
 	
