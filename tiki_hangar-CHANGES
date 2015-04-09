@@ -139,6 +139,4 @@ Changes made by John W.
 -Implement new comm radio system (v3.1+)
 -Replace MFD with canvas nav display
 -Add toggle between MAG/TRU heading modes
--Add cabin pressurization system
--Add tooltip for bank limit knob
 

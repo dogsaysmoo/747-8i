@@ -40,9 +40,6 @@
 			<autopilot>
 				<path>Aircraft/747-8i/Systems/747-8-PFD.xml</path>
 			</autopilot>
-			<autopilot>
-				<path>Aircraft/747-8i/Systems/pressurization.xml</path>
-			</autopilot>
 			<electrical>
 				<path>Aircraft/747-8i/Systems/electrical.xml</path>
 			</electrical>
@@ -549,9 +546,7 @@
 		<hour-meters>
 			<file>Aircraft/747-8i/Nasal/hour-meters.nas</file>
 		</hour-meters>
-		<pressurization>
-			<file>Aircraft/747-8i/Nasal/cabin-pressure.nas</file>
-		</pressurization>
+
 	</nasal>
 
 	<instrumentation>

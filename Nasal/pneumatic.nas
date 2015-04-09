@@ -153,18 +153,18 @@ var pneumatic = {
 	 # Packs
 	var hiflo = 1.0;
 	if (me.packs_hi.getBoolValue()) hiflo = 1.2;
-	if (me.pack_status[0].getValue() == 1) {
+	if (me.pack_status[0].getBoolValue()) {
 	    supply_l = supply_l - (0.30 * hiflo);
 	    if (me.isln_r.getBoolValue() and me.isln_l.getBoolValue())
 		supply_r = supply_r - (0.30 * hiflo);
 	}
-	if (me.pack_status[1].getValue() == 1) {
+	if (me.pack_status[1].getBoolValue()) {
 	    if (me.isln_l.getBoolValue())
 		supply_l = supply_l - (0.30 * hiflo);
 	    if (me.isln_r.getBoolValue())
 		supply_r = supply_r - (0.30 * hiflo);
 	}
-	if (me.pack_status[2].getValue() == 1) {
+	if (me.pack_status[2].getBoolValue()) {
 	    supply_r = supply_r - (0.30 * hiflo);
 	    if (me.isln_r.getBoolValue() and me.isln_l.getBoolValue())
 		supply_l = supply_l - (0.30 * hiflo);
@@ -205,25 +205,14 @@ var pneumatic = {
     update : func {
 	# Packs
 	var packs_off = 0;
-	var status = 0;
 	for (var i=0; i<3; i+=1) {
 	    if (me.pack_knob[i].getBoolValue()) {
-		if (!me.pack_fault.getBoolValue()) {
-		    status = 1;
-		    if (i == 1) {
-			if (getprop("systems/pressurization/relief-valve") or getprop("controls/pressurization/outflow-valve-pos[0]") == 0 or getprop("controls/pressurization/outflow-valve-pos[1]") == 0)
-			    status = 0;
-			if (getprop("gear/on-ground") and !getprop("controls/gear/brake-parking"))
-			    status = 0;
-		    }
-#		    me.pack_status[i].setValue(1);
-		}
+		if (!me.pack_fault.getBoolValue())
+		    me.pack_status[i].setBoolValue(1);
 	    } else {
-#		me.pack_status[i].setValue(0);
-		status = 0;
+		me.pack_status[i].setBoolValue(0);
 		packs_off += 1;
 	    }
-	    me.pack_status[i].setValue(status);
 	}
 	if (packs_off == 3)
 		me.pack_fault.setBoolValue(0);
@@ -286,7 +275,7 @@ var pneumatic = {
 		cutout_r = 0;
 	}
 	if (middle == 0 and me.pack_status[1].getBoolValue()) {
-		me.pack_status[1].setValue(0);
+		me.pack_status[1].setBoolValue(0);
 		me.pack_fault.setBoolValue(1);
 	}
 	if (cutout_l == 1 and me.pack_status[0].getValue() == 1) {

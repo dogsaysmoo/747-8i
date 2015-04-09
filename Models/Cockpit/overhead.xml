@@ -2865,6 +2865,9 @@
 		<binding>
 			<command>property-toggle</command>
 			<property>/controls/pneumatic/pack-control[0]</property>
+			<!--step>1</step>
+			<min>0</min>
+			<max>3</max-->
 		</binding>
 	</action>
 </animation>
@@ -2888,6 +2891,39 @@
 	</condition>
 </animation>
 
+<!--animation>
+	<type>pick</type>
+	<object-name>pack.1</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/pack-control[0]</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>pack.1</object-name>
+	<property>/controls/pneumatic/pack-control[0]</property>
+	<factor>-35</factor>
+	<center>
+		<x-m> 0.153</x-m>
+		<y-m> 0.184</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation-->
+
 <animation>
 	<type>pick</type>
 	<object-name>Pack.2</object-name>
@@ -2897,6 +2933,9 @@
 		<binding>
 			<command>property-toggle</command>
 			<property>/controls/pneumatic/pack-control[1]</property>
+			<!--step>1</step>
+			<min>0</min>
+			<max>3</max-->
 		</binding>
 	</action>
 </animation>
@@ -2920,6 +2959,39 @@
 	</condition>
 </animation>
 
+<!--animation>
+	<type>pick</type>
+	<object-name>pack.2</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/pack-control[1]</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>pack.2</object-name>
+	<property>/controls/pneumatic/pack-control[1]</property>
+	<factor>-35</factor>
+	<center>
+		<x-m> 0.153</x-m>
+		<y-m> 0.261</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation-->
+
 <animation>
 	<type>pick</type>
 	<object-name>Pack.3</object-name>
@@ -2929,6 +3001,9 @@
 		<binding>
 			<command>property-toggle</command>
 			<property>/controls/pneumatic/pack-control[2]</property>
+			<!--step>1</step>
+			<min>0</min>
+			<max>3</max-->
 		</binding>
 	</action>
 </animation>
@@ -2951,6 +3026,39 @@
 		<property>/systems/pneumatic/pack[2]</property>
 	</condition>
 </animation>
+
+<!--animation>
+	<type>pick</type>
+	<object-name>pack.3</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/pack-control[2]</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>pack.3</object-name>
+	<property>/controls/pneumatic/pack-control[2]</property>
+	<factor>-35</factor>
+	<center>
+		<x-m> 0.153</x-m>
+		<y-m> 0.336</y-m>
+		<z-m>-0.014</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation-->
 
 <animation>
 	<type>pick</type>
@@ -3388,221 +3496,6 @@
 	<condition>
 		<property>/controls/pneumatic/isolation-valve[1]</property>
 	</condition>
-</animation>
-
-<!-- CABIN PRESSURIZATION PANEL --> 
- <!-- Landing Alt-->
-<animation>
-  	<type>pick</type>
-	<object-name>landing_alt.btn</object-name>
-	<action>
-	    <button>0</button>
-	    <repeatable>false</repeatable>
-	    <binding>
-		<command>property-toggle</command>
-		<property>controls/pressurization/landing-alt-manual</property>
-	    </binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>landing_alt.knob</object-name>
-	<action>
-	    <button>0</button>
-	    <button>3</button>
-	    <repeatable>true</repeatable>
-	    <binding>
-		<command>property-adjust</command>
-		<property>controls/pressurization/landing-alt-ft</property>
-		<min>-1000</min>
-		<max>14000</max>
-		<step>100</step>
-	    </binding>
-	</action>
-	<action>
-	    <button>1</button>
-	    <button>4</button>
-	    <repeatable>true</repeatable>
-	    <binding>
-		<command>property-adjust</command>
-		<property>controls/pressurization/landing-alt-ft</property>
-		<min>-1000</min>
-		<max>14000</max>
-		<step>-100</step>
-	    </binding>
-	</action>
-	<hovered>
-	    <binding>
-		<command>set-tooltip</command>
-		<tooltip-id>landing-alt-man</tooltip-id>
-		<label>Landing Altitude: %.0f</label>
-		<property>controls/pressurization/landing-alt-ft</property>
-	    </binding>
-	</hovered>
-</animation>
-
- <!-- Manual modes -->
-<animation>
-	<type>translate</type>
-	<object-name>outflow_man.L</object-name>
-	<object-name>outflow_manON.L</object-name>
-	<property>controls/pressurization/valve-manual[0]</property>
-	<factor>0.0045</factor>
-	<axis>
-		<x> 0</x>
-		<y> 0</y>
-		<z>-1</z>
-	</axis>
-</animation>
-<animation>
-	<type>select</type>
-	<object-name>outflow_manON.L</object-name>
-	<condition>
-	    <property>controls/pressurization/valve-manual[0]</property>
-	</condition>
-</animation>
-<animation>
-	<type>pick</type>
-	<object-name>outflow_man.L</object-name>
-	<object-name>outflow_manON.L</object-name>
-	<action>
-	    <button>0</button>
-	    <repeatable>false</repeatable>
-	    <binding>
-		<command>property-toggle</command>
-		<property>controls/pressurization/valve-manual[0]</property>
-	    </binding>
-	</action>
-</animation>
-	
-<animation>
-	<type>translate</type>
-	<object-name>outflow_man.R</object-name>
-	<object-name>outflow_manON.R</object-name>
-	<property>controls/pressurization/valve-manual[1]</property>
-	<factor>0.0045</factor>
-	<axis>
-		<x> 0</x>
-		<y> 0</y>
-		<z>-1</z>
-	</axis>
-</animation>
-<animation>
-	<type>select</type>
-	<object-name>outflow_manON.R</object-name>
-	<condition>
-	    <property>controls/pressurization/valve-manual[1]</property>
-	</condition>
-</animation>
-<animation>
-	<type>pick</type>
-	<object-name>outflow_man.R</object-name>
-	<object-name>outflow_manON.R</object-name>
-	<action>
-	    <button>0</button>
-	    <repeatable>false</repeatable>
-	    <binding>
-		<command>property-toggle</command>
-		<property>controls/pressurization/valve-manual[1]</property>
-	    </binding>
-	</action>
-</animation>
-	
-<animation>
-	<type>rotate</type>
-	<object-name>outflow_valve.sw</object-name>
-	<property>controls/pressurization/valve-switch</property>
-	<factor>-20</factor>
-	<center>
-		<x-m>-0.050</x-m>
-		<y-m> 0.174</y-m>
-		<z-m>-0.014</z-m>
-	</center>
-	<axis>
-		<x>0</x>
-		<y>1</y>
-		<z>0</z>
-	</axis>
-</animation>
-<animation>
-	<type>pick</type>
-	<object-name>outflow_valve.sw</object-name>
-	<action>
-	    <button>0</button>
-	    <repeatable>true</repeatable>
-	    <binding>
-		<command>nasal</command>
-		<script>pressurization.valve_adjust(1);</script>
-	    </binding>
-	    <binding>
-		<command>property-assign</command>
-		<property>controls/pressurization/valve-switch</property>
-		<value>1</value>
-	    </binding>
-	    <mod-up>
-		<binding>
-		    <command>property-assign</command>
-		    <property>controls/pressurization/valve-switch</property>
-		    <value>0</value>
-		</binding>
-	    </mod-up>
-	</action>
-	<action>
-	    <button>1</button>
-	    <repeatable>true</repeatable>
-	    <binding>
-		<command>nasal</command>
-		<script>pressurization.valve_adjust(-1);</script>
-	    </binding>
-	    <binding>
-		<command>property-assign</command>
-		<property>controls/pressurization/valve-switch</property>
-		<value>-1</value>
-	    </binding>
-	    <mod-up>
-		<binding>
-		    <command>property-assign</command>
-		    <property>controls/pressurization/valve-switch</property>
-		    <value>0</value>
-		</binding>
-	    </mod-up>
-	</action>
-</animation>
-
- <!-- Valve needles -->
-<animation>
-	<type>rotate</type>
-	<object-name>outflow_needle.L</object-name>
-	<property>controls/pressurization/outflow-valve-pos[0]</property>
-	<factor>-170</factor>
-	<center>
-		<x-m>-0.087</x-m>
-		<y-m> 0.2265</y-m>
-		<z-m>-0.014</z-m>
-	</center>
-	<axis>
-		<x>0</x>
-		<y>0</y>
-		<z>1</z>
-	</axis>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>outflow_needle.R</object-name>
-	<property>controls/pressurization/outflow-valve-pos[1]</property>
-	<factor>-170</factor>
-	<center>
-		<x-m>-0.087</x-m>
-		<y-m> 0.293</y-m>
-		<z-m>-0.014</z-m>
-	</center>
-	<axis>
-		<x>0</x>
-		<y>0</y>
-		<z>1</z>
-	</axis>
 </animation>
 
 <!-- Hydraulics -->
