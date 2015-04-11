@@ -503,7 +503,7 @@
 			<file>Aircraft/747-8i/Nasal/doors.nas</file>
 			<file>Aircraft/747-8i/Nasal/eicas.nas</file>
 			<file>Aircraft/747-8i/Nasal/efis.nas</file>
-			<!--file>Aircraft/747-8i/Models/Cockpit/ND.nas</file-->
+			<file>Aircraft/747-8i/Models/Cockpit/ND.nas</file>
 			<file>Aircraft/747-8i/Nasal/vspeeds.nas</file>
 			<file>Aircraft/747-8i/Nasal/wipers.nas</file>
 			<file>Aircraft/Generic/limits.nas</file>
@@ -705,7 +705,7 @@
             </speaker>
             </tcas>
 
-	    <nd>
+	    <!--nd>
             	<radar-texture-path type="string">Aircraft/747-8i/Models/Cockpit/Instruments/MFD/od_wxradar.png</radar-texture-path>
               	<symbol-texture-path type="string">Aircraft/747-8i/Models/Cockpit/Instruments/MFD/nd_symbols.png</symbol-texture-path>
               	<symbol-texture-size type="int">512</symbol-texture-size>
@@ -730,7 +730,7 @@
               	<line-width type="double">3</line-width>
                 <symbols>
                 </symbols>
-            </nd>
+            </nd-->
 
 	    <transponder>
 	    	<inputs>
