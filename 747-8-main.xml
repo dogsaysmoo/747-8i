@@ -50,6 +50,9 @@
 			<electrical>
 				<path>Aircraft/747-8i/Systems/electrical.xml</path>
 			</electrical>
+			<autopilot>
+				<path>Aircraft/747-8i/Systems/747-8-flt-ctrls.xml</path>
+			</autopilot>
 		</systems>
 		
 		<instrumentation>

@@ -447,21 +447,21 @@ var altn_flapsDown = func(step) {
 }
 
 ## Flight Controls ##
-var fltctrls = props.globals.getNode("controls/flight",1);
-var ailnctrl = fltctrls.getNode("aileron",1);
-var elevctrl = fltctrls.getNode("elevator",1);
-var rudrctrl = fltctrls.getNode("rudder",1);
-var ailnpos = fltctrls.initNode("aileron-pos",0,"DOUBLE");
-var elevpos = fltctrls.initNode("elevator-pos",0,"DOUBLE");
-var rudrpos = fltctrls.initNode("rudder-pos",0,"DOUBLE");
+#var fltctrls = props.globals.getNode("controls/flight",1);
+#var ailnctrl = fltctrls.getNode("aileron",1);
+#var elevctrl = fltctrls.getNode("elevator",1);
+#var rudrctrl = fltctrls.getNode("rudder",1);
+#var ailnpos = fltctrls.initNode("aileron-pos",0,"DOUBLE");
+#var elevpos = fltctrls.initNode("elevator-pos",0,"DOUBLE");
+#var rudrpos = fltctrls.initNode("rudder-pos",0,"DOUBLE");
 
-var set_fltctrls = func {
-    if (getprop("systems/hydraulic/equipment/enable-sfc")) {
-        ailnpos.setValue(ailnctrl.getValue());
-        elevpos.setValue(elevctrl.getValue());
-        rudrpos.setValue(rudrctrl.getValue());
-    }
-}
+#var set_fltctrls = func {
+#    if (getprop("systems/hydraulic/equipment/enable-sfc")) {
+#        ailnpos.setValue(ailnctrl.getValue());
+#        elevpos.setValue(elevctrl.getValue());
+#        rudrpos.setValue(rudrctrl.getValue());
+#    }
+#}
 
 ## Seatbelt Sign ##
 var seatbelt_knob = props.globals.initNode("controls/switches/seatbelt-sign",0,"INT");
@@ -914,7 +914,7 @@ var update_systems = func {
     Efis.update_wind();
 #    wiper.active();
     stall_horn();
-    set_fltctrls();
+#    set_fltctrls();
     maingear_steer.update();
     lighting_status.update();
     if(getprop("controls/gear/gear-down")){
