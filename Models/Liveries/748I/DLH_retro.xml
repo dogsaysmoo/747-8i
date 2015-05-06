@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+ 
+  <!--Lufthansa 747-8i Retro livery by E-Savageair
+
+   Background:
+
+     The original Lufthansa can be traced back to 1926 when Deutsche Lufth Hansa A.G. was formed in Berin through the merger 
+  with Junkers Flugzeug- und Motorenwerke AG (JFM) which had it's own airline, Lufthverkehr AG.  The name was believed to have orginated 
+  from a book entitled "Luft-Hansa", published by F.A. Fisher von Puturzyn. The logo design, a stylized crane in a circle was created 
+  by Otto Firle for first the German airline, Deutsche Luft-Reederei in 1918 starting operatons on Febuary 5, 1919. The name Lufthansa 
+  comes from the German word luft or "air" and hansa, meaning "guild". 
+
+     The new Lutfhansa operated from Berin till flights were suspended following the defeat of Germany in 1945. On Jan. 6, 1953, 
+  a new national airline named Luftag was formed in the city of Cologne. Not knowing if they had sovereignty over their airspace and 
+  many of the staff having worked for the pre-war Lutfhansa, the new national airline ordered four Convair CV-340's and Lockheed L-1049
+  Super Constellations, then they set up a maintenance base at Hamburg Airport.  On August 6, 1954, Luftag acquired the name and the 
+  logo from the old liquidated Deutsche Lufthansa for DM 30,000 (That's e68000 in today's currency), continuing the tradition of 
+  the German flag carrier name.  
+
+     On April 1, 1955 Lutfhansa was approved for domestic flights to Hamburg, Dusseldorf, Cologne, and Munich.  On May 15, 1955 they
+  began international flights to London, Paris, and Madrid.  On June 1, Lufthansa started Super Constellation flights to New York, followed
+  by flights to Canada, South Amereica, Tehran, and Baghdad.  But because of it's then special status in being a part of the Division
+  of Germany, Lufthansa couldn't fly into either part of Berin until 1989. In 1955, East Germany tried to establish their own "Lufthansa" 
+  airline, but ran into a legal dispute in using the name since Lufthansa was based in West Germany.  So in 1963, East Germany established 
+  Interflug as its national airline, shutting down the East German Lufthansa. 
+
+     Going into the 60's Lufthansa would follow the same path of other airlines in purchasing jetliners such as the Boeing 707 to its fleet.
+  In 1958 Lufthansa ordered four Boeing 707s and started jet flights from Frankfurt to New York City in March 1960.  Then Lufthansa became 
+  the launch customer for the Boeing 737 on February 19, 1965, with an order for 21 aircraft, becoming the first foreign launch customer 
+  for a Boeing airliner.  In the 70's a new buzzword becomes a part of the commercial airline lexicon: Jumbo Jet.The wide-body era came to 
+  Lufthansa on April 26, 1970 with the introduction of the Boeing 747; on November 12, 1973 The McDonnell Douglas DC-10-30 joined the fleet.  
+  In 1976 they included the first A300 by Airbus Industries.  Then later in 1979 both Lufthansa and Swissair were launch customers for the A310.  
+  For the 90's the company began a fleet modernization program starting on June 30, 1985. The new fleet included Airbus A320's, A300-600's,
+  A340's, Boeing 737-300 and the Boeing 747-400.  On Decemeber 6, 2006, Lufthansa became the launch customer for the Boeing 747-8i ordering 20 
+  of the type; the 747-8i went into service in 2012. Among the purchased 747-8i's was aircraft D-ABYT.  She took to the sky on February, 14 2015. 
+  But instead of flying in the current all-white fuselage and big bold fonts, she's painted in the retro livery of the 70's featuring 
+  the blue cheatline. This is the aircraft livery being deplicted.
+
+     
+     Since 1953 Lufthansa has flown to 18 domestic destinations and 197 international destinations in 78 countries across Africa, the Amereicas,
+  Asia, and Europe, using a fleet of more than 280 aircraft; overall the airline that also parents Swiss international Airlines, Austrian Airlines, 
+  Germanwings, and Lufthansa Techink operates a total of over 620 aircraft and carrying over 103 million passengers, giving Lufthansa one of the
+  largest of fleet aircraft in the world as a total group.  
+
+     Lufthansa is one of the five founding members of the Star Alliance, the world's biggest airline alliance; the corporate headquarters still 
+  originates in Colonge.
+
+     
+     First unzip the xml/png. files to flightGear/data/aircraft/747-8i/models/liveries
+  Run FlightGear, and if your livery appears, then it's -
+
+  "Nonstop You."
+
+  Thank you for downloading ;-)
+  ESA 
+
+    -->
+     
+<sim>
+    <model>
+			<livery>
+				<name type="string">Luthansa Retro</name>
+				<texture>Liveries/748I/DLH_retro.png</texture>
+			</livery>
+			<nightlights>
+				<name type="string">DLH_retro</name>
+				<texture>Liveries/748I/DLH_retro_lights.png</texture>
+			</nightlights>
+			<turbofans>
+				<name type="string">DLH_retro</name>
+				<texture>Liveries/748I/DLH_retro_turbofan.png</texture>
+			</turbofans>
+			<wings>
+				<name type="string">DLH_retro</name>
+				<texture>Liveries/748I/wings.png</texture>
+			</wings>
+			<nightwings>
+				<name type="string">DLH_retro</name>
+				<texture>Liveries/748I/wings-lts.png</texture>
+			</nightwings>
+			<nightengines>
+				<name type="string">DLH_retro</name>
+				<texture>Liveries/748I/DLH_retro_turbofan-lts.png</texture>
+			</nightengines>
+    </model>
+</sim>
+</PropertyList>
