@@ -76,7 +76,6 @@
 				<position-z-m type="float">-0.24</position-z-m>
 				<jetway-hood-deg type="float">0</jetway-hood-deg>
 			</door-->
-			<enable-canvas-tacan-display type="bool">true</enable-canvas-tacan-display>
 		</model>
 
 		<!-- Help menu -->
@@ -343,8 +342,13 @@ Service ceiling	43,000 ft (13,000 m)
 			<selected-frequency n="4">Y</selected-frequency>
 		    </frequencies>
 		</tacan>
-		<efis>
+		<efis n="0">
 			<tacan alias="/instrumentation/tacan/powered"/>
+			<enable-canvas-tacan-display type="bool">true</enable-canvas-tacan-display>
+		</efis>
+		<efis n="1">
+			<tacan alias="/instrumentation/tacan/powered"/>
+			<enable-canvas-tacan-display type="bool">true</enable-canvas-tacan-display>
 		</efis>
 	</instrumentation>
 	
