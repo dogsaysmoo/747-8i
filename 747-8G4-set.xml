@@ -344,11 +344,9 @@ Service ceiling	43,000 ft (13,000 m)
 		</tacan>
 		<efis n="0">
 			<tacan alias="/instrumentation/tacan/powered"/>
-			<enable-canvas-tacan-display type="bool">true</enable-canvas-tacan-display>
 		</efis>
 		<efis n="1">
 			<tacan alias="/instrumentation/tacan/powered"/>
-			<enable-canvas-tacan-display type="bool">true</enable-canvas-tacan-display>
 		</efis>
 	</instrumentation>
 	
