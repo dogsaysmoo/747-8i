@@ -642,6 +642,7 @@ var start_updates = func {
         # airborne startup
         setprop("/controls/gear/brake-parking",0);
         controls.gearDown(-1);
+	magic_autostart();
     }
     update_systems();
 }
