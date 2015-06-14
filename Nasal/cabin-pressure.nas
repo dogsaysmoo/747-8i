@@ -297,8 +297,8 @@ var climb_desc = func {
 	descend_detector();
 	settimer(climb_desc, 30);
 }
-setlistener("/sim/signals/fdm-initialized", func (init) {
-	if (init.getBoolValue()) {
+setlistener("/sim/signals/fdm-initialized", func {
+	settimer(func {
 	    max_out.setValue(30000);
 	    if (getprop("gear/on-ground")) {
 		mode.setValue(0);
@@ -313,6 +313,6 @@ setlistener("/sim/signals/fdm-initialized", func (init) {
 	    climb_desc();
 	    fast_update();
 	    slow_update();
-	}
+	},2);
 },0,0);
 
