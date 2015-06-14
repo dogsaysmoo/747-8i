@@ -2752,6 +2752,35 @@
 	</offsets>
 </model>
 
+<!-- ############ -->
+<!-- Fuel Dumping -->
+<!-- ############ -->
+<model>
+	<name>FuelDumpL</name>
+	<path>Aircraft/747-8i/Models/Effects/fuel-dump.xml</path>
+	<offsets>
+		<x-m> 17.4701</x-m>
+		<y-m>-28.4578</y-m>
+		<z-m> 1.5738</z-m>
+	</offsets>
+</model>
+<model>
+	<name>FuelDumpR</name>
+	<path>Aircraft/747-8i/Models/Effects/fuel-dump.xml</path>
+	<offsets>
+		<x-m> 17.4701</x-m>
+		<y-m> 28.4578</y-m>
+		<z-m> 1.5738</z-m>
+	</offsets>
+</model>
+<animation>
+	<type>select</type>
+	<object-name>FuelDumpL</object-name>
+	<object-name>FuelDumpR</object-name>
+	<condition>
+		<property>controls/fuel/dump-valve</property>
+	</condition>
+</animation>
 
 	 
 </PropertyList>

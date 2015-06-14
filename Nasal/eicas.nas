@@ -104,15 +104,26 @@ var approach_config_warnings = func {
 var warning_messages = func {
 	if (eng1fire or eng2fire or eng3fire or eng4fire)
 		append(msgs_warning,"FIRE ENGINE 1, 2, 3, 4");
-	if (getprop("gear/brake-thermal-energy") > 1.2)
-            	append(msgs_caution," L R BRAKE OVERHEAT");
+	if (getprop("controls/failures/gear[0]/stuck") or getprop("controls/failures/gear[1]/stuck") or getprop("controls/failures/gear[2]/stuck") or getprop("controls/failures/gear[3]/stuck") or getprop("controls/failures/gear[4]/stuck"))
+		append(msgs_warning,"GEAR DISAGREE");
+	if (getprop("systems/pressurization/cabin-altitude-ft") > 10000)
+		append(msgs_warning,"CABIN ALTITUDE");
+
+#	if ((getprop("/consumables/fuel/tank[1]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[2]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[3]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[4]/level-lbs") < 1985))
+#		append(msgs_caution," *FUEL QTY LOW");
+#	if (getprop("gear/brake-thermal-energy") > 1.2)
+ #           	append(msgs_caution," L R BRAKE OVERHEAT");
+#	if (getprop("controls/pressurization/valve-manual[0]") and getprop("controls/pressurization/valve-manual[1]"))
+#		append(msgs_caution,"CABIN ALT AUTO");
 }
 
 var caution_messages = func {
 	if ((getprop("/consumables/fuel/tank[1]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[2]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[3]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[4]/level-lbs") < 1985))
 		append(msgs_caution," *FUEL QTY LOW");
-	if (getprop("controls/failures/gear[0]/stuck") or getprop("controls/failures/gear[1]/stuck") or getprop("controls/failures/gear[2]/stuck") or getprop("controls/failures/gear[3]/stuck") or getprop("controls/failures/gear[4]/stuck"))
-		append(msgs_warning,"GEAR DISAGREE");
+	if (getprop("gear/brake-thermal-energy") > 1.2)
+            	append(msgs_caution," L R BRAKE OVERHEAT");
+	if (getprop("controls/pressurization/valve-manual[0]") and getprop("controls/pressurization/valve-manual[1]"))
+		append(msgs_caution,"CABIN ALT AUTO");
 }
 
 var advisory_messages = func {
@@ -150,14 +161,46 @@ var advisory_messages = func {
 		append(msgs_advisory," HYDR SYS 3");
 	if (getprop("/systems/hydraulic/system-fault[3]"))
 		append(msgs_advisory," HYDR SYS 4");
-	if (!getprop("controls/pneumatic/engine-bleed"))
+	if (!getprop("controls/pneumatic/engine-bleed[0]") and getprop("controls/pneumatic/engine-bleed[1]") and getprop("controls/pneumatic/engine-bleed[2]") and getprop("controls/pneumatic/engine-bleed[3]"))
 		append(msgs_advisory," *BLEED 1 OFF");
-	if (!getprop("controls/pneumatic/engine-bleed[1]"))
+	if (getprop("controls/pneumatic/engine-bleed[0]") and !getprop("controls/pneumatic/engine-bleed[1]") and getprop("controls/pneumatic/engine-bleed[2]") and getprop("controls/pneumatic/engine-bleed[3]"))
 		append(msgs_advisory," *BLEED 2 OFF");
-	if (!getprop("controls/pneumatic/engine-bleed[2]"))
+	if (getprop("controls/pneumatic/engine-bleed[0]") and getprop("controls/pneumatic/engine-bleed[1]") and !getprop("controls/pneumatic/engine-bleed[2]") and getprop("controls/pneumatic/engine-bleed[3]"))
 		append(msgs_advisory," *BLEED 3 OFF");
-	if (!getprop("controls/pneumatic/engine-bleed[3]"))
+	if (getprop("controls/pneumatic/engine-bleed[0]") and getprop("controls/pneumatic/engine-bleed[1]") and getprop("controls/pneumatic/engine-bleed[2]") and !getprop("controls/pneumatic/engine-bleed[3]"))
 		append(msgs_advisory," *BLEED 4 OFF");
+	if (!getprop("controls/pneumatic/engine-bleed[0]") and !getprop("controls/pneumatic/engine-bleed[1]") and getprop("controls/pneumatic/engine-bleed[2]") and getprop("controls/pneumatic/engine-bleed[3]"))
+		append(msgs_advisory," *BLEED 1, 2 OFF");
+	if (!getprop("controls/pneumatic/engine-bleed[0]") and getprop("controls/pneumatic/engine-bleed[1]") and !getprop("controls/pneumatic/engine-bleed[2]") and getprop("controls/pneumatic/engine-bleed[3]"))
+		append(msgs_advisory," *BLEED 1, 3 OFF");
+	if (!getprop("controls/pneumatic/engine-bleed[0]") and getprop("controls/pneumatic/engine-bleed[1]") and getprop("controls/pneumatic/engine-bleed[2]") and !getprop("controls/pneumatic/engine-bleed[3]"))
+		append(msgs_advisory," *BLEED 1, 4 OFF");
+	if (!getprop("controls/pneumatic/engine-bleed[0]") and !getprop("controls/pneumatic/engine-bleed[1]") and !getprop("controls/pneumatic/engine-bleed[2]") and getprop("controls/pneumatic/engine-bleed[3]"))
+		append(msgs_advisory," *BLEED 1, 2, 3 OFF");
+	if (!getprop("controls/pneumatic/engine-bleed[0]") and !getprop("controls/pneumatic/engine-bleed[1]") and getprop("controls/pneumatic/engine-bleed[2]") and !getprop("controls/pneumatic/engine-bleed[3]"))
+		append(msgs_advisory," *BLEED 1, 2, 4 OFF");
+	if (!getprop("controls/pneumatic/engine-bleed[0]") and getprop("controls/pneumatic/engine-bleed[1]") and !getprop("controls/pneumatic/engine-bleed[2]") and !getprop("controls/pneumatic/engine-bleed[3]"))
+		append(msgs_advisory," *BLEED 1, 3, 4 OFF");
+	if (getprop("controls/pneumatic/engine-bleed[0]") and !getprop("controls/pneumatic/engine-bleed[1]") and !getprop("controls/pneumatic/engine-bleed[2]") and getprop("controls/pneumatic/engine-bleed[3]"))
+		append(msgs_advisory," *BLEED 2, 3 OFF");
+	if (getprop("controls/pneumatic/engine-bleed[0]") and !getprop("controls/pneumatic/engine-bleed[1]") and getprop("controls/pneumatic/engine-bleed[2]") and !getprop("controls/pneumatic/engine-bleed[3]"))
+		append(msgs_advisory," *BLEED 2, 4 OFF");
+	if (getprop("controls/pneumatic/engine-bleed[0]") and !getprop("controls/pneumatic/engine-bleed[1]") and !getprop("controls/pneumatic/engine-bleed[2]") and !getprop("controls/pneumatic/engine-bleed[3]"))
+		append(msgs_advisory," *BLEED 2, 3, 4 OFF");
+	if (getprop("controls/pneumatic/engine-bleed[0]") and getprop("controls/pneumatic/engine-bleed[1]") and !getprop("controls/pneumatic/engine-bleed[2]") and !getprop("controls/pneumatic/engine-bleed[3]"))
+		append(msgs_advisory," *BLEED 3, 4 OFF");
+	if (!getprop("controls/pneumatic/engine-bleed[0]") and !getprop("controls/pneumatic/engine-bleed[1]") and !getprop("controls/pneumatic/engine-bleed[2]") and !getprop("controls/pneumatic/engine-bleed[3]"))
+		append(msgs_advisory," *BLEED 1, 2, 3, 4 OFF");
+	if (getprop("systems/pressurization/relief-valve"))
+		append(msgs_advisory," PRESS RELIEF");
+	if (getprop("controls/pressurization/valve-manual[0]") and getprop("controls/pressurization/valve-manual[1]"))
+		append(msgs_advisory," OUTFLOW VLV L, R");
+	if (getprop("controls/pressurization/valve-manual[0]") and !getprop("controls/pressurization/valve-manual[1]"))
+		append(msgs_advisory," OUTFLOW VLV L");
+	if (!getprop("controls/pressurization/valve-manual[0]") and getprop("controls/pressurization/valve-manual[1]"))
+		append(msgs_advisory," OUTFLOW VLV R");
+	if (getprop("systems/pressurization/mode") == 2 and (!getprop("autopilot/route-manager/active") or getprop("autopilot/route-manager/destination/airport") == "") and !getprop("controls/pressurization/landing-alt-manual"))
+		append(msgs_advisory," LANDING ALT");
 	if (getprop("engines/engine/n1-ind") < 44)
 		append(msgs_advisory," *ENG SHUTDOWN 1");
 	if (getprop("engines/engine[1]/n1-ind") < 44)
@@ -172,7 +215,7 @@ var advisory_messages = func {
 		append(msgs_advisory," FUEL JETTISON");
 		append(msgs_memo,"FUEL TO REMAIN "~FTR);
 	}
-	if (getprop("autopilot/route-manager/active") and getprop("autopilot/route-manager/route/num") < 2)
+	if (getprop("autopilot/route-manager/active") and (getprop("autopilot/route-manager/route/num") < 2 or getprop("autopilot/route-manager/departure/runway") == ""))
 		append(msgs_advisory,"INVALID ROUTE");
 	if (getprop("instrumentation/afds/ap-modes/roll-mode") == "LNAV" and !getprop("autopilot/route-manager/active"))
 		append(msgs_advisory,"NO ACTIVE ROUTE");
@@ -263,6 +306,7 @@ var update_system = func() {
 	
 	takeoff_config_warnings();
 	warning_messages();
+	caution_messages();
 	advisory_messages();
 	memo_messages();
 	
