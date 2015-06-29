@@ -35,21 +35,12 @@
 			<livery>
 				<file type="string">Default</file>
 			</livery>
-			<nightlights>
-				<file type="string">Default</file>
-			</nightlights>
-			<nightengines>
-				<file type="string">Default</file>
-			</nightengines>
 			<turbofans>
 				<file type="string">Default</file>
 			</turbofans>		
 			<wings>
 				<file type="string">Default</file>
 			</wings>
-			<nightwings>
-				<file type="string">Default</file>
-			</nightwings>
 			 
 			<door>
 				<position-x-m type="float">-24.58</position-x-m>
