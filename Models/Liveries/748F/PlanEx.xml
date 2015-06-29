@@ -7,10 +7,6 @@
 				<name type="string">Planet Express</name>
 				<texture>Liveries/748F/PlanEx.png</texture>
 			</livery>
-			<nightlights>
-				<name type="string">Atlas Virtual Airlines</name>
-				<texture>Liveries/748F/PlanEx_lights.png</texture>
-			</nightlights>
 			<turbofans>
 				<name type="string">Planet Express</name>
 				<texture>Liveries/748F/PlanEx_engines.png</texture>
@@ -19,14 +15,6 @@
 				<name type="string">Planet Express</name>
 				<texture>Liveries/748F/PlanEx_wings.png</texture>
 			</wings>
-			<nightwings>
-				<name type="string">Planet Express - Special</name>
-				<texture>Liveries/748F/PlanEx_wings-lts.png</texture>
-			</nightwings>
-			<nightengines>
-				<name type="string">Planet Express - Special</name>
-				<texture>Liveries/748F/PlanEx_eng-lts.png</texture>
-			</nightengines>
     </model>
 </sim>
 </PropertyList>
