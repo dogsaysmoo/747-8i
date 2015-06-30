@@ -2572,6 +2572,7 @@
 			</condition>
 		</parameters>
 		<object-name>fuselage_1</object-name>
+		<object-name>nosecone</object-name>
          	<object-name>cargodoor1.001</object-name>
 		<object-name>NLG_L_lg</object-name>
 		<object-name>NLG_R_lg</object-name>
