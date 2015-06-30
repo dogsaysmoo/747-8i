@@ -53,10 +53,6 @@ ESA
 				<name type="string">Cathay Pacific Cargo</name>
 				<texture>Liveries/748F/CPA.png</texture>
 			</livery>
-			<nightlights>
-				<name type="string">Cathay Pacific Cargo</name>
-				<texture>Liveries/748F/CPA-lights.png</texture>
-			</nightlights>
 			<turbofans>
 				<name type="string">Cathay Pacific Cargo</name>
 				<texture>Liveries/748F/CPA_turbofan.png</texture>
@@ -65,14 +61,6 @@ ESA
 				<name type="string">Cathay Pacific Cargo</name>
 				<texture>Liveries/748F/wings.png</texture>
 			</wings>
-			<nightwings>
-				<name type="string">Cathay Pacific Cargo</name>
-				<texture>Liveries/748F/wings-lts.png</texture>
-			</nightwings>
-			<nightengines>
-				<name type="string">Cathay Pacific Cargo</name>
-				<texture>Liveries/748F/CPA_turbofan-lts.png</texture>
-			</nightengines>
     </model>
 </sim>
 </PropertyList>

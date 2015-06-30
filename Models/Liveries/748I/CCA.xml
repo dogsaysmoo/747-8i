@@ -31,10 +31,6 @@ word "VIP" Air China is a member of the Star Alliance.
 				<name type="string">Air China</name>
 				<texture>Liveries/748I/CCA.png</texture>
 			</livery>
-			<nightlights>
-				<name type="string">Air China</name>
-				<texture>Liveries/748I/CCA_fuselage_lights.png</texture>
-			</nightlights>
 			<turbofans>
 				<name type="string">Air China</name>
 				<texture>Liveries/748I/CCA_turbofan.png</texture>
@@ -43,14 +39,6 @@ word "VIP" Air China is a member of the Star Alliance.
 				<name type="string">Air China</name>
 				<texture>Liveries/748I/wings.png</texture>
 			</wings>
-			<nightwings>
-				<name type="string">Air China</name>
-				<texture>Liveries/748I/wings-lts.png</texture>
-			</nightwings>
-			<nightengines>
-				<name type="string">Air China</name>
-				<texture>Liveries/748I/CCA_turbofan-lts.png</texture>
-			</nightengines>
     </model>
 </sim>
 </PropertyList>
