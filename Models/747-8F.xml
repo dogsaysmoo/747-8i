@@ -2564,6 +2564,7 @@
 			</condition>
 		</parameters>
 		<object-name>fuselage</object-name>
+		<object-name>nosecone</object-name>
 		<object-name>NLG_L_lg</object-name>
 		<object-name>NLG_R_lg</object-name>
 		<object-name>NLG_L_sm</object-name>
