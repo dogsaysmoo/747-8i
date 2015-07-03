@@ -35,6 +35,7 @@
      <animation>
         <type>material</type>
          <object-name>fuselage_1</object-name>
+         <object-name>tail_section</object-name>
          <object-name>nosecone</object-name>
          <object-name>VHFantenna</object-name>
          <object-name>antenna2</object-name>
@@ -67,18 +68,7 @@
       <texture>fuselage.png</texture>
     </animation>
     
-     <animation>
-        <type>material</type>
-	<object-name>rudder.lit</object-name>
-	<object-name>vstab.lit</object-name>
-	<object-name>fuselage.lit</object-name>
-	<object-name>cargodoor.lit</object-name>
-	<property-base>sim/model/nightlights</property-base>
-	<texture-prop>texture</texture-prop>
-	<texture>fuselage_light.png</texture>
-    </animation>
-    
-	<animation>
+    <animation>
         <type>material</type>
          <object-name>turbofan_capa_L_1</object-name>
          <object-name>turbofan_capa_R_1</object-name>
@@ -121,23 +111,6 @@
     </animation>
 
     <animation>
-      <type>material</type>
-	<object-name>e1f.lt</object-name>
-	<object-name>e1r.lt</object-name>
-	<object-name>e2f.lt</object-name>
-	<object-name>e2r.lt</object-name>
-	<object-name>e3f.lt</object-name>
-	<object-name>e3r.lt</object-name>
-	<object-name>e4f.lt</object-name>
-	<object-name>e4r.lt</object-name>
-	<object-name>pylon.lt.in</object-name>
-	<object-name>pylon.lt.out</object-name>
-	<property-base>sim/model/nightengines</property-base>
-	<texture-prop>texture</texture-prop>
-	<texture>turbofan-lts.png</texture>
-    </animation>
- 
-     <animation>
         <type>material</type>
          <!-- Left wing -->
          <object-name>wing</object-name>
@@ -191,14 +164,7 @@
       <texture>wings.png</texture>
     </animation>
 
-    <animation>
-      <type>material</type>
-	<object-name>wing.lt.out</object-name>
-	<property-base>sim/model/nightwings</property-base>
-	<texture-prop>texture</texture-prop>
-	<texture>wings-lts.png</texture>
-    </animation>
-
+<!-- Pushback -->
 <model>
 	<name>Pushback</name>
 	<!--path>Models/Airport/Pushback/Goldhofert.xml</path-->
@@ -378,26 +344,6 @@
 		<z-m>-0.26</z-m>
 	</offsets>
 </model>
-<animation>
-	<type>select</type>
-	<object-name>e1f.lt</object-name>
-	<object-name>e1r.lt</object-name>
-	<object-name>e2f.lt</object-name>
-	<object-name>e2r.lt</object-name>
-	<object-name>e3f.lt</object-name>
-	<object-name>e3r.lt</object-name>
-	<object-name>e4f.lt</object-name>
-	<object-name>e4r.lt</object-name>
-	<object-name>pylon.lt.in</object-name>
-	<object-name>pylon.lt.out</object-name>
-	<object-name>wing.lt.out</object-name>
-	<condition>
-	    <greater-than>
-		<property>sim/multiplay/generic/int[8]</property>
-		<value>0</value>
-	    </greater-than>
-	</condition>
-</animation>
 
 <!-- NAVIGATION LIGHTS -->
 
@@ -2215,7 +2161,6 @@
         <type>translate</type>
         <object-name>turbofan_capa_rev_R_1</object-name>
         <object-name>turbofan_capa_rev_L_1</object-name>
-	<object-name>e1r.lt</object-name>
         <property>sim/multiplay/generic/float[6]</property>
         <factor>0.52</factor>
 		  <axis>
@@ -2232,7 +2177,6 @@
         <type>translate</type>
         <object-name>turbofan_capa_rev_R_2</object-name>
         <object-name>turbofan_capa_rev_L_2</object-name>
-	<object-name>e2r.lt</object-name>
         <property>sim/multiplay/generic/float[6]</property>
         <factor>0.52</factor>
 		  <axis>
@@ -2249,7 +2193,6 @@
         <type>translate</type>
         <object-name>turbofan_capa_rev_R_3</object-name>
         <object-name>turbofan_capa_rev_L_3</object-name>
-	<object-name>e3r.lt</object-name>
         <property>sim/multiplay/generic/float[6]</property>
         <factor>-0.52</factor>
 		  <axis>
@@ -2266,7 +2209,6 @@
         <type>translate</type>
         <object-name>turbofan_capa_rev_R_4</object-name>
         <object-name>turbofan_capa_rev_L_4</object-name>
-	<object-name>e4r.lt</object-name>
         <property>sim/multiplay/generic/float[6]</property>
         <factor>-0.52</factor>
 		  <axis>
@@ -2532,10 +2474,7 @@
 <!-- ###### -->
  <animation>
   <type>rotate</type>
-  <object-name>rudder.lit</object-name>
-  <object-name>rudder</object-name>
   <object-name>rudder_1</object-name>
-  <object-name>rudder_0</object-name>
   <property>surface-positions/rudder-pos-norm</property>
   <factor>35</factor>
   <offset-deg>0</offset-deg>   
@@ -2621,50 +2560,144 @@
 <!-- Ilumination -->
 <!-- ########### -->
 
-<animation>
-	<type>select</type>
-	<object-name>rudder.lit</object-name>
-	<object-name>vstab.lit</object-name>
-	<condition>
-	    <greater-than>
-		<property>sim/multiplay/generic/int[3]</property>
-		<value>0</value>
-	    </greater-than>
-	</condition>
-</animation>
+	<effect>
+		<name>Landing lightmap</name>
+		<inherits-from>Effects/lightmap</inherits-from>
+		<parameters>
+			<texture n="1">
+				<image>Aircraft/747-8i/Models/Effects/lightmap_fuselage.png</image>
+			</texture>
+			<condition>
+				<use>systems/electrical/lighting/landing-lights[2]</use>
+			</condition>
+		</parameters>
+		<object-name>fuselage_1</object-name>
+		<object-name>nosecone</object-name>
+         	<object-name>cargodoor1.001</object-name>
+		<object-name>NLG_L_lg</object-name>
+		<object-name>NLG_R_lg</object-name>
+		<object-name>NLG_L_sm</object-name>
+		<object-name>NLG_R_sm</object-name>
+		<object-name>FLG_FL_in</object-name>
+		<object-name>FLG_FL_out</object-name>
+		<object-name>FLG_FR_in</object-name>
+		<object-name>FLG_FR_out</object-name>
+		<object-name>FLG_MR_out</object-name>
+		<object-name>FLG_MR_in</object-name>
+		<object-name>FLG_ML_in</object-name>
+		<object-name>FLG_ML_out</object-name>
+		<object-name>FLG_RR_in</object-name>
+		<object-name>FLG_RR_out</object-name>
+		<object-name>FLG_RL_in</object-name>
+		<object-name>FLG_RL_out</object-name>
+	</effect>
 
-<animation>
-	<type>select</type>
-	<object-name>fuselage.lit</object-name>
-	<condition>
-		<or>
-		    <greater-than>
-			<property>sim/multiplay/generic/int[5]</property>
-			<value>0</value>
-		    </greater-than>
-		    <greater-than>
-			<property>sim/multiplay/generic/int[6]</property>
-			<value>0</value>
-		    </greater-than>
-		</or>
-	</condition>
-</animation>
-<animation>
-        <type>select</type>
-        <object-name>cargodoor.lit</object-name>
-        <condition>
-                <and>
-		    <greater-than>
-			<property>sim/multiplay/generic/int[6]</property>
-			<value>0</value>
-		    </greater-than>
-			<less-than>
-	                        <property>controls/doors/cargo1/position-norm</property>
-				<value>0.02</value>
-			</less-than>
-                </and>
-        </condition>
-</animation>
+	<effect>
+		<name>Logo lightmap</name>
+		<inherits-from>Effects/lightmap</inherits-from>
+		<parameters>
+			<texture n="1">
+				<image>Aircraft/747-8i/Models/Effects/lightmap_fuselage.png</image>
+			</texture>
+			<condition>
+				<use>systems/electrical/lighting/logo-lights</use>
+			</condition>
+		</parameters>
+		<object-name>vstab</object-name>
+         	<object-name>rudder_1</object-name>
+         	<object-name>tail_section</object-name>
+	</effect>
+
+	<effect>
+		<name>Wing lightmap</name>
+		<inherits-from>Effects/lightmap</inherits-from>
+		<parameters>
+			<texture n="1">
+				<image>Aircraft/747-8i/Models/Effects/lightmap_wing.png</image>
+			</texture>
+			<condition>
+				<use>systems/electrical/lighting/wing-lights</use>
+			</condition>
+		</parameters>
+		<object-name>wing</object-name>
+		<object-name>slat</object-name>
+		<object-name>aileron_L</object-name>
+		<object-name>external_flap_L</object-name>
+		<object-name>aileron_int_L</object-name>
+		<object-name>doubleflaps_1_L</object-name>
+		<object-name>doubleflaps_2_L</object-name>
+		<object-name>speedbrake_6_L</object-name>
+		<object-name>speedbrake_5_L</object-name>
+		<object-name>speedbrake_4_L</object-name>
+		<object-name>speedbrake_3_L</object-name>
+		<object-name>speedbrake_1_L</object-name>
+		<object-name>speedbrake_2_L</object-name>
+		<object-name>flap_compart_LB_3</object-name>
+		<object-name>flap_compart_LF_3</object-name>
+		<object-name>flap_compart_LF_4</object-name>
+		<object-name>flap_compart_LB_4</object-name>
+		<object-name>flap_compart_LF_2</object-name>
+		<object-name>flap_compart_LB_2</object-name>
+		<object-name>flap_compart_LF_1</object-name>
+		<object-name>flap_compart_LB_1</object-name>
+		<object-name>aileron_R</object-name>
+		<object-name>external_flap_R</object-name>
+		<object-name>aileron_int_R</object-name>
+		<object-name>doubleflaps_1_R</object-name>
+		<object-name>doubleflaps_2_R</object-name>
+		<object-name>speedbrake_6_R</object-name>
+		<object-name>speedbrake_5_R</object-name>
+		<object-name>speedbrake_4_R</object-name>
+		<object-name>speedbrake_3_R</object-name>
+		<object-name>speedbrake_1_R</object-name>
+		<object-name>speedbrake_2_R</object-name>
+		<object-name>flap_compart_RB_3</object-name>
+		<object-name>flap_compart_RF_3</object-name>
+		<object-name>flap_compart_RF_4</object-name>
+		<object-name>flap_compart_RB_4</object-name>
+		<object-name>flap_compart_RF_2</object-name>
+		<object-name>flap_compart_RB_2</object-name>
+		<object-name>flap_compart_RF_1</object-name>
+		<object-name>flap_compart_RB_1</object-name>         
+		<object-name>hstab_L</object-name>
+		<object-name>elevator_left</object-name>
+		<object-name>hstab_R</object-name>
+		<object-name>elevator_right</object-name>
+	</effect>
+
+	<effect>
+		<name>Nacelle lightmap</name>
+		<inherits-from>Effects/lightmap</inherits-from>
+		<parameters>
+			<texture n="1">
+				<image>Aircraft/747-8i/Models/Effects/lightmap_engine.png</image>
+			</texture>
+			<condition>
+				<use>systems/electrical/lighting/wing-lights</use>
+			</condition>
+		</parameters>
+		<object-name>line</object-name>
+		<object-name>turbofan_capa_L_1</object-name>
+		<object-name>turbofan_capa_R_1</object-name>
+		<object-name>turbofan_capa_rev_R_1</object-name>
+		<object-name>turbofan_capa_rev_L_1</object-name>
+		<object-name>turbofan_capa_L_2</object-name>
+		<object-name>turbofan_capa_R_2</object-name>
+		<object-name>turbofan_capa_rev_R_2</object-name>
+		<object-name>turbofan_capa_rev_L_2</object-name>
+		<object-name>turbofan_capa_L_3</object-name>
+		<object-name>turbofan_capa_R_3</object-name>
+		<object-name>turbofan_capa_rev_R_3</object-name>
+		<object-name>turbofan_capa_rev_L_3</object-name>
+		<object-name>turbofan_capa_L_4</object-name>
+		<object-name>turbofan_capa_R_4</object-name>
+		<object-name>turbofan_capa_rev_R_4</object-name>
+		<object-name>turbofan_capa_rev_L_4</object-name>
+		<object-name>turbofan_capa_noz.001</object-name>
+		<object-name>turbofan_capa_noz.002</object-name>
+		<object-name>turbofan_capa_noz.003</object-name>
+		<object-name>turbofan_capa_noz.005</object-name>
+	</effect>
 
 
 <!-- ########### -->
