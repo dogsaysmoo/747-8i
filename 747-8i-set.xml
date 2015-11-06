@@ -329,12 +329,12 @@ Service ceiling	43,000 ft (13,000 m)
 	</limits>
 
 	<aircraft>
-	    <jetway-pos>
-	 	<x-tra>0.63298</x-tra>
-		<y-rot>9.00955</y-rot>
-		<z-rot>27.529</z-rot>
-		<hood-rot>15</hood-rot>
-	    </jetway-pos>
+	  <jetway-pos>
+	    <x-tra>0.5</x-tra>
+	    <y-rot>3.5</y-rot>
+	    <z-rot>18</z-rot>
+	    <hood-rot>15</hood-rot>
+	  </jetway-pos>
 	</aircraft>
-
+	
 </PropertyList>
