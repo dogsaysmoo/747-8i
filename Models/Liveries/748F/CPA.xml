@@ -10,7 +10,7 @@ to legend, the name was conceived by Farrell and correspondents at a bar in the
 Manila Hotel, in the Philippines.  The name "Cathay" came from China as 
 "Khitan" and "Pacific" to mean that according to Farrell, they would one day 
 fly across the Pacific (that would eventually happen in the '70s.)  The Chinese 
-name for the company comes for the Chinese idiom "Grand and Peaceful State."  
+name for the company comes from the Chinese idiom "Grand and Peaceful State."  
 
 In 1948, Butterfield and Swire (Now known as Swire Group) Bought 45% of the new 
 airline, Australian National Airways taking 35% with Farrell and de Kantzow 
@@ -53,6 +53,10 @@ ESA
 				<name type="string">Cathay Pacific Cargo</name>
 				<texture>Liveries/748F/CPA.png</texture>
 			</livery>
+			<nightlights>
+				<name type="string">Cathay Pacific Cargo</name>
+				<texture>Liveries/748F/CPA-lights.png</texture>
+			</nightlights>
 			<turbofans>
 				<name type="string">Cathay Pacific Cargo</name>
 				<texture>Liveries/748F/CPA_turbofan.png</texture>
@@ -61,6 +65,14 @@ ESA
 				<name type="string">Cathay Pacific Cargo</name>
 				<texture>Liveries/748F/wings.png</texture>
 			</wings>
+			<nightwings>
+				<name type="string">Cathay Pacific Cargo</name>
+				<texture>Liveries/748F/wings-lts.png</texture>
+			</nightwings>
+			<nightengines>
+				<name type="string">Cathay Pacific Cargo</name>
+				<texture>Liveries/748F/CPA_turbofan-lts.png</texture>
+			</nightengines>
     </model>
 </sim>
 </PropertyList>
