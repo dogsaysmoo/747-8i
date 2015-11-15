@@ -261,7 +261,7 @@ var fuel_up = func(stage) {
 	return -1;
 }
 
-var l_auto_refuel = setlistener('/autopilot/route-manager/active', func {
+var l_auto_refuel = setlistener('/sim/signals/fdm-initialized', func {
 	if (!getprop('/autopilot/route-manager/active')) {
 		return;
 	}
