@@ -118,7 +118,7 @@ var warning_messages = func {
 }
 
 var caution_messages = func {
-	if ((getprop("/consumables/fuel/tank[1]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[2]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[3]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[4]/level-lbs") < 1985))
+	if (getprop("/consumables/fuel/total-fuel-norm") < 0.02)
 		append(msgs_caution," *FUEL QTY LOW");
 	if (getprop("gear/brake-thermal-energy") > 1.2)
             	append(msgs_caution," L R BRAKE OVERHEAT");

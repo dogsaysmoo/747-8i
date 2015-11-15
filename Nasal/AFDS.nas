@@ -476,7 +476,7 @@ var AFDS = {
 		    }
 		    var wp_lead = 30;
 		    change_wp = abs(getprop("/autopilot/route-manager/wp[1]/bearing-deg") - getprop("orientation/heading-deg"));
-		    if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 240 and getprop("position/altitude-ft") < 10000) {
+		    if (getprop("position/altitude-ft") < 10000) {
 			wp_lead = 8;
 #			brg_err = 0;
 			change_wp = 0;
