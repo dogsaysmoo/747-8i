@@ -278,13 +278,13 @@ Service ceiling	43,000 ft (13,000 m)
 
 		<weight n="0">
         	    <name>Crew</name>
-        	    <weight-lb type="double">400</weight-lb>
+        	    <weight-lb type="double">600</weight-lb>
         	    <max-lb type="double">600</max-lb>
         	    <min-lb type="double">300</min-lb>
         	</weight>
 		<weight n="1">
 		    <name>Passengers/Baggage/Cargo</name>
-		    <weight-lb type="double">90000.0</weight-lb>
+		    <weight-lb type="double">165100.0</weight-lb>
 		    <max-lb type="double">165100.0</max-lb>
 		    <min-lb type="double">0.0</min-lb>
 		</weight>
@@ -305,6 +305,9 @@ Service ceiling	43,000 ft (13,000 m)
 		<livery>
 	        	<file>Aircraft/747-8i/Nasal/livery.nas</file>
 	    	</livery>
+		<Boeing747>
+			<file>Aircraft/747-8i/Nasal/auto_refuel.nas</file>
+		</Boeing747>
 	</nasal>
 
 	<instrumentation>
@@ -326,6 +329,7 @@ Service ceiling	43,000 ft (13,000 m)
 		<maximum-landing-mass-lbs>688000</maximum-landing-mass-lbs>
 		<maximum-zero-fuel-mass-lbs>651000</maximum-zero-fuel-mass-lbs>
 	    </mass-and-balance>
+		<estimated-range-nm>7600</estimated-range-nm>
 	</limits>
 
 	<aircraft>
