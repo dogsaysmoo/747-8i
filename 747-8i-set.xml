@@ -26,7 +26,7 @@
 		<status>beta</status>
 
 		<aero>747-8i-yasim</aero>
-		<variant type="string">8i</variant>
+		<variant type="int">1</variant>
 
 		<startup>
 			<splash-texture>Aircraft/747-8i/splash-8i.png</splash-texture>
