@@ -165,7 +165,7 @@
 	<type>pick</type>
 	<object-name>gear_handle</object-name>
 	<action>
-            <button>1</button>
+            <button>0</button>
             <binding>
                 <command>nasal</command>
                 <script>
@@ -185,7 +185,7 @@
 	<type>pick</type>
 	<object-name>gear_handle</object-name>
 	<action>
-            <button>0</button>
+            <button>1</button>
             <binding>
                 <command>nasal</command>
                 <script>

@@ -21,6 +21,12 @@
 		<author>John Williams, Grupo FGBr</author>
 	
 		<status>beta</status>
+		<rating>
+			<FDM type="int">4</FDM>
+			<systems type="int">4</systems>
+			<cockpit type="int">3</cockpit>
+			<model type="int">3</model>
+		</rating>
 
 		<aero>747-8f-yasim</aero>
 		<variant type="string">8f</variant>
@@ -35,21 +41,12 @@
 			<livery>
 				<file type="string">Default</file>
 			</livery>
-			<nightlights>
-				<file type="string">Default</file>
-			</nightlights>
-			<nightengines>
-				<file type="string">Default</file>
-			</nightengines>
 			<turbofans>
 				<file type="string">Default</file>
 			</turbofans>		
 			<wings>
 				<file type="string">Default</file>
 			</wings>
-			<nightwings>
-				<file type="string">Default</file>
-			</nightwings>
 			 
 			<door>
 				<position-x-m type="float">-24.58</position-x-m>
