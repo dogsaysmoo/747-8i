@@ -21,12 +21,12 @@
 	<sim>
 
 		<description>Boeing 747-8 (USAF VC-25 replacement)</description>
-		<author>John Williams, Peter Brendt, Grupo FGBr</author>
+		<author>John Williams, Grupo FGBr</author>
 	
 		<status>beta</status>
 
 		<aero>747-8i-yasim</aero>
-		<variant type="string">8i</variant>
+		<variant type="int">2</variant>
 
 		<startup>
 			<splash-texture>Aircraft/747-8i/splash-8G4.png</splash-texture>
@@ -335,6 +335,7 @@ Service ceiling	43,000 ft (13,000 m)
 		    <serviceable type="bool">1</serviceable>
 		</cdu>
 		<tacan>
+		    <equipped type="bool">true</equipped>
 		    <powered type="bool">false</powered>
 		    <xy type="bool">true</xy>
 		    <frequencies>

@@ -196,19 +196,9 @@
 		<z-m> 0.1256</z-m>
 	</offsets>
 </model>
-<model>
-	<name>cockpit-extra8G4</name>
-	<path>Aircraft/747-8i/Models/Cockpit/cockpit-8G4.xml</path> 
-	<offsets>
-		<x-m>-3.8699</x-m>
-		<y-m>  0.000</y-m>
-		<z-m> 0.1256</z-m>
-	</offsets>
-</model>
 <animation>
 	<type>range</type>
 	<object-name>Flightdeck</object-name>
-	<object-name>cockpit-extra8G4</object-name>
 	<min-m>0</min-m>
 	<max-m>100</max-m>
 </animation>

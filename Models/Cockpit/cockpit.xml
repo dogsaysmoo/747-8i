@@ -80,4 +80,42 @@
 	</offsets>
 </model>
 
+<model>
+	<name>tacan_panel</name>
+	<path>Aircraft/747-8i/Models/Cockpit/Instruments/TACAN/tacan.xml</path>
+	<offsets> 
+		<x-m>-25.60</x-m>
+		<y-m>  0.0 </y-m>
+		<z-m>  2.65005</z-m>
+	</offsets>
+</model>
+<animation>
+	<type>select</type>
+	<object-name>tacan_panel</object-name>
+	<condition>
+		<property>instrumentation/tacan/equipped</property>
+	</condition>
+</animation>
+
+<model>
+	<name>Air2AirRefueling</name>
+	<path>Aircraft/747-8i/Models/Cockpit/aar.xml</path>
+	<offsets>
+		<x-m>-24.14</x-m>
+		<y-m>  0.0 </y-m>
+		<z-m>  4.02</z-m>
+		<pitch-deg>162</pitch-deg>
+	</offsets>
+</model>
+<animation>
+	<type>select</type>
+	<object-name>Air2AirRefueling</object-name>
+	<condition>
+	    <equals>
+		<property>sim/variant</property>
+		<value>2</value>
+	    </equals>
+	</condition>
+</animation>
+
 </PropertyList>
