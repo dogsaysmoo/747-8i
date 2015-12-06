@@ -29,7 +29,7 @@
 		</rating>
 
 		<aero>747-8f-yasim</aero>
-		<variant type="string">8f</variant>
+		<variant type="int">0</variant>
 
 		<startup>
 			<splash-texture>Aircraft/747-8i/splash-8F.png</splash-texture>
