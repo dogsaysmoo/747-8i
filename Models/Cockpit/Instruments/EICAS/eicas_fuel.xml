@@ -342,7 +342,7 @@
 	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
 	<condition>
 	    <greater-than>
-		<property>/sim/variant</property>
+		<property>sim/model/variant</property>
 		<value>0</value>
 	    </greater-than>
 	</condition>
@@ -371,7 +371,7 @@
 	<object-name>Stab_tank.8i</object-name>
 	<condition>
 	   <greater-than>
-		<property>/sim/variant</property>
+		<property>sim/model/variant</property>
 		<value>0</value>
 	   </greater-than>
 	</condition>
@@ -382,7 +382,7 @@
 	<object-name>Stab_tank.8F</object-name>
 	<condition>
 	   <equals>
-		<property>/sim/variant</property>
+		<property>sim/model/variant</property>
 		<value>0</value>
 	   </equals>
 	</condition>
@@ -394,7 +394,7 @@
 	<condition>
 	    <and>
 	      <greater-than>
-		<property>/sim/variant</property>
+		<property>sim/model/variant</property>
 		<value>0</value>
 	      </greater-than>
 		<property>consumables/fuel/tank[7]/selected</property>
@@ -570,7 +570,7 @@
 	<condition>
 	    <and>
 	      <greater-than>
-		<property>/sim/variant</property>
+		<property>sim/model/variant</property>
 		<value>0</value>
 	      </greater-than>
 		<property>fdm/jsbsim/propulsion/tank[7]/external-flow-rate/tank[0]</property>
