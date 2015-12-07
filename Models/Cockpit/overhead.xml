@@ -36,7 +36,7 @@
 	<object-name>panel.fuel</object-name>
 	<condition>
 	    <greater-than>
-		<property>/sim/variant</property>
+		<property>sim/model/variant</property>
 		<value>0</value>
 	    </greater-than>
 	</condition>
@@ -46,7 +46,7 @@
         <object-name>panel.fuel</object-name>
 	<condition>
 	    <greater-than>
-		<property>/sim/variant</property>
+		<property>sim/model/variant</property>
 		<value>0</value>
 	    </greater-than>
 	</condition>
@@ -63,7 +63,7 @@
 	<object-name>panel.fuel.748F</object-name>
 	<condition>
 	    <equals>
-		<property>/sim/variant</property>
+		<property>sim/model/variant</property>
 		<value>0</value>
 	    </equals>
 	</condition>
@@ -73,7 +73,7 @@
         <object-name>panel.fuel.748F</object-name>
 	<condition>
 	    <equals>
-		<property>/sim/variant</property>
+		<property>sim/model/variant</property>
 		<value>0</value>
 	    </equals>
 	</condition>

@@ -29,7 +29,6 @@
 		</rating>
 
 		<aero>747-8f-yasim</aero>
-		<variant type="int">0</variant>
 
 		<startup>
 			<splash-texture>Aircraft/747-8i/splash-8F.png</splash-texture>
@@ -38,6 +37,7 @@
 		<!-- Default livery set up - http://wiki.flightgear.org/index.php/Livery_over_MP -->
 		<model>
 			<path>Aircraft/747-8i/Models/747-8F.xml</path>
+			<variant type="int">0</variant>
 			<livery>
 				<file type="string">Default</file>
 			</livery>
