@@ -26,7 +26,6 @@
 		<status>beta</status>
 
 		<aero>747-8i-yasim</aero>
-		<variant type="int">2</variant>
 
 		<startup>
 			<splash-texture>Aircraft/747-8i/splash-8G4.png</splash-texture>
@@ -39,6 +38,7 @@
 		<!-- Default livery set up - http://wiki.flightgear.org/index.php/Livery_over_MP -->
 		<model>
 			<path>Aircraft/747-8i/Models/747-8G4.xml</path>
+			<variant type="int">2</variant>
 			<livery>
 				<file type="string">Default</file>
 			</livery>

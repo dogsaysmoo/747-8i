@@ -112,7 +112,7 @@
 	<object-name>Air2AirRefueling</object-name>
 	<condition>
 	    <equals>
-		<property>sim/variant</property>
+		<property>sim/model/variant</property>
 		<value>2</value>
 	    </equals>
 	</condition>
