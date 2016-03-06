@@ -341,10 +341,10 @@
 <model>
 	<path>Aircraft/747-8i/Models/Cockpit/display-number.xml</path>
 	<condition>
-	    <equals>
-		<property>/sim/variant</property>
-		<value>8i</value>
-	    </equals>
+	    <greater-than>
+		<property>sim/model/variant</property>
+		<value>0</value>
+	    </greater-than>
 	</condition>
 	<offsets>
 		<x-m> 0.007</x-m>
@@ -370,10 +370,10 @@
 	<type>select</type>
 	<object-name>Stab_tank.8i</object-name>
 	<condition>
-	   <equals>
-		<property>/sim/variant</property>
-		<value>8i</value>
-	   </equals>
+	   <greater-than>
+		<property>sim/model/variant</property>
+		<value>0</value>
+	   </greater-than>
 	</condition>
 </animation>
 
@@ -382,8 +382,8 @@
 	<object-name>Stab_tank.8F</object-name>
 	<condition>
 	   <equals>
-		<property>/sim/variant</property>
-		<value>8f</value>
+		<property>sim/model/variant</property>
+		<value>0</value>
 	   </equals>
 	</condition>
 </animation>
@@ -393,10 +393,10 @@
 	<object-name>pump.7</object-name>
 	<condition>
 	    <and>
-	      <equals>
-		<property>/sim/variant</property>
-		<value>8i</value>
-	      </equals>
+	      <greater-than>
+		<property>sim/model/variant</property>
+		<value>0</value>
+	      </greater-than>
 		<property>consumables/fuel/tank[7]/selected</property>
 		<!--property>controls/fuel/tank[7]/pump</property-->
 	    </and>
@@ -569,10 +569,10 @@
 	<object-name>flowbar.stab</object-name>
 	<condition>
 	    <and>
-	      <equals>
-		<property>/sim/variant</property>
-		<value>8i</value>
-	      </equals>
+	      <greater-than>
+		<property>sim/model/variant</property>
+		<value>0</value>
+	      </greater-than>
 		<property>fdm/jsbsim/propulsion/tank[7]/external-flow-rate/tank[0]</property>
 	    </and>
 	</condition>

@@ -35,20 +35,20 @@
 	<object-name>fuel_stab.l</object-name>
 	<object-name>panel.fuel</object-name>
 	<condition>
-	    <equals>
-		<property>/sim/variant</property>
-		<value>8i</value>
-	    </equals>
+	    <greater-than>
+		<property>sim/model/variant</property>
+		<value>0</value>
+	    </greater-than>
 	</condition>
 </animation>
 <animation>
         <type>material</type>
         <object-name>panel.fuel</object-name>
 	<condition>
-	    <equals>
-		<property>/sim/variant</property>
-		<value>8i</value>
-	    </equals>
+	    <greater-than>
+		<property>sim/model/variant</property>
+		<value>0</value>
+	    </greater-than>
 	</condition>
         <emission>
                 <red>0.5</red>
@@ -63,8 +63,8 @@
 	<object-name>panel.fuel.748F</object-name>
 	<condition>
 	    <equals>
-		<property>/sim/variant</property>
-		<value>8f</value>
+		<property>sim/model/variant</property>
+		<value>0</value>
 	    </equals>
 	</condition>
 </animation>
@@ -73,8 +73,8 @@
         <object-name>panel.fuel.748F</object-name>
 	<condition>
 	    <equals>
-		<property>/sim/variant</property>
-		<value>8f</value>
+		<property>sim/model/variant</property>
+		<value>0</value>
 	    </equals>
 	</condition>
         <emission>
