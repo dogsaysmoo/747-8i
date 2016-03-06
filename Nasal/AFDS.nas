@@ -372,26 +372,12 @@ var AFDS = {
 
             if ((idx==5)or(idx==12))
             {
-		if (me.at1.getBoolValue() and getprop("position/altitude-agl-ft") > 200) {
-        	    me.autothrottle_mode.setValue(5);
-		}
-		me.ias_mach_selected.setBoolValue(0);
-		if (getprop("instrumentation/altimeter/indicated-altitude-ft") < 10000) {
-		    me.ias_setting.setValue(250);
-		} else {
-                    me.ias_setting.setValue(280);
-		}
-
                 me.vnav_alt.setValue(me.FMS_alt.getValue());
                 me.alt_setting.setValue(me.FMS_alt.getValue());
                 # flight level change mode (VNAV)
                 if (abs(getprop("instrumentation/altimeter/indicated-altitude-ft")-me.vnav_alt.getValue())<50) {
                     # within target altitude: switch to VNAV ALT mode
                     idx=5;
-		    if (getprop("instrumentation/altimeter/indicated-altitude-ft") >= 34800) {
-			me.ias_mach_selected.setBoolValue(1);
-                    	me.mach_setting.setValue(0.845);
-		    }
                 } else {
                     # outside target altitude: change flight level
 		    me.alt_display.setValue(me.FMS_alt.getValue());
