@@ -549,10 +549,10 @@
       <Kp>0.15</Kp>
       <Ki>0.0</Ki>
       <u_min>
-        <value>-33.33</value>
+        <value>-16.67</value>
       </u_min>
       <u_max>
-        <value>33.33</value>
+        <value>16.67</value>
       </u_max>
     </config>
   </pi-simple-controller>
@@ -619,10 +619,10 @@
       <Kp>0.3</Kp>
       <Ki>0.0</Ki>
       <u_min>
-        <value>-33.33</value>
+        <value>-16.67</value>
       </u_min>
       <u_max>
-        <value>33.33</value>
+        <value>16.67</value>
       </u_max>
     </config>
   </pi-simple-controller>
