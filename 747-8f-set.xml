@@ -30,6 +30,8 @@
 
 		<aero>747-8f-yasim</aero>
 
+		<variant-of>747-8i</variant-of>
+
 		<startup>
 			<splash-texture>Aircraft/747-8i/splash-8F.png</splash-texture>
 		</startup>
