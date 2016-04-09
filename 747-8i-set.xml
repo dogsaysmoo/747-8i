@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
+<!-- 
 	This is a second generation model of the 747-8i.  The first generation
-	by Grupo FGBr was based on the 747-400 model by Gijs de Rooy.  This
+	by Grupo FGBr was based on the 747-400 model by Gijs de Rooy.  This 
 	version is derived from the FGBr version with modifications to the 3D
 	models and FDM, and the addition of many systems.
 
@@ -12,9 +12,9 @@
           textures by Grupo FGBr (Aurino das Neves, Isaias Prestes, Rick Britto,
 	  Wagner Silva)
 	Additional systems as noted in their .nas files
-
+	
 	License : GPL 2.0
-
+    		
  -->
 
 <PropertyList include="747-8-main.xml">
@@ -22,11 +22,10 @@
 
 		<description>Boeing 747-8 Intercontinental</description>
 		<author>John Williams, Grupo FGBr</author>
-
+	
 		<status>beta</status>
 
 		<aero>747-8i-yasim</aero>
-		<variant type="string">8i</variant>
 
 		<startup>
 			<splash-texture>Aircraft/747-8i/splash-8i.png</splash-texture>
@@ -35,16 +34,17 @@
 		<!-- Default livery set up - http://wiki.flightgear.org/index.php/Livery_over_MP -->
 		<model>
 			<path>Aircraft/747-8i/Models/747-8i.xml</path>
+			<variant type="int">1</variant>
 			<livery>
 				<file type="string">Default</file>
 			</livery>
 			<turbofans>
 				<file type="string">Default</file>
-			</turbofans>
+			</turbofans>		
 			<wings>
 				<file type="string">Default</file>
 			</wings>
-
+			 
 			<door>
 				<position-x-m type="float">-24.58</position-x-m>
 				<position-y-m type="float"> -3.29</position-y-m>
@@ -153,7 +153,7 @@ Captain Notes:
 - During turbulant conditions, The seatbelt warning sound should be initiated by the captain.
 
 === Cruising ===
-Cruising Speed: Mach 0.855 (570 mph, 495 kn, 917 km/h)
+Cruising Speed: Mach 0.855 (570 mph, 495 kn, 917 km/h)	
 Service Ceiling: 43,000ft
 
 === Landing ===
@@ -171,7 +171,7 @@ Maximum landing weight       688,000 lb (312,700 kg)
 Maximum zero fuel weight         651,000 lb (295,900 kg)
 Maximum structural payload       169,100 lb (76,900 kg)
 Maximum fuel capacity	     64,055 US gallons (242,470 l)
-Cruising speed at 35,000 ft  Mach 0.855 (570 mph, 495 kn, 917 km/h)
+Cruising speed at 35,000 ft  Mach 0.855 (570 mph, 495 kn, 917 km/h)	
 Maximum speed at 35,000 ft	 Mach 0.92 (614 mph, 533 kn, 988 km/h)
 Range	(at MTOW) 8,000 nmi (14,800 km) with 467 passengers and baggage	(full load)
 Cargo capacity	5,705 cu ft (161.5 m3)
@@ -252,7 +252,7 @@ Service ceiling	43,000 ft (13,000 m)
 				</script>
 			    </binding>
 			</item-->
-
+				
 			<item>
 			    <label>Show/hide yokes</label>
 			    <binding>
@@ -260,7 +260,7 @@ Service ceiling	43,000 ft (13,000 m)
 				<property>sim/model/hide-yoke</property>
 			    </binding>
 			</item>
-
+				 
 			<item>
 			    <label>Yoke charts</label>
 			    <binding>
@@ -274,7 +274,7 @@ Service ceiling	43,000 ft (13,000 m)
 
 		        </menu>
 		    </default>
-		</menubar>
+		</menubar>		
 
 		<weight n="0">
         	    <name>Crew</name>
@@ -291,7 +291,7 @@ Service ceiling	43,000 ft (13,000 m)
 
 	</sim>
 <!-- END OF SIM SECTION -->
-
+ 
 	<controls>
 		<fuel>
 			<tank n="7">
@@ -318,7 +318,7 @@ Service ceiling	43,000 ft (13,000 m)
 		    <serviceable type="bool">1</serviceable>
 		</cdu>
 	</instrumentation>
-
+	
 	<limits>
 	    <mass-and-balance>
 		<maximum-ramp-mass-lbs>999000</maximum-ramp-mass-lbs>
