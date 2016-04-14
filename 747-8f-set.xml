@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
+<!-- 
 	This model of the 747-8F is based on the second generation model of
         the 747-8i.
 
@@ -8,10 +8,10 @@
         Original cockpit model, landing gear, and many textures by Gijs de Rooy
         Wings, engines, and additional textures by Grupo FGBr (Aurino das Neves,
           Isaias Prestes, Rick Britto, Wagner Silva)
-        Additional systems as noted in their .nas files
+        Additional systems as noted in their .nas files	
 
 	License : GPL 2.0
-
+    		
  -->
 
 <PropertyList include="747-8-main.xml">
@@ -19,7 +19,7 @@
 
 		<description>Boeing 747-8 Freighter</description>
 		<author>John Williams, Grupo FGBr</author>
-
+	
 		<status>beta</status>
 		<rating>
 			<FDM type="int">4</FDM>
@@ -31,7 +31,7 @@
 		<aero>747-8f-yasim</aero>
 
 		<variant-of>747-8i</variant-of>
-		
+
 		<startup>
 			<splash-texture>Aircraft/747-8i/splash-8F.png</splash-texture>
 		</startup>
@@ -45,11 +45,11 @@
 			</livery>
 			<turbofans>
 				<file type="string">Default</file>
-			</turbofans>
+			</turbofans>		
 			<wings>
 				<file type="string">Default</file>
 			</wings>
-
+			 
 			<door>
 				<position-x-m type="float">-24.58</position-x-m>
 				<position-y-m type="float"> -3.29</position-y-m>
@@ -146,7 +146,7 @@ Captain Notes:
 - During turbulant conditions, The seatbelt warning sound should be initiated by the captain.
 
 === Cruising ===
-Cruising Speed: Mach 0.855 (570 mph, 495 kn, 917 km/h)
+Cruising Speed: Mach 0.855 (570 mph, 495 kn, 917 km/h)	
 Service Ceiling: 43,000ft
 
 === Landing ===
@@ -245,7 +245,7 @@ Service ceiling	43,000 ft (13,000 m)
 				</script>
 			    </binding>
 			</item-->
-
+				
 			<item>
 			    <label>Show/hide yokes</label>
 			    <binding>
@@ -253,7 +253,7 @@ Service ceiling	43,000 ft (13,000 m)
 				<property>sim/model/hide-yoke</property>
 			    </binding>
 			</item>
-
+				 
 			<item>
 			    <label>Yoke charts</label>
 			    <binding>
@@ -267,7 +267,7 @@ Service ceiling	43,000 ft (13,000 m)
 
 		        </menu>
 		    </default>
-		</menubar>
+		</menubar>		
 
 		<weight n="0">
         	    <name>Crew</name>
@@ -284,7 +284,7 @@ Service ceiling	43,000 ft (13,000 m)
 
 	</sim>
 <!-- END OF SIM SECTION -->
-
+ 
 	<!-- The NASAL scripts -->
 	<nasal>
 		<livery>
@@ -303,7 +303,7 @@ Service ceiling	43,000 ft (13,000 m)
 		    <serviceable type="bool">1</serviceable>
 		</cdu>
 	</instrumentation>
-
+	
 	<limits>
 	    <mass-and-balance>
 		<maximum-ramp-mass-lbs>999000</maximum-ramp-mass-lbs>
@@ -314,12 +314,12 @@ Service ceiling	43,000 ft (13,000 m)
 	</limits>
 
 	<aircraft>
-	  <jetway-pos>
-	    <x-tra>0.5</x-tra>
-	    <y-rot>3.5</y-rot>
-	    <z-rot>18</z-rot>
-	    <hood-rot>15</hood-rot>
-	  </jetway-pos>
+	    <jetway-pos>
+	 	<x-tra>0.63298</x-tra>
+		<y-rot>9.00955</y-rot>
+		<z-rot>27.529</z-rot>
+		<hood-rot>15</hood-rot>
+	    </jetway-pos>
 	</aircraft>
 
 </PropertyList>

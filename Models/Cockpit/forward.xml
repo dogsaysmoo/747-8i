@@ -515,6 +515,10 @@
 		<command>property-toggle</command>
 		<property>instrumentation/efis/mfd/true-north</property>
 	    </binding>
+	    <binding>
+		<command>property-toggle</command>
+		<property>instrumentation/efis[1]/mfd/true-north</property>
+	    </binding>
 	</action>
 </animation>
 

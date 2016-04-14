@@ -16,10 +16,6 @@
 </model>
 
 <model>
-	<path>Aircraft/Generic/marker.xml</path>
-</model>
-
-<model>
 	<name>overhead</name>
 	<path>Aircraft/747-8i/Models/Cockpit/overhead.xml</path>
 	<offsets>
