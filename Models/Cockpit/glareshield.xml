@@ -488,16 +488,6 @@
 			<min>100</min>
 			<max>399</max>
 		</binding>
-		<binding>
-			<condition>
-					<property>instrumentation/afds/inputs/ias-mach-selected</property>
-			</condition>
-			<command>property-adjust</command>
-			<property>/autopilot/settings/target-speed-mach</property>
-			<step>0.001</step>
-			<min>0.40</min>
-			<max>0.95</max>
-		</binding>
 	</action>
 	<action>
 		<button>1</button>
@@ -515,6 +505,30 @@
 			<min>100</min>
 			<max>399</max>
 		</binding>
+	</action>
+</animation>
+<animation>
+	<type>pick</type>
+	<object-name>sw.spd</object-name>
+	<action>
+		<button>0</button>
+		<button>3</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<condition>
+					<property>instrumentation/afds/inputs/ias-mach-selected</property>
+			</condition>
+			<command>property-adjust</command>
+			<property>/autopilot/settings/target-speed-mach</property>
+			<step>0.001</step>
+			<min>0.40</min>
+			<max>0.95</max>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<button>4</button>
+		<repeatable>true</repeatable>  
 		<binding>
 			<condition>
 					<property>instrumentation/afds/inputs/ias-mach-selected</property>
