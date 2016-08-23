@@ -54,8 +54,10 @@
 	    <hrule/>
 	    <text>
 		<border>1</border>
-		<label> </label>
+		<label>9999999</label>
 		<halign>center</halign>
+		<property>instrumentation/afds/ap-modes/thrust-mode</property>
+		<live>1</live>
 	    </text>
 	</group>
 	<vrule/>
@@ -404,9 +406,19 @@
 			<command>dialog-apply</command>
 		    </binding>
 		</checkbox>
+	    </group>
+	    <group>
 	    	<button>
 		    <pref-width>45</pref-width>
-		    <legend>A/T</legend>
+		    <legend>THR</legend>
+		    <binding>
+		    	<command>nasal</command>
+                    	<script>Boeing747.afds.input(2,1);</script>
+		    </binding>
+	    	</button>
+	    	<button>
+		    <pref-width>45</pref-width>
+		    <legend>SPD</legend>
 		    <binding>
 		    	<command>nasal</command>
                     	<script>Boeing747.afds.input(2,5);</script>

@@ -981,23 +981,6 @@
 	</condition>
 </animation>
  
-<!--animation>
-	<type>pick</type>
-	<object-name>THR</object-name>
-	<object-name>THR_lit</object-name>
-	<object-name>THR_unlit</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>  
-		<binding>
-			<command>property-cycle</command>
-			<property>/autopilot/locks/speed</property>
-			<value type="string">speed-with-pitch-trim</value>
-			<value type="string"></value>
-		</binding>
-	</action>
- </animation-->
-
 <animation>
     <type>pick</type>
     <object-name>AT.toggle</object-name>
@@ -1028,23 +1011,36 @@
 </animation>
 
 <animation>
-    <type>select</type>
-    <object-name>THR_lit</object-name>
-    <condition>
-		<greater-than>
-                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
-                    <value>0</value>
-                </greater-than>
-    </condition>
+	<type>pick</type>
+	<object-name>THR</object-name>
+	<object-name>THR_lit</object-name>
+	<object-name>THR_unlit</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+	                <script>controls.click(3);Boeing747.afds.input(2,1);</script>
+		</binding>
+	</action>
 </animation>
-
 <animation>
     <type>select</type>
     <object-name>THR_unlit</object-name>
     <condition>
+		<not-equals>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>1</value>
+                </not-equals>
+    </condition>
+</animation>
+<animation>
+    <type>select</type>
+    <object-name>THR_lit</object-name>
+    <condition>
 		<equals>
                     <property>/instrumentation/afds/inputs/autothrottle-index</property>
-                    <value>0</value>
+                    <value>1</value>
 		</equals>
     </condition>
 </animation>
@@ -1063,26 +1059,36 @@
 		</binding>
 	</action>
 </animation>
-
 <animation>
     <type>select</type>
     <object-name>SPD_lit</object-name>
     <condition>
-		<greater-than>
+	<or>
+		<equals>
                     <property>/instrumentation/afds/inputs/autothrottle-index</property>
-                    <value>0</value>
-                </greater-than>
+                    <value>5</value>
+                </equals>
+		<equals>
+		    <property>/instrumentation/afds/ap-modes/pitch-mode</property>
+		    <value>SPD</value>
+		</equals>
+	</or>
     </condition>
 </animation>
-
 <animation>
     <type>select</type>
     <object-name>SPD_unlit</object-name>
     <condition>
-		<equals>
+	<and>
+		<not-equals>
                     <property>/instrumentation/afds/inputs/autothrottle-index</property>
-                    <value>0</value>
-		</equals>
+                    <value>5</value>
+		</not-equals>
+		<not-equals>
+		    <property>/instrumentation/afds/ap-modes/pitch-mode</property>
+		    <value>SPD</value>
+		</not-equals>
+	</and>
     </condition>
 </animation>
 
@@ -1208,6 +1214,10 @@
                 <property>instrumentation/afds/ap-modes/pitch-mode</property>
                 <value>VNAV PTH</value>
             </equals>
+            <equals>
+                <property>instrumentation/afds/inputs/vertical-index</property>
+                <value>12</value>
+            </equals>
 	</or>
     </condition>
 </animation>
@@ -1229,6 +1239,10 @@
             		<equals>
                 		<property>instrumentation/afds/ap-modes/pitch-mode</property>
                		 	<value>VNAV PTH</value>
+            		</equals>
+            		<equals>
+                		<property>instrumentation/afds/inputs/vertical-index</property>
+                		<value>12</value>
             		</equals>
             		</or>
 		</not>
