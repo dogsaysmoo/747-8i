@@ -218,11 +218,11 @@
             <prop>/controls/engines/engine[3]/throttle</prop>
         </output>
         <config>
-            <Kp>0.05</Kp>
+            <Kp>0.08</Kp>
             <beta>1.0</beta>
             <alpha>0.1</alpha>
             <gamma>0.0</gamma>
-            <Ti>10.0</Ti>
+            <Ti>20.0</Ti>
             <Td>0.00001</Td>
             <u_min>0.0</u_min>
             <u_max>1.0</u_max>
@@ -262,7 +262,7 @@
             <beta>1.0</beta>
             <alpha>0.1</alpha>
             <gamma>0.0</gamma>
-            <Ti>10.0</Ti>
+            <Ti>20.0</Ti>
             <Td>0.00001</Td>
             <u_min>0.0</u_min>
             <u_max>1.0</u_max>
