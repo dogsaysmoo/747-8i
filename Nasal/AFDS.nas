@@ -167,7 +167,7 @@ var AFDS = {
 		} else {
 		    me.vs_setting.setValue(vs_now);
 	 	}
-		if (me.vertical_mode.getValue() > 7 and me.autothrottle_mode.getValue() > 0)
+		if (me.autothrottle_mode.getValue() > 0)
 		    settimer(func me.autothrottle_mode.setValue(5),2);
 	    }
             if (btn==5) {
@@ -679,25 +679,21 @@ var AFDS = {
 	}elsif(me.step==6){
 	    ma_spd=getprop("/velocities/mach");
 	    banklimit=getprop("/instrumentation/afds/inputs/bank-limit-switch");
-	    if (banklimit==0 and ma_spd>0.86) {
+	    if (banklimit==0 and ma_spd>0.93) {
 		lim=0;
 		me.heading_change_rate = 0.0;
 	    }
-	    if (banklimit==0 and ma_spd<=0.86 and ma_spd>0.6666) {
-	    	lim=10;
-	    	me.heading_change_rate = 2.45 * 0.7;
+	    if (banklimit==0 and ma_spd<=0.93 and ma_spd>0.87) {
+		lim=10;
+		me.heading_change_rate = 2.45 * 0.7;
 	    }
-	    if (banklimit==0 and ma_spd<=0.6666 and ma_spd>0.5) {
-	    	lim=20;	
-	    	me.heading_change_rate = 1.125 * 0.7;
+	    if (banklimit==0 and ma_spd<=0.87 and ma_spd>0.80) {
+		lim=20;	
+		me.heading_change_rate = 1.125 * 0.7;
 	    }
-	    if (banklimit==0 and ma_spd<=0.5 and ma_spd>0.3333) {
-	    	lim=25;
-	    	me.heading_change_rate = 0.625 * 0.7;
-	    }
-	    if (banklimit==0 and ma_spd<=0.333) {
-	    	lim=30;
-	    	me.heading_change_rate = 0.55 * 0.7;
+	    if (banklimit==0 and ma_spd<=0.80) {
+		lim=25;
+		me.heading_change_rate = 0.625 * 0.7;
 	    }
 	    if (banklimit==0){
         	props.globals.getNode("/instrumentation/afds/settings/bank-max").setValue(lim);

@@ -365,17 +365,17 @@
       <!--prop>/controls/flight/aileron-trim</prop-->
     </output>
     <config>
-       <Kp>0.08</Kp>
+      <Kp>0.04</Kp>
       <!--beta>1.0</beta>
       <alpha>0.1</alpha>
       <gamma>0.0</gamma-->
       <Ti>5</Ti>
       <Td>0.0</Td>
       <u_min>
-        <value>-0.5</value>
+        <value>-0.4</value>
       </u_min>
       <u_max>
-        <value>0.5</value>
+        <value>0.4</value>
       </u_max>
     </config>
   </pid-controller>
@@ -386,41 +386,40 @@
                 <type>noise-spike</type>
                 <max-rate-of-change>
                         <condition>
-                                <greater-than>
-                                        <property>/instrumentation/airspeed-indicator/indicated-mach</property>
-                                        <value>0.88</value>
-                                </greater-than>
-                        </condition>
-                        <value>0.6</value>
-                </max-rate-of-change>
-                <max-rate-of-change>
-                        <condition>
-                                <greater-than>
+                                <greater-than-equals>
                                         <property>/instrumentation/airspeed-indicator/indicated-mach</property>
                                         <value>0.666</value>
-                                </greater-than>
+                                </greater-than-equals>
                         </condition>
-                        <value>0.7</value>
+                        <value>0.2</value>
                 </max-rate-of-change>
                 <max-rate-of-change>
                         <condition>
-                                <greater-than>
+                                <less-than>
+                                        <property>/instrumentation/airspeed-indicator/indicated-mach</property>
+                                        <value>0.666</value>
+                                </less-than>
+                        </condition>
+                        <value>0.3</value>
+                </max-rate-of-change>
+                <max-rate-of-change>
+                        <condition>
+                                <less-than>
                                         <property>/instrumentation/airspeed-indicator/indicated-mach</property>
                                         <value>0.5</value>
-                                </greater-than>
+                                </less-than>
                         </condition>
-                        <value>0.8</value>
+                        <value>0.4</value>
                 </max-rate-of-change>
                 <max-rate-of-change>
                         <condition>
-                                <greater-than>
+                                <less-than>
                                         <property>/instrumentation/airspeed-indicator/indicated-mach</property>
                                         <value>0.333</value>
-                                </greater-than>
+                                </less-than>
                         </condition>
-                        <value>0.9</value>
+                        <value>0.5</value>
                 </max-rate-of-change>
-                <max-rate-of-change>1</max-rate-of-change>
                 <feedback-if-disabled>true</feedback-if-disabled>
                 <initialize-to>output</initialize-to>
                 <enable>
@@ -431,8 +430,8 @@
                 </input>
                 <output>/controls/flight/aileron</output>
         </filter>
-
-    <!-- filter>
+    
+<!-- filter>
         <name>Aileron control filter</name>
         <debug>false</debug>
         <feedback-if-disabled>true</feedback-if-disabled>
@@ -637,7 +636,7 @@
     </output>
     <config>
       <Ts>0.05</Ts> 
-      <Kp>0.15</Kp>
+      <Kp>0.25</Kp>
       <beta>1.0</beta>
       <alpha>0.1</alpha>
       <gamma>0.0</gamma>
@@ -848,7 +847,7 @@
       <prop>/autopilot/internal/target-pitch-deg</prop>
     </output>
     <config>
-	<Kp>-0.08</Kp>
+	<Kp>-0.2</Kp>
 	<beta>1</beta>
 	<alpha>0.1</alpha>
 	<gamma>0</gamma>

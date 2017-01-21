@@ -49,6 +49,10 @@
 			<autopilot>
 				<path>Aircraft/747-8i/Systems/747-8-flt-ctrls.xml</path>
 			</autopilot>
+			<autopilot>
+				<name>Pushback</name>
+				<path>Aircraft/747-8i/Systems/pushback.xml</path>
+			</autopilot>
 		</systems>
 		
 		<instrumentation>
@@ -62,6 +66,13 @@
 
 		<model>
 			<hide-yoke type="bool">0</hide-yoke>
+			<pushback>
+				<kp type="double">-0.05</kp>
+				<kd type="double">0</kd>
+				<ti type="double">10</ti>
+				<td type="double">0.00001</td>
+				<position-norm type="double">0</position-norm>
+			</pushback>
 		</model>
 		
 		<hud>   
