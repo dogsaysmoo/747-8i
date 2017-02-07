@@ -60,8 +60,6 @@
          <object-name>FLG_RL_out</object-name>
          <object-name>vstab</object-name>
          <object-name>rudder_1</object-name>
-	 <object-name>cabinwindows</object-name>
-	 <object-name>cabinlighting</object-name>
          <property-base>sim/model/livery</property-base>
          <texture-prop>texture</texture-prop>
       <texture>fuselage.png</texture>
@@ -2606,14 +2604,14 @@
 		<object-name>speedbrake_3_L</object-name>
 		<object-name>speedbrake_1_L</object-name>
 		<object-name>speedbrake_2_L</object-name>
-		<object-name>flap_compart_LB_3</object-name>
+		<!--object-name>flap_compart_LB_3</object-name>
 		<object-name>flap_compart_LF_3</object-name>
 		<object-name>flap_compart_LF_4</object-name>
 		<object-name>flap_compart_LB_4</object-name>
 		<object-name>flap_compart_LF_2</object-name>
 		<object-name>flap_compart_LB_2</object-name>
 		<object-name>flap_compart_LF_1</object-name>
-		<object-name>flap_compart_LB_1</object-name>
+		<object-name>flap_compart_LB_1</object-name-->
 		<object-name>aileron_R</object-name>
 		<object-name>external_flap_R</object-name>
 		<object-name>aileron_int_R</object-name>
@@ -2625,14 +2623,14 @@
 		<object-name>speedbrake_3_R</object-name>
 		<object-name>speedbrake_1_R</object-name>
 		<object-name>speedbrake_2_R</object-name>
-		<object-name>flap_compart_RB_3</object-name>
+		<!--object-name>flap_compart_RB_3</object-name>
 		<object-name>flap_compart_RF_3</object-name>
 		<object-name>flap_compart_RF_4</object-name>
 		<object-name>flap_compart_RB_4</object-name>
 		<object-name>flap_compart_RF_2</object-name>
 		<object-name>flap_compart_RB_2</object-name>
 		<object-name>flap_compart_RF_1</object-name>
-		<object-name>flap_compart_RB_1</object-name>         
+		<object-name>flap_compart_RB_1</object-name-->         
 		<object-name>hstab_L</object-name>
 		<object-name>elevator_left</object-name>
 		<object-name>hstab_R</object-name>
@@ -2642,7 +2640,7 @@
 	<effect>
 		<name>Nacelle lightmap</name>
 		<inherits-from>Aircraft/747-8i/Models/Effects/lightmap_engine</inherits-from>
-		<object-name>line</object-name>
+		<!--object-name>line</object-name-->
 		<object-name>turbofan_capa_L_1</object-name>
 		<object-name>turbofan_capa_R_1</object-name>
 		<object-name>turbofan_capa_rev_R_1</object-name>
