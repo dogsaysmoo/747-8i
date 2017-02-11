@@ -35,7 +35,6 @@
      <animation>
         <type>material</type>
          <object-name>fuselage_1</object-name>
-         <object-name>tail_section</object-name>
          <object-name>nosecone</object-name>
          <object-name>VHFantenna</object-name>
          <object-name>antenna2</object-name>
@@ -61,8 +60,6 @@
          <object-name>FLG_RL_out</object-name>
          <object-name>vstab</object-name>
          <object-name>rudder_1</object-name>
-	 <object-name>cabinwindows</object-name>
-	 <object-name>cabinlighting</object-name>
          <property-base>sim/model/livery</property-base>
          <texture-prop>texture</texture-prop>
       <texture>fuselage.png</texture>
@@ -2562,18 +2559,17 @@
 
 	<effect>
 		<name>Landing lightmap</name>
-		<inherits-from>Effects/lightmap</inherits-from>
-		<parameters>
-			<texture n="1">
-				<image>Aircraft/747-8i/Models/Effects/lightmap_fuselage.png</image>
-			</texture>
-			<condition>
-				<use>systems/electrical/lighting/landing-lights[2]</use>
-			</condition>
-		</parameters>
+		<inherits-from>Aircraft/747-8i/Models/Effects/lightmap_fuselage</inherits-from>
 		<object-name>fuselage_1</object-name>
 		<object-name>nosecone</object-name>
          	<object-name>cargodoor1.001</object-name>
+		<object-name>vstab</object-name>
+         	<object-name>rudder_1</object-name>
+		<object-name>VHFantenna</object-name>
+		<object-name>antenna2</object-name>
+		<object-name>antenna3</object-name>
+		<object-name>antenna_bot</object-name>
+		<object-name>satcom</object-name>
 		<object-name>NLG_L_lg</object-name>
 		<object-name>NLG_R_lg</object-name>
 		<object-name>NLG_L_sm</object-name>
@@ -2593,32 +2589,8 @@
 	</effect>
 
 	<effect>
-		<name>Logo lightmap</name>
-		<inherits-from>Effects/lightmap</inherits-from>
-		<parameters>
-			<texture n="1">
-				<image>Aircraft/747-8i/Models/Effects/lightmap_fuselage.png</image>
-			</texture>
-			<condition>
-				<use>systems/electrical/lighting/logo-lights</use>
-			</condition>
-		</parameters>
-		<object-name>vstab</object-name>
-         	<object-name>rudder_1</object-name>
-         	<object-name>tail_section</object-name>
-	</effect>
-
-	<effect>
 		<name>Wing lightmap</name>
-		<inherits-from>Effects/lightmap</inherits-from>
-		<parameters>
-			<texture n="1">
-				<image>Aircraft/747-8i/Models/Effects/lightmap_wing.png</image>
-			</texture>
-			<condition>
-				<use>systems/electrical/lighting/wing-lights</use>
-			</condition>
-		</parameters>
+		<inherits-from>Aircraft/747-8i/Models/Effects/lightmap_wing</inherits-from>
 		<object-name>wing</object-name>
 		<object-name>slat</object-name>
 		<object-name>aileron_L</object-name>
@@ -2632,14 +2604,14 @@
 		<object-name>speedbrake_3_L</object-name>
 		<object-name>speedbrake_1_L</object-name>
 		<object-name>speedbrake_2_L</object-name>
-		<object-name>flap_compart_LB_3</object-name>
+		<!--object-name>flap_compart_LB_3</object-name>
 		<object-name>flap_compart_LF_3</object-name>
 		<object-name>flap_compart_LF_4</object-name>
 		<object-name>flap_compart_LB_4</object-name>
 		<object-name>flap_compart_LF_2</object-name>
 		<object-name>flap_compart_LB_2</object-name>
 		<object-name>flap_compart_LF_1</object-name>
-		<object-name>flap_compart_LB_1</object-name>
+		<object-name>flap_compart_LB_1</object-name-->
 		<object-name>aileron_R</object-name>
 		<object-name>external_flap_R</object-name>
 		<object-name>aileron_int_R</object-name>
@@ -2651,14 +2623,14 @@
 		<object-name>speedbrake_3_R</object-name>
 		<object-name>speedbrake_1_R</object-name>
 		<object-name>speedbrake_2_R</object-name>
-		<object-name>flap_compart_RB_3</object-name>
+		<!--object-name>flap_compart_RB_3</object-name>
 		<object-name>flap_compart_RF_3</object-name>
 		<object-name>flap_compart_RF_4</object-name>
 		<object-name>flap_compart_RB_4</object-name>
 		<object-name>flap_compart_RF_2</object-name>
 		<object-name>flap_compart_RB_2</object-name>
 		<object-name>flap_compart_RF_1</object-name>
-		<object-name>flap_compart_RB_1</object-name>         
+		<object-name>flap_compart_RB_1</object-name-->         
 		<object-name>hstab_L</object-name>
 		<object-name>elevator_left</object-name>
 		<object-name>hstab_R</object-name>
@@ -2667,16 +2639,8 @@
 
 	<effect>
 		<name>Nacelle lightmap</name>
-		<inherits-from>Effects/lightmap</inherits-from>
-		<parameters>
-			<texture n="1">
-				<image>Aircraft/747-8i/Models/Effects/lightmap_engine.png</image>
-			</texture>
-			<condition>
-				<use>systems/electrical/lighting/wing-lights</use>
-			</condition>
-		</parameters>
-		<object-name>line</object-name>
+		<inherits-from>Aircraft/747-8i/Models/Effects/lightmap_engine</inherits-from>
+		<!--object-name>line</object-name-->
 		<object-name>turbofan_capa_L_1</object-name>
 		<object-name>turbofan_capa_R_1</object-name>
 		<object-name>turbofan_capa_rev_R_1</object-name>
