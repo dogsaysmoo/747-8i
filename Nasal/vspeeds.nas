@@ -6,7 +6,6 @@ var V1 = "";
 var V2 = "";
 var VR = "";
 var Vref= "";
-setprop("/yasim/gross-weight-lbs",800000);
 
 var vspeeds = func {
 	
@@ -57,7 +56,9 @@ var do_vspeeds = func {
 }
 	
 
-_setlistener("/sim/signals/fdm-initialized", do_vspeeds);
+setlistener("/sim/signals/fdm-initialized", func {
+	settimer(do_vspeeds,2);
+},0,0);
 
 
 # interpolates a value
