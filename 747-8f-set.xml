@@ -20,6 +20,16 @@
 		<description>Boeing 747-8 Freighter</description>
 		<author>John Williams, Grupo FGBr</author>
 	
+		<tags>
+			<tag>cargo</tag>
+			<tag>boeing</tag>
+			<tag>jet</tag>
+			<tag>retractable-gear</tag>
+			<tag>glass-cockpit</tag>
+			<tag>ifr</tag>
+			<tag>2010s</tag>
+		</tags>
+
 		<status>beta</status>
 		<rating>
 			<FDM type="int">4</FDM>
