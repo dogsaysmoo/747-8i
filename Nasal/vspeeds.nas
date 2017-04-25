@@ -7,6 +7,8 @@ var V2 = "";
 var VR = "";
 var Vref= "";
 
+props.globals.initNode("instrumentation/fmc/vspeeds/stall-speed",0.0,"DOUBLE");
+
 var vspeeds = func {
 	
 	WT = getprop("/yasim/gross-weight-lbs")*0.00045359237;
