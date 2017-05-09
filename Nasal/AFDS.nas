@@ -500,22 +500,30 @@ var AFDS = {
 	    if (idx==0 and getprop("gear/gear[0]/wow") and ias_now < 100 and ias_now > 40) {
 		idx = 1;
 	    }
+	    if (idx>1 and getprop("gear/gear[0]/wow")) idx = 0;
 	    if (idx==1) {
 		# V2/2 + ALT/1000 + 20
 		if (getprop("gear/gear[0]/wow")) {
 		    var targ_thr = (getprop("instrumentation/fmc/vspeeds/V2") / 2) + (getprop("instrumentation/altimeter/pressure-alt-ft") / 1000) + 5;
+		    var derate = 1 + ((math.pow(getprop("instrumentation/fmc/derate-TO"),2) - getprop("instrumentation/fmc/derate-TO") * 7) / 100);
 		    if (targ_thr < 90.5) targ_thr = 90.5;
-		    me.thrust_setting.setValue(targ_thr);
+		    me.thrust_setting.setValue(targ_thr * derate);
 		}
 		msg = "TO";
-		if (getprop("position/altitude-agl-ft")>400) idx = 2;
+		if (getprop("position/altitude-agl-ft")>400) {
+		    idx = 2;
+		    setprop("instrumentation/fmc/derate-TO",0);
+		}
 	    }
 	    if (idx==2) {
-		var targ_thr = (getprop("instrumentation/fmc/vspeeds/V2") / 2) + (getprop("instrumentation/altimeter/pressure-alt-ft") / 1000);
+		var derate = 1 + ((math.pow(getprop("instrumentation/fmc/derate-CLB"),2) - getprop("instrumentation/fmc/derate-CLB") * 7) / 100);
+		var targ_thr = (derate * getprop("instrumentation/fmc/vspeeds/V2") / 2) + (getprop("instrumentation/altimeter/pressure-alt-ft") / 1000);
 		if (targ_thr < 82.5) targ_thr = 82.5;
 		if (me.vertical_mode.getValue()==8 or me.vertical_mode.getValue()==12) {
-		    if (getprop("instrumentation/altimeter/indicated-altitude-ft") > 18000)
+		    if (getprop("instrumentation/altimeter/indicated-altitude-ft") > 18000) {
 			targ_thr = 110.0;
+			setprop("instrumentation/fmc/derate-CLB",0);
+		    }
 		}
 		me.thrust_setting.setValue(targ_thr);
 		msg = "CLB";

@@ -161,6 +161,9 @@ var key = func(v) {
 						selected_wp = -1;
 					}
 				}
+				if (cduDisplay == "THR_LIM"){
+					setprop("instrumentation/fmc/derate-TO",0);
+				}
 			}
 			if (v == "LSK2R"){
 				if (cduDisplay == "DEP_ARR_INDEX"){
@@ -188,6 +191,9 @@ var key = func(v) {
 					}
 					cduInput = "";
 				}
+				if (cduDisplay == "THR_LIM"){
+					setprop("instrumentation/fmc/derate-CLB",0);
+				}
 			}
 			if (v == "LSK3L"){
 				if (cduDisplay == "INIT_REF"){
@@ -211,6 +217,9 @@ var key = func(v) {
 					setprop("/instrumentation/nav[0]/radials/selected-deg",cduInput);
 					cduInput = "";
 				}
+				if (cduDisplay == "THR_LIM"){
+					setprop("instrumentation/fmc/derate-TO",1);
+				}
 			}
 			if (v == "LSK3R"){
 				if (cduDisplay == "RTE1_LEGS"){
@@ -224,10 +233,16 @@ var key = func(v) {
 					setprop("/instrumentation/nav[1]/radials/selected-deg",cduInput);
 					cduInput = "";
 				}
+				if (cduDisplay == "THR_LIM"){
+					setprop("instrumentation/fmc/derate-CLB",1);
+				}
 			}
 			if (v == "LSK4L"){
 				if (cduDisplay == "INIT_REF"){
 					cduDisplay = "THR_LIM";
+				}
+				else if (cduDisplay == "THR_LIM"){
+					setprop("instrumentation/fmc/derate-TO",2);
 				}
 				if (cduDisplay == "RTE1_LEGS"){
 					if (cduInput == "DELETE"){
@@ -259,6 +274,9 @@ var key = func(v) {
 				if (cduDisplay == "NAV_RAD"){
 					setprop("/instrumentation/adf[1]/frequencies/standby-khz",cduInput);
 					cduInput = "";
+				}
+				if (cduDisplay == "THR_LIM"){
+					setprop("instrumentation/fmc/derate-CLB",2);
 				}
 			}
 			if (v == "LSK5L"){
@@ -740,11 +758,24 @@ var cdu = func{
 			line1c = sprintf("%2.0f", getprop("/environment/temperature-degc"))~" �C";
 			line1rt = "TO 1 N1";
 			line2l = "<TO";
+			if (getprop("instrumentation/fmc/derate-TO") == 0 and getprop("instrumentation/fmc/derate-CLB") == 0) line2c = "<SEL> <ARM>";
+			if (getprop("instrumentation/fmc/derate-TO") == 0 and getprop("instrumentation/fmc/derate-CLB") != 0) line2c = "<SEL>      ";
+			if (getprop("instrumentation/fmc/derate-TO") != 0 and getprop("instrumentation/fmc/derate-CLB") == 0) line2c = "      <ARM>";
+			if (getprop("instrumentation/fmc/derate-TO") != 0 and getprop("instrumentation/fmc/derate-CLB") != 0) line2c = "";
 			line2r = "CLB>";
 			line3lt = "TO 1";
-			line3c = "<SEL> <ARM>";
+			line3l = "<-10%";
+			if (getprop("instrumentation/fmc/derate-TO") == 1 and getprop("instrumentation/fmc/derate-CLB") == 1) line3c = "<SEL> <ARM>";
+			if (getprop("instrumentation/fmc/derate-TO") == 1 and getprop("instrumentation/fmc/derate-CLB") != 1) line3c = "<SEL>      ";
+			if (getprop("instrumentation/fmc/derate-TO") != 1 and getprop("instrumentation/fmc/derate-CLB") == 1) line3c = "      <ARM>";
+			if (getprop("instrumentation/fmc/derate-TO") != 1 and getprop("instrumentation/fmc/derate-CLB") != 1) line3c = "";
 			line3r = "CLB 1>";
 			line4lt = "TO 2";
+			line4l = "<-20%";
+			if (getprop("instrumentation/fmc/derate-TO") == 2 and getprop("instrumentation/fmc/derate-CLB") == 2) line4c = "<SEL> <ARM>";
+			if (getprop("instrumentation/fmc/derate-TO") == 2 and getprop("instrumentation/fmc/derate-CLB") != 2) line4c = "<SEL>      ";
+			if (getprop("instrumentation/fmc/derate-TO") != 2 and getprop("instrumentation/fmc/derate-CLB") == 2) line4c = "      <ARM>";
+			if (getprop("instrumentation/fmc/derate-TO") != 2 and getprop("instrumentation/fmc/derate-CLB") != 2) line4c = "";
 			line4r = "CLB 2>";
 			line6l = "<INDEX";
 			line6r = "TAKEOFF>";
