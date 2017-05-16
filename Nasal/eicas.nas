@@ -44,7 +44,7 @@ setlistener("sim/signals/fdm-initialized", func() {
 
 	update_listener_inputs();
 	update_throttle_input();
-    update_system();
+    settimer(update_system,2.5);
 });
 
 var update_eicas = func(warningmsgs,cautionmsgs,advisorymsgs,memomsgs) {

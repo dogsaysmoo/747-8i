@@ -25,6 +25,16 @@
 	
 		<status>beta</status>
 
+		<tags>
+			<tag>transport</tag>
+			<tag>boeing</tag>
+			<tag>jet</tag>
+			<tag>retractable-gear</tag>
+			<tag>glass-cockpit</tag>
+			<tag>ifr</tag>
+			<tag>2010s</tag>
+		</tags>
+
 		<aero>747-8i-yasim</aero>
 
 		<startup>

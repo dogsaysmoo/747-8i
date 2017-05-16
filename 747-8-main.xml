@@ -601,6 +601,8 @@
 	    </eicas>
 	    <fmc>
 		<to-flap>20</to-flap>
+		<derate-TO type="int">0</derate-TO>
+		<derate-CLB type="int">0</derate-CLB>
 	    </fmc>
 	    <groundradar>
 		<range>2</range>

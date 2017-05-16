@@ -6,19 +6,22 @@ var V1 = "";
 var V2 = "";
 var VR = "";
 var Vref= "";
-setprop("/yasim/gross-weight-lbs",800000);
+
+props.globals.initNode("instrumentation/fmc/vspeeds/stall-speed",0.0,"DOUBLE");
 
 var vspeeds = func {
 	
 	WT = getprop("/yasim/gross-weight-lbs")*0.00045359237;
-	toflaps = getprop("/instrumentation/fmc/to-flap");
 	flaps = getprop("/controls/flight/flaps");
-	if (toflaps == 10) {
+	var flap_pos = 15;
+	if (flaps > 0.55) flap_pos = 20;
+	setprop("/instrumentation/fmc/to-flap",flap_pos);
+	if (flap_pos == 15) {
 		V1 = (0.3*(WT-200))+100;
 		VR = (0.3*(WT-200))+115;
 		V2 = (0.3*(WT-200))+135;
 	}
-	if (toflaps == 20) {
+	if (flap_pos == 20) {
 		V1 = (0.3*(WT-200))+95;
 		VR = (0.3*(WT-200))+110;
 		V2 = (0.3*(WT-200))+130;
@@ -57,7 +60,9 @@ var do_vspeeds = func {
 }
 	
 
-_setlistener("/sim/signals/fdm-initialized", do_vspeeds);
+setlistener("/sim/signals/fdm-initialized", func {
+	settimer(do_vspeeds,2);
+},0,0);
 
 
 # interpolates a value
