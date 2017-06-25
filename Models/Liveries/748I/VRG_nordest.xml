@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+<sim>
+    <model>
+			<livery>
+				<name type="string">Varig Nordeste</name>
+				<texture>Liveries/748I/VRG_nordest.png</texture>
+			</livery>
+			<turbofans>
+				<name type="string">Varig Nordeste</name>
+				<texture>Liveries/748I/VRG_turbofan_blue.png</texture>
+			</turbofans>
+			<wings>
+				<name type="string">Varig Nordeste</name>
+				<texture>Liveries/748I/wings.png</texture>
+			</wings>
+    </model>
+</sim>
+</PropertyList>
