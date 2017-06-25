@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+<sim>
+    <model>
+			<livery>
+				<name type="string">Emirates Sky Cargo</name>
+				<texture>Liveries/748F/EMR.png</texture>
+			</livery>
+			<turbofans>
+				<name type="string">Emirates Sky Cargo</name>
+				<texture>Liveries/748F/EMR_turbofan.png</texture>
+			</turbofans>
+			<wings>
+				<name type="string">Emirates Sky Cargo</name>
+				<texture>Liveries/748F/wings.png</texture>
+			</wings>
+    </model>
+</sim>
+</PropertyList>

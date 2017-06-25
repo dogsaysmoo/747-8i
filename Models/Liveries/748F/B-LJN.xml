@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Cathay Pacific Cargo 748 livery by E-Savageair
+
+It all began on Sept. 24, 1946 an American, Roy C. Ferrell and an Australian 
+Sydney de Kantzow, both ex-air force pilots put up $1 in Hong Kong Money to 
+register a new airline.  It would be called Cathay Pacific Airways.  According 
+to legend, the name was conceived by Farrell and correspondents at a bar in the 
+Manila Hotel, in the Philippines.  The name "Cathay" came from China as 
+"Khitan" and "Pacific" to mean that according to Farrell, they would one day 
+fly across the Pacific (that would eventually happen in the '70s.)  The Chinese 
+name for the company comes from the Chinese idiom "Grand and Peaceful State."  
+
+In 1948, Butterfield and Swire (Now known as Swire Group) Bought 45% of the new 
+airline, Australian National Airways taking 35% with Farrell and de Kantzow 
+taking 10% of their new airline.  
+
+The first flight began on July 1, 1948 with a DC-3 nicknamed "Betsy," flying 
+routes from Hong Kong, Manila, and on to Singapore, Shanghai, Canton, and 
+Sydney.  They would then acquire a second DC-3 aircraft they would name 
+"Niki."  
+
+Cathay Pacific would expand in the '60s through the '80s; in 1979 they would 
+buy their first 747, the first of many.  They would go on to be one of the 
+biggest operators of the type.  
+
+By the mid '80s CP's destinations would include North American routes flying 
+into San Francisco and Vancouver, Canada. Today Cathay Pacific serves 168 
+destinations in 42 countries on five continents, with a well-developed Asian 
+network.  The airline connects to many cites around the world through One world 
+and codeshare partners, American Airlines and British Airways, and with French 
+national rail operator SNCF, from Paris; they also have access to 17 
+destinations in China with its subsidiary, Dragonair.
+
+In 1994, CX introduced the "brushwing" livery that's depicted here, which 
+featured the calligraphic stroke against a green background on the vertical 
+stabilizer vs. the older green and white striping with the British flag on the 
+corner of the tail fin; on the fuselage is white on the top half of the 
+aircraft with the powder-blue striping in the middle of the fuselage and a 
+lower shade of white near the bottom.  Near the top on upper deck are the 
+brandlines, "Asia's world city" and the "Hong Kong" brand logo.
+
+Thank you for downloading ;-)
+
+ESA
+-->
+
+<PropertyList>
+<sim>
+    <model>
+			<livery>
+				<name type="string">Cathay Cargo(New Livery)</name>
+				<texture>Liveries/748F/B-LJN.png</texture>
+			</livery>
+			
+			<turbofans>
+				<name type="string">Cathay Pacific Cargo</name>
+				<texture>Liveries/748F/CPA_turbofan.png</texture>
+			</turbofans>
+			<wings>
+				<name type="string">Cathay Pacific Cargo</name>
+				<texture>Liveries/748F/wings.png</texture>
+			</wings>
+			
+		
+    </model>
+</sim>
+</PropertyList>
