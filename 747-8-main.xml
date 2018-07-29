@@ -213,6 +213,7 @@
         	</flaps>
 	   
         	<multiplay>
+                    <fallback-model-index type="int">351</fallback-model-index>
             	    <generic>
                 	<int n="0" alias="/systems/electrical/lighting/strobe"/>
                 	<int n="1" alias="/systems/electrical/lighting/beacon"/>
