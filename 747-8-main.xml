@@ -65,6 +65,7 @@
 		</sound>
 
 		<model>
+			<fallback-model-index type="int">351</fallback-model-index>
 			<hide-yoke type="bool">0</hide-yoke>
 			<pushback>
 				<kp type="double">-0.05</kp>
@@ -213,7 +214,6 @@
         	</flaps>
 	   
         	<multiplay>
-                    <fallback-model-index type="int">351</fallback-model-index>
             	    <generic>
                 	<int n="0" alias="/systems/electrical/lighting/strobe"/>
                 	<int n="1" alias="/systems/electrical/lighting/beacon"/>
