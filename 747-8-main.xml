@@ -65,6 +65,7 @@
 		</sound>
 
 		<model>
+			<fallback-model-index type="int">351</fallback-model-index>
 			<hide-yoke type="bool">0</hide-yoke>
 			<pushback>
 				<kp type="double">-0.05</kp>
