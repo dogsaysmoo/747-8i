@@ -4,12 +4,12 @@
 <sim>
     <model>
 			<livery>
-				<name type="string">Lufthansa Pre-2018</name>
-				<texture>Liveries/748I/Lufthansa_fuselage.png</texture>
+				<name type="string">Lufthansa 2018-Present</name>
+				<texture>Liveries/748I/Lufthansa_fuselage_new.png</texture>
 			</livery>
 			<turbofans>
 				<name type="string">Lufthansa</name>
-				<texture>Liveries/748I/Lufthansa_turbofan.png</texture>
+				<texture>Liveries/748I/Lufthansa_turbofan_new.png</texture>
 			</turbofans>
 			<wings>
 				<name type="string">Lufthansa</name>
