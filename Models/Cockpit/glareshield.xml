@@ -914,11 +914,11 @@
 			<command>nasal</command>
 	                <script>controls.click(4);Boeing747.afds.input(3,0);</script>
 		</binding>
-		<binding>
+		<!--binding>
 			<command>property-assign</command>
 			<property>instrumentation/nav/slaved-to-gps</property>
 			<value type="bool">false</value>
-		</binding>
+		</binding-->
 	</action>
 </animation>
 <animation>
